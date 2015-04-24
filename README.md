@@ -29,7 +29,7 @@ progress ui component for react
 
 ## Screenshots
 
-<img src="http://gtms02.alicdn.com/tps/i2/TB1luFKHXXXXXb3XXXXl4OqLpXX-574-596.png" width="288"/>
+<img src="https://t.alipayobjects.com/images/T16ONfXbtlXXXXXXXX.png" />
 
 
 ## Feature
