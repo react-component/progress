@@ -6,7 +6,7 @@ var React = require('react');
 var Example = React.createClass({
   getInitialState: function(){
     return {
-      status: 'active', //success|failed|active|finished
+      status: 'active', //success|failed|active
       percent: '0%'
     }
   },
