@@ -49,7 +49,7 @@ progress ui component for react
 ```js
 var Rcprogress = require('rc-progress');
 var React = require('react');
-React.render(<Rcprogress />, container);
+React.render(<Progress />, container);
 ```
 
 ## API
