@@ -22,6 +22,8 @@ var Example = React.createClass({
   },
   render: function(){
     return (
+
+
       <div>
         <Progress state={this.state.status} percent={this.state.percent} title="进度" />
         <p>
