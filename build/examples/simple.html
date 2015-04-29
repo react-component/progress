@@ -190,7 +190,7 @@ require(<span class="hljs-string">'rc-progress/assets/index.css'</span>);
 <span class="hljs-keyword">var</span> Example = React.createClass({
   getInitialState: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>{
     <span class="hljs-keyword">return</span> {
-      status: <span class="hljs-string">'active'</span>, <span class="hljs-comment">//success|failed|active|finished</span>
+      status: <span class="hljs-string">'active'</span>, <span class="hljs-comment">//success|failed|active</span>
       percent: <span class="hljs-string">'0%'</span>
     }
   },
@@ -206,6 +206,8 @@ require(<span class="hljs-string">'rc-progress/assets/index.css'</span>);
   },
   render: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>{
     <span class="hljs-keyword">return</span> (
+
+
       &lt;div&gt;
         &lt;Progress state={<span class="hljs-keyword">this</span>.state.status} percent={<span class="hljs-keyword">this</span>.state.percent} title=<span class="hljs-string">"进度"</span> /&gt;
         &lt;p&gt;

@@ -17,7 +17,7 @@ webpackJsonp([0,1],[
 	var Example = React.createClass({displayName: "Example",
 	  getInitialState: function(){
 	    return {
-	      status: 'active', //success|failed|active|finished
+	      status: 'active', //success|failed|active
 	      percent: '0%'
 	    }
 	  },
@@ -33,6 +33,8 @@ webpackJsonp([0,1],[
 	  },
 	  render: function(){
 	    return (
+
+
 	      React.createElement("div", null, 
 	        React.createElement(Progress, {state: this.state.status, percent: this.state.percent, title: "进度"}), 
 	        React.createElement("p", null, 
@@ -95,10 +97,10 @@ webpackJsonp([0,1],[
 	/** @jsx React.DOM */
 
 	var React = __webpack_require__(2);
+	var rcUtil = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"rc-util\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
 	var Progress = React.createClass({displayName: "Progress",
 	  render: function () {
-	    var cx = React.addons.classSet;
-	    var classes = cx({
+	    var classes = rcUtil.classSet({
 	      'rc-progress': true,
 	      'rc-progress-success': (this.props.state === 'success'),
 	      'rc-progress-active': (this.props.state === 'active'),
