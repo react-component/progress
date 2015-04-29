@@ -20,10 +20,11 @@
   "licenses": "MIT",
   "spm": {
     "dependencies": {
-      "react": "*"
+      "react": "*",
+      "rc-util": "2.x"
     }
   },
-  "config":{
+  "config": {
     "port": 8000
   },
   "scripts": {
@@ -45,10 +46,10 @@
     "rc-server": "2.x",
     "rc-tools": "2.x",
     "react": "~0.13.0",
-    "node-dev":"2.x"
+    "node-dev": "2.x"
   },
   "dependencies": {
-    "rc-util": "^2.0.0"
+    "rc-util": "2.x"
   },
   "precommit": [
     "lint",
