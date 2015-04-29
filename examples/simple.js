@@ -6,7 +6,7 @@ var React = require('react');
 var Example = React.createClass({
   getInitialState: function(){
     return {
-      status: 'active', //success|failed|active|finished
+      status: 'active', //success|failed|active
       percent: '0%'
     }
   },
@@ -22,6 +22,8 @@ var Example = React.createClass({
   },
   render: function(){
     return (
+
+
       <div>
         <Progress state={this.state.status} percent={this.state.percent} title="进度" />
         <p>

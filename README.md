@@ -29,7 +29,7 @@ progress ui component for react
 
 ## Screenshots
 
-<img src="http://gtms02.alicdn.com/tps/i2/TB1luFKHXXXXXb3XXXXl4OqLpXX-574-596.png" width="288"/>
+<img src="https://t.alipayobjects.com/images/T16ONfXbtlXXXXXXXX.png" />
 
 
 ## Feature
@@ -49,7 +49,8 @@ progress ui component for react
 ```js
 var Rcprogress = require('rc-progress');
 var React = require('react');
-React.render(<Rcprogress />, container);
+React.render(<Progress />, container);
+```
 
 ## API
 
@@ -66,10 +67,16 @@ React.render(<Rcprogress />, container);
     </thead>
     <tbody>
         <tr>
-          <td>className</td>
+          <td>state</td>
           <td>String</td>
-          <td></td>
-          <td>additional css class of root dom node</td>
+          <td>active</td>
+          <td> [success | failed | active] Different value can change its appearance </td>
+        </tr>
+        <tr>
+          <td>percent</td>
+          <td>String</td>
+          <td>0%</td>
+          <td>Specifies progress bar's visible percentage</td>
         </tr>
     </tbody>
 </table>

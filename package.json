@@ -47,6 +47,9 @@
     "react": "~0.13.0",
     "node-dev":"2.x"
   },
+  "dependencies": {
+    "rc-util": "^2.0.0"
+  },
   "precommit": [
     "lint",
     "less"
