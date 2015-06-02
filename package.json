@@ -1,6 +1,6 @@
 {
   "name": "rc-progress",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "progress ui component for react",
   "keywords": [
     "react",
@@ -9,7 +9,7 @@
     "progress"
   ],
   "homepage": "http://github.com/react-component/progress",
-  "author": "shuaiji.tsj",
+  "author": "tsjxyz@gmail.com",
   "repository": {
     "type": "git",
     "url": "git@github.com:react-component/progress.git"
@@ -29,22 +29,21 @@
   },
   "scripts": {
     "build": "rc-tools run build",
+    "precommit": "rc-tools run precommit",
     "less": "rc-tools run less",
     "gh-pages": "rc-tools run gh-pages",
-    "history": "rc-tools run history",
-    "start": "node-dev --harmony node_modules/.bin/rc-server",
-    "publish": "spm publish && rc-tools run tag",
+    "start": "node --harmony node_modules/.bin/rc-server",
+    "publish": "rc-tools run tag",
     "lint": "rc-tools run lint",
-    "test": "",
-    "saucelabs": "rc-tools run saucelabs",
-    "browser-test": "rc-tools run browser-test",
-    "browser-test-cover": "rc-tools run browser-test-cover"
+    "saucelabs": "node --harmony node_modules/.bin/rc-tools run saucelabs",
+    "browser-test": "node --harmony node_modules/.bin/rc-tools run browser-test",
+    "browser-test-cover": "node --harmony node_modules/.bin/rc-tools run browser-test-cover"
   },
   "devDependencies": {
     "expect.js": "~0.3.1",
     "precommit-hook": "^1.0.7",
-    "rc-server": "2.x",
-    "rc-tools": "2.x",
+    "rc-server": "3.x",
+    "rc-tools": "3.x",
     "react": "~0.13.0",
     "node-dev": "2.x"
   },
@@ -53,6 +52,7 @@
   },
   "precommit": [
     "lint",
-    "less"
+    "less",
+    "precommit"
   ]
 }

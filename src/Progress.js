@@ -1,9 +1,9 @@
-/** @jsx React.DOM */
+'use strict';
 
 var React = require('react');
 var rcUtil = require('rc-util');
 var Progress = React.createClass({
-  render: function () {
+  render() {
     var classes = rcUtil.classSet({
       'rc-progress': true,
       'rc-progress-success': (this.props.state === 'success'),

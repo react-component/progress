@@ -1,16 +1,16 @@
-/** @jsx React.DOM */
-// use jsx to render html, do not modify simple.html
+'use strict';
+
 require('rc-progress/assets/index.css');
 var Progress = require('rc-progress');
 var React = require('react');
 var Example = React.createClass({
-  getInitialState: function(){
+  getInitialState() {
     return {
       status: 'active', //success|failed|active
       percent: '0%'
     }
   },
-  changeState: function(){
+  changeState() {
     if(this.state.status === 'active'){
       this.setState({status: 'success'});
     }else if(this.state.status === 'success'){
@@ -20,10 +20,8 @@ var Example = React.createClass({
     }
     this.setState({percent: parseInt(Math.random()*100)+'%'});
   },
-  render: function(){
+  render() {
     return (
-
-
       <div>
         <Progress state={this.state.status} percent={this.state.percent} title="进度" />
         <p>

@@ -1,3 +1,5 @@
+'use strict';
+
 var React = require('react/addons');
 var TestUtils = React.addons.TestUtils;
 var Simulate = TestUtils.Simulate;
