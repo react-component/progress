@@ -1,13 +1,14 @@
 'use strict';
 
 require('rc-progress/assets/index.css');
-var Progress = require('rc-progress');
+var Line = require('rc-progress').line;
 var React = require('react');
 var Example = React.createClass({
   getInitialState() {
     return {
       status: 'active', //success|failed|active
-      percent: '0%'
+      percent: '0%',
+      strokeWidth: 5
     }
   },
   changeState() {
@@ -21,9 +22,14 @@ var Example = React.createClass({
     this.setState({percent: parseInt(Math.random()*100)+'%'});
   },
   render() {
+    var containerStyle = {
+      "width": "250px"
+    }
     return (
       <div>
-        <Progress state={this.state.status} percent={this.state.percent} title="进度" />
+        <div style={containerStyle}>
+          <Line state={this.state.status} percent={this.state.percent} strokeWidth={this.state.strokeWidth} />
+        </div>
         <p>
           <button onClick={this.changeState}>Change State</button>
         </p>
