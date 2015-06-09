@@ -10,9 +10,7 @@ progress ui component for react
 [![gemnasium deps][gemnasium-image]][gemnasium-url]
 [![node version][node-image]][node-url]
 [![npm download][download-image]][download-url]
-[![Sauce Test Status](https://saucelabs.com/buildstatus/rc-progress)](https://saucelabs.com/u/rc-progress)
 
-[![Sauce Test Status](https://saucelabs.com/browser-matrix/rc-progress.svg)](https://saucelabs.com/u/rc-progress)
 
 [npm-image]: http://img.shields.io/npm/v/rc-progress.svg?style=flat-square
 [npm-url]: http://npmjs.org/package/rc-progress
