@@ -45,8 +45,8 @@ progress ui component for react
 ## Usage
 
 ```js
-var Line = require('rc-progress').line;
-var Circle = require('rc-progress').circle;
+var Line = require('rc-progress').Line;
+var Circle = require('rc-progress').Circle;
 var React = require('react');
 React.render(<div>
     <Line percent=“10” strokeWidth="4" strokeColor=“#D3D3D3” />

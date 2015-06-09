@@ -5,8 +5,8 @@ var TestUtils = React.addons.TestUtils;
 var Simulate = TestUtils.Simulate;
 
 var expect = require('expect.js');
-var Line = require('../').line;
-var Circle = require('../').circle;
+var Line = require('../').Line;
+var Circle = require('../').Circle;
 describe('line progress', function () {
   it('work', function () {
     var div = document.createElement(div);

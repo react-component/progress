@@ -1,1 +1,1 @@
-module.exports = require('./src/Progress');
+module.exports = require('./src/');

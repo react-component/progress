@@ -18,7 +18,7 @@
     "url": "http://github.com/react-component/progress/issues"
   },
   "licenses": "MIT",
-  "main":"lib/index",
+  "main": "lib/index",
   "config": {
     "port": 8000
   },
@@ -43,5 +43,8 @@
   },
   "precommit": [
     "precommit"
-  ]
+  ],
+  "dependencies": {
+    "object-assign": "~3.0.0"
+  }
 }
