@@ -7,7 +7,7 @@ var Line = React.createClass({
     var pathStyle = {
       "stroke-dasharray": "100px, 100px",
       "stroke-dashoffset": (100-this.props.percent) + "px",
-      "transition": "stroke-dashoffset 0.6s ease 0s"
+      "transition": "stroke-dashoffset 0.6s ease 0s, stroke 0.6s linear"
     }
     var trailStyle = {
       "stroke-dasharray": "100px, 100px",
@@ -70,7 +70,7 @@ var Circle = React.createClass({
     var pathStyle = {
       "stroke-dasharray": len?(len + "px " + len + "px"):"none",
       "stroke-dashoffset": ((100-this.props.percent)/100*len) + "px",
-      "transition": "stroke-dashoffset 0.6s ease 0s"
+      "transition": "stroke-dashoffset 0.6s ease 0s, stroke 0.6s ease"
     }
 
     var strokeWidth = this.props.strokeWidth,

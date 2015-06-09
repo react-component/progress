@@ -7,20 +7,17 @@ var React = require('react');
 var Example = React.createClass({
   getInitialState() {
     return {
-      status: 'active', //success|failed|active
       percent: 100,
-      strokeWidth: 4
+      strokeWidth: 4,
+      color: "#3FC7FA"
     }
   },
   changeState() {
-    if(this.state.status === 'active'){
-      this.setState({status: 'success'});
-    }else if(this.state.status === 'success'){
-      this.setState({status: 'failed'});
-    }else if(this.state.status === 'failed'||!this.state.status){
-      this.setState({status: 'active'});
-    }
-    this.setState({percent: parseInt(Math.random()*100)});
+    var colorMap = ["#3FC7FA", "#85D262", "#FE8C6A"]
+    this.setState({
+      percent: parseInt(Math.random()*100),
+      color: colorMap[parseInt(Math.random()*3)]
+    });
   },
   render() {
     var containerStyle = {
@@ -32,11 +29,13 @@ var Example = React.createClass({
     }
     return (
       <div>
+        <h3>Line Progress {this.state.percent}%</h3>
         <div style={containerStyle}>
-          <Line state={this.state.status} percent={this.state.percent} strokeWidth={this.state.strokeWidth} />
+          <Line state={this.state.status} percent={this.state.percent} strokeWidth={this.state.strokeWidth} strokeColor={this.state.color} />
         </div>
+        <h3>Circle Progress {this.state.percent}%</h3>
         <div style={circleContainerStyle}>
-          <Circle state={this.state.status} percent={this.state.percent} strokeWidth={this.state.strokeWidth} />
+          <Circle state={this.state.status} percent={this.state.percent} strokeWidth={this.state.strokeWidth} strokeColor={this.state.color} />
         </div>
         <p>
           <button onClick={this.changeState}>Change State</button>
