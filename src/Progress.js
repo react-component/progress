@@ -56,10 +56,20 @@ var Line = React.createClass({
 });
 
 var Circle = React.createClass({
+  getInitialState() {
+    return {
+      length: null
+    }
+  },
+  componentDidMount(){
+    var len = React.findDOMNode(this.refs.circletrail).getTotalLength()
+    this.setState({length: len});
+  },
   render() {
+    var len = this.state.length
     var pathStyle = {
-      "stroke-dasharray": "100px, 100px",
-      "stroke-dashoffset": (100-this.props.percent) + "px",
+      "stroke-dasharray": len?(len + "px " + len + "px"):"none",
+      "stroke-dashoffset": ((100-this.props.percent)/100*len) + "px",
       "transition": "stroke-dashoffset 0.6s ease 0s"
     }
 
@@ -92,10 +102,9 @@ var Circle = React.createClass({
       }
     })
 
-    console.log(this.props)
     return (
       <svg class="ant-progress-circle" viewBox="0 0 100 100">
-        <path class="ant-progress-circle-trail" d={pathString} stroke={this.props.trailColor} strokeWidth={this.props.trailWidth} fillOpacity="0"></path>
+        <path class="ant-progress-circle-trail" ref="circletrail" d={pathString} stroke={this.props.trailColor} strokeWidth={this.props.trailWidth} fillOpacity="0"></path>
         <path class="ant-progress-circle-path" d={pathString} strokeLinecap="round" stroke={this.props.strokeColor} strokeWidth={this.props.strokeWidth} fillOpacity="0" style={pathStyle} ></path>
       </svg>
     )

@@ -8,7 +8,7 @@ var Example = React.createClass({
   getInitialState() {
     return {
       status: 'active', //success|failed|active
-      percent: 30,
+      percent: 100,
       strokeWidth: 4
     }
   },
