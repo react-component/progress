@@ -29,8 +29,7 @@ var Line = React.createClass({
       strokeWidth: 1,
       strokeColor: "#3FC7FA",
       trailWidth: 1,
-      trailColor: "#D9D9D9",
-      fill: null
+      trailColor: "#D9D9D9"
     };
     ["strokeWidth", "strokeColor", "trailWidth", "trailColor", "fill"].forEach(function(item, i, arr){
       if(item === 'trailWidth'
@@ -87,8 +86,7 @@ var Circle = React.createClass({
       strokeWidth: 1,
       strokeColor: "#3FC7FA",
       trailWidth: 1,
-      trailColor: "#D9D9D9",
-      fill: null
+      trailColor: "#D9D9D9"
     };
     ["strokeWidth", "strokeColor", "trailWidth", "trailColor", "fill"].forEach(function(item, i, arr){
       if(item === 'trailWidth'
