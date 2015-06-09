@@ -9,34 +9,45 @@ webpackJsonp([0,1],[
 /* 1 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/** @jsx React.DOM */
-	// use jsx to render html, do not modify simple.html
+	'use strict';
+
 	__webpack_require__(4);
-	var Progress = __webpack_require__(3);
+	var Line = __webpack_require__(3).line;
+	var Circle = __webpack_require__(3).circle;
 	var React = __webpack_require__(2);
 	var Example = React.createClass({displayName: "Example",
-	  getInitialState: function(){
+	  getInitialState:function() {
 	    return {
-	      status: 'active', //success|failed|active
-	      percent: '0%'
+	      percent: 100,
+	      strokeWidth: 4,
+	      color: "#3FC7FA"
 	    }
 	  },
-	  changeState: function(){
-	    if(this.state.status === 'active'){
-	      this.setState({status: 'success'});
-	    }else if(this.state.status === 'success'){
-	      this.setState({status: 'failed'});
-	    }else if(this.state.status === 'failed'||!this.state.status){
-	      this.setState({status: 'active'});
-	    }
-	    this.setState({percent: parseInt(Math.random()*100)+'%'});
+	  changeState:function() {
+	    var colorMap = ["#3FC7FA", "#85D262", "#FE8C6A"]
+	    this.setState({
+	      percent: parseInt(Math.random()*100),
+	      color: colorMap[parseInt(Math.random()*3)]
+	    });
 	  },
-	  render: function(){
+	  render:function() {
+	    var containerStyle = {
+	      "width": "250px"
+	    }
+	    var circleContainerStyle = {
+	      "width": "250px",
+	      "height": "250px"
+	    }
 	    return (
-
-
 	      React.createElement("div", null, 
-	        React.createElement(Progress, {state: this.state.status, percent: this.state.percent, title: "进度"}), 
+	        React.createElement("h3", null, "Line Progress ", this.state.percent, "%"), 
+	        React.createElement("div", {style: containerStyle}, 
+	          React.createElement(Line, {state: this.state.status, percent: this.state.percent, strokeWidth: this.state.strokeWidth, strokeColor: this.state.color})
+	        ), 
+	        React.createElement("h3", null, "Circle Progress ", this.state.percent, "%"), 
+	        React.createElement("div", {style: circleContainerStyle}, 
+	          React.createElement(Circle, {state: this.state.status, percent: this.state.percent, strokeWidth: this.state.strokeWidth, strokeColor: this.state.color})
+	        ), 
 	        React.createElement("p", null, 
 	          React.createElement("button", {onClick: this.changeState}, "Change State")
 	        )
@@ -74,8 +85,8 @@ webpackJsonp([0,1],[
 	// Hot Module Replacement
 	if(false) {
 		// When the styles change, update the <style> tags
-		module.hot.accept("!!/Users/yiminghe/code/react-components/progress/node_modules/css-loader/index.js!/Users/yiminghe/code/react-components/progress/assets/index.css", function() {
-			var newContent = require("!!/Users/yiminghe/code/react-components/progress/node_modules/css-loader/index.js!/Users/yiminghe/code/react-components/progress/assets/index.css");
+		module.hot.accept("!!/Users/shuaijitsj/Documents/lab/react-component/progress/node_modules/css-loader/index.js!/Users/shuaijitsj/Documents/lab/react-component/progress/assets/index.css", function() {
+			var newContent = require("!!/Users/shuaijitsj/Documents/lab/react-component/progress/node_modules/css-loader/index.js!/Users/shuaijitsj/Documents/lab/react-component/progress/assets/index.css");
 			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 			update(newContent);
 		});
@@ -88,39 +99,146 @@ webpackJsonp([0,1],[
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(8)();
-	exports.push([module.id, ".rc-progress {\n  font-size: 12px;\n  display: inline-block;\n  vertical-align: middle;\n}\n.rc-progress > div {\n  display: inline-block;\n  vertical-align: middle;\n}\n.rc-progress .rc-progress-bg {\n  background: #FBFBFB;\n  border: 1px solid #f3f3f3;\n  width: 170px;\n  height: 10px;\n  border-radius: 100px;\n  margin-right: 12px;\n  margin-left: 6px;\n  overflow: hidden;\n}\n.rc-progress .rc-progress-bar {\n  float: left;\n  background: #3fc7fa;\n  height: 100%;\n  border-radius: 10px;\n  transition: width 0.6s ease 0s;\n  box-shadow: -10px 0 0;\n  position: relative;\n  color: #3fc7fa;\n}\n.rc-progress-active .rc-progress-bar {\n  border-radius: 10px;\n}\n.rc-progress-success .rc-progress-bar {\n  background: #87d068;\n  color: #87d068;\n}\n.rc-progress-failed .rc-progress-bg {\n  background: #fff;\n  border: 1px solid #fe8c6a;\n  box-shadow: none;\n}\n.rc-progress-failed .rc-progress-bar {\n  background: #fe8c6a;\n  color: #fe8c6a;\n}\n", ""]);
+	exports.push([module.id, "", ""]);
 
 /***/ },
 /* 6 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/** @jsx React.DOM */
+	'use strict';
 
 	var React = __webpack_require__(2);
 	var rcUtil = __webpack_require__(9);
-	var Progress = React.createClass({displayName: "Progress",
-	  render: function () {
-	    var classes = rcUtil.classSet({
-	      'rc-progress': true,
-	      'rc-progress-success': (this.props.state === 'success'),
-	      'rc-progress-active': (this.props.state === 'active'),
-	      'rc-progress-failed': (this.props.state === 'failed')
+	var Line = React.createClass({displayName: "Line",
+	  render:function() {
+	    var pathStyle = {
+	      "stroke-dasharray": "100px, 100px",
+	      "stroke-dashoffset": (100-this.props.percent) + "px",
+	      "transition": "stroke-dashoffset 0.6s ease 0s, stroke 0.6s linear"
+	    }
+	    var trailStyle = {
+	      "stroke-dasharray": "100px, 100px",
+	      "stroke-dashoffset": "0px"
+	    }
+
+	    var strokeWidth = this.props.strokeWidth
+	    var pathString = render("M {center},{center} L {right},{center}", {
+	      center: strokeWidth/2,
+	      right: (100-strokeWidth/2)
 	    });
-	    var percentWidth = {
-	      width: this.props.percent
+	    var viewBoxString = render("0 0 100 {strokeWidth}", {
+	      strokeWidth: strokeWidth
+	    })
+
+
+	    var _this = this;
+	    var defaultProps = {
+	      strokeWidth: 1,
+	      strokeColor: "#3FC7FA",
+	      trailWidth: 1,
+	      trailColor: "#D9D9D9"
 	    };
+	    ["strokeWidth", "strokeColor", "trailWidth", "trailColor", "fill"].forEach(function(item, i, arr){
+	      if(item === 'trailWidth'
+	        && !_this.props.trailWidth
+	        && _this.props.strokeWidth){
+	        _this.props.trailWidth = _this.props.strokeWidth;
+	        return
+	      }
+	      if(!_this.props[item]){
+	        _this.props[item] = defaultProps[item]
+	      }
+	    })
+
 	    return (
-	      React.createElement("div", {className: classes}, 
-	        React.createElement("div", {className: "rc-progress-title"}, this.props.title), 
-	        React.createElement("div", {className: "rc-progress-bg"}, 
-	          React.createElement("div", {className: "rc-progress-bar", style: percentWidth})
-	        ), 
-	        React.createElement("div", {className: "rc-progress-percent"}, this.props.percent)
+	      React.createElement("svg", {class: "ant-progress-line", viewBox: viewBoxString, preserveAspectRatio: "none"}, 
+	        React.createElement("g", null, 
+	          React.createElement("path", {class: "ant-progress-line-trail", d: pathString, strokeLinecap: "round", stroke: this.props.trailColor, strokeWidth: this.props.trailWidth, fillOpacity: "0", style: trailStyle}), 
+	          React.createElement("path", {class: "ant-progress-line-path", d: pathString, strokeLinecap: "round", stroke: this.props.strokeColor, strokeWidth: this.props.strokeWidth, fillOpacity: "0", style: pathStyle})
+	        )
 	      )
 	    );
 	  }
 	});
-	module.exports = Progress;
+
+	var Circle = React.createClass({displayName: "Circle",
+	  getInitialState:function() {
+	    return {
+	      length: null
+	    }
+	  },
+	  componentDidMount:function(){
+	    var len = React.findDOMNode(this.refs.circletrail).getTotalLength()
+	    this.setState({length: len});
+	  },
+	  render:function() {
+	    var len = this.state.length
+	    var pathStyle = {
+	      "stroke-dasharray": len?(len + "px " + len + "px"):"none",
+	      "stroke-dashoffset": ((100-this.props.percent)/100*len) + "px",
+	      "transition": "stroke-dashoffset 0.6s ease 0s, stroke 0.6s ease"
+	    }
+
+	    var strokeWidth = this.props.strokeWidth,
+	        r = (50-strokeWidth/2);
+	    var pathString = render('M 50,50 m 0,-{radius}' +
+	      ' a {radius},{radius} 0 1 1 0,{2radius}' +
+	      ' a {radius},{radius} 0 1 1 0,-{2radius}', {
+	      "radius": r,
+	      "2radius": 2*r
+	    });
+
+	    var _this = this;
+	    var defaultProps = {
+	      strokeWidth: 1,
+	      strokeColor: "#3FC7FA",
+	      trailWidth: 1,
+	      trailColor: "#D9D9D9"
+	    };
+	    ["strokeWidth", "strokeColor", "trailWidth", "trailColor", "fill"].forEach(function(item, i, arr){
+	      if(item === 'trailWidth'
+	        && !_this.props.trailWidth
+	        && _this.props.strokeWidth){
+	        _this.props.trailWidth = _this.props.strokeWidth;
+	        return
+	      }
+	      if(!_this.props[item]){
+	        _this.props[item] = defaultProps[item]
+	      }
+	    })
+
+	    return (
+	      React.createElement("svg", {class: "ant-progress-circle", viewBox: "0 0 100 100"}, 
+	        React.createElement("path", {class: "ant-progress-circle-trail", ref: "circletrail", d: pathString, stroke: this.props.trailColor, strokeWidth: this.props.trailWidth, fillOpacity: "0"}), 
+	        React.createElement("path", {class: "ant-progress-circle-path", d: pathString, strokeLinecap: "round", stroke: this.props.strokeColor, strokeWidth: this.props.strokeWidth, fillOpacity: "0", style: pathStyle})
+	      )
+	    )
+	  }
+	})
+
+	module.exports = {
+	  line: Line,
+	  circle: Circle
+	};
+
+
+	// render('Hello, {message}!', {message: 'world'})
+	function render(template, vars) {
+	  var rendered = template;
+
+	  for (var key in vars) {
+	    if (vars.hasOwnProperty(key)) {
+	      var val = vars[key];
+	      var regExpString = '\\{' + key + '\\}';
+	      var regExp = new RegExp(regExpString, 'g');
+
+	      rendered = rendered.replace(regExp, val);
+	    }
+	  }
+
+	  return rendered;
+	}
+
 
 
 /***/ },

@@ -182,34 +182,45 @@
 <script src="simple.js?nowrap"></script>
 <div class="highlight">
 <pre>
-<span class="hljs-comment">/** @jsx React.DOM */</span>
-<span class="hljs-comment">// use jsx to render html, do not modify simple.html</span>
-require(<span class="hljs-string">'rc-progress/assets/index.css'</span>);
-<span class="hljs-keyword">var</span> Progress = require(<span class="hljs-string">'rc-progress'</span>);
-<span class="hljs-keyword">var</span> React = require(<span class="hljs-string">'react'</span>);
+<span class="hljs-string">'use strict'</span>;
+
+<span class="hljs-built_in">require</span>(<span class="hljs-string">'rc-progress/assets/index.css'</span>);
+<span class="hljs-keyword">var</span> Line = <span class="hljs-built_in">require</span>(<span class="hljs-string">'rc-progress'</span>).line;
+<span class="hljs-keyword">var</span> Circle = <span class="hljs-built_in">require</span>(<span class="hljs-string">'rc-progress'</span>).circle;
+<span class="hljs-keyword">var</span> React = <span class="hljs-built_in">require</span>(<span class="hljs-string">'react'</span>);
 <span class="hljs-keyword">var</span> Example = React.createClass({
-  getInitialState: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>{
+  getInitialState() {
     <span class="hljs-keyword">return</span> {
-      status: <span class="hljs-string">'active'</span>, <span class="hljs-comment">//success|failed|active</span>
-      percent: <span class="hljs-string">'0%'</span>
+      <span class="hljs-attribute">percent</span>: <span class="hljs-number">100</span>,
+      <span class="hljs-attribute">strokeWidth</span>: <span class="hljs-number">4</span>,
+      <span class="hljs-attribute">color</span>: <span class="hljs-string">"#3FC7FA"</span>
     }
   },
-  changeState: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>{
-    <span class="hljs-keyword">if</span>(<span class="hljs-keyword">this</span>.state.status === <span class="hljs-string">'active'</span>){
-      <span class="hljs-keyword">this</span>.setState({status: <span class="hljs-string">'success'</span>});
-    }<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(<span class="hljs-keyword">this</span>.state.status === <span class="hljs-string">'success'</span>){
-      <span class="hljs-keyword">this</span>.setState({status: <span class="hljs-string">'failed'</span>});
-    }<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(<span class="hljs-keyword">this</span>.state.status === <span class="hljs-string">'failed'</span>||!<span class="hljs-keyword">this</span>.state.status){
-      <span class="hljs-keyword">this</span>.setState({status: <span class="hljs-string">'active'</span>});
-    }
-    <span class="hljs-keyword">this</span>.setState({percent: parseInt(Math.random()*<span class="hljs-number">100</span>)+<span class="hljs-string">'%'</span>});
+  changeState() {
+    <span class="hljs-keyword">var</span> colorMap = [<span class="hljs-string">"#3FC7FA"</span>, <span class="hljs-string">"#85D262"</span>, <span class="hljs-string">"<span class="hljs-subst">#FE8C6A</span>"</span>]
+    <span class="hljs-keyword">this</span>.setState({
+      <span class="hljs-attribute">percent</span>: parseInt(Math.random()*<span class="hljs-number">100</span>),
+      <span class="hljs-attribute">color</span>: colorMap[parseInt(Math.random()*<span class="hljs-number">3</span>)]
+    });
   },
-  render: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>{
+  render() {
+    <span class="hljs-keyword">var</span> containerStyle = {
+      <span class="hljs-string">"width"</span>: <span class="hljs-string">"250px"</span>
+    }
+    <span class="hljs-keyword">var</span> circleContainerStyle = {
+      <span class="hljs-string">"width"</span>: <span class="hljs-string">"250px"</span>,
+      <span class="hljs-string">"height"</span>: <span class="hljs-string">"250px"</span>
+    }
     <span class="hljs-keyword">return</span> (
-
-
       &lt;div&gt;
-        &lt;Progress state={<span class="hljs-keyword">this</span>.state.status} percent={<span class="hljs-keyword">this</span>.state.percent} title=<span class="hljs-string">"进度"</span> /&gt;
+        &lt;h3&gt;Line Progress {<span class="hljs-keyword">this</span>.state.percent}%&lt;/h3&gt;
+        &lt;div style={containerStyle}&gt;
+          &lt;Line state={<span class="hljs-keyword">this</span>.state.status} percent={<span class="hljs-keyword">this</span>.state.percent} strokeWidth={<span class="hljs-keyword">this</span>.state.strokeWidth} strokeColor={<span class="hljs-keyword">this</span>.state.color} /&gt;
+        &lt;/div&gt;
+        &lt;h3&gt;Circle Progress {<span class="hljs-keyword">this</span>.state.percent}%&lt;/h3&gt;
+        &lt;div style={circleContainerStyle}&gt;
+          &lt;Circle state={<span class="hljs-keyword">this</span>.state.status} percent={<span class="hljs-keyword">this</span>.state.percent} strokeWidth={<span class="hljs-keyword">this</span>.state.strokeWidth} strokeColor={<span class="hljs-keyword">this</span>.state.color} /&gt;
+        &lt;/div&gt;
         &lt;p&gt;
           &lt;button onClick={<span class="hljs-keyword">this</span>.changeState}&gt;Change State&lt;/button&gt;
         &lt;/p&gt;
@@ -217,7 +228,7 @@ require(<span class="hljs-string">'rc-progress/assets/index.css'</span>);
       );
   }
 })
-React.render(&lt;Example/&gt;, document.getElementById(<span class="hljs-string">'__react-content'</span>));
+React.render(&lt;Example/&gt;, <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'__react-content'</span>));
 
 </pre>
 </div>
