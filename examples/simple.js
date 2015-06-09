@@ -7,8 +7,7 @@ var React = require('react');
 var Example = React.createClass({
   getInitialState() {
     return {
-      percent: 100,
-      strokeWidth: 4,
+      percent: 30,
       color: "#3FC7FA"
     }
   },
@@ -31,11 +30,11 @@ var Example = React.createClass({
       <div>
         <h3>Line Progress {this.state.percent}%</h3>
         <div style={containerStyle}>
-          <Line state={this.state.status} percent={this.state.percent} strokeWidth={this.state.strokeWidth} strokeColor={this.state.color} />
+          <Line percent={this.state.percent} strokeWidth="4" strokeColor={this.state.color} />
         </div>
         <h3>Circle Progress {this.state.percent}%</h3>
         <div style={circleContainerStyle}>
-          <Circle state={this.state.status} percent={this.state.percent} strokeWidth={this.state.strokeWidth} strokeColor={this.state.color} />
+          <Circle percent={this.state.percent} strokeWidth="6" strokeColor={this.state.color} />
         </div>
         <p>
           <button onClick={this.changeState}>Change State</button>

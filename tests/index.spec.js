@@ -5,13 +5,24 @@ var TestUtils = React.addons.TestUtils;
 var Simulate = TestUtils.Simulate;
 
 var expect = require('expect.js');
-var Progress = require('../');
-describe('progress', function () {
-  it('works', function () {
+var Line = require('../').line;
+var Circle = require('../').circle;
+describe('line progress', function () {
+  it('work', function () {
     var div = document.createElement(div);
     document.body.appendChild(div);
-    var progress = React.render(<Progress title="a" />, div);
-    expect(TestUtils.scryRenderedDOMComponentsWithClass(progress, 'rc-progress-title')[0].props.children).to.be('a');
+    var line = React.render(<Line percent="30" strokeWidth="1" />, div);
+    expect(line.props.percent).to.be("30");
+    React.unmountComponentAtNode(div);
+  });
+});
+
+describe('circle progress', function () {
+  it('work', function () {
+    var div = document.createElement(div);
+    document.body.appendChild(div);
+    var circle = React.render(<Circle percent="30" strokeWidth="1" />, div);
+    expect(circle.props.percent).to.be("30");
     React.unmountComponentAtNode(div);
   });
 });

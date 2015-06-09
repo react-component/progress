@@ -14,6 +14,34 @@ var Line = React.createClass({
       "stroke-dashoffset": "0px"
     }
 
+    var _this = this;
+    var defaultProps = {
+      strokeWidth: 1,
+      strokeColor: "#3FC7FA",
+      trailWidth: 1,
+      trailColor: "#D9D9D9"
+    };
+    ["strokeWidth", "strokeColor", "trailWidth", "trailColor"].forEach(function(item, i, arr){
+      if(item === 'trailWidth'
+        && !_this.props.trailWidth
+        && _this.props.strokeWidth){
+        _this.props.trailWidth = _this.props.strokeWidth;
+        return
+      }
+      if(item === 'strokeWidth'
+        &&_this.props.strokeWidth
+        &&(!parseFloat(_this.props.strokeWidth)
+        ||parseFloat(_this.props.strokeWidth)>100
+        ||parseFloat(_this.props.strokeWidth)<0)
+        ){
+        _this.props[item] = defaultProps[item]
+        return
+      }
+      if(!_this.props[item]){
+        _this.props[item] = defaultProps[item]
+      }
+    })
+
     var strokeWidth = this.props.strokeWidth
     var pathString = render("M {center},{center} L {right},{center}", {
       center: strokeWidth/2,
@@ -23,31 +51,11 @@ var Line = React.createClass({
       strokeWidth: strokeWidth
     })
 
-
-    var _this = this;
-    var defaultProps = {
-      strokeWidth: 1,
-      strokeColor: "#3FC7FA",
-      trailWidth: 1,
-      trailColor: "#D9D9D9"
-    };
-    ["strokeWidth", "strokeColor", "trailWidth", "trailColor", "fill"].forEach(function(item, i, arr){
-      if(item === 'trailWidth'
-        && !_this.props.trailWidth
-        && _this.props.strokeWidth){
-        _this.props.trailWidth = _this.props.strokeWidth;
-        return
-      }
-      if(!_this.props[item]){
-        _this.props[item] = defaultProps[item]
-      }
-    })
-
     return (
-      <svg class="ant-progress-line" viewBox={viewBoxString} preserveAspectRatio="none">
+      <svg class="rc-progress-line" viewBox={viewBoxString} preserveAspectRatio="none">
         <g>
-          <path class="ant-progress-line-trail" d={pathString} strokeLinecap="round" stroke={this.props.trailColor} strokeWidth={this.props.trailWidth} fillOpacity="0" style={trailStyle}></path>
-          <path class="ant-progress-line-path" d={pathString} strokeLinecap="round" stroke={this.props.strokeColor} strokeWidth={this.props.strokeWidth} fillOpacity="0" style={pathStyle}></path>
+          <path class="rc-progress-line-trail" d={pathString} strokeLinecap="round" stroke={this.props.trailColor} strokeWidth={this.props.trailWidth} fillOpacity="0" style={trailStyle}></path>
+          <path class="rc-progress-line-path" d={pathString} strokeLinecap="round" stroke={this.props.strokeColor} strokeWidth={this.props.strokeWidth} fillOpacity="0" style={pathStyle}></path>
         </g>
       </svg>
     );
@@ -88,7 +96,7 @@ var Circle = React.createClass({
       trailWidth: 1,
       trailColor: "#D9D9D9"
     };
-    ["strokeWidth", "strokeColor", "trailWidth", "trailColor", "fill"].forEach(function(item, i, arr){
+    ["strokeWidth", "strokeColor", "trailWidth", "trailColor"].forEach(function(item, i, arr){
       if(item === 'trailWidth'
         && !_this.props.trailWidth
         && _this.props.strokeWidth){
@@ -101,9 +109,9 @@ var Circle = React.createClass({
     })
 
     return (
-      <svg class="ant-progress-circle" viewBox="0 0 100 100">
-        <path class="ant-progress-circle-trail" ref="circletrail" d={pathString} stroke={this.props.trailColor} strokeWidth={this.props.trailWidth} fillOpacity="0"></path>
-        <path class="ant-progress-circle-path" d={pathString} strokeLinecap="round" stroke={this.props.strokeColor} strokeWidth={this.props.strokeWidth} fillOpacity="0" style={pathStyle} ></path>
+      <svg class="rc-progress-circle" viewBox="0 0 100 100">
+        <path class="rc-progress-circle-trail" ref="circletrail" d={pathString} stroke={this.props.trailColor} strokeWidth={this.props.trailWidth} fillOpacity="0"></path>
+        <path class="rc-progress-circle-path" d={pathString} strokeLinecap="round" stroke={this.props.strokeColor} strokeWidth={this.props.strokeWidth} fillOpacity="0" style={pathStyle} ></path>
       </svg>
     )
   }
