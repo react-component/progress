@@ -18,12 +18,7 @@
     "url": "http://github.com/react-component/progress/issues"
   },
   "licenses": "MIT",
-  "spm": {
-    "dependencies": {
-      "react": "*",
-      "rc-util": "2.x"
-    }
-  },
+  "main":"lib/index",
   "config": {
     "port": 8000
   },
@@ -44,15 +39,9 @@
     "precommit-hook": "^1.0.7",
     "rc-server": "3.x",
     "rc-tools": "3.x",
-    "react": "~0.13.0",
-    "node-dev": "2.x"
-  },
-  "dependencies": {
-    "rc-util": "2.x"
+    "react": "~0.13.0"
   },
   "precommit": [
-    "lint",
-    "less",
     "precommit"
   ]
 }
