@@ -29,12 +29,12 @@ progress ui component for react
 
 ## Screenshots
 
-<img src="https://t.alipayobjects.com/images/T16ONfXbtlXXXXXXXX.png" />
+<img src="https://t.alipayobjects.com/images/T12p8gXjpgXXXXXXXX.gif" />
 
 
 ## Feature
 
-* support ie8,ie8+,chrome,firefox,safari
+* support ie9+,chrome,firefox,safari
 
 ### Keyboard
 
@@ -47,9 +47,10 @@ progress ui component for react
 ## Usage
 
 ```js
-var Rcprogress = require('rc-progress');
+var Line = require('rc-progress').line;
+var Circle = require('rc-progress').circle;
 var React = require('react');
-React.render(<Progress />, container);
+React.render(<div><Line /> <Circle /></div>, container);
 ```
 
 ## API
@@ -67,16 +68,28 @@ React.render(<Progress />, container);
     </thead>
     <tbody>
         <tr>
-          <td>state</td>
-          <td>String</td>
-          <td>active</td>
-          <td> [success | failed | active] Different value can change its appearance </td>
+          <td>strokeWidth</td>
+          <td>Number</td>
+          <td>1</td>
+          <td>Width of the stroke. Unit is percentage of SVG canvas size.</td>
         </tr>
         <tr>
-          <td>percent</td>
+          <td>strokeColor</td>
           <td>String</td>
-          <td>0%</td>
-          <td>Specifies progress bar's visible percentage</td>
+          <td>#3FC7FA</td>
+          <td> Stroke color.</td>
+        </tr>
+        <tr>
+          <td>trailWidth</td>
+          <td>Number</td>
+          <td>1</td>
+          <td>Width of the trail stroke. Unit is percentage of SVG canvas size. Trail is always centered relative to actual progress path. If trailWidth are not defined, it same as strokeWidth.</td>
+        </tr>
+        <tr>
+          <td>trailColor</td>
+          <td>String</td>
+          <td>#D9D9D9</td>
+          <td> Color for lighter trail stroke underneath the actual progress path.</td>
         </tr>
     </tbody>
 </table>
