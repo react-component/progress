@@ -1,9 +1,11 @@
 'use strict';
 
-require('rc-progress/assets/index.css');
+require('rc-progress/assets/index.less');
 var Line = require('rc-progress').Line;
 var Circle = require('rc-progress').Circle;
 var React = require('react');
+var ReactDOM = require('react-dom');
+
 var Example = React.createClass({
   getInitialState() {
     return {
@@ -44,4 +46,4 @@ var Example = React.createClass({
   }
 });
 
-React.render(<Example/>, document.getElementById('__react-content'));
+ReactDOM.render(<Example/>, document.getElementById('__react-content'));

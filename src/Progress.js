@@ -1,69 +1,21 @@
-'use strict';
+const assign = require('object-assign');
+const React = require('react');
+const defaultProps = require('./defaultProps');
+const Line = require('./Line');
 
-var assign = require('object-assign');
-var React = require('react');
-var defaultProps = {
-  strokeWidth: 1,
-  strokeColor: '#3FC7FA',
-  trailWidth: 1,
-  trailColor: '#D9D9D9'
-};
-
-var Line = React.createClass({
+const Circle = React.createClass({
   render() {
-    var props = assign({}, this.props);
-    var pathStyle = {
-      'strokeDasharray': '100px, 100px',
-      'strokeDashoffset': `${(100 - props.percent)}px`,
-      'transition': 'stroke-dashoffset 0.6s ease 0s, stroke 0.6s linear'
-    };
-
-    ['strokeWidth', 'strokeColor', 'trailWidth', 'trailColor'].forEach((item)=> {
-      if (item === 'trailWidth' && !props.trailWidth && props.strokeWidth) {
-        props.trailWidth = props.strokeWidth;
-        return;
-      }
-      if (item === 'strokeWidth' && props.strokeWidth && (!parseFloat(props.strokeWidth) ||
-        parseFloat(props.strokeWidth) > 100 || parseFloat(props.strokeWidth) < 0)) {
-        props[item] = defaultProps[item];
-        return;
-      }
-      if (!props[item]) {
-        props[item] = defaultProps[item];
-      }
-    });
-
-    var strokeWidth = props.strokeWidth;
-    var center = strokeWidth / 2;
-    var right = (100 - strokeWidth / 2);
-    var pathString = `M ${center},${center} L ${right},${center}`;
-    var viewBoxString = `0 0 100 ${strokeWidth}`;
-
-    return (
-      <svg className="rc-progress-line" viewBox={viewBoxString} preserveAspectRatio="none">
-        <path className="rc-progress-line-trail" d={pathString} strokeLinecap="round"
-          stroke={props.trailColor} strokeWidth={props.trailWidth} fillOpacity="0"/>
-
-        <path className="rc-progress-line-path" d={pathString} strokeLinecap="round"
-          stroke={props.strokeColor} strokeWidth={props.strokeWidth} fillOpacity="0" style={pathStyle}/>
-      </svg>
-    );
-  }
-});
-
-var Circle = React.createClass({
-  render() {
-    var props = assign({}, this.props);
-    var strokeWidth = props.strokeWidth;
-    var radius = (50 - strokeWidth / 2);
-    var pathString = `M 50,50 m 0,-${radius}
+    const props = assign({}, this.props);
+    const strokeWidth = props.strokeWidth;
+    const radius = (50 - strokeWidth / 2);
+    const pathString = `M 50,50 m 0,-${radius}
      a ${radius},${radius} 0 1 1 0,${2 * radius}
      a ${radius},${radius} 0 1 1 0,-${2 * radius}`;
-    var len = Math.PI * 2 * radius;
-    var pathStyle = {
+    const len = Math.PI * 2 * radius;
+    const pathStyle = {
       'strokeDasharray': `${len}px ${len}px`,
       'strokeDashoffset': `${((100 - props.percent) / 100 * len)}px`,
-      'transition': 'stroke-dashoffset 0.6s ease 0s, stroke 0.6s ease'
+      'transition': 'stroke-dashoffset 0.6s ease 0s, stroke 0.6s ease',
     };
     ['strokeWidth', 'strokeColor', 'trailWidth', 'trailColor'].forEach((item) => {
       if (item === 'trailWidth' && !props.trailWidth && props.strokeWidth) {
@@ -76,18 +28,18 @@ var Circle = React.createClass({
     });
 
     return (
-      <svg className='rc-progress-circle' viewBox='0 0 100 100'>
-        <path className='rc-progress-circle-trail' d={pathString} stroke={props.trailColor}
-          strokeWidth={props.trailWidth} fillOpacity='0'/>
+      <svg className="rc-progress-circle" viewBox="0 0 100 100">
+        <path className="rc-progress-circle-trail" d={pathString} stroke={props.trailColor}
+              strokeWidth={props.trailWidth} fillOpacity="0"/>
 
-        <path className='rc-progress-circle-path' d={pathString} strokeLinecap='round'
-          stroke={props.strokeColor} strokeWidth={props.strokeWidth} fillOpacity='0' style={pathStyle} />
+        <path className="rc-progress-circle-path" d={pathString} strokeLinecap="round"
+              stroke={props.strokeColor} strokeWidth={props.strokeWidth} fillOpacity="0" style={pathStyle}/>
       </svg>
     );
-  }
+  },
 });
 
 module.exports = {
   Line: Line,
-  Circle: Circle
+  Circle: Circle,
 };
