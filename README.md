@@ -106,7 +106,7 @@ npm start
 
 http://localhost:8000/examples/
 
-online example: http://react-component.github.io/progress/examples/simple.html
+online example: http://react-component.github.io/progress/
 
 ## Test Case
 
