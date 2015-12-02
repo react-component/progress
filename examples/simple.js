@@ -1,33 +1,31 @@
-'use strict';
-
 require('rc-progress/assets/index.less');
-var Line = require('rc-progress').Line;
-var Circle = require('rc-progress').Circle;
-var React = require('react');
-var ReactDOM = require('react-dom');
+const Line = require('rc-progress').Line;
+const Circle = require('rc-progress').Circle;
+const React = require('react');
+const ReactDOM = require('react-dom');
 
-var Example = React.createClass({
+const Example = React.createClass({
   getInitialState() {
     return {
       percent: 30,
-      color: "#3FC7FA"
-    }
+      color: '#3FC7FA',
+    };
   },
   changeState() {
-    var colorMap = ["#3FC7FA", "#85D262", "#FE8C6A"]
+    const colorMap = ['#3FC7FA', '#85D262', '#FE8C6A'];
     this.setState({
-      percent: parseInt(Math.random()*100),
-      color: colorMap[parseInt(Math.random()*3)]
+      percent: parseInt(Math.random() * 100, 10),
+      color: colorMap[parseInt(Math.random() * 3, 10)],
     });
   },
   render() {
-    var containerStyle = {
-      "width": "250px"
-    }
-    var circleContainerStyle = {
-      "width": "250px",
-      "height": "250px"
-    }
+    const containerStyle = {
+      width: '250px',
+    };
+    const circleContainerStyle = {
+      width: '250px',
+      height: '250px',
+    };
     return (
       <div>
         <h3>Line Progress {this.state.percent}%</h3>
@@ -43,7 +41,7 @@ var Example = React.createClass({
         </p>
       </div>
       );
-  }
+  },
 });
 
 ReactDOM.render(<Example/>, document.getElementById('__react-content'));
