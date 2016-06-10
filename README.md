@@ -92,6 +92,12 @@ React.render(<div>
           <td>#D9D9D9</td>
           <td> Color for lighter trail stroke underneath the actual progress path.</td>
         </tr>
+        <tr>
+		  <td>strokeLinecap</td>
+		  <td>String</td>
+		  <td>round</td>
+		  <td> The shape to be used at the end of the progress bar, can be square or round.</td>
+		</tr>
     </tbody>
 </table>
 
