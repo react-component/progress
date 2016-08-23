@@ -75,8 +75,8 @@ ReactDOM.render(<div>
         <tr>
           <td>strokeColor</td>
           <td>String</td>
-          <td>#3FC7FA</td>
-          <td> Stroke color.</td>
+          <td>#2db7f5</td>
+          <td>Stroke color.</td>
         </tr>
         <tr>
           <td>trailWidth</td>
@@ -88,7 +88,7 @@ ReactDOM.render(<div>
           <td>trailColor</td>
           <td>String</td>
           <td>#D9D9D9</td>
-          <td> Color for lighter trail stroke underneath the actual progress path.</td>
+          <td>Color for lighter trail stroke underneath the actual progress path.</td>
         </tr>
         <tr>
 		  <td>strokeLinecap</td>
