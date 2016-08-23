@@ -1,7 +1,7 @@
 # rc-progress
 ---
 
-progress ui component for react
+Progress Bar.
 
 [![NPM version][npm-image]][npm-url]
 [![SPM version](http://spmjs.io/badge/rc-progress)](http://spmjs.io/package/rc-progress)
@@ -10,7 +10,6 @@ progress ui component for react
 [![gemnasium deps][gemnasium-image]][gemnasium-url]
 [![node version][node-image]][node-url]
 [![npm download][download-image]][download-url]
-
 
 [npm-image]: http://img.shields.io/npm/v/rc-progress.svg?style=flat-square
 [npm-url]: http://npmjs.org/package/rc-progress
@@ -30,28 +29,27 @@ progress ui component for react
 <img src="https://t.alipayobjects.com/images/T12p8gXjpgXXXXXXXX.gif" />
 
 
+## Example
+
+http://react-component.github.io/progress/
+
 ## Feature
 
 * support ie9+,chrome,firefox,safari
 
-### Keyboard
-
-
-
-## install
+## Install
 
 [![rc-progress](https://nodei.co/npm/rc-progress.png)](https://npmjs.org/package/rc-progress)
 
 ## Usage
 
-```js
-var Line = require('rc-progress').Line;
-var Circle = require('rc-progress').Circle;
-var React = require('react');
-React.render(<div>
-    <Line percent=“10” strokeWidth="4" strokeColor=“#D3D3D3” />
-    <Circle percent=“10” strokeWidth="4" strokeColor=“#D3D3D3” />
-  </div>, container);
+```jsx
+import { Line, Circle } from 'rc-progress';
+
+ReactDOM.render(<div>
+  <Line percent="10" strokeWidth="4" strokeColor="#D3D3D3" />
+  <Circle percent="10" strokeWidth="4" strokeColor="#D3D3D3" />
+</div>, container);
 ```
 
 ## API
@@ -96,7 +94,7 @@ React.render(<div>
 		  <td>strokeLinecap</td>
 		  <td>String</td>
 		  <td>round</td>
-		  <td> The shape to be used at the end of the progress bar, can be square or round.</td>
+		  <td>The shape to be used at the end of the progress bar, can be square or round.</td>
 		</tr>
     </tbody>
 </table>
@@ -107,20 +105,6 @@ React.render(<div>
 npm install
 npm start
 ```
-
-## Example
-
-http://localhost:8000/examples/
-
-online example: http://react-component.github.io/progress/
-
-## Test Case
-
-http://localhost:8000/tests/runner.html?coverage
-
-## Coverage
-
-http://localhost:8000/node_modules/rc-server/node_modules/node-jscover/lib/front-end/jscoverage.html?w=http://localhost:8000/tests/runner.html?coverage
 
 ## License
 
