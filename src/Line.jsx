@@ -31,13 +31,15 @@ const Line = React.createClass({
     const right = (100 - strokeWidth / 2);
     const pathString = `M ${center},${center} L ${right},${center}`;
     const viewBoxString = `0 0 100 ${strokeWidth}`;
+    const linecap = props.strokeLinecap || 'round';
+
 
     return (
       <svg className="rc-progress-line" viewBox={viewBoxString} preserveAspectRatio="none">
-        <path className="rc-progress-line-trail" d={pathString} strokeLinecap="round"
+        <path className="rc-progress-line-trail" d={pathString} strokeLinecap={linecap}
               stroke={props.trailColor} strokeWidth={props.trailWidth} fillOpacity="0"/>
 
-        <path className="rc-progress-line-path" d={pathString} strokeLinecap="round"
+        <path className="rc-progress-line-path" d={pathString} strokeLinecap={linecap}
               stroke={props.strokeColor} strokeWidth={props.strokeWidth} fillOpacity="0" style={pathStyle}/>
       </svg>
     );

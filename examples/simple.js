@@ -30,17 +30,17 @@ const Example = React.createClass({
       <div>
         <h3>Line Progress {this.state.percent}%</h3>
         <div style={containerStyle}>
-          <Line percent={this.state.percent} strokeWidth="4" strokeColor={this.state.color} />
+          <Line percent={this.state.percent} strokeWidth="4" strokeColor={this.state.color}/>
         </div>
         <h3>Circle Progress {this.state.percent}%</h3>
         <div style={circleContainerStyle}>
-          <Circle percent={this.state.percent} strokeWidth="6" strokeColor={this.state.color} />
+          <Circle percent={this.state.percent} strokeWidth="6" strokeLinecap="square" strokeColor={this.state.color}/>
         </div>
         <p>
           <button onClick={this.changeState}>Change State</button>
         </p>
       </div>
-      );
+    );
   },
 });
 
