@@ -7,7 +7,10 @@ export default React.createClass({
     return defaultProps;
   },
   render() {
-    const { strokeWidth, trailWidth, strokeColor, trailColor, strokeLinecap, percent } = this.props;
+    const {
+      prefixCls, strokeWidth, trailWidth, strokeColor,
+      trailColor, strokeLinecap, percent,
+    } = this.props;
 
     const pathStyle = {
       strokeDasharray: '100px, 100px',
@@ -21,9 +24,9 @@ export default React.createClass({
     const viewBoxString = `0 0 100 ${strokeWidth}`;
 
     return (
-      <svg className="rc-progress-line" viewBox={viewBoxString} preserveAspectRatio="none">
+      <svg className={`${prefixCls}-line`} viewBox={viewBoxString} preserveAspectRatio="none">
         <path
-          className="rc-progress-line-trail"
+          className={`${prefixCls}-line-trail`}
           d={pathString}
           strokeLinecap={strokeLinecap}
           stroke={trailColor}
@@ -31,7 +34,7 @@ export default React.createClass({
           fillOpacity="0"
         />
         <path
-          className="rc-progress-line-path"
+          className={`${prefixCls}-line-path`}
           d={pathString}
           strokeLinecap={strokeLinecap}
           stroke={strokeColor}

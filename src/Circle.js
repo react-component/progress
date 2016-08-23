@@ -7,7 +7,10 @@ export default React.createClass({
     return defaultProps;
   },
   render() {
-    const { strokeWidth, trailWidth, strokeColor, trailColor, strokeLinecap, percent } = this.props;
+    const {
+      prefixCls, strokeWidth, trailWidth, strokeColor,
+      trailColor, strokeLinecap, percent,
+    } = this.props;
 
     const radius = (50 - strokeWidth / 2);
     const pathString = `M 50,50 m 0,-${radius}
@@ -21,16 +24,16 @@ export default React.createClass({
     };
 
     return (
-      <svg className="rc-progress-circle" viewBox="0 0 100 100">
+      <svg className={`${prefixCls}-circle`} viewBox="0 0 100 100">
         <path
-          className="rc-progress-circle-trail"
+          className={`${prefixCls}-circle-trail`}
           d={pathString}
           stroke={trailColor}
           strokeWidth={trailWidth || strokeWidth}
           fillOpacity="0"
         />
         <path
-          className="rc-progress-circle-path"
+          className={`${prefixCls}-circle-path`}
           d={pathString}
           strokeLinecap={strokeLinecap}
           stroke={strokeColor}
