@@ -7,6 +7,7 @@ export const defaultProps = {
   trailWidth: 1,
   trailColor: '#D9D9D9',
   strokeLinecap: 'round',
+  className: '',
 };
 
 export const propTypes = {
@@ -16,4 +17,6 @@ export const propTypes = {
   trailWidth: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   trailColor: PropTypes.string,
   strokeLinecap: PropTypes.oneOf(['round', 'square']),
+  style: PropTypes.Object,
+  className: PropTypes.string,
 };

@@ -9,7 +9,8 @@ export default React.createClass({
   render() {
     const {
       prefixCls, strokeWidth, trailWidth, strokeColor,
-      trailColor, strokeLinecap, percent,
+      trailColor, strokeLinecap, percent, style, className,
+      ...restProps,
     } = this.props;
 
     const pathStyle = {
@@ -24,7 +25,13 @@ export default React.createClass({
     const viewBoxString = `0 0 100 ${strokeWidth}`;
 
     return (
-      <svg className={`${prefixCls}-line`} viewBox={viewBoxString} preserveAspectRatio="none">
+      <svg
+        className={`${prefixCls}-line ${className}`}
+        viewBox={viewBoxString}
+        preserveAspectRatio="none"
+        style={style}
+        {...restProps}
+      >
         <path
           className={`${prefixCls}-line-trail`}
           d={pathString}

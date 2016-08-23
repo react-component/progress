@@ -9,7 +9,8 @@ export default React.createClass({
   render() {
     const {
       prefixCls, strokeWidth, trailWidth, strokeColor,
-      trailColor, strokeLinecap, percent,
+      trailColor, strokeLinecap, percent, style, className,
+      ...restProps,
     } = this.props;
 
     const radius = (50 - strokeWidth / 2);
@@ -24,7 +25,12 @@ export default React.createClass({
     };
 
     return (
-      <svg className={`${prefixCls}-circle`} viewBox="0 0 100 100">
+      <svg
+        className={`${prefixCls}-circle ${className}`}
+        viewBox="0 0 100 100"
+        style={style}
+        {...restProps}
+      >
         <path
           className={`${prefixCls}-circle-trail`}
           d={pathString}

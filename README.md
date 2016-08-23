@@ -54,46 +54,64 @@ ReactDOM.render(<div>
 ### props
 
 <table class="table table-bordered table-striped">
-    <thead>
+  <thead>
+  <tr>
+    <th style="width: 100px;">name</th>
+    <th style="width: 50px;">type</th>
+    <th style="width: 50px;">default</th>
+    <th>description</th>
+  </tr>
+  </thead>
+  <tbody>
     <tr>
-        <th style="width: 100px;">name</th>
-        <th style="width: 50px;">type</th>
-        <th style="width: 50px;">default</th>
-        <th>description</th>
+      <td>strokeWidth</td>
+      <td>Number</td>
+      <td>1</td>
+      <td>Width of the stroke. Unit is percentage of SVG canvas size.</td>
     </tr>
-    </thead>
-    <tbody>
-        <tr>
-          <td>strokeWidth</td>
-          <td>Number</td>
-          <td>1</td>
-          <td>Width of the stroke. Unit is percentage of SVG canvas size.</td>
-        </tr>
-        <tr>
-          <td>strokeColor</td>
-          <td>String</td>
-          <td>#2db7f5</td>
-          <td>Stroke color.</td>
-        </tr>
-        <tr>
-          <td>trailWidth</td>
-          <td>Number</td>
-          <td>1</td>
-          <td>Width of the trail stroke. Unit is percentage of SVG canvas size. Trail is always centered relative to actual progress path. If trailWidth are not defined, it same as strokeWidth.</td>
-        </tr>
-        <tr>
-          <td>trailColor</td>
-          <td>String</td>
-          <td>#D9D9D9</td>
-          <td>Color for lighter trail stroke underneath the actual progress path.</td>
-        </tr>
-        <tr>
+    <tr>
+      <td>strokeColor</td>
+      <td>String</td>
+      <td>#2db7f5</td>
+      <td>Stroke color.</td>
+    </tr>
+    <tr>
+      <td>trailWidth</td>
+      <td>Number</td>
+      <td>1</td>
+      <td>Width of the trail stroke. Unit is percentage of SVG canvas size. Trail is always centered relative to actual progress path. If trailWidth are not defined, it same as strokeWidth.</td>
+    </tr>
+    <tr>
+      <td>trailColor</td>
+      <td>String</td>
+      <td>#D9D9D9</td>
+      <td>Color for lighter trail stroke underneath the actual progress path.</td>
+    </tr>
+    <tr>
 		  <td>strokeLinecap</td>
 		  <td>String</td>
 		  <td>round</td>
 		  <td>The shape to be used at the end of the progress bar, can be square or round.</td>
 		</tr>
-    </tbody>
+    <tr>
+      <td>prefixCls</td>
+      <td>String</td>
+      <td>rc-progress</td>
+      <td>prefix className for component</td>
+    </tr>
+    <tr>
+      <td>className</td>
+      <td>String</td>
+      <td></td>
+      <td>customized className</td>
+    </tr>
+    <tr>
+      <td>style</td>
+      <td>Object</td>
+      <td></td>
+      <td>style object will be added to svg element</td>
+    </tr>
+  </tbody>
 </table>
 
 ## Development
