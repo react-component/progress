@@ -15,17 +15,29 @@ export default React.createClass({
      a ${radius},${radius} 0 1 1 0,-${2 * radius}`;
     const len = Math.PI * 2 * radius;
     const pathStyle = {
-      'strokeDasharray': `${len}px ${len}px`,
-      'strokeDashoffset': `${((100 - percent) / 100 * len)}px`,
-      'transition': 'stroke-dashoffset 0.6s ease 0s, stroke 0.6s ease',
+      strokeDasharray: `${len}px ${len}px`,
+      strokeDashoffset: `${((100 - percent) / 100 * len)}px`,
+      transition: 'stroke-dashoffset 0.6s ease 0s, stroke 0.6s ease',
     };
 
     return (
       <svg className="rc-progress-circle" viewBox="0 0 100 100">
-        <path className="rc-progress-circle-trail" d={pathString} stroke={trailColor}
-              strokeWidth={trailWidth || strokeWidth} fillOpacity="0"/>
-        <path className="rc-progress-circle-path" d={pathString} strokeLinecap={strokeLinecap}
-              stroke={strokeColor} strokeWidth={strokeWidth} fillOpacity="0" style={pathStyle}/>
+        <path
+          className="rc-progress-circle-trail"
+          d={pathString}
+          stroke={trailColor}
+          strokeWidth={trailWidth || strokeWidth}
+          fillOpacity="0"
+        />
+        <path
+          className="rc-progress-circle-path"
+          d={pathString}
+          strokeLinecap={strokeLinecap}
+          stroke={strokeColor}
+          strokeWidth={strokeWidth}
+          fillOpacity="0"
+          style={pathStyle}
+        />
       </svg>
     );
   },
