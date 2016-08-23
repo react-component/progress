@@ -1,5 +1,4 @@
 # rc-progress
----
 
 Progress Bar.
 
@@ -23,18 +22,17 @@ Progress Bar.
 [download-image]: https://img.shields.io/npm/dm/rc-progress.svg?style=flat-square
 [download-url]: https://npmjs.org/package/rc-progress
 
-## Screenshots
-
-<img src="https://t.alipayobjects.com/images/T12p8gXjpgXXXXXXXX.gif" />
-
-
 ## Example
 
 http://react-component.github.io/progress/
 
-## Feature
+## Screenshots
 
-* support ie9+,chrome,firefox,safari
+<img src="https://t.alipayobjects.com/images/T12p8gXjpgXXXXXXXX.gif" />
+
+## Browsers
+
+* support IE9+, Chrome, Firefox, Safari
 
 ## Install
 
