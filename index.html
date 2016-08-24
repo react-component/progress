@@ -7,7 +7,7 @@
   <meta charset="utf-8"/>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link href="//cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.css" rel="stylesheet"/>
-  <title>rc-progress@1.0.4 - progress ui component for react</title>
+  <title>rc-progress@2.0.0 - progress ui component for react</title>
   <style>
     @font-face {
       font-family: octicons-anchor;
@@ -737,7 +737,7 @@
 
 <body>
 <div class="header">
-  <h1>rc-progress@1.0.4</h1>
+  <h1>rc-progress@2.0.0</h1>
 </div>
 <div class="examples">
   <h3>EXAMPLES</h3>
@@ -752,69 +752,87 @@
 <div id="readme" class="boxed-group">
   <h3>README.md</h3>
   <div class="markdown-body">
-    <h1>rc-progress<a id="user-content-rc-progress" name="rc-progress" class="anchor" aria-hidden="true" href="#rc-progress"><span class="octicon octicon-link"></span></a></h1><hr>
-<p>progress ui component for react</p>
+    <h1>rc-progress<a id="user-content-rc-progress" name="rc-progress" class="anchor" aria-hidden="true" href="#rc-progress"><span class="octicon octicon-link"></span></a></h1><p>Progress Bar.</p>
 <p><a href="http://npmjs.org/package/rc-progress" title="null"><img src="http://img.shields.io/npm/v/rc-progress.svg?style=flat-square" alt="NPM version"></a>
-<a href="http://spmjs.io/package/rc-progress" title="null"><img src="http://spmjs.io/badge/rc-progress" alt="SPM version"></a>
 <a href="https://travis-ci.org/react-component/progress" title="null"><img src="https://img.shields.io/travis/react-component/progress.svg?style=flat-square" alt="build status"></a>
 <a href="https://coveralls.io/r/react-component/progress?branch=master" title="null"><img src="https://img.shields.io/coveralls/react-component/progress.svg?style=flat-square" alt="Test coverage"></a>
 <a href="https://gemnasium.com/react-component/progress" title="null"><img src="http://img.shields.io/gemnasium/react-component/progress.svg?style=flat-square" alt="gemnasium deps"></a>
 <a href="http://nodejs.org/download/" title="null"><img src="https://img.shields.io/badge/node.js-%3E=_0.10-green.svg?style=flat-square" alt="node version"></a>
 <a href="https://npmjs.org/package/rc-progress" title="null"><img src="https://img.shields.io/npm/dm/rc-progress.svg?style=flat-square" alt="npm download"></a></p>
+<h2>Example<a id="user-content-example" name="example" class="anchor" aria-hidden="true" href="#example"><span class="octicon octicon-link"></span></a></h2><p><a href="http://react-component.github.io/progress/" title="null">http://react-component.github.io/progress/</a></p>
 <h2>Screenshots<a id="user-content-screenshots" name="screenshots" class="anchor" aria-hidden="true" href="#screenshots"><span class="octicon octicon-link"></span></a></h2><p><img src="https://t.alipayobjects.com/images/T12p8gXjpgXXXXXXXX.gif" /></p>
-<h2>Feature<a id="user-content-feature" name="feature" class="anchor" aria-hidden="true" href="#feature"><span class="octicon octicon-link"></span></a></h2><ul>
-<li>support ie9+,chrome,firefox,safari</li>
+<h2>Browsers<a id="user-content-browsers" name="browsers" class="anchor" aria-hidden="true" href="#browsers"><span class="octicon octicon-link"></span></a></h2><ul>
+<li>support IE9+, Chrome, Firefox, Safari</li>
 </ul>
-<h3>Keyboard<a id="user-content-keyboard" name="keyboard" class="anchor" aria-hidden="true" href="#keyboard"><span class="octicon octicon-link"></span></a></h3><h2>install<a id="user-content-install" name="install" class="anchor" aria-hidden="true" href="#install"><span class="octicon octicon-link"></span></a></h2><p><a href="https://npmjs.org/package/rc-progress" title="null"><img src="https://nodei.co/npm/rc-progress.png" alt="rc-progress"></a></p>
-<h2>Usage<a id="user-content-usage" name="usage" class="anchor" aria-hidden="true" href="#usage"><span class="octicon octicon-link"></span></a></h2><div class="highlight"><pre><code language="js"><span class="hljs-keyword">var</span> Line = <span class="hljs-built_in">require</span>(<span class="hljs-string">'rc-progress'</span>).Line;
-<span class="hljs-keyword">var</span> Circle = <span class="hljs-built_in">require</span>(<span class="hljs-string">'rc-progress'</span>).Circle;
-<span class="hljs-keyword">var</span> React = <span class="hljs-built_in">require</span>(<span class="hljs-string">'react'</span>);
-React.render(<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-title">Line</span> <span class="hljs-attribute">percent</span>=<span class="hljs-value">“10”</span> <span class="hljs-attribute">strokeWidth</span>=<span class="hljs-value">"4"</span> <span class="hljs-attribute">strokeColor</span>=<span class="hljs-value">“#D3D3D3”</span> /&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-title">Circle</span> <span class="hljs-attribute">percent</span>=<span class="hljs-value">“10”</span> <span class="hljs-attribute">strokeWidth</span>=<span class="hljs-value">"4"</span> <span class="hljs-attribute">strokeColor</span>=<span class="hljs-value">“#D3D3D3”</span> /&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>, container);</span></code></pre></div><h2>API<a id="user-content-api" name="api" class="anchor" aria-hidden="true" href="#api"><span class="octicon octicon-link"></span></a></h2><h3>props<a id="user-content-props" name="props" class="anchor" aria-hidden="true" href="#props"><span class="octicon octicon-link"></span></a></h3><table class="table table-bordered table-striped">
-    <thead>
+<h2>Install<a id="user-content-install" name="install" class="anchor" aria-hidden="true" href="#install"><span class="octicon octicon-link"></span></a></h2><p><a href="https://npmjs.org/package/rc-progress" title="null"><img src="https://nodei.co/npm/rc-progress.png" alt="rc-progress"></a></p>
+<h2>Usage<a id="user-content-usage" name="usage" class="anchor" aria-hidden="true" href="#usage"><span class="octicon octicon-link"></span></a></h2><div class="highlight"><pre><code language="xml">import { Line, Circle } from 'rc-progress';
+
+ReactDOM.render(<span class="hljs-tag">&lt;<span class="hljs-title">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">Line</span> <span class="hljs-attribute">percent</span>=<span class="hljs-value">"10"</span> <span class="hljs-attribute">strokeWidth</span>=<span class="hljs-value">"4"</span> <span class="hljs-attribute">strokeColor</span>=<span class="hljs-value">"#D3D3D3"</span> /&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">Circle</span> <span class="hljs-attribute">percent</span>=<span class="hljs-value">"10"</span> <span class="hljs-attribute">strokeWidth</span>=<span class="hljs-value">"4"</span> <span class="hljs-attribute">strokeColor</span>=<span class="hljs-value">"#D3D3D3"</span> /&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>, container);</code></pre></div><h2>API<a id="user-content-api" name="api" class="anchor" aria-hidden="true" href="#api"><span class="octicon octicon-link"></span></a></h2><h3>props<a id="user-content-props" name="props" class="anchor" aria-hidden="true" href="#props"><span class="octicon octicon-link"></span></a></h3><table class="table table-bordered table-striped">
+  <thead>
+  <tr>
+    <th style="width: 100px;">name</th>
+    <th style="width: 50px;">type</th>
+    <th style="width: 50px;">default</th>
+    <th>description</th>
+  </tr>
+  </thead>
+  <tbody>
     <tr>
-        <th style="width: 100px;">name</th>
-        <th style="width: 50px;">type</th>
-        <th style="width: 50px;">default</th>
-        <th>description</th>
+      <td>strokeWidth</td>
+      <td>Number</td>
+      <td>1</td>
+      <td>Width of the stroke. Unit is percentage of SVG canvas size.</td>
     </tr>
-    </thead>
-    <tbody>
-        <tr>
-          <td>strokeWidth</td>
-          <td>Number</td>
-          <td>1</td>
-          <td>Width of the stroke. Unit is percentage of SVG canvas size.</td>
-        </tr>
-        <tr>
-          <td>strokeColor</td>
+    <tr>
+      <td>strokeColor</td>
+      <td>String</td>
+      <td>#2db7f5</td>
+      <td>Stroke color.</td>
+    </tr>
+    <tr>
+      <td>trailWidth</td>
+      <td>Number</td>
+      <td>1</td>
+      <td>Width of the trail stroke. Unit is percentage of SVG canvas size. Trail is always centered relative to actual progress path. If trailWidth are not defined, it same as strokeWidth.</td>
+    </tr>
+    <tr>
+      <td>trailColor</td>
+      <td>String</td>
+      <td>#D9D9D9</td>
+      <td>Color for lighter trail stroke underneath the actual progress path.</td>
+    </tr>
+    <tr>
+          <td>strokeLinecap</td>
           <td>String</td>
-          <td>#3FC7FA</td>
-          <td> Stroke color.</td>
+          <td>round</td>
+          <td>The shape to be used at the end of the progress bar, can be square or round.</td>
         </tr>
-        <tr>
-          <td>trailWidth</td>
-          <td>Number</td>
-          <td>1</td>
-          <td>Width of the trail stroke. Unit is percentage of SVG canvas size. Trail is always centered relative to actual progress path. If trailWidth are not defined, it same as strokeWidth.</td>
-        </tr>
-        <tr>
-          <td>trailColor</td>
-          <td>String</td>
-          <td>#D9D9D9</td>
-          <td> Color for lighter trail stroke underneath the actual progress path.</td>
-        </tr>
-    </tbody>
+    <tr>
+      <td>prefixCls</td>
+      <td>String</td>
+      <td>rc-progress</td>
+      <td>prefix className for component</td>
+    </tr>
+    <tr>
+      <td>className</td>
+      <td>String</td>
+      <td></td>
+      <td>customized className</td>
+    </tr>
+    <tr>
+      <td>style</td>
+      <td>Object</td>
+      <td></td>
+      <td>style object will be added to svg element</td>
+    </tr>
+  </tbody>
 </table>
 
 <h2>Development<a id="user-content-development" name="development" class="anchor" aria-hidden="true" href="#development"><span class="octicon octicon-link"></span></a></h2><div class="highlight"><pre><code language="undefined">npm install
-npm start</code></pre></div><h2>Example<a id="user-content-example" name="example" class="anchor" aria-hidden="true" href="#example"><span class="octicon octicon-link"></span></a></h2><p><a href="http://localhost:8000/examples/" title="null">http://localhost:8000/examples/</a></p>
-<p>online example: <a href="http://react-component.github.io/progress/" title="null">http://react-component.github.io/progress/</a></p>
-<h2>Test Case<a id="user-content-test-case" name="test-case" class="anchor" aria-hidden="true" href="#test-case"><span class="octicon octicon-link"></span></a></h2><p><a href="http://localhost:8000/tests/runner.html?coverage" title="null">http://localhost:8000/tests/runner.html?coverage</a></p>
-<h2>Coverage<a id="user-content-coverage" name="coverage" class="anchor" aria-hidden="true" href="#coverage"><span class="octicon octicon-link"></span></a></h2><p><a href="http://localhost:8000/node_modules/rc-server/node_modules/node-jscover/lib/front-end/jscoverage.html?w=http://localhost:8000/tests/runner.html?coverage" title="null">http://localhost:8000/node_modules/rc-server/node_modules/node-jscover/lib/front-end/jscoverage.html?w=http://localhost:8000/tests/runner.html?coverage</a></p>
-<h2>License<a id="user-content-license" name="license" class="anchor" aria-hidden="true" href="#license"><span class="octicon octicon-link"></span></a></h2><p>rc-progress is released under the MIT license.</p>
+npm start</code></pre></div><h2>License<a id="user-content-license" name="license" class="anchor" aria-hidden="true" href="#license"><span class="octicon octicon-link"></span></a></h2><p>rc-progress is released under the MIT license.</p>
 
   </div>
 </div>
