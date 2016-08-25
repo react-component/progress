@@ -4413,7 +4413,7 @@ webpackJsonp([0,1],[
 	  trailWidth: _react.PropTypes.oneOfType([_react.PropTypes.number, _react.PropTypes.string]),
 	  trailColor: _react.PropTypes.string,
 	  strokeLinecap: _react.PropTypes.oneOf(['round', 'square']),
-	  style: _react.PropTypes.Object,
+	  style: _react.PropTypes.object,
 	  className: _react.PropTypes.string
 	};
 
