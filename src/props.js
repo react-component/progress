@@ -17,6 +17,6 @@ export const propTypes = {
   trailWidth: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   trailColor: PropTypes.string,
   strokeLinecap: PropTypes.oneOf(['round', 'square']),
-  style: PropTypes.Object,
+  style: PropTypes.object,
   className: PropTypes.string,
 };
