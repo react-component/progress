@@ -114,6 +114,12 @@ ReactDOM.render(<div>
   </tbody>
 </table>
 
+## Installation
+
+```
+npm install --save rc-progress
+```
+
 ## Development
 
 ```
