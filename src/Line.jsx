@@ -6,6 +6,14 @@ export default React.createClass({
   getDefaultProps() {
     return defaultProps;
   },
+  componentDidUpdate() {
+    const now = Date.now();
+    this.refs.path.style.transitionDuration = '0.6s, 0.6s';
+    if (this.prevTimeStamp && now - this.prevTimeStamp < 600) {
+      this.refs.path.style.transitionDuration = '0s, 0s';
+    }
+    this.prevTimeStamp = Date.now();
+  },
   render() {
     const {
       prefixCls, strokeWidth, trailWidth, strokeColor,
@@ -47,6 +55,7 @@ export default React.createClass({
           stroke={strokeColor}
           strokeWidth={strokeWidth}
           fillOpacity="0"
+          ref="path"
           style={pathStyle}
         />
       </svg>
