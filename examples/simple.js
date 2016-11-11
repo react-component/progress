@@ -156,6 +156,14 @@ webpackJsonp([0,1],[
 	  getDefaultProps: function getDefaultProps() {
 	    return _props2.defaultProps;
 	  },
+	  componentDidUpdate: function componentDidUpdate() {
+	    var now = Date.now();
+	    this.refs.path.style.transitionDuration = '0.6s, 0.6s';
+	    if (this.prevTimeStamp && now - this.prevTimeStamp < 600) {
+	      this.refs.path.style.transitionDuration = '0s, 0s';
+	    }
+	    this.prevTimeStamp = Date.now();
+	  },
 	  render: function render() {
 	    var _props = this.props;
 	    var prefixCls = _props.prefixCls;
@@ -204,6 +212,7 @@ webpackJsonp([0,1],[
 	        stroke: strokeColor,
 	        strokeWidth: strokeWidth,
 	        fillOpacity: '0',
+	        ref: 'path',
 	        style: pathStyle
 	      })
 	    );
@@ -4446,6 +4455,14 @@ webpackJsonp([0,1],[
 	  getDefaultProps: function getDefaultProps() {
 	    return _props2.defaultProps;
 	  },
+	  componentDidUpdate: function componentDidUpdate() {
+	    var now = Date.now();
+	    this.refs.path.style.transitionDuration = '0.6s, 0.6s';
+	    if (this.prevTimeStamp && now - this.prevTimeStamp < 600) {
+	      this.refs.path.style.transitionDuration = '0s, 0s';
+	    }
+	    this.prevTimeStamp = Date.now();
+	  },
 	  render: function render() {
 	    var _props = this.props;
 	    var prefixCls = _props.prefixCls;
@@ -4490,6 +4507,7 @@ webpackJsonp([0,1],[
 	        stroke: strokeColor,
 	        strokeWidth: strokeWidth,
 	        fillOpacity: '0',
+	        ref: 'path',
 	        style: pathStyle
 	      })
 	    );
