@@ -1,19 +1,9 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
-import { defaultProps, propTypes } from './props';
+import mixin from './mixin';
 
 export default React.createClass({
-  propTypes,
-  getDefaultProps() {
-    return defaultProps;
-  },
-  componentDidUpdate() {
-    const now = Date.now();
-    this.refs.path.style.transitionDuration = '0.6s, 0.6s';
-    if (this.prevTimeStamp && now - this.prevTimeStamp < 600) {
-      this.refs.path.style.transitionDuration = '0s, 0s';
-    }
-    this.prevTimeStamp = Date.now();
-  },
+  mixins: [mixin],
   render() {
     const {
       prefixCls, strokeWidth, trailWidth, strokeColor,
@@ -29,7 +19,7 @@ export default React.createClass({
     const pathStyle = {
       strokeDasharray: `${len}px ${len}px`,
       strokeDashoffset: `${((100 - percent) / 100 * len)}px`,
-      transition: 'stroke-dashoffset 0.6s ease 0s, stroke 0.6s ease',
+      transition: 'stroke-dashoffset 0.3s ease 0s, stroke 0.3s ease',
     };
 
     return (
