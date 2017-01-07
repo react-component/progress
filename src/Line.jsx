@@ -45,7 +45,7 @@ export default React.createClass({
           stroke={strokeColor}
           strokeWidth={strokeWidth}
           fillOpacity="0"
-          ref="path"
+          ref={(path) => { this.path = path; }}
           style={pathStyle}
         />
       </svg>
