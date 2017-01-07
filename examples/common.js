@@ -163,6 +163,8 @@
 	
 	  mixins: [_mixin2.default],
 	  render: function render() {
+	    var _this = this;
+	
 	    var _props = this.props;
 	    var prefixCls = _props.prefixCls;
 	    var strokeWidth = _props.strokeWidth;
@@ -210,7 +212,9 @@
 	        stroke: strokeColor,
 	        strokeWidth: strokeWidth,
 	        fillOpacity: '0',
-	        ref: 'path',
+	        ref: function ref(path) {
+	          _this.path = path;
+	        },
 	        style: pathStyle
 	      })
 	    );
@@ -4426,9 +4430,9 @@
 	  },
 	  componentDidUpdate: function componentDidUpdate() {
 	    var now = Date.now();
-	    this.refs.path.style.transitionDuration = '0.3s, 0.3s';
+	    this.path.style.transitionDuration = '0.3s, 0.3s';
 	    if (this.prevTimeStamp && now - this.prevTimeStamp < 100) {
-	      this.refs.path.style.transitionDuration = '0s, 0s';
+	      this.path.style.transitionDuration = '0s, 0s';
 	    }
 	    this.prevTimeStamp = Date.now();
 	  }
