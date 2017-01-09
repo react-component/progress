@@ -4469,6 +4469,8 @@
 	
 	  mixins: [_mixin2.default],
 	  render: function render() {
+	    var _this = this;
+	
 	    var _props = this.props;
 	    var prefixCls = _props.prefixCls;
 	    var strokeWidth = _props.strokeWidth;
@@ -4512,7 +4514,9 @@
 	        stroke: strokeColor,
 	        strokeWidth: strokeWidth,
 	        fillOpacity: '0',
-	        ref: 'path',
+	        ref: function ref(path) {
+	          _this.path = path;
+	        },
 	        style: pathStyle
 	      })
 	    );
