@@ -23,3 +23,13 @@ describe('circle progress', () => {
     ReactDOM.unmountComponentAtNode(div);
   });
 });
+
+describe('half circle progress', () => {
+  it('work', () => {
+    const div = document.createElement(div);
+    document.body.appendChild(div);
+    const circle = ReactDOM.render(<Circle value="30" strokeWidth="1" minValue="-10" maxValue="50"/>, div);
+    expect(circle.props.value).to.be('30');
+    ReactDOM.unmountComponentAtNode(div);
+  });
+});

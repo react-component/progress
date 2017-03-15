@@ -111,6 +111,42 @@ ReactDOM.render(<div>
       <td></td>
       <td>style object will be added to svg element</td>
     </tr>
+    <tr>
+      <td>percent</td>
+      <td>Number</td>
+      <td>0</td>
+      <td>the percent of the progress</td>
+    </tr>
+    <tr>
+      <td>value</td>
+      <td>Number</td>
+      <td>0</td>
+      <td>the value of the progress,  which may replace percent. </td>
+    </tr>
+    <tr>
+      <td>minValue</td>
+      <td>Number</td>
+      <td>0</td>
+      <td>the min value of the progress. </td>
+    </tr>
+    <tr>
+      <td>maxValue</td>
+      <td>Number</td>
+      <td>100</td>
+      <td>the max value of the progress. </td>
+    </tr>
+    <tr>
+      <td>openWidth</td>
+      <td>Number</td>
+      <td>0</td>
+      <td>the opened width of half circle</td>
+    </tr>
+    <tr>
+      <td>beginPosition</td>
+      <td>String</td>
+      <td>top</td>
+      <td>the begin position, value: top, bottom, left, right. </td>
+    </tr>
   </tbody>
 </table>
 
