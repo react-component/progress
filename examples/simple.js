@@ -8,7 +8,6 @@ const Example = React.createClass({
   getInitialState() {
     return {
       percent: 30,
-      value: 30,
       color: '#3FC7FA',
     };
   },
@@ -17,7 +16,6 @@ const Example = React.createClass({
     const value = parseInt(Math.random() * 100, 10);
     this.setState({
       percent: value,
-      value: value,
       color: colorMap[parseInt(Math.random() * 3, 10)],
     });
   },
@@ -47,8 +45,8 @@ const Example = React.createClass({
         </div>
         <div style={circleContainerStyle}>
           <Circle
-            value={this.state.value}
-            openWidth={70}
+            percent={this.state.percent}
+            gapWidth={70}
             strokeWidth="6"
             strokeLinecap="square"
             strokeColor={this.state.color}
@@ -56,32 +54,32 @@ const Example = React.createClass({
         </div>
         <div style={circleContainerStyle}>
           <Circle
-            value={this.state.value}
-            openWidth={70}
+            percent={this.state.percent}
+            gapWidth={70}
             strokeWidth="6"
             strokeLinecap="square"
             strokeColor={this.state.color}
-            beginPosition="bottom"
+            gapPosition="bottom"
           />
         </div>
         <div style={circleContainerStyle}>
           <Circle
-            value={this.state.value}
-            openWidth={70}
+            percent={this.state.percent}
+            gapWidth={70}
             strokeWidth="6"
             strokeLinecap="square"
             strokeColor={this.state.color}
-            beginPosition="left"
+            gapPosition="left"
           />
         </div>
         <div style={circleContainerStyle}>
           <Circle
-            value={this.state.value}
-            openWidth={70}
+            percent={this.state.percent}
+            gapWidth={70}
             strokeWidth="6"
             strokeLinecap="square"
             strokeColor={this.state.color}
-            beginPosition="right"
+            gapPosition="right"
           />
         </div>
         <p>

@@ -4,7 +4,7 @@ import mixin from './mixin';
 
 export default React.createClass({
   propTypes: {
-    beginPosition: PropTypes.oneOf(['top', 'bottom', 'left', 'right']),
+    gapPosition: PropTypes.oneOf(['top', 'bottom', 'left', 'right']),
   },
   mixins: [mixin],
 
@@ -12,7 +12,7 @@ export default React.createClass({
     const {
       prefixCls, strokeWidth, trailWidth, strokeColor,
       trailColor, strokeLinecap, percent, style, className,
-      value, minValue = 0, maxValue = 100, openWidth = 0, beginPosition,
+      gapWidth = 0, gapPosition,
       ...restProps,
     } = this.props;
 
@@ -21,7 +21,7 @@ export default React.createClass({
     let beginPositionY = -radius;
     let endPositionX = 0;
     let endPositionY = -2 * radius;
-    switch (beginPosition) {
+    switch (gapPosition) {
       case 'left':
         beginPositionX = -radius;
         beginPositionY = 0;
@@ -45,15 +45,14 @@ export default React.createClass({
      a ${radius},${radius} 0 1 1 ${-endPositionX},${endPositionY}`;
     const len = Math.PI * 2 * radius;
     const trailPathStyle = {
-      strokeDasharray: `${len - openWidth}px ${len}px`,
-      strokeDashoffset: `-${openWidth / 2}px`,
+      strokeDasharray: `${len - gapWidth}px ${len}px`,
+      strokeDashoffset: `-${gapWidth / 2}px`,
       transition: 'stroke-dashoffset 0.3s ease 0s, stroke 0.3s ease',
     };
 
-    const currentValue = value || percent;
     const strokePathStyle = {
-      strokeDasharray: `${(currentValue - minValue) / (maxValue - minValue) * (len - openWidth)}px ${len}px`,
-      strokeDashoffset: `-${openWidth / 2}px`,
+      strokeDasharray: `${percent / 100 * (len - gapWidth)}px ${len}px`,
+      strokeDashoffset: `-${gapWidth / 2}px`,
       transition: 'stroke-dashoffset 0.3s ease 0s, stroke 0.3s ease',
     };
     return (
