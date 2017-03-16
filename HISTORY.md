@@ -3,7 +3,7 @@
 ---
 
 ## 2.1.0
-- Add `value` `minValue` `maxValue` `openWidth` `beginPosition` props.
+- Add `gapWidth` `gapPosition` props.
 
 ## 2.0.0
 
