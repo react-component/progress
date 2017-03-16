@@ -3,7 +3,7 @@
 ---
 
 ## 2.1.0
-- Add `gapWidth` `gapPosition` props.
+- Add `gapDegree` `gapPosition` props.
 
 ## 2.0.0
 

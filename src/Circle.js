@@ -4,15 +4,15 @@ import mixin from './mixin';
 
 export default React.createClass({
   propTypes: {
+    gapDegree: PropTypes.number,
     gapPosition: PropTypes.oneOf(['top', 'bottom', 'left', 'right']),
   },
   mixins: [mixin],
-
   render() {
     const {
       prefixCls, strokeWidth, trailWidth, strokeColor,
       trailColor, strokeLinecap, percent, style, className,
-      gapWidth = 0, gapPosition,
+      gapDegree = 0, gapPosition,
       ...restProps,
     } = this.props;
 
@@ -45,15 +45,14 @@ export default React.createClass({
      a ${radius},${radius} 0 1 1 ${-endPositionX},${endPositionY}`;
     const len = Math.PI * 2 * radius;
     const trailPathStyle = {
-      strokeDasharray: `${len - gapWidth}px ${len}px`,
-      strokeDashoffset: `-${gapWidth / 2}px`,
-      transition: 'stroke-dashoffset 0.3s ease 0s, stroke 0.3s ease',
+      strokeDasharray: `${len - gapDegree}px ${len}px`,
+      strokeDashoffset: `-${gapDegree / 2}px`,
+      transition: 'stroke-dashoffset .3s ease 0s, stroke-dasharray .3s, stroke .3s',
     };
-
     const strokePathStyle = {
-      strokeDasharray: `${percent / 100 * (len - gapWidth)}px ${len}px`,
-      strokeDashoffset: `-${gapWidth / 2}px`,
-      transition: 'stroke-dashoffset 0.3s ease 0s, stroke 0.3s ease',
+      strokeDasharray: `${percent / 100 * (len - gapDegree)}px ${len}px`,
+      strokeDashoffset: `-${gapDegree / 2}px`,
+      transition: 'stroke-dashoffset .3s ease 0s, stroke-dasharray .3s, stroke .3s',
     };
     return (
       <svg

@@ -118,10 +118,10 @@ ReactDOM.render(<div>
       <td>the percent of the progress</td>
     </tr>
     <tr>
-      <td>gapWidth</td>
+      <td>gapDegree</td>
       <td>Number</td>
       <td>0</td>
-      <td>the gap width of half circle</td>
+      <td>the gap degree of half circle, 0 - 360</td>
     </tr>
     <tr>
       <td>gapPosition</td>

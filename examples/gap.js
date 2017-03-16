@@ -1,5 +1,4 @@
 require('rc-progress/assets/index.less');
-const Line = require('rc-progress').Line;
 const Circle = require('rc-progress').Circle;
 const React = require('react');
 const ReactDOM = require('react-dom');
@@ -20,24 +19,47 @@ const Example = React.createClass({
     });
   },
   render() {
-    const containerStyle = {
-      width: '250px',
-    };
     const circleContainerStyle = {
-      width: '250px',
-      height: '250px',
-      display: 'inline-block',
+      width: '200px',
+      height: '200px',
     };
     return (
       <div>
-        <h3>Line Progress {this.state.percent}%</h3>
-        <div style={containerStyle}>
-          <Line percent={this.state.percent} strokeWidth="4" strokeColor={this.state.color} />
-        </div>
-        <h3>Circle Progress {this.state.percent}%</h3>
         <div style={circleContainerStyle}>
           <Circle
             percent={this.state.percent}
+            gapDegree={70}
+            gapPosition="top"
+            strokeWidth="6"
+            strokeLinecap="square"
+            strokeColor={this.state.color}
+          />
+        </div>
+        <div style={circleContainerStyle}>
+          <Circle
+            percent={this.state.percent}
+            gapDegree={70}
+            gapPosition="bottom"
+            strokeWidth="6"
+            strokeLinecap="square"
+            strokeColor={this.state.color}
+          />
+        </div>
+        <div style={circleContainerStyle}>
+          <Circle
+            percent={this.state.percent}
+            gapDegree={70}
+            gapPosition="left"
+            strokeWidth="6"
+            strokeLinecap="square"
+            strokeColor={this.state.color}
+          />
+        </div>
+        <div style={circleContainerStyle}>
+          <Circle
+            percent={this.state.percent}
+            gapDegree={70}
+            gapPosition="right"
             strokeWidth="6"
             strokeLinecap="square"
             strokeColor={this.state.color}
