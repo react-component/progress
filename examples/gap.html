@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>simple.js - example - rc-progress@2.1.0</title>
+  <title>gap.js - example - rc-progress@2.1.0</title>
   <meta name="viewport"
         content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
   <meta charset="utf-8"/>
@@ -267,7 +267,7 @@ Monokai Sublime style. Derived from Monokai by noformnocontent http://nn.mit-lic
     <div class="highlight"><pre><code language="js"><span class="hljs-keyword">import</span> <span class="hljs-string">'rc-progress/assets/index.css'</span>;
 <span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
 <span class="hljs-keyword">import</span> ReactDOM <span class="hljs-keyword">from</span> <span class="hljs-string">'react-dom'</span>;
-<span class="hljs-keyword">import</span> { Line, Circle } <span class="hljs-keyword">from</span> <span class="hljs-string">'rc-progress'</span>;
+<span class="hljs-keyword">import</span> { Circle } <span class="hljs-keyword">from</span> <span class="hljs-string">'rc-progress'</span>;
 
 <span class="hljs-keyword">const</span> Example = React.createClass({
   getInitialState() {
@@ -285,24 +285,47 @@ Monokai Sublime style. Derived from Monokai by noformnocontent http://nn.mit-lic
     });
   },
   render() {
-    <span class="hljs-keyword">const</span> containerStyle = {
-      width: <span class="hljs-string">'250px'</span>,
-    };
     <span class="hljs-keyword">const</span> circleContainerStyle = {
-      width: <span class="hljs-string">'250px'</span>,
-      height: <span class="hljs-string">'250px'</span>,
-      display: <span class="hljs-string">'inline-block'</span>,
+      width: <span class="hljs-string">'200px'</span>,
+      height: <span class="hljs-string">'200px'</span>,
     };
     <span class="hljs-keyword">return</span> (
       <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-title">h3</span>&gt;</span>Line Progress {this.state.percent}%<span class="hljs-tag">&lt;/<span class="hljs-title">h3</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">{containerStyle}</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-title">Line</span> <span class="hljs-attribute">percent</span>=<span class="hljs-value">{this.state.percent}</span> <span class="hljs-attribute">strokeWidth</span>=<span class="hljs-value">"4"</span> <span class="hljs-attribute">strokeColor</span>=<span class="hljs-value">{this.state.color}</span> /&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-title">h3</span>&gt;</span>Circle Progress {this.state.percent}%<span class="hljs-tag">&lt;/<span class="hljs-title">h3</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">{circleContainerStyle}</span>&gt;</span>
           <span class="hljs-tag">&lt;<span class="hljs-title">Circle</span>
             <span class="hljs-attribute">percent</span>=<span class="hljs-value">{this.state.percent}</span>
+            <span class="hljs-attribute">gapDegree</span>=<span class="hljs-value">{70}</span>
+            <span class="hljs-attribute">gapPosition</span>=<span class="hljs-value">"top"</span>
+            <span class="hljs-attribute">strokeWidth</span>=<span class="hljs-value">"6"</span>
+            <span class="hljs-attribute">strokeLinecap</span>=<span class="hljs-value">"square"</span>
+            <span class="hljs-attribute">strokeColor</span>=<span class="hljs-value">{this.state.color}</span>
+          /&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">{circleContainerStyle}</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-title">Circle</span>
+            <span class="hljs-attribute">percent</span>=<span class="hljs-value">{this.state.percent}</span>
+            <span class="hljs-attribute">gapDegree</span>=<span class="hljs-value">{70}</span>
+            <span class="hljs-attribute">gapPosition</span>=<span class="hljs-value">"bottom"</span>
+            <span class="hljs-attribute">strokeWidth</span>=<span class="hljs-value">"6"</span>
+            <span class="hljs-attribute">strokeLinecap</span>=<span class="hljs-value">"square"</span>
+            <span class="hljs-attribute">strokeColor</span>=<span class="hljs-value">{this.state.color}</span>
+          /&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">{circleContainerStyle}</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-title">Circle</span>
+            <span class="hljs-attribute">percent</span>=<span class="hljs-value">{this.state.percent}</span>
+            <span class="hljs-attribute">gapDegree</span>=<span class="hljs-value">{70}</span>
+            <span class="hljs-attribute">gapPosition</span>=<span class="hljs-value">"left"</span>
+            <span class="hljs-attribute">strokeWidth</span>=<span class="hljs-value">"6"</span>
+            <span class="hljs-attribute">strokeLinecap</span>=<span class="hljs-value">"square"</span>
+            <span class="hljs-attribute">strokeColor</span>=<span class="hljs-value">{this.state.color}</span>
+          /&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">{circleContainerStyle}</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-title">Circle</span>
+            <span class="hljs-attribute">percent</span>=<span class="hljs-value">{this.state.percent}</span>
+            <span class="hljs-attribute">gapDegree</span>=<span class="hljs-value">{70}</span>
+            <span class="hljs-attribute">gapPosition</span>=<span class="hljs-value">"right"</span>
             <span class="hljs-attribute">strokeWidth</span>=<span class="hljs-value">"6"</span>
             <span class="hljs-attribute">strokeLinecap</span>=<span class="hljs-value">"square"</span>
             <span class="hljs-attribute">strokeColor</span>=<span class="hljs-value">{this.state.color}</span>
@@ -327,7 +350,7 @@ ReactDOM.render(<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-t
   </a>
   
   <script src="common.js?nowrap"></script>
-  <script src="simple.js?nowrap"></script>
+  <script src="gap.js?nowrap"></script>
 </body>
 
 </html>

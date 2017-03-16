@@ -12,14 +12,22 @@ webpackJsonp([0],[
 	'use strict';
 	
 	__webpack_require__(2);
-	var Line = __webpack_require__(3).Line;
-	var Circle = __webpack_require__(3).Circle;
-	var React = __webpack_require__(6);
-	var ReactDOM = __webpack_require__(41);
+	
+	var _react = __webpack_require__(3);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactDom = __webpack_require__(36);
+	
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+	
+	var _rcProgress = __webpack_require__(174);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var tm = void 0;
 	
-	var App = React.createClass({
+	var App = _react2.default.createClass({
 	  displayName: 'App',
 	  getInitialState: function getInitialState() {
 	    return {
@@ -48,12 +56,12 @@ webpackJsonp([0],[
 	    });
 	  },
 	  render: function render() {
-	    return React.createElement(
+	    return _react2.default.createElement(
 	      'div',
 	      { style: { margin: 10, width: 200 } },
-	      React.createElement(Circle, { strokeWidth: '6', percent: this.state.percent }),
-	      React.createElement(Line, { strokeWidth: '4', percent: this.state.percent }),
-	      React.createElement(
+	      _react2.default.createElement(_rcProgress.Circle, { strokeWidth: '6', percent: this.state.percent }),
+	      _react2.default.createElement(_rcProgress.Line, { strokeWidth: '4', percent: this.state.percent }),
+	      _react2.default.createElement(
 	        'button',
 	        { onClick: this.restart },
 	        'Restart'
@@ -62,7 +70,7 @@ webpackJsonp([0],[
 	  }
 	});
 	
-	ReactDOM.render(React.createElement(App, null), document.getElementById('__react-content'));
+	_reactDom2.default.render(_react2.default.createElement(App, null), document.getElementById('__react-content'));
 
 /***/ }
 ]);

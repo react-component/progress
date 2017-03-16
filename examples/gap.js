@@ -1,14 +1,14 @@
-webpackJsonp([2],{
+webpackJsonp([1],{
 
 /***/ 0:
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(180);
+	module.exports = __webpack_require__(179);
 
 
 /***/ },
 
-/***/ 180:
+/***/ 179:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -44,41 +44,56 @@ webpackJsonp([2],{
 	    });
 	  },
 	  render: function render() {
-	    var containerStyle = {
-	      width: '250px'
-	    };
 	    var circleContainerStyle = {
-	      width: '250px',
-	      height: '250px',
-	      display: 'inline-block'
+	      width: '200px',
+	      height: '200px'
 	    };
 	    return _react2.default.createElement(
 	      'div',
 	      null,
 	      _react2.default.createElement(
-	        'h3',
-	        null,
-	        'Line Progress ',
-	        this.state.percent,
-	        '%'
-	      ),
-	      _react2.default.createElement(
 	        'div',
-	        { style: containerStyle },
-	        _react2.default.createElement(_rcProgress.Line, { percent: this.state.percent, strokeWidth: '4', strokeColor: this.state.color })
-	      ),
-	      _react2.default.createElement(
-	        'h3',
-	        null,
-	        'Circle Progress ',
-	        this.state.percent,
-	        '%'
+	        { style: circleContainerStyle },
+	        _react2.default.createElement(_rcProgress.Circle, {
+	          percent: this.state.percent,
+	          gapDegree: 70,
+	          gapPosition: 'top',
+	          strokeWidth: '6',
+	          strokeLinecap: 'square',
+	          strokeColor: this.state.color
+	        })
 	      ),
 	      _react2.default.createElement(
 	        'div',
 	        { style: circleContainerStyle },
 	        _react2.default.createElement(_rcProgress.Circle, {
 	          percent: this.state.percent,
+	          gapDegree: 70,
+	          gapPosition: 'bottom',
+	          strokeWidth: '6',
+	          strokeLinecap: 'square',
+	          strokeColor: this.state.color
+	        })
+	      ),
+	      _react2.default.createElement(
+	        'div',
+	        { style: circleContainerStyle },
+	        _react2.default.createElement(_rcProgress.Circle, {
+	          percent: this.state.percent,
+	          gapDegree: 70,
+	          gapPosition: 'left',
+	          strokeWidth: '6',
+	          strokeLinecap: 'square',
+	          strokeColor: this.state.color
+	        })
+	      ),
+	      _react2.default.createElement(
+	        'div',
+	        { style: circleContainerStyle },
+	        _react2.default.createElement(_rcProgress.Circle, {
+	          percent: this.state.percent,
+	          gapDegree: 70,
+	          gapPosition: 'right',
 	          strokeWidth: '6',
 	          strokeLinecap: 'square',
 	          strokeColor: this.state.color
@@ -102,4 +117,4 @@ webpackJsonp([2],{
 /***/ }
 
 });
-//# sourceMappingURL=simple.js.map
+//# sourceMappingURL=gap.js.map
