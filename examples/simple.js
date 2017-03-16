@@ -13,8 +13,9 @@ const Example = React.createClass({
   },
   changeState() {
     const colorMap = ['#3FC7FA', '#85D262', '#FE8C6A'];
+    const value = parseInt(Math.random() * 100, 10);
     this.setState({
-      percent: parseInt(Math.random() * 100, 10),
+      percent: value,
       color: colorMap[parseInt(Math.random() * 3, 10)],
     });
   },
@@ -25,6 +26,7 @@ const Example = React.createClass({
     const circleContainerStyle = {
       width: '250px',
       height: '250px',
+      display: 'inline-block',
     };
     return (
       <div>
@@ -39,6 +41,45 @@ const Example = React.createClass({
             strokeWidth="6"
             strokeLinecap="square"
             strokeColor={this.state.color}
+          />
+        </div>
+        <div style={circleContainerStyle}>
+          <Circle
+            percent={this.state.percent}
+            gapWidth={70}
+            strokeWidth="6"
+            strokeLinecap="square"
+            strokeColor={this.state.color}
+          />
+        </div>
+        <div style={circleContainerStyle}>
+          <Circle
+            percent={this.state.percent}
+            gapWidth={70}
+            strokeWidth="6"
+            strokeLinecap="square"
+            strokeColor={this.state.color}
+            gapPosition="bottom"
+          />
+        </div>
+        <div style={circleContainerStyle}>
+          <Circle
+            percent={this.state.percent}
+            gapWidth={70}
+            strokeWidth="6"
+            strokeLinecap="square"
+            strokeColor={this.state.color}
+            gapPosition="left"
+          />
+        </div>
+        <div style={circleContainerStyle}>
+          <Circle
+            percent={this.state.percent}
+            gapWidth={70}
+            strokeWidth="6"
+            strokeLinecap="square"
+            strokeColor={this.state.color}
+            gapPosition="right"
           />
         </div>
         <p>

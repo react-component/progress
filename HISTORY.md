@@ -2,6 +2,9 @@
 
 ---
 
+## 2.1.0
+- Add `gapWidth` `gapPosition` props.
+
 ## 2.0.0
 
 - refactor code

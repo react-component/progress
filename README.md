@@ -111,6 +111,24 @@ ReactDOM.render(<div>
       <td></td>
       <td>style object will be added to svg element</td>
     </tr>
+    <tr>
+      <td>percent</td>
+      <td>Number</td>
+      <td>0</td>
+      <td>the percent of the progress</td>
+    </tr>
+    <tr>
+      <td>gapWidth</td>
+      <td>Number</td>
+      <td>0</td>
+      <td>the gap width of half circle</td>
+    </tr>
+    <tr>
+      <td>gapPosition</td>
+      <td>String</td>
+      <td>top</td>
+      <td>the gap position, value: top, bottom, left, right. </td>
+    </tr>
   </tbody>
 </table>
 

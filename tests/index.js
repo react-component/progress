@@ -23,3 +23,39 @@ describe('circle progress', () => {
     ReactDOM.unmountComponentAtNode(div);
   });
 });
+
+describe('half circle progress', () => {
+  it('work', () => {
+    const div = document.createElement(div);
+    document.body.appendChild(div);
+    const circle = ReactDOM.render(
+      <Circle percent="30" strokeWidth="1" gapWidth={70} gapPosition="bottom"/>,
+      div);
+    expect(circle.props.percent).to.be('30');
+    ReactDOM.unmountComponentAtNode(div);
+  });
+});
+
+describe('half circle progress', () => {
+  it('work', () => {
+    const div = document.createElement(div);
+    document.body.appendChild(div);
+    const circle = ReactDOM.render(
+      <Circle percent="30" strokeWidth="1" gapWidth={70} gapPosition="left"/>,
+      div);
+    expect(circle.props.percent).to.be('30');
+    ReactDOM.unmountComponentAtNode(div);
+  });
+});
+
+describe('half circle progress', () => {
+  it('work', () => {
+    const div = document.createElement(div);
+    document.body.appendChild(div);
+    const circle = ReactDOM.render(
+      <Circle percent="30" strokeWidth="1" gapWidth={70} gapPosition="right"/>,
+      div);
+    expect(circle.props.percent).to.be('30');
+    ReactDOM.unmountComponentAtNode(div);
+  });
+});
