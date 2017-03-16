@@ -22,39 +22,43 @@ describe('circle progress', () => {
     expect(circle.props.percent).to.be('30');
     ReactDOM.unmountComponentAtNode(div);
   });
-});
 
-describe('half circle progress', () => {
-  it('work', () => {
+  it('gap degree bottom', () => {
     const div = document.createElement(div);
     document.body.appendChild(div);
     const circle = ReactDOM.render(
-      <Circle percent="30" strokeWidth="1" gapDegree={70} gapPosition="bottom"/>,
-      div);
+      <Circle percent="30" strokeWidth="1" gapDegree={70} gapPosition="bottom" />
+    , div);
     expect(circle.props.percent).to.be('30');
     ReactDOM.unmountComponentAtNode(div);
   });
-});
 
-describe('half circle progress', () => {
-  it('work', () => {
+  it('gap degree top', () => {
     const div = document.createElement(div);
     document.body.appendChild(div);
     const circle = ReactDOM.render(
-      <Circle percent="30" strokeWidth="1" gapDegree={70} gapPosition="left"/>,
-      div);
+      <Circle percent="30" strokeWidth="1" gapDegree={70} gapPosition="top" />
+    , div);
     expect(circle.props.percent).to.be('30');
     ReactDOM.unmountComponentAtNode(div);
   });
-});
 
-describe('half circle progress', () => {
-  it('work', () => {
+  it('gap degree left', () => {
     const div = document.createElement(div);
     document.body.appendChild(div);
     const circle = ReactDOM.render(
-      <Circle percent="30" strokeWidth="1" gapDegree={70} gapPosition="right"/>,
-      div);
+      <Circle percent="30" strokeWidth="1" gapDegree={70} gapPosition="left" />
+    , div);
+    expect(circle.props.percent).to.be('30');
+    ReactDOM.unmountComponentAtNode(div);
+  });
+
+  it('gap degree right', () => {
+    const div = document.createElement(div);
+    document.body.appendChild(div);
+    const circle = ReactDOM.render(
+      <Circle percent="30" strokeWidth="1" gapDegree={70} gapPosition="right" />
+    , div);
     expect(circle.props.percent).to.be('30');
     ReactDOM.unmountComponentAtNode(div);
   });
