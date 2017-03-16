@@ -90,8 +90,8 @@ ReactDOM.render(<div>
     <tr>
 		  <td>strokeLinecap</td>
 		  <td>String</td>
-		  <td>round</td>
-		  <td>The shape to be used at the end of the progress bar, can be square or round.</td>
+		  <td>'round'</td>
+		  <td>The shape to be used at the end of the progress bar, can be `square` or `round`.</td>
 		</tr>
     <tr>
       <td>prefixCls</td>

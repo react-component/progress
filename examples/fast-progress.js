@@ -1,8 +1,7 @@
-require('rc-progress/assets/index.less');
-const Line = require('rc-progress').Line;
-const Circle = require('rc-progress').Circle;
-const React = require('react');
-const ReactDOM = require('react-dom');
+import 'rc-progress/assets/index.less';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Line, Circle } from 'rc-progress';
 
 let tm;
 

@@ -1,7 +1,7 @@
-require('rc-progress/assets/index.less');
-const Circle = require('rc-progress').Circle;
-const React = require('react');
-const ReactDOM = require('react-dom');
+import 'rc-progress/assets/index.less';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Circle } from 'rc-progress';
 
 const Example = React.createClass({
   getInitialState() {
