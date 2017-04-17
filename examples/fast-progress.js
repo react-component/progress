@@ -1,35 +1,40 @@
+/* eslint-disable */
 import 'rc-progress/assets/index.less';
-import React from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { Line, Circle } from 'rc-progress';
 
-let tm;
-
-const App = React.createClass({
-  getInitialState() {
-    return {
+class App extends Component {
+  constructor() {
+    super();
+    this.state = {
       percent: 0,
     };
-  },
+    this.increase = this.increase.bind(this);
+    this.restart = this.restart.bind(this);
+  }
+
   componentDidMount() {
     this.increase();
-  },
+  }
+
   increase() {
     let percent = this.state.percent + 1;
-    if (percent > 100) {
-      percent = 100;
-      clearTimeout(tm);
+    if (percent >= 100) {
+      clearTimeout(this.tm);
       return;
     }
     this.setState({ percent });
-    tm = setTimeout(this.increase, 10);
-  },
+    this.tm = setTimeout(this.increase, 10);
+  }
+
   restart() {
-    clearTimeout(tm);
+    clearTimeout(this.tm);
     this.setState({ percent: 0 }, () => {
       this.increase();
     });
-  },
+  }
+
   render() {
     return (
       <div style={{ margin: 10, width: 200 }}>
@@ -38,7 +43,7 @@ const App = React.createClass({
         <button onClick={this.restart}>Restart</button>
       </div>
     );
-  },
-});
+  }
+}
 
 ReactDOM.render(<App />, document.getElementById('__react-content'));

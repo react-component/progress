@@ -40,13 +40,20 @@
     "coverage": "rc-tools run coverage"
   },
   "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-preset-env": "^1.4.0",
+    "babel-preset-react": "^6.24.1",
+    "eslint": "^3.19.0",
     "expect.js": "~0.3.1",
     "pre-commit": "1.x",
     "rc-tools": "5.x",
-    "react": "^15.3.0",
-    "react-dom": "^15.3.0"
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4"
   },
   "pre-commit": [
     "lint"
-  ]
+  ],
+  "dependencies": {
+    "prop-types": "^15.5.8"
+  }
 }

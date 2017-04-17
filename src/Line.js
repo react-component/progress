@@ -1,13 +1,28 @@
-/* eslint-disable react/prop-types */
-import React from 'react';
-import mixin from './mixin';
+import React, { Component } from 'react';
 
-export default React.createClass({
-  mixins: [mixin],
+import { propTypes, defaultProps } from './types';
+
+class Line extends Component {
+  componentDidUpdate() {
+    const now = Date.now();
+    this.path.style.transitionDuration = '0.3s, 0.3s';
+    if (this.prevTimeStamp && now - this.prevTimeStamp < 100) {
+      this.path.style.transitionDuration = '0s, 0s';
+    }
+    this.prevTimeStamp = Date.now();
+  }
+
   render() {
     const {
-      prefixCls, strokeWidth, trailWidth, strokeColor,
-      trailColor, strokeLinecap, percent, style, className,
+      className,
+      percent,
+      prefixCls,
+      strokeColor,
+      strokeLinecap,
+      strokeWidth,
+      style,
+      trailColor,
+      trailWidth,
       ...restProps,
     } = this.props;
 
@@ -18,7 +33,7 @@ export default React.createClass({
     };
 
     const center = strokeWidth / 2;
-    const right = (100 - strokeWidth / 2);
+    const right = 100 - (strokeWidth / 2);
     const pathString = `M ${center},${center} L ${right},${center}`;
     const viewBoxString = `0 0 100 ${strokeWidth}`;
 
@@ -50,5 +65,15 @@ export default React.createClass({
         />
       </svg>
     );
-  },
-});
+  }
+}
+
+Line.propTypes = {
+  ...propTypes,
+};
+
+Line.defaultProps = {
+  ...defaultProps,
+};
+
+export default Line;
