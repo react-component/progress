@@ -1,17 +1,10 @@
 import React, { Component } from 'react';
 
+import enhancer from './enhancer';
 import { propTypes, defaultProps } from './types';
 
-class Line extends Component {
-  componentDidUpdate() {
-    const now = Date.now();
-    this.path.style.transitionDuration = '0.3s, 0.3s';
-    if (this.prevTimeStamp && now - this.prevTimeStamp < 100) {
-      this.path.style.transitionDuration = '0s, 0s';
-    }
-    this.prevTimeStamp = Date.now();
-  }
 
+class Line extends Component {
   render() {
     const {
       className,
@@ -68,12 +61,8 @@ class Line extends Component {
   }
 }
 
-Line.propTypes = {
-  ...propTypes,
-};
+Line.propTypes = propTypes;
 
-Line.defaultProps = {
-  ...defaultProps,
-};
+Line.defaultProps = defaultProps;
 
-export default Line;
+export default enhancer(Line);

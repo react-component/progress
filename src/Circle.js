@@ -1,19 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import enhancer from './enhancer';
 import { propTypes, defaultProps } from './types';
 
 
 class Circle extends Component {
-  componentDidUpdate() {
-    const now = Date.now();
-    this.path.style.transitionDuration = '0.3s, 0.3s';
-    if (this.prevTimeStamp && now - this.prevTimeStamp < 100) {
-      this.path.style.transitionDuration = '0s, 0s';
-    }
-    this.prevTimeStamp = Date.now();
-  }
-
   getPathStyles() {
     const { percent, strokeWidth, gapDegree = 0, gapPosition } = this.props;
     const radius = (50 - strokeWidth) / 2;
@@ -96,14 +88,16 @@ class Circle extends Component {
   }
 }
 
-Circle.propTypes = {
-  ...propTypes,
-  gapPosition: PropTypes.oneOf(['top', 'bottom', 'left', 'right']),
-};
+Circle.propTypes = Object.assign(propTypes,
+  {
+    gapPosition: PropTypes.oneOf(['top', 'bottom', 'left', 'right']),
+  }
+);
 
-Circle.defaultProps = {
-  ...defaultProps,
-  gapPosition: 'top',
-};
+Circle.defaultProps = Object.assign(defaultProps,
+  {
+    gapPosition: 'top',
+  }
+);
 
-export default Circle;
+export default enhancer(Circle);
