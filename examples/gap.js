@@ -1,15 +1,20 @@
+/* eslint-disable */
+
 import 'rc-progress/assets/index.less';
-import React from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { Circle } from 'rc-progress';
 
-const Example = React.createClass({
-  getInitialState() {
-    return {
+class Example extends Component {
+  constructor() {
+    super();
+    this.state = {
       percent: 30,
       color: '#3FC7FA',
     };
-  },
+    this.changeState = this.changeState.bind(this);
+  }
+
   changeState() {
     const colorMap = ['#3FC7FA', '#85D262', '#FE8C6A'];
     const value = parseInt(Math.random() * 100, 10);
@@ -17,7 +22,8 @@ const Example = React.createClass({
       percent: value,
       color: colorMap[parseInt(Math.random() * 3, 10)],
     });
-  },
+  }
+
   render() {
     const circleContainerStyle = {
       width: '200px',
@@ -70,7 +76,7 @@ const Example = React.createClass({
         </p>
       </div>
     );
-  },
-});
+  }
+}
 
-ReactDOM.render(<Example/>, document.getElementById('__react-content'));
+ReactDOM.render(<Example />, document.getElementById('__react-content'));

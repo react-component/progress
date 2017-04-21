@@ -1,23 +1,14 @@
-/* eslint-disable react/prop-types */
-import React, { PropTypes } from 'react';
-import mixin from './mixin';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
-export default React.createClass({
-  propTypes: {
-    percent: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-    strokeWidth: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-    trailWidth: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-    className: PropTypes.string,
-    style: PropTypes.object,
-    trailColor: PropTypes.string,
-    strokeColor: PropTypes.string,
-    gapPosition: PropTypes.oneOf(['top', 'bottom', 'left', 'right']),
-    strokeLinecap: PropTypes.string,
-  },
-  mixins: [mixin],
+import enhancer from './enhancer';
+import { propTypes, defaultProps } from './types';
+
+
+class Circle extends Component {
   getPathStyles() {
     const { percent, strokeWidth, gapDegree = 0, gapPosition } = this.props;
-    const radius = (50 - strokeWidth / 2);
+    const radius = (50 - strokeWidth) / 2;
     let beginPositionX = 0;
     let beginPositionY = -radius;
     let endPositionX = 0;
@@ -51,12 +42,13 @@ export default React.createClass({
       transition: 'stroke-dashoffset .3s ease 0s, stroke-dasharray .3s ease 0s, stroke .3s',
     };
     const strokePathStyle = {
-      strokeDasharray: `${percent / 100 * (len - gapDegree)}px ${len}px`,
+      strokeDasharray: `${(percent / 100) * (len - gapDegree)}px ${len}px`,
       strokeDashoffset: `-${gapDegree / 2}px`,
       transition: 'stroke-dashoffset .3s ease 0s, stroke-dasharray .3s ease 0s, stroke .3s',
     };
     return { pathString, trailPathStyle, strokePathStyle };
-  },
+  }
+
   render() {
     const {
       prefixCls, strokeWidth, trailWidth, strokeColor,
@@ -88,12 +80,24 @@ export default React.createClass({
           stroke={strokeColor}
           strokeWidth={strokeWidth}
           fillOpacity="0"
-          ref={(path) => {
-            this.path = path;
-          }}
+          ref={(path) => { this.path = path; }}
           style={strokePathStyle}
         />
       </svg>
     );
-  },
-});
+  }
+}
+
+Circle.propTypes = Object.assign(propTypes,
+  {
+    gapPosition: PropTypes.oneOf(['top', 'bottom', 'left', 'right']),
+  }
+);
+
+Circle.defaultProps = Object.assign(defaultProps,
+  {
+    gapPosition: 'top',
+  }
+);
+
+export default enhancer(Circle);

@@ -1,13 +1,21 @@
-/* eslint-disable react/prop-types */
-import React from 'react';
-import mixin from './mixin';
+import React, { Component } from 'react';
 
-export default React.createClass({
-  mixins: [mixin],
+import enhancer from './enhancer';
+import { propTypes, defaultProps } from './types';
+
+
+class Line extends Component {
   render() {
     const {
-      prefixCls, strokeWidth, trailWidth, strokeColor,
-      trailColor, strokeLinecap, percent, style, className,
+      className,
+      percent,
+      prefixCls,
+      strokeColor,
+      strokeLinecap,
+      strokeWidth,
+      style,
+      trailColor,
+      trailWidth,
       ...restProps,
     } = this.props;
 
@@ -18,7 +26,7 @@ export default React.createClass({
     };
 
     const center = strokeWidth / 2;
-    const right = (100 - strokeWidth / 2);
+    const right = 100 - (strokeWidth / 2);
     const pathString =
           `M ${strokeLinecap === 'round' ? center : 0},${center}
            L ${strokeLinecap === 'round' ? right : 100},${center}`;
@@ -52,5 +60,11 @@ export default React.createClass({
         />
       </svg>
     );
-  },
-});
+  }
+}
+
+Line.propTypes = propTypes;
+
+Line.defaultProps = defaultProps;
+
+export default enhancer(Line);
