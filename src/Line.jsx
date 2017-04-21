@@ -19,7 +19,9 @@ export default React.createClass({
 
     const center = strokeWidth / 2;
     const right = (100 - strokeWidth / 2);
-    const pathString = `M ${center},${center} L ${right},${center}`;
+    const pathString =
+          `M ${strokeLinecap === 'round' ? center : 0},${center}
+           L ${strokeLinecap === 'round' ? right : 100},${center}`;
     const viewBoxString = `0 0 100 ${strokeWidth}`;
 
     return (
