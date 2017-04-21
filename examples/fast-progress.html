@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>fast-progress.js - example - rc-progress@2.1.0</title>
+  <title>fast-progress.js - example - rc-progress@2.1.1</title>
   <meta name="viewport"
         content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
   <meta charset="utf-8"/>
@@ -258,44 +258,48 @@ Monokai Sublime style. Derived from Monokai by noformnocontent http://nn.mit-lic
 <body>
   <div class="container">
     <div class="header">
-      <h1>rc-progress@2.1.0</h1>
+      <h1>rc-progress@2.1.1</h1>
 
       <p>progress ui component for react</p>
     </div>
     <div class="example" id="__react-content"></div>
 
     <div class="highlight"><pre><code language="js"><span class="hljs-keyword">import</span> <span class="hljs-string">'rc-progress/assets/index.css'</span>;
-<span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
+<span class="hljs-keyword">import</span> React, { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
 <span class="hljs-keyword">import</span> ReactDOM <span class="hljs-keyword">from</span> <span class="hljs-string">'react-dom'</span>;
 <span class="hljs-keyword">import</span> { Line, Circle } <span class="hljs-keyword">from</span> <span class="hljs-string">'rc-progress'</span>;
 
-<span class="hljs-keyword">let</span> tm;
-
-<span class="hljs-keyword">const</span> App = React.createClass({
-  getInitialState() {
-    <span class="hljs-keyword">return</span> {
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">App</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span> </span>{
+  constructor() {
+    <span class="hljs-keyword">super</span>();
+    <span class="hljs-keyword">this</span>.state = {
       percent: <span class="hljs-number">0</span>,
     };
-  },
+    <span class="hljs-keyword">this</span>.increase = <span class="hljs-keyword">this</span>.increase.bind(<span class="hljs-keyword">this</span>);
+    <span class="hljs-keyword">this</span>.restart = <span class="hljs-keyword">this</span>.restart.bind(<span class="hljs-keyword">this</span>);
+  }
+
   componentDidMount() {
     <span class="hljs-keyword">this</span>.increase();
-  },
+  }
+
   increase() {
-    <span class="hljs-keyword">let</span> percent = <span class="hljs-keyword">this</span>.state.percent + <span class="hljs-number">1</span>;
-    <span class="hljs-keyword">if</span> (percent &gt; <span class="hljs-number">100</span>) {
-      percent = <span class="hljs-number">100</span>;
-      clearTimeout(tm);
+    <span class="hljs-keyword">const</span> percent = <span class="hljs-keyword">this</span>.state.percent + <span class="hljs-number">1</span>;
+    <span class="hljs-keyword">if</span> (percent &gt;= <span class="hljs-number">100</span>) {
+      clearTimeout(<span class="hljs-keyword">this</span>.tm);
       <span class="hljs-keyword">return</span>;
     }
     <span class="hljs-keyword">this</span>.setState({ percent });
-    tm = setTimeout(<span class="hljs-keyword">this</span>.increase, <span class="hljs-number">10</span>);
-  },
+    <span class="hljs-keyword">this</span>.tm = setTimeout(<span class="hljs-keyword">this</span>.increase, <span class="hljs-number">10</span>);
+  }
+
   restart() {
-    clearTimeout(tm);
+    clearTimeout(<span class="hljs-keyword">this</span>.tm);
     <span class="hljs-keyword">this</span>.setState({ percent: <span class="hljs-number">0</span> }, () =&gt; {
       <span class="hljs-keyword">this</span>.increase();
     });
-  },
+  }
+
   render() {
     <span class="hljs-keyword">return</span> (
       <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">{{</span> <span class="hljs-attribute">margin:</span> <span class="hljs-attribute">10</span>, <span class="hljs-attribute">width:</span> <span class="hljs-attribute">200</span> }}&gt;</span>
@@ -304,8 +308,8 @@ Monokai Sublime style. Derived from Monokai by noformnocontent http://nn.mit-lic
         <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">onClick</span>=<span class="hljs-value">{this.restart}</span>&gt;</span>Restart<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
       <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
     )</span>;
-  },
-});
+  }
+}
 
 ReactDOM.render(<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">App</span> /&gt;</span>, document.getElementById('__react-content'));
 </span></code></pre></div>

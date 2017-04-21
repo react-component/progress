@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>simple.js - example - rc-progress@2.1.0</title>
+  <title>simple.js - example - rc-progress@2.1.1</title>
   <meta name="viewport"
         content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
   <meta charset="utf-8"/>
@@ -258,24 +258,27 @@ Monokai Sublime style. Derived from Monokai by noformnocontent http://nn.mit-lic
 <body>
   <div class="container">
     <div class="header">
-      <h1>rc-progress@2.1.0</h1>
+      <h1>rc-progress@2.1.1</h1>
 
       <p>progress ui component for react</p>
     </div>
     <div class="example" id="__react-content"></div>
 
     <div class="highlight"><pre><code language="js"><span class="hljs-keyword">import</span> <span class="hljs-string">'rc-progress/assets/index.css'</span>;
-<span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
+<span class="hljs-keyword">import</span> React, { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
 <span class="hljs-keyword">import</span> ReactDOM <span class="hljs-keyword">from</span> <span class="hljs-string">'react-dom'</span>;
 <span class="hljs-keyword">import</span> { Line, Circle } <span class="hljs-keyword">from</span> <span class="hljs-string">'rc-progress'</span>;
 
-<span class="hljs-keyword">const</span> Example = React.createClass({
-  getInitialState() {
-    <span class="hljs-keyword">return</span> {
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Example</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span> </span>{
+  constructor() {
+    <span class="hljs-keyword">super</span>();
+    <span class="hljs-keyword">this</span>.state = {
       percent: <span class="hljs-number">30</span>,
       color: <span class="hljs-string">'#3FC7FA'</span>,
     };
-  },
+    <span class="hljs-keyword">this</span>.changeState = <span class="hljs-keyword">this</span>.changeState.bind(<span class="hljs-keyword">this</span>);
+  }
+
   changeState() {
     <span class="hljs-keyword">const</span> colorMap = [<span class="hljs-string">'#3FC7FA'</span>, <span class="hljs-string">'#85D262'</span>, <span class="hljs-string">'#FE8C6A'</span>];
     <span class="hljs-keyword">const</span> value = <span class="hljs-built_in">parseInt</span>(<span class="hljs-built_in">Math</span>.random() * <span class="hljs-number">100</span>, <span class="hljs-number">10</span>);
@@ -283,7 +286,8 @@ Monokai Sublime style. Derived from Monokai by noformnocontent http://nn.mit-lic
       percent: value,
       color: colorMap[<span class="hljs-built_in">parseInt</span>(<span class="hljs-built_in">Math</span>.random() * <span class="hljs-number">3</span>, <span class="hljs-number">10</span>)],
     });
-  },
+  }
+
   render() {
     <span class="hljs-keyword">const</span> containerStyle = {
       width: <span class="hljs-string">'250px'</span>,
@@ -313,10 +317,10 @@ Monokai Sublime style. Derived from Monokai by noformnocontent http://nn.mit-lic
         <span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
       <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
     )</span>;
-  },
-});
+  }
+}
 
-ReactDOM.render(<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">Example</span>/&gt;</span>, document.getElementById('__react-content'));
+ReactDOM.render(<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">Example</span> /&gt;</span>, document.getElementById('__react-content'));
 </span></code></pre></div>
   </div>
   <a href="http://github.com/react-component/progress">
