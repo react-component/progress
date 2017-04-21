@@ -1,14 +1,13 @@
+/* eslint react/prop-types: 0 */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-
 import enhancer from './enhancer';
 import { propTypes, defaultProps } from './types';
-
 
 class Circle extends Component {
   getPathStyles() {
     const { percent, strokeWidth, gapDegree = 0, gapPosition } = this.props;
-    const radius = (50 - strokeWidth) / 2;
+    const radius = 50 - (strokeWidth / 2);
     let beginPositionX = 0;
     let beginPositionY = -radius;
     let endPositionX = 0;
@@ -88,16 +87,14 @@ class Circle extends Component {
   }
 }
 
-Circle.propTypes = Object.assign(propTypes,
-  {
-    gapPosition: PropTypes.oneOf(['top', 'bottom', 'left', 'right']),
-  }
-);
+Circle.propTypes = {
+  ...propTypes,
+  gapPosition: PropTypes.oneOf(['top', 'bottom', 'left', 'right']),
+};
 
-Circle.defaultProps = Object.assign(defaultProps,
-  {
-    gapPosition: 'top',
-  }
-);
+Circle.defaultProps = {
+  ...defaultProps,
+  gapPosition: 'top',
+};
 
 export default enhancer(Circle);

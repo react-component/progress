@@ -1,4 +1,3 @@
-/* eslint-disable */
 const React = require('react');
 const ReactDOM = require('react-dom');
 const expect = require('expect.js');

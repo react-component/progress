@@ -1,5 +1,3 @@
-/* eslint-disable */
-
 import 'rc-progress/assets/index.less';
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';

@@ -1,4 +1,3 @@
-/* eslint-disable */
 import 'rc-progress/assets/index.less';
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
@@ -19,7 +18,7 @@ class App extends Component {
   }
 
   increase() {
-    let percent = this.state.percent + 1;
+    const percent = this.state.percent + 1;
     if (percent >= 100) {
       clearTimeout(this.tm);
       return;

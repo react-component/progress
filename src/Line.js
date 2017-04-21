@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-
 import enhancer from './enhancer';
 import { propTypes, defaultProps } from './types';
-
 
 class Line extends Component {
   render() {
@@ -18,6 +16,8 @@ class Line extends Component {
       trailWidth,
       ...restProps,
     } = this.props;
+
+    delete restProps.gapPosition;
 
     const pathStyle = {
       strokeDasharray: '100px, 100px',
