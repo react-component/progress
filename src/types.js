@@ -17,7 +17,7 @@ export const propTypes = {
   percent: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   prefixCls: PropTypes.string,
   strokeColor: PropTypes.string,
-  strokeLinecap: PropTypes.oneOf(['round', 'square']),
+  strokeLinecap: PropTypes.oneOf(['butt', 'round', 'square']),
   strokeWidth: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   style: PropTypes.object,
   trailColor: PropTypes.string,
