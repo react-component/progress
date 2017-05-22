@@ -1,5 +1,6 @@
 *.iml
 *.log
+*.log.*
 .idea/
 .ipr
 .iws
@@ -24,3 +25,4 @@ dist
 assets/**/*.css
 build
 lib
+es

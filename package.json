@@ -19,9 +19,11 @@
   },
   "licenses": "MIT",
   "main": "lib/index",
+  "module": "es/index",
   "files": [
     "lib",
-    "assets"
+    "assets",
+    "es"
   ],
   "config": {
     "port": 8000
@@ -30,7 +32,8 @@
     "build": "rc-tools run build",
     "gh-pages": "rc-tools run gh-pages",
     "start": "rc-tools run server",
-    "pub": "rc-tools run pub",
+    "compile": "rc-tools run compile --babel-runtime",
+    "pub": "rc-tools run pub --babel-runtime",
     "lint": "rc-tools run lint",
     "lint:fix": "rc-tools run lint --fix",
     "karma": "rc-tools run karma",
@@ -42,7 +45,7 @@
   "devDependencies": {
     "expect.js": "~0.3.1",
     "pre-commit": "1.x",
-    "rc-tools": "5.x",
+    "rc-tools": "6.x",
     "react": "^15.5.4",
     "react-dom": "^15.5.4"
   },
@@ -50,6 +53,7 @@
     "lint"
   ],
   "dependencies": {
+    "babel-runtime": "^6.23.0",
     "prop-types": "^15.5.8"
   }
 }
