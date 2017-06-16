@@ -14,6 +14,7 @@ class Line extends Component {
       style,
       trailColor,
       trailWidth,
+      showTrail,
       ...restProps,
     } = this.props;
 
@@ -40,14 +41,16 @@ class Line extends Component {
         style={style}
         {...restProps}
       >
-        <path
-          className={`${prefixCls}-line-trail`}
-          d={pathString}
-          strokeLinecap={strokeLinecap}
-          stroke={trailColor}
-          strokeWidth={trailWidth || strokeWidth}
-          fillOpacity="0"
-        />
+        {showTrail &&
+          <path
+            className={`${prefixCls}-line-trail`}
+            d={pathString}
+            strokeLinecap={strokeLinecap}
+            stroke={trailColor}
+            strokeWidth={trailWidth || strokeWidth}
+            fillOpacity="0"
+          />
+        }
         <path
           className={`${prefixCls}-line-path`}
           d={pathString}

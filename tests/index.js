@@ -62,4 +62,22 @@ describe('circle progress', () => {
     expect(circle.props.percent).to.be('30');
     ReactDOM.unmountComponentAtNode(div);
   });
+
+  it('renders correct percentages', () => {
+    const div = document.createElement(div);
+    document.body.appendChild(div);
+    const circle = ReactDOM.render(
+      <Circle
+        percent="30"
+        percentFormatter={ x => `${x}%` }
+        showPercentage="true"
+      />
+    , div);
+
+    const renderedText = ReactDOM.findDOMNode(circle)
+      .parentNode
+      .querySelector('.rc-progress-percentage');
+
+    expect(renderedText.textContent).to.be('30%');
+  });
 });

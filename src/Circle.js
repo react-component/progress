@@ -51,8 +51,9 @@ class Circle extends Component {
   render() {
     const {
       prefixCls, strokeWidth, trailWidth, strokeColor,
-      trailColor, strokeLinecap, style, className, ...restProps,
-    } = this.props;
+      trailColor, strokeLinecap, style, className, percent,
+      percentFormatter, showPercentage, percentStyle, showTrail,
+       ...restProps } = this.props;
     const { pathString, trailPathStyle, strokePathStyle } = this.getPathStyles();
     delete restProps.percent;
     delete restProps.gapDegree;
@@ -64,14 +65,39 @@ class Circle extends Component {
         style={style}
         {...restProps}
       >
-        <path
-          className={`${prefixCls}-circle-trail`}
-          d={pathString}
-          stroke={trailColor}
-          strokeWidth={trailWidth || strokeWidth}
-          fillOpacity="0"
-          style={trailPathStyle}
-        />
+        {showPercentage &&
+          <g>
+            <rect
+              fillOpacity="0"
+              x="0"
+              y="0"
+              width="100"
+              height="100"
+            >
+            </rect>
+            <text
+              className={`${prefixCls}-percentage`}
+              textAnchor="middle"
+              alignmentBaseline="central"
+              dominantBaseline="central"
+              x="50"
+              y="50"
+              style={percentStyle}
+            >
+              {percentFormatter(percent)}
+            </text>
+          </g>
+        }
+        {showTrail &&
+          <path
+            className={`${prefixCls}-circle-trail`}
+            d={pathString}
+            stroke={trailColor}
+            strokeWidth={trailWidth || strokeWidth}
+            fillOpacity="0"
+            style={trailPathStyle}
+          />
+        }
         <path
           className={`${prefixCls}-circle-path`}
           d={pathString}
@@ -89,11 +115,17 @@ class Circle extends Component {
 
 Circle.propTypes = {
   ...propTypes,
+  percentFormatter: PropTypes.func,
+  showPercentage: PropTypes.bool,
+  percentStyle: PropTypes.object,
   gapPosition: PropTypes.oneOf(['top', 'bottom', 'left', 'right']),
 };
 
 Circle.defaultProps = {
   ...defaultProps,
+  percentFormatter: x => x,
+  showPercentage: false,
+  percentStyle: { transition: 'fill .8s ease' },
   gapPosition: 'top',
 };
 

@@ -10,6 +10,7 @@ export const defaultProps = {
   style: {},
   trailColor: '#D9D9D9',
   trailWidth: 1,
+  showTrail: true,
 };
 
 export const propTypes = {
@@ -22,4 +23,5 @@ export const propTypes = {
   style: PropTypes.object,
   trailColor: PropTypes.string,
   trailWidth: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  showTrail: PropTypes.bool,
 };

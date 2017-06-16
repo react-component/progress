@@ -43,6 +43,9 @@ class Example extends Component {
             percent={this.state.percent}
             strokeWidth="6"
             strokeLinecap="square"
+            showPercentage
+            showTrail={false}
+            percentStyle={{ fill: this.state.color, fontSize: 32, fontWeight: 700 }}
             strokeColor={this.state.color}
           />
         </div>
