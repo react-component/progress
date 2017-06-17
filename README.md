@@ -81,6 +81,12 @@ ReactDOM.render(<div>
       <td>1</td>
       <td>Width of the trail stroke. Unit is percentage of SVG canvas size. Trail is always centered relative to actual progress path. If trailWidth are not defined, it same as strokeWidth.</td>
     </tr>
+     <tr>
+      <td>showTrail</td>
+      <td>Boolean</td>
+      <td>true</td>
+      <td>Condition to enable trail rendering.</td>
+    </tr>
     <tr>
       <td>trailColor</td>
       <td>String</td>
@@ -128,6 +134,24 @@ ReactDOM.render(<div>
       <td>String</td>
       <td>top</td>
       <td>the gap position, value: top, bottom, left, right. </td>
+    </tr>
+    <tr>
+      <td>showPercentage</td>
+      <td>Boolean</td>
+      <td>false</td>
+      <td>condition to show inner percentage value. </td>
+    </tr>
+    <tr>
+      <td>percentStyle</td>
+      <td>Object</td>
+      <td>top</td>
+      <td>styles map applied to the inner percentage element. </td>
+    </tr>
+    <tr>
+      <td>percentFormatter</td>
+      <td>Function</td>
+      <td>value => value</td>
+      <td>Formatting function applied to the percentage value. By default set to identity function. </td>
     </tr>
   </tbody>
 </table>
