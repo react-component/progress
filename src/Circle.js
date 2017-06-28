@@ -54,6 +54,7 @@ class Circle extends Component {
       trailColor, strokeLinecap, style, className, ...restProps,
     } = this.props;
     const { pathString, trailPathStyle, strokePathStyle } = this.getPathStyles();
+    const showCirclePath = restProps.percent > 0;
     delete restProps.percent;
     delete restProps.gapDegree;
     delete restProps.gapPosition;
@@ -72,6 +73,7 @@ class Circle extends Component {
           fillOpacity="0"
           style={trailPathStyle}
         />
+      {showCirclePath &&
         <path
           className={`${prefixCls}-circle-path`}
           d={pathString}
@@ -81,7 +83,7 @@ class Circle extends Component {
           fillOpacity="0"
           ref={(path) => { this.path = path; }}
           style={strokePathStyle}
-        />
+        />}
       </svg>
     );
   }
