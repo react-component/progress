@@ -2,6 +2,9 @@
 
 ---
 
+## 2.2.0
+- when circle percent == 0, make stroke not visible
+
 ## 2.1.0
 - Add `gapDegree` `gapPosition` props.
 
