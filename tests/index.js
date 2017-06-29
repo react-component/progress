@@ -1,8 +1,7 @@
-const React = require('react');
-const ReactDOM = require('react-dom');
-const expect = require('expect.js');
-const Line = require('../').Line;
-const Circle = require('../').Circle;
+import React from 'react';
+import ReactDOM from 'react-dom';
+import expect from 'expect.js';
+import { Line, Circle } from '../index.js';
 
 describe('Progress', () => {
   let div = null;
