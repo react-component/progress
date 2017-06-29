@@ -20,7 +20,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_react_dom__ = __webpack_require__(72);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_react_dom___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_react_dom__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rc_progress__ = __webpack_require__(53);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rc_progress___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_rc_progress__);
 
 
 
@@ -69,7 +68,7 @@ var Example = function (_Component) {
         __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement(
           'div',
           { style: circleContainerStyle },
-          __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_7_rc_progress__["Circle"], {
+          __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_7_rc_progress__["b" /* Circle */], {
             percent: this.state.percent,
             gapDegree: 70,
             gapPosition: 'top',
@@ -81,7 +80,7 @@ var Example = function (_Component) {
         __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement(
           'div',
           { style: circleContainerStyle },
-          __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_7_rc_progress__["Circle"], {
+          __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_7_rc_progress__["b" /* Circle */], {
             percent: this.state.percent,
             gapDegree: 70,
             gapPosition: 'bottom',
@@ -93,7 +92,7 @@ var Example = function (_Component) {
         __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement(
           'div',
           { style: circleContainerStyle },
-          __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_7_rc_progress__["Circle"], {
+          __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_7_rc_progress__["b" /* Circle */], {
             percent: this.state.percent,
             gapDegree: 70,
             gapPosition: 'left',
@@ -105,7 +104,7 @@ var Example = function (_Component) {
         __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement(
           'div',
           { style: circleContainerStyle },
-          __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_7_rc_progress__["Circle"], {
+          __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_7_rc_progress__["b" /* Circle */], {
             percent: this.state.percent,
             gapDegree: 70,
             gapPosition: 'right',

@@ -5113,9 +5113,17 @@ module.exports = canDefineProperty;
 
 /***/ }),
 /* 53 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-module.exports = __webpack_require__(143);
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__src___ = __webpack_require__(143);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_0__src___["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_0__src___["b"]; });
+
+
+
+
+/* unused harmony default export */ var _unused_webpack_default_export = (__WEBPACK_IMPORTED_MODULE_0__src___["c" /* default */]);
 
 /***/ }),
 /* 54 */
@@ -7265,10 +7273,14 @@ var enhancer = function enhancer(WrappedComponent) {
     __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_createClass___default()(Progress, [{
       key: 'componentDidUpdate',
       value: function componentDidUpdate() {
+        if (!this.path) {
+          return;
+        }
+        var pathStyle = this.path.style;
+        pathStyle.transitionDuration = '0.3s, 0.3s';
         var now = Date.now();
-        this.path.style.transitionDuration = '0.3s, 0.3s';
         if (this.prevTimeStamp && now - this.prevTimeStamp < 100) {
-          this.path.style.transitionDuration = '0s, 0s';
+          pathStyle.transitionDuration = '0s, 0s';
         }
         this.prevTimeStamp = Date.now();
       }
@@ -11615,17 +11627,16 @@ Line.defaultProps = __WEBPACK_IMPORTED_MODULE_8__types__["b" /* defaultProps */]
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Line__ = __webpack_require__(142);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Circle__ = __webpack_require__(141);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Line", function() { return __WEBPACK_IMPORTED_MODULE_0__Line__["a"]; });
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Circle", function() { return __WEBPACK_IMPORTED_MODULE_1__Circle__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_0__Line__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_1__Circle__["a"]; });
 
 
 
 
 
-/* harmony default export */ __webpack_exports__["default"] = ({
+/* harmony default export */ __webpack_exports__["c"] = ({
   Line: __WEBPACK_IMPORTED_MODULE_0__Line__["a" /* default */],
   Circle: __WEBPACK_IMPORTED_MODULE_1__Circle__["a" /* default */]
 });
