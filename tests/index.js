@@ -62,5 +62,30 @@ describe('Progress', () => {
       expect(circlePathsLength).to.be(0);
       circle.forceUpdate(); // See: https://github.com/react-component/progress/issues/35
     });
+
+    it('change with animation', () => {
+      class Demo extends React.Component {
+        state = {
+          percent: '0',
+        }
+        render() {
+          return (
+            <div>
+              <Circle percent={this.state.percent} strokeWidth="1" />
+            </div>
+          );
+        }
+      }
+      const circle = ReactDOM.render(<Demo />, div);
+      const circlePathsLength = document.getElementsByClassName('rc-progress-circle-path').length;
+      expect(circlePathsLength).to.be(0);
+      expect(circle.state.percent).to.be('0');
+      circle.setState({
+        percent: '30',
+      });
+      const _circlePathsLength = document.getElementsByClassName('rc-progress-circle-path').length;
+      expect(_circlePathsLength).to.greaterThan(0);
+      expect(circle.state.percent).to.be('30');
+    });
   });
 });
