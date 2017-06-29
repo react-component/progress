@@ -1,9 +1,13 @@
 const enhancer = WrappedComponent => class Progress extends WrappedComponent {
   componentDidUpdate() {
+    if (!this.path) {
+      return;
+    }
+    const pathStyle = this.path.style;
+    pathStyle.transitionDuration = '0.3s, 0.3s';
     const now = Date.now();
-    this.path.style.transitionDuration = '0.3s, 0.3s';
     if (this.prevTimeStamp && now - this.prevTimeStamp < 100) {
-      this.path.style.transitionDuration = '0s, 0s';
+      pathStyle.transitionDuration = '0s, 0s';
     }
     this.prevTimeStamp = Date.now();
   }

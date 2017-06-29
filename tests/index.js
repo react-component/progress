@@ -66,9 +66,10 @@ describe('circle progress', () => {
   it('doesn\'t render the circle path if at 0 percent', () => {
     const div = document.createElement(div);
     document.body.appendChild(div);
-    ReactDOM.render(<Circle percent="0" strokeWidth="1" />, div);
+    const circle = ReactDOM.render(<Circle percent="0" strokeWidth="1" />, div);
     const circlePathsLength = document.getElementsByClassName('rc-progress-circle-path').length;
     expect(circlePathsLength).to.be(0);
+    circle.forceUpdate(); // See: https://github.com/react-component/progress/issues/35
     ReactDOM.unmountComponentAtNode(div);
   });
 });
