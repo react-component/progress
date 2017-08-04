@@ -27,3 +27,4 @@ build
 lib
 es
 coverage/
+yarn.lock

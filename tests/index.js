@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import expect from 'expect.js';
-import { Line, Circle } from '../index.js';
+import { Line, Circle } from '../src/index.js';
 
 describe('Progress', () => {
   let div = null;
