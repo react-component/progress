@@ -51,12 +51,13 @@
     "coverage": "rc-test run coverage"
   },
   "devDependencies": {
+    "core-js": "^2.5.1",
     "expect.js": "~0.3.1",
     "pre-commit": "1.x",
     "rc-test": "^6.0.1",
     "rc-tools": "6.x",
-    "react": "^15.5.4",
-    "react-dom": "^15.5.4"
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0"
   },
   "pre-commit": [
     "lint"
