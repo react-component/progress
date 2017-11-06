@@ -4,7 +4,7 @@ const enhancer = WrappedComponent => class Progress extends WrappedComponent {
       return;
     }
     const pathStyle = this.path.style;
-    pathStyle.transitionDuration = '0.3s, 0.3s';
+    pathStyle.transitionDuration = '.3s, .3s, .3s, .06s';
     const now = Date.now();
     if (this.prevTimeStamp && now - this.prevTimeStamp < 100) {
       pathStyle.transitionDuration = '0s, 0s';

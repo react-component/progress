@@ -43,7 +43,7 @@ class Circle extends Component {
     const strokePathStyle = {
       strokeDasharray: `${(percent / 100) * (len - gapDegree)}px ${len}px`,
       strokeDashoffset: `-${gapDegree / 2}px`,
-      transition: 'stroke-dashoffset .3s ease 0s, stroke-dasharray .3s ease 0s, stroke .3s',
+      transition: 'stroke-dashoffset .3s ease 0s, stroke-dasharray .3s ease 0s, stroke .3s, stroke-width .06s ease .3s', // eslint-disable-line
     };
     return { pathString, trailPathStyle, strokePathStyle };
   }
