@@ -23136,7 +23136,7 @@
 	        return;
 	      }
 	      var pathStyle = this.path.style;
-	      pathStyle.transitionDuration = '0.3s, 0.3s';
+	      pathStyle.transitionDuration = '.3s, .3s, .3s, .06s';
 	      var now = Date.now();
 	      if (this.prevTimeStamp && now - this.prevTimeStamp < 100) {
 	        pathStyle.transitionDuration = '0s, 0s';
@@ -23390,8 +23390,7 @@
 	    var strokePathStyle = {
 	      strokeDasharray: percent / 100 * (len - gapDegree) + 'px ' + len + 'px',
 	      strokeDashoffset: '-' + gapDegree / 2 + 'px',
-	      transition: 'stroke-dashoffset .3s ease 0s, stroke-dasharray .3s ease 0s, stroke .3s'
-	    };
+	      transition: 'stroke-dashoffset .3s ease 0s, stroke-dasharray .3s ease 0s, stroke .3s, stroke-width .06s ease .3s' };
 	    return { pathString: pathString, trailPathStyle: trailPathStyle, strokePathStyle: strokePathStyle };
 	  };
 	
