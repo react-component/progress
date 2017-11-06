@@ -42,7 +42,7 @@ class Example extends Component {
           <Circle
             percent={this.state.percent}
             strokeWidth="6"
-            strokeLinecap="square"
+            strokeLinecap="round"
             strokeColor={this.state.color}
           />
         </div>
