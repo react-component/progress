@@ -6,7 +6,7 @@ import { propTypes, defaultProps } from './types';
 
 class Circle extends Component {
   getPathStyles() {
-    const { percent, strokeWidth, gapDegree = 0, gapPosition } = this.props;
+    const { percent, strokeWidth, strokeColor, gapDegree = 0, gapPosition } = this.props;
     const radius = 50 - (strokeWidth / 2);
     let beginPositionX = 0;
     let beginPositionY = -radius;
@@ -41,6 +41,7 @@ class Circle extends Component {
       transition: 'stroke-dashoffset .3s ease 0s, stroke-dasharray .3s ease 0s, stroke .3s',
     };
     const strokePathStyle = {
+      stroke: strokeColor,
       strokeDasharray: `${(percent / 100) * (len - gapDegree)}px ${len}px`,
       strokeDashoffset: `-${gapDegree / 2}px`,
       transition: 'stroke-dashoffset .3s ease 0s, stroke-dasharray .3s ease 0s, stroke .3s, stroke-width .06s ease .3s', // eslint-disable-line
@@ -50,13 +51,14 @@ class Circle extends Component {
 
   render() {
     const {
-      prefixCls, strokeWidth, trailWidth, strokeColor, percent,
+      prefixCls, strokeWidth, trailWidth, percent,
       trailColor, strokeLinecap, style, className, ...restProps,
     } = this.props;
     const { pathString, trailPathStyle, strokePathStyle } = this.getPathStyles();
     delete restProps.percent;
     delete restProps.gapDegree;
     delete restProps.gapPosition;
+    delete restProps.strokeColor;
     return (
       <svg
         className={`${prefixCls}-circle ${className}`}
@@ -76,7 +78,6 @@ class Circle extends Component {
           className={`${prefixCls}-circle-path`}
           d={pathString}
           strokeLinecap={strokeLinecap}
-          stroke={strokeColor}
           strokeWidth={this.props.percent === 0 ? 0 : strokeWidth}
           fillOpacity="0"
           ref={(path) => { this.path = path; }}
