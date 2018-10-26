@@ -20,11 +20,13 @@
   "licenses": "MIT",
   "main": "lib/index",
   "module": "es/index",
+  "types": "./typings/index.d.ts",
   "files": [
     "dist",
     "lib",
     "assets/*.css",
-    "es"
+    "es",
+    "typings/index.d.ts"
   ],
   "config": {
     "port": 8000,
