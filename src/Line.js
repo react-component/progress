@@ -19,11 +19,8 @@ class Line extends Component {
 
     delete restProps.gapPosition;
 
-    const pathStyle = {
-      strokeDasharray: '100px, 100px',
-      strokeDashoffset: `${(100 - percent)}px`,
-      transition: 'stroke-dashoffset 0.3s ease 0s, stroke 0.3s linear',
-    };
+    const percentList = Array.isArray(percent) ? percent : [percent];
+    const strokeColorList = Array.isArray(strokeColor) ? strokeColor : [strokeColor];
 
     const center = strokeWidth / 2;
     const right = 100 - (strokeWidth / 2);
@@ -31,6 +28,8 @@ class Line extends Component {
           `M ${strokeLinecap === 'round' ? center : 0},${center}
            L ${strokeLinecap === 'round' ? right : 100},${center}`;
     const viewBoxString = `0 0 100 ${strokeWidth}`;
+
+    let stackPtg = 0;
 
     return (
       <svg
@@ -48,16 +47,31 @@ class Line extends Component {
           strokeWidth={trailWidth || strokeWidth}
           fillOpacity="0"
         />
-        <path
-          className={`${prefixCls}-line-path`}
-          d={pathString}
-          strokeLinecap={strokeLinecap}
-          stroke={strokeColor}
-          strokeWidth={strokeWidth}
-          fillOpacity="0"
-          ref={(path) => { this.path = path; }}
-          style={pathStyle}
-        />
+        {percentList.map((ptg, index) => {
+          const pathStyle = {
+            strokeDasharray: `${ptg}px, 100px`,
+            strokeDashoffset: `-${stackPtg}px`,
+            transition:
+              'stroke-dashoffset 0.3s ease 0s, stroke-dasharray .3s ease 0s, stroke 0.3s linear',
+          };
+          const color = strokeColorList[index] || strokeColorList[strokeColorList.length - 1];
+
+          stackPtg += ptg;
+
+          return (
+            <path
+              key={index}
+              className={`${prefixCls}-line-path`}
+              d={pathString}
+              strokeLinecap={strokeLinecap}
+              stroke={color}
+              strokeWidth={strokeWidth}
+              fillOpacity="0"
+              ref={(path) => { this.path = path; }}
+              style={pathStyle}
+            />
+          );
+        })}
       </svg>
     );
   }

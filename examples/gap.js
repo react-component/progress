@@ -3,22 +3,26 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { Circle } from 'rc-progress';
 
+const colorMap = ['#3FC7FA', '#85D262', '#FE8C6A'];
+function getColor(index) {
+  return colorMap[(index + colorMap.length) % colorMap.length];
+}
 class Example extends Component {
   constructor() {
     super();
     this.state = {
       percent: 30,
-      color: '#3FC7FA',
+      colorIndex: 0,
     };
     this.changeState = this.changeState.bind(this);
   }
 
   changeState() {
-    const colorMap = ['#3FC7FA', '#85D262', '#FE8C6A'];
     const value = parseInt(Math.random() * 100, 10);
+    const colorIndex = parseInt(Math.random() * 3, 10);
     this.setState({
       percent: value,
-      color: colorMap[parseInt(Math.random() * 3, 10)],
+      colorIndex,
     });
   }
 
@@ -27,52 +31,55 @@ class Example extends Component {
       width: '200px',
       height: '200px',
     };
+    const { percent, colorIndex } = this.state;
+    const color = getColor(colorIndex);
     return (
       <div>
+        <p>
+          <button onClick={this.changeState}>Change State [{percent}]</button>
+        </p>
         <div style={circleContainerStyle}>
           <Circle
-            percent={this.state.percent}
+            percent={percent}
             gapDegree={70}
             gapPosition="top"
             strokeWidth="6"
             strokeLinecap="square"
-            strokeColor={this.state.color}
+            strokeColor={color}
           />
         </div>
         <div style={circleContainerStyle}>
           <Circle
-            percent={this.state.percent}
+            percent={[percent / 3, percent / 3, percent / 3]}
             gapDegree={70}
             gapPosition="bottom"
             strokeWidth="6"
             trailWidth="6"
             strokeLinecap="round"
-            strokeColor={this.state.color}
+            strokeColor={[color, getColor(colorIndex + 1), getColor(colorIndex + 2)]}
           />
         </div>
+
         <div style={circleContainerStyle}>
           <Circle
-            percent={this.state.percent}
+            percent={percent}
             gapDegree={70}
             gapPosition="left"
             strokeWidth="6"
             strokeLinecap="square"
-            strokeColor={this.state.color}
+            strokeColor={color}
           />
         </div>
         <div style={circleContainerStyle}>
           <Circle
-            percent={this.state.percent}
+            percent={percent}
             gapDegree={70}
             gapPosition="right"
             strokeWidth="6"
             strokeLinecap="square"
-            strokeColor={this.state.color}
+            strokeColor={color}
           />
         </div>
-        <p>
-          <button onClick={this.changeState}>Change State</button>
-        </p>
       </div>
     );
   }
