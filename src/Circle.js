@@ -74,10 +74,15 @@ class Circle extends Component {
           strokeWidth={ptg === 0 ? 0 : strokeWidth}
           fillOpacity="0"
           style={pathStyle}
+          ref={(path) => {
+            this.paths[index] = path;
+          }}
         />
       );
     });
   }
+
+  paths = {};
 
   render() {
     const {

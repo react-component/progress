@@ -3,6 +3,8 @@ import enhancer from './enhancer';
 import { propTypes, defaultProps } from './types';
 
 class Line extends Component {
+  paths = {};
+
   render() {
     const {
       className,
@@ -67,7 +69,9 @@ class Line extends Component {
               stroke={color}
               strokeWidth={strokeWidth}
               fillOpacity="0"
-              ref={(path) => { this.path = path; }}
+              ref={(path) => {
+                this.paths[index] = path;
+              }}
               style={pathStyle}
             />
           );
