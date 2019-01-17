@@ -1,14 +1,14 @@
 webpackJsonp([1],{
 
-/***/ 111:
+/***/ 112:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(112);
+module.exports = __webpack_require__(113);
 
 
 /***/ }),
 
-/***/ 112:
+/***/ 113:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -87,7 +87,8 @@ var Example = function (_Component) {
           gapDegree: 70,
           gapPosition: 'bottom',
           strokeWidth: '6',
-          strokeLinecap: 'square',
+          trailWidth: '6',
+          strokeLinecap: 'round',
           strokeColor: this.state.color
         })
       ),
@@ -134,5 +135,5 @@ __WEBPACK_IMPORTED_MODULE_5_react_dom___default.a.render(__WEBPACK_IMPORTED_MODU
 
 /***/ })
 
-},[111]);
+},[112]);
 //# sourceMappingURL=gap.js.map
