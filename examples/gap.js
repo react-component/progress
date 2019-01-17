@@ -45,7 +45,8 @@ class Example extends Component {
             gapDegree={70}
             gapPosition="bottom"
             strokeWidth="6"
-            strokeLinecap="square"
+            trailWidth="6"
+            strokeLinecap="round"
             strokeColor={this.state.color}
           />
         </div>

@@ -70,6 +70,7 @@ class Circle extends Component {
           className={`${prefixCls}-circle-trail`}
           d={pathString}
           stroke={trailColor}
+          strokeLinecap={strokeLinecap}
           strokeWidth={trailWidth || strokeWidth}
           fillOpacity="0"
           style={trailPathStyle}
