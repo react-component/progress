@@ -5,8 +5,7 @@ import enhancer from './enhancer';
 import { propTypes, defaultProps } from './types';
 
 class Circle extends Component {
-  getPathStyles() {
-    const { percent, strokeWidth, strokeColor, gapDegree = 0, gapPosition } = this.props;
+  getPathStyles(offset, percent, strokeColor, strokeWidth, gapDegree = 0, gapPosition) {
     const radius = 50 - (strokeWidth / 2);
     let beginPositionX = 0;
     let beginPositionY = -radius;
@@ -35,29 +34,66 @@ class Circle extends Component {
      a ${radius},${radius} 0 1 1 ${endPositionX},${-endPositionY}
      a ${radius},${radius} 0 1 1 ${-endPositionX},${endPositionY}`;
     const len = Math.PI * 2 * radius;
-    const trailPathStyle = {
-      strokeDasharray: `${len - gapDegree}px ${len}px`,
-      strokeDashoffset: `-${gapDegree / 2}px`,
-      transition: 'stroke-dashoffset .3s ease 0s, stroke-dasharray .3s ease 0s, stroke .3s',
-    };
-    const strokePathStyle = {
+
+    const pathStyle = {
       stroke: strokeColor,
       strokeDasharray: `${(percent / 100) * (len - gapDegree)}px ${len}px`,
-      strokeDashoffset: `-${gapDegree / 2}px`,
+      strokeDashoffset: `-${gapDegree / 2 + offset / 100 * (len - gapDegree)}px`,
       transition: 'stroke-dashoffset .3s ease 0s, stroke-dasharray .3s ease 0s, stroke .3s, stroke-width .06s ease .3s', // eslint-disable-line
     };
-    return { pathString, trailPathStyle, strokePathStyle };
+
+    return {
+      pathString,
+      pathStyle,
+    };
   }
+
+  getStokeList() {
+    const {
+      prefixCls, percent, strokeColor, strokeWidth, strokeLinecap,
+      gapDegree, gapPosition,
+    } = this.props;
+    const percentList = Array.isArray(percent) ? percent : [percent];
+    const strokeColorList = Array.isArray(strokeColor) ? strokeColor : [strokeColor];
+
+    let stackPtg = 0;
+    return percentList.map((ptg, index) => {
+      const color = strokeColorList[index] || strokeColorList[strokeColorList.length - 1];
+      const { pathString, pathStyle } = this.getPathStyles(
+        stackPtg, ptg, color, strokeWidth, gapDegree, gapPosition
+      );
+
+      stackPtg += ptg;
+
+      return (
+        <path
+          key={index}
+          className={`${prefixCls}-circle-path`}
+          d={pathString}
+          strokeLinecap={strokeLinecap}
+          strokeWidth={ptg === 0 ? 0 : strokeWidth}
+          fillOpacity="0"
+          style={pathStyle}
+          ref={(path) => {
+            this.paths[index] = path;
+          }}
+        />
+      );
+    });
+  }
+
+  paths = {};
 
   render() {
     const {
-      prefixCls, strokeWidth, trailWidth, percent,
+      prefixCls, strokeWidth, trailWidth,
+      gapDegree, gapPosition,
       trailColor, strokeLinecap, style, className, ...restProps,
     } = this.props;
-    const { pathString, trailPathStyle, strokePathStyle } = this.getPathStyles();
+    const { pathString, pathStyle } = this.getPathStyles(
+      0, 100, trailColor, strokeWidth, gapDegree, gapPosition
+    );
     delete restProps.percent;
-    delete restProps.gapDegree;
-    delete restProps.gapPosition;
     delete restProps.strokeColor;
     return (
       <svg
@@ -73,17 +109,9 @@ class Circle extends Component {
           strokeLinecap={strokeLinecap}
           strokeWidth={trailWidth || strokeWidth}
           fillOpacity="0"
-          style={trailPathStyle}
+          style={pathStyle}
         />
-        <path
-          className={`${prefixCls}-circle-path`}
-          d={pathString}
-          strokeLinecap={strokeLinecap}
-          strokeWidth={this.props.percent === 0 ? 0 : strokeWidth}
-          fillOpacity="0"
-          ref={(path) => { this.path = path; }}
-          style={strokePathStyle}
-        />
+        {this.getStokeList()}
       </svg>
     );
   }

@@ -23,6 +23,7 @@ class Example extends Component {
   }
 
   render() {
+    const { percent, color } = this.state;
     const containerStyle = {
       width: '250px',
     };
@@ -33,17 +34,22 @@ class Example extends Component {
     };
     return (
       <div>
-        <h3>Line Progress {this.state.percent}%</h3>
+        <h3>Line Progress {percent}%</h3>
         <div style={containerStyle}>
-          <Line percent={this.state.percent} strokeWidth="4" strokeColor={this.state.color} />
+          <Line percent={percent} strokeWidth="4" strokeColor={color} />
+          <Line
+            percent={[percent / 2, percent / 2]}
+            strokeWidth="4"
+            strokeColor={[color, '#CCC']}
+          />
         </div>
-        <h3>Circle Progress {this.state.percent}%</h3>
+        <h3>Circle Progress {percent}%</h3>
         <div style={circleContainerStyle}>
           <Circle
-            percent={this.state.percent}
+            percent={percent}
             strokeWidth="6"
             strokeLinecap="round"
-            strokeColor={this.state.color}
+            strokeColor={color}
           />
         </div>
         <p>
