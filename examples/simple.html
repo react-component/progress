@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>simple.js - example - rc-progress@2.2.7</title>
+  <title>simple.js - example - rc-progress@2.3.0</title>
   <meta name="viewport"
         content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
   <meta charset="utf-8"/>
@@ -263,7 +263,7 @@ Monokai Sublime style. Derived from Monokai by noformnocontent http://nn.mit-lic
 <body>
   <div class="container">
     <div class="header">
-      <h1>rc-progress@2.2.7</h1>
+      <h1>rc-progress@2.3.0</h1>
 
       <p>progress ui component for react</p>
     </div>
@@ -294,6 +294,7 @@ Monokai Sublime style. Derived from Monokai by noformnocontent http://nn.mit-lic
   }
 
   render() {
+    <span class="hljs-keyword">const</span> { percent, color } = <span class="hljs-keyword">this</span>.state;
     <span class="hljs-keyword">const</span> containerStyle = {
       width: <span class="hljs-string">'250px'</span>,
     };
@@ -304,17 +305,22 @@ Monokai Sublime style. Derived from Monokai by noformnocontent http://nn.mit-lic
     };
     <span class="hljs-keyword">return</span> (
       <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-title">h3</span>&gt;</span>Line Progress {this.state.percent}%<span class="hljs-tag">&lt;/<span class="hljs-title">h3</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">h3</span>&gt;</span>Line Progress {percent}%<span class="hljs-tag">&lt;/<span class="hljs-title">h3</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">{containerStyle}</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-title">Line</span> <span class="hljs-attribute">percent</span>=<span class="hljs-value">{this.state.percent}</span> <span class="hljs-attribute">strokeWidth</span>=<span class="hljs-value">"4"</span> <span class="hljs-attribute">strokeColor</span>=<span class="hljs-value">{this.state.color}</span> /&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-title">Line</span> <span class="hljs-attribute">percent</span>=<span class="hljs-value">{percent}</span> <span class="hljs-attribute">strokeWidth</span>=<span class="hljs-value">"4"</span> <span class="hljs-attribute">strokeColor</span>=<span class="hljs-value">{color}</span> /&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-title">Line</span>
+            <span class="hljs-attribute">percent</span>=<span class="hljs-value">{[percent</span> / <span class="hljs-attribute">2</span>, <span class="hljs-attribute">percent</span> / <span class="hljs-attribute">2</span>]}
+            <span class="hljs-attribute">strokeWidth</span>=<span class="hljs-value">"4"</span>
+            <span class="hljs-attribute">strokeColor</span>=<span class="hljs-value">{[color,</span> '#<span class="hljs-attribute">CCC</span>']}
+          /&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-title">h3</span>&gt;</span>Circle Progress {this.state.percent}%<span class="hljs-tag">&lt;/<span class="hljs-title">h3</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">h3</span>&gt;</span>Circle Progress {percent}%<span class="hljs-tag">&lt;/<span class="hljs-title">h3</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">{circleContainerStyle}</span>&gt;</span>
           <span class="hljs-tag">&lt;<span class="hljs-title">Circle</span>
-            <span class="hljs-attribute">percent</span>=<span class="hljs-value">{this.state.percent}</span>
+            <span class="hljs-attribute">percent</span>=<span class="hljs-value">{percent}</span>
             <span class="hljs-attribute">strokeWidth</span>=<span class="hljs-value">"6"</span>
             <span class="hljs-attribute">strokeLinecap</span>=<span class="hljs-value">"round"</span>
-            <span class="hljs-attribute">strokeColor</span>=<span class="hljs-value">{this.state.color}</span>
+            <span class="hljs-attribute">strokeColor</span>=<span class="hljs-value">{color}</span>
           /&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>

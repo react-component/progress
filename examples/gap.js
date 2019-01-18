@@ -34,6 +34,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
+var colorMap = ['#3FC7FA', '#85D262', '#FE8C6A'];
+function getColor(index) {
+  return colorMap[(index + colorMap.length) % colorMap.length];
+}
+
 var Example = function (_Component) {
   __WEBPACK_IMPORTED_MODULE_2_babel_runtime_helpers_inherits___default()(Example, _Component);
 
@@ -44,18 +49,18 @@ var Example = function (_Component) {
 
     _this.state = {
       percent: 30,
-      color: '#3FC7FA'
+      colorIndex: 0
     };
     _this.changeState = _this.changeState.bind(_this);
     return _this;
   }
 
   Example.prototype.changeState = function changeState() {
-    var colorMap = ['#3FC7FA', '#85D262', '#FE8C6A'];
     var value = parseInt(Math.random() * 100, 10);
+    var colorIndex = parseInt(Math.random() * 3, 10);
     this.setState({
       percent: value,
-      color: colorMap[parseInt(Math.random() * 3, 10)]
+      colorIndex: colorIndex
     });
   };
 
@@ -64,66 +69,73 @@ var Example = function (_Component) {
       width: '200px',
       height: '200px'
     };
+    var _state = this.state,
+        percent = _state.percent,
+        colorIndex = _state.colorIndex;
+
+    var color = getColor(colorIndex);
     return __WEBPACK_IMPORTED_MODULE_4_react___default.a.createElement(
       'div',
       null,
-      __WEBPACK_IMPORTED_MODULE_4_react___default.a.createElement(
-        'div',
-        { style: circleContainerStyle },
-        __WEBPACK_IMPORTED_MODULE_4_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_6_rc_progress__["a" /* Circle */], {
-          percent: this.state.percent,
-          gapDegree: 70,
-          gapPosition: 'top',
-          strokeWidth: '6',
-          strokeLinecap: 'square',
-          strokeColor: this.state.color
-        })
-      ),
-      __WEBPACK_IMPORTED_MODULE_4_react___default.a.createElement(
-        'div',
-        { style: circleContainerStyle },
-        __WEBPACK_IMPORTED_MODULE_4_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_6_rc_progress__["a" /* Circle */], {
-          percent: this.state.percent,
-          gapDegree: 70,
-          gapPosition: 'bottom',
-          strokeWidth: '6',
-          trailWidth: '6',
-          strokeLinecap: 'round',
-          strokeColor: this.state.color
-        })
-      ),
-      __WEBPACK_IMPORTED_MODULE_4_react___default.a.createElement(
-        'div',
-        { style: circleContainerStyle },
-        __WEBPACK_IMPORTED_MODULE_4_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_6_rc_progress__["a" /* Circle */], {
-          percent: this.state.percent,
-          gapDegree: 70,
-          gapPosition: 'left',
-          strokeWidth: '6',
-          strokeLinecap: 'square',
-          strokeColor: this.state.color
-        })
-      ),
-      __WEBPACK_IMPORTED_MODULE_4_react___default.a.createElement(
-        'div',
-        { style: circleContainerStyle },
-        __WEBPACK_IMPORTED_MODULE_4_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_6_rc_progress__["a" /* Circle */], {
-          percent: this.state.percent,
-          gapDegree: 70,
-          gapPosition: 'right',
-          strokeWidth: '6',
-          strokeLinecap: 'square',
-          strokeColor: this.state.color
-        })
-      ),
       __WEBPACK_IMPORTED_MODULE_4_react___default.a.createElement(
         'p',
         null,
         __WEBPACK_IMPORTED_MODULE_4_react___default.a.createElement(
           'button',
           { onClick: this.changeState },
-          'Change State'
+          'Change State [',
+          percent,
+          ']'
         )
+      ),
+      __WEBPACK_IMPORTED_MODULE_4_react___default.a.createElement(
+        'div',
+        { style: circleContainerStyle },
+        __WEBPACK_IMPORTED_MODULE_4_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_6_rc_progress__["a" /* Circle */], {
+          percent: percent,
+          gapDegree: 70,
+          gapPosition: 'top',
+          strokeWidth: '6',
+          strokeLinecap: 'square',
+          strokeColor: color
+        })
+      ),
+      __WEBPACK_IMPORTED_MODULE_4_react___default.a.createElement(
+        'div',
+        { style: circleContainerStyle },
+        __WEBPACK_IMPORTED_MODULE_4_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_6_rc_progress__["a" /* Circle */], {
+          percent: [percent / 3, percent / 3, percent / 3],
+          gapDegree: 70,
+          gapPosition: 'bottom',
+          strokeWidth: '6',
+          trailWidth: '6',
+          strokeLinecap: 'round',
+          strokeColor: [color, getColor(colorIndex + 1), getColor(colorIndex + 2)]
+        })
+      ),
+      __WEBPACK_IMPORTED_MODULE_4_react___default.a.createElement(
+        'div',
+        { style: circleContainerStyle },
+        __WEBPACK_IMPORTED_MODULE_4_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_6_rc_progress__["a" /* Circle */], {
+          percent: percent,
+          gapDegree: 70,
+          gapPosition: 'left',
+          strokeWidth: '6',
+          strokeLinecap: 'square',
+          strokeColor: color
+        })
+      ),
+      __WEBPACK_IMPORTED_MODULE_4_react___default.a.createElement(
+        'div',
+        { style: circleContainerStyle },
+        __WEBPACK_IMPORTED_MODULE_4_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_6_rc_progress__["a" /* Circle */], {
+          percent: percent,
+          gapDegree: 70,
+          gapPosition: 'right',
+          strokeWidth: '6',
+          strokeLinecap: 'square',
+          strokeColor: color
+        })
       )
     );
   };

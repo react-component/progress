@@ -60,6 +60,10 @@ var Example = function (_Component) {
   };
 
   Example.prototype.render = function render() {
+    var _state = this.state,
+        percent = _state.percent,
+        color = _state.color;
+
     var containerStyle = {
       width: '250px'
     };
@@ -75,29 +79,34 @@ var Example = function (_Component) {
         'h3',
         null,
         'Line Progress ',
-        this.state.percent,
+        percent,
         '%'
       ),
       __WEBPACK_IMPORTED_MODULE_4_react___default.a.createElement(
         'div',
         { style: containerStyle },
-        __WEBPACK_IMPORTED_MODULE_4_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_6_rc_progress__["b" /* Line */], { percent: this.state.percent, strokeWidth: '4', strokeColor: this.state.color })
+        __WEBPACK_IMPORTED_MODULE_4_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_6_rc_progress__["b" /* Line */], { percent: percent, strokeWidth: '4', strokeColor: color }),
+        __WEBPACK_IMPORTED_MODULE_4_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_6_rc_progress__["b" /* Line */], {
+          percent: [percent / 2, percent / 2],
+          strokeWidth: '4',
+          strokeColor: [color, '#CCC']
+        })
       ),
       __WEBPACK_IMPORTED_MODULE_4_react___default.a.createElement(
         'h3',
         null,
         'Circle Progress ',
-        this.state.percent,
+        percent,
         '%'
       ),
       __WEBPACK_IMPORTED_MODULE_4_react___default.a.createElement(
         'div',
         { style: circleContainerStyle },
         __WEBPACK_IMPORTED_MODULE_4_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_6_rc_progress__["a" /* Circle */], {
-          percent: this.state.percent,
+          percent: percent,
           strokeWidth: '6',
           strokeLinecap: 'round',
-          strokeColor: this.state.color
+          strokeColor: color
         })
       ),
       __WEBPACK_IMPORTED_MODULE_4_react___default.a.createElement(

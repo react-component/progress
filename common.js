@@ -1462,16 +1462,30 @@ var enhancer = function enhancer(WrappedComponent) {
     }
 
     Progress.prototype.componentDidUpdate = function componentDidUpdate() {
-      if (!this.path) {
-        return;
-      }
-      var pathStyle = this.path.style;
-      pathStyle.transitionDuration = '.3s, .3s, .3s, .06s';
+      var _this2 = this;
+
       var now = Date.now();
-      if (this.prevTimeStamp && now - this.prevTimeStamp < 100) {
-        pathStyle.transitionDuration = '0s, 0s';
+      var updated = false;
+
+      Object.keys(this.paths).forEach(function (key) {
+        var path = _this2.paths[key];
+
+        if (!path) {
+          return;
+        }
+
+        updated = true;
+        var pathStyle = path.style;
+        pathStyle.transitionDuration = '.3s, .3s, .3s, .06s';
+
+        if (_this2.prevTimeStamp && now - _this2.prevTimeStamp < 100) {
+          pathStyle.transitionDuration = '0s, 0s';
+        }
+      });
+
+      if (updated) {
+        this.prevTimeStamp = Date.now();
       }
-      this.prevTimeStamp = Date.now();
     };
 
     Progress.prototype.render = function render() {
@@ -1507,16 +1521,18 @@ var defaultProps = {
   trailWidth: 1
 };
 
+var mixedType = __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.oneOfType([__WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.number, __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.string]);
+
 var propTypes = {
   className: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.string,
-  percent: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.oneOfType([__WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.number, __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.string]),
+  percent: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.oneOfType([mixedType, __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.arrayOf(mixedType)]),
   prefixCls: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.string,
-  strokeColor: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.string,
+  strokeColor: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.oneOfType([__WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.string, __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.arrayOf(__WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.string)]),
   strokeLinecap: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.oneOf(['butt', 'round', 'square']),
-  strokeWidth: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.oneOfType([__WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.number, __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.string]),
+  strokeWidth: mixedType,
   style: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.object,
   trailColor: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.string,
-  trailWidth: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.oneOfType([__WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.number, __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.string])
+  trailWidth: mixedType
 };
 
 /***/ }),
@@ -25829,9 +25845,15 @@ var Line = function (_Component) {
   __WEBPACK_IMPORTED_MODULE_4_babel_runtime_helpers_inherits___default()(Line, _Component);
 
   function Line() {
+    var _temp, _this, _ret;
+
     __WEBPACK_IMPORTED_MODULE_2_babel_runtime_helpers_classCallCheck___default()(this, Line);
 
-    return __WEBPACK_IMPORTED_MODULE_3_babel_runtime_helpers_possibleConstructorReturn___default()(this, _Component.apply(this, arguments));
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _ret = (_temp = (_this = __WEBPACK_IMPORTED_MODULE_3_babel_runtime_helpers_possibleConstructorReturn___default()(this, _Component.call.apply(_Component, [this].concat(args))), _this), _this.paths = {}, _temp), __WEBPACK_IMPORTED_MODULE_3_babel_runtime_helpers_possibleConstructorReturn___default()(_this, _ret);
   }
 
   Line.prototype.render = function render() {
@@ -25851,16 +25873,15 @@ var Line = function (_Component) {
 
     delete restProps.gapPosition;
 
-    var pathStyle = {
-      strokeDasharray: '100px, 100px',
-      strokeDashoffset: 100 - percent + 'px',
-      transition: 'stroke-dashoffset 0.3s ease 0s, stroke 0.3s linear'
-    };
+    var percentList = Array.isArray(percent) ? percent : [percent];
+    var strokeColorList = Array.isArray(strokeColor) ? strokeColor : [strokeColor];
 
     var center = strokeWidth / 2;
     var right = 100 - strokeWidth / 2;
     var pathString = 'M ' + (strokeLinecap === 'round' ? center : 0) + ',' + center + '\n           L ' + (strokeLinecap === 'round' ? right : 100) + ',' + center;
     var viewBoxString = '0 0 100 ' + strokeWidth;
+
+    var stackPtg = 0;
 
     return __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement(
       'svg',
@@ -25878,17 +25899,29 @@ var Line = function (_Component) {
         strokeWidth: trailWidth || strokeWidth,
         fillOpacity: '0'
       }),
-      __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement('path', {
-        className: prefixCls + '-line-path',
-        d: pathString,
-        strokeLinecap: strokeLinecap,
-        stroke: strokeColor,
-        strokeWidth: strokeWidth,
-        fillOpacity: '0',
-        ref: function ref(path) {
-          _this2.path = path;
-        },
-        style: pathStyle
+      percentList.map(function (ptg, index) {
+        var pathStyle = {
+          strokeDasharray: ptg + 'px, 100px',
+          strokeDashoffset: '-' + stackPtg + 'px',
+          transition: 'stroke-dashoffset 0.3s ease 0s, stroke-dasharray .3s ease 0s, stroke 0.3s linear'
+        };
+        var color = strokeColorList[index] || strokeColorList[strokeColorList.length - 1];
+
+        stackPtg += ptg;
+
+        return __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement('path', {
+          key: index,
+          className: prefixCls + '-line-path',
+          d: pathString,
+          strokeLinecap: strokeLinecap,
+          stroke: color,
+          strokeWidth: strokeWidth,
+          fillOpacity: '0',
+          ref: function ref(path) {
+            _this2.paths[index] = path;
+          },
+          style: pathStyle
+        });
       })
     );
   };
@@ -26632,19 +26665,20 @@ var Circle = function (_Component) {
   __WEBPACK_IMPORTED_MODULE_4_babel_runtime_helpers_inherits___default()(Circle, _Component);
 
   function Circle() {
+    var _temp, _this, _ret;
+
     __WEBPACK_IMPORTED_MODULE_2_babel_runtime_helpers_classCallCheck___default()(this, Circle);
 
-    return __WEBPACK_IMPORTED_MODULE_3_babel_runtime_helpers_possibleConstructorReturn___default()(this, _Component.apply(this, arguments));
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _ret = (_temp = (_this = __WEBPACK_IMPORTED_MODULE_3_babel_runtime_helpers_possibleConstructorReturn___default()(this, _Component.call.apply(_Component, [this].concat(args))), _this), _this.paths = {}, _temp), __WEBPACK_IMPORTED_MODULE_3_babel_runtime_helpers_possibleConstructorReturn___default()(_this, _ret);
   }
 
-  Circle.prototype.getPathStyles = function getPathStyles() {
-    var _props = this.props,
-        percent = _props.percent,
-        strokeWidth = _props.strokeWidth,
-        strokeColor = _props.strokeColor,
-        _props$gapDegree = _props.gapDegree,
-        gapDegree = _props$gapDegree === undefined ? 0 : _props$gapDegree,
-        gapPosition = _props.gapPosition;
+  Circle.prototype.getPathStyles = function getPathStyles(offset, percent, strokeColor, strokeWidth) {
+    var gapDegree = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : 0;
+    var gapPosition = arguments[5];
 
     var radius = 50 - strokeWidth / 2;
     var beginPositionX = 0;
@@ -26672,42 +26706,78 @@ var Circle = function (_Component) {
     }
     var pathString = 'M 50,50 m ' + beginPositionX + ',' + beginPositionY + '\n     a ' + radius + ',' + radius + ' 0 1 1 ' + endPositionX + ',' + -endPositionY + '\n     a ' + radius + ',' + radius + ' 0 1 1 ' + -endPositionX + ',' + endPositionY;
     var len = Math.PI * 2 * radius;
-    var trailPathStyle = {
-      strokeDasharray: len - gapDegree + 'px ' + len + 'px',
-      strokeDashoffset: '-' + gapDegree / 2 + 'px',
-      transition: 'stroke-dashoffset .3s ease 0s, stroke-dasharray .3s ease 0s, stroke .3s'
-    };
-    var strokePathStyle = {
+
+    var pathStyle = {
       stroke: strokeColor,
       strokeDasharray: percent / 100 * (len - gapDegree) + 'px ' + len + 'px',
-      strokeDashoffset: '-' + gapDegree / 2 + 'px',
+      strokeDashoffset: '-' + (gapDegree / 2 + offset / 100 * (len - gapDegree)) + 'px',
       transition: 'stroke-dashoffset .3s ease 0s, stroke-dasharray .3s ease 0s, stroke .3s, stroke-width .06s ease .3s' // eslint-disable-line
     };
-    return { pathString: pathString, trailPathStyle: trailPathStyle, strokePathStyle: strokePathStyle };
+
+    return {
+      pathString: pathString,
+      pathStyle: pathStyle
+    };
+  };
+
+  Circle.prototype.getStokeList = function getStokeList() {
+    var _this2 = this;
+
+    var _props = this.props,
+        prefixCls = _props.prefixCls,
+        percent = _props.percent,
+        strokeColor = _props.strokeColor,
+        strokeWidth = _props.strokeWidth,
+        strokeLinecap = _props.strokeLinecap,
+        gapDegree = _props.gapDegree,
+        gapPosition = _props.gapPosition;
+
+    var percentList = Array.isArray(percent) ? percent : [percent];
+    var strokeColorList = Array.isArray(strokeColor) ? strokeColor : [strokeColor];
+
+    var stackPtg = 0;
+    return percentList.map(function (ptg, index) {
+      var color = strokeColorList[index] || strokeColorList[strokeColorList.length - 1];
+
+      var _getPathStyles = _this2.getPathStyles(stackPtg, ptg, color, strokeWidth, gapDegree, gapPosition),
+          pathString = _getPathStyles.pathString,
+          pathStyle = _getPathStyles.pathStyle;
+
+      stackPtg += ptg;
+
+      return __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement('path', {
+        key: index,
+        className: prefixCls + '-circle-path',
+        d: pathString,
+        strokeLinecap: strokeLinecap,
+        strokeWidth: ptg === 0 ? 0 : strokeWidth,
+        fillOpacity: '0',
+        style: pathStyle,
+        ref: function ref(path) {
+          _this2.paths[index] = path;
+        }
+      });
+    });
   };
 
   Circle.prototype.render = function render() {
-    var _this2 = this;
-
     var _props2 = this.props,
         prefixCls = _props2.prefixCls,
         strokeWidth = _props2.strokeWidth,
         trailWidth = _props2.trailWidth,
-        percent = _props2.percent,
+        gapDegree = _props2.gapDegree,
+        gapPosition = _props2.gapPosition,
         trailColor = _props2.trailColor,
         strokeLinecap = _props2.strokeLinecap,
         style = _props2.style,
         className = _props2.className,
-        restProps = __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_objectWithoutProperties___default()(_props2, ['prefixCls', 'strokeWidth', 'trailWidth', 'percent', 'trailColor', 'strokeLinecap', 'style', 'className']);
+        restProps = __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_objectWithoutProperties___default()(_props2, ['prefixCls', 'strokeWidth', 'trailWidth', 'gapDegree', 'gapPosition', 'trailColor', 'strokeLinecap', 'style', 'className']);
 
-    var _getPathStyles = this.getPathStyles(),
-        pathString = _getPathStyles.pathString,
-        trailPathStyle = _getPathStyles.trailPathStyle,
-        strokePathStyle = _getPathStyles.strokePathStyle;
+    var _getPathStyles2 = this.getPathStyles(0, 100, trailColor, strokeWidth, gapDegree, gapPosition),
+        pathString = _getPathStyles2.pathString,
+        pathStyle = _getPathStyles2.pathStyle;
 
     delete restProps.percent;
-    delete restProps.gapDegree;
-    delete restProps.gapPosition;
     delete restProps.strokeColor;
     return __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement(
       'svg',
@@ -26723,19 +26793,9 @@ var Circle = function (_Component) {
         strokeLinecap: strokeLinecap,
         strokeWidth: trailWidth || strokeWidth,
         fillOpacity: '0',
-        style: trailPathStyle
+        style: pathStyle
       }),
-      __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement('path', {
-        className: prefixCls + '-circle-path',
-        d: pathString,
-        strokeLinecap: strokeLinecap,
-        strokeWidth: this.props.percent === 0 ? 0 : strokeWidth,
-        fillOpacity: '0',
-        ref: function ref(path) {
-          _this2.path = path;
-        },
-        style: strokePathStyle
-      })
+      this.getStokeList()
     );
   };
 
