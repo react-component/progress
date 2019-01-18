@@ -2,6 +2,9 @@
 
 ---
 
+## 2.3.0
+- `percentage` & `strokeColor` can now use array of value
+
 ## 2.2.0
 - when circle percent == 0, make stroke not visible
 
