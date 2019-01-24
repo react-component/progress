@@ -5,7 +5,7 @@ import enhancer from './enhancer';
 import { propTypes, defaultProps } from './types';
 
 class Circle extends Component {
-  getPathStyles(offset, percent, strokeColor, strokeWidth, gapDegree = 0, gapPosition) {
+  getPathStyles(offset, percent, strokeColor, strokeWidth, gapDegree = 0, gapPosition, sweepFlag) {
     const radius = 50 - (strokeWidth / 2);
     let beginPositionX = 0;
     let beginPositionY = -radius;
@@ -31,8 +31,8 @@ class Circle extends Component {
       default:
     }
     const pathString = `M 50,50 m ${beginPositionX},${beginPositionY}
-     a ${radius},${radius} 0 1 1 ${endPositionX},${-endPositionY}
-     a ${radius},${radius} 0 1 1 ${-endPositionX},${endPositionY}`;
+     a ${radius},${radius} 0 1 ${sweepFlag} ${endPositionX},${-endPositionY}
+     a ${radius},${radius} 0 1 ${sweepFlag} ${-endPositionX},${endPositionY}`;
     const len = Math.PI * 2 * radius;
 
     const pathStyle = {
@@ -51,7 +51,7 @@ class Circle extends Component {
   getStokeList() {
     const {
       prefixCls, percent, strokeColor, strokeWidth, strokeLinecap,
-      gapDegree, gapPosition,
+      gapDegree, gapPosition, sweepFlag,
     } = this.props;
     const percentList = Array.isArray(percent) ? percent : [percent];
     const strokeColorList = Array.isArray(strokeColor) ? strokeColor : [strokeColor];
@@ -60,7 +60,7 @@ class Circle extends Component {
     return percentList.map((ptg, index) => {
       const color = strokeColorList[index] || strokeColorList[strokeColorList.length - 1];
       const { pathString, pathStyle } = this.getPathStyles(
-        stackPtg, ptg, color, strokeWidth, gapDegree, gapPosition
+        stackPtg, ptg, color, strokeWidth, gapDegree, gapPosition, sweepFlag
       );
 
       stackPtg += ptg;
@@ -87,11 +87,11 @@ class Circle extends Component {
   render() {
     const {
       prefixCls, strokeWidth, trailWidth,
-      gapDegree, gapPosition,
+      gapDegree, gapPosition, sweepFlag,
       trailColor, strokeLinecap, style, className, ...restProps,
     } = this.props;
     const { pathString, pathStyle } = this.getPathStyles(
-      0, 100, trailColor, strokeWidth, gapDegree, gapPosition
+      0, 100, trailColor, strokeWidth, gapDegree, gapPosition, sweepFlag
     );
     delete restProps.percent;
     delete restProps.strokeColor;
@@ -120,11 +120,13 @@ class Circle extends Component {
 Circle.propTypes = {
   ...propTypes,
   gapPosition: PropTypes.oneOf(['top', 'bottom', 'left', 'right']),
+  sweepFlag: PropTypes.oneOf([0, 1]),
 };
 
 Circle.defaultProps = {
   ...defaultProps,
   gapPosition: 'top',
+  sweepFlag: 1,
 };
 
 export default enhancer(Circle);
