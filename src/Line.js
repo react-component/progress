@@ -16,6 +16,7 @@ class Line extends Component {
       style,
       trailColor,
       trailWidth,
+      transition,
       ...restProps,
     } = this.props;
 
@@ -53,7 +54,7 @@ class Line extends Component {
           const pathStyle = {
             strokeDasharray: `${ptg}px, 100px`,
             strokeDashoffset: `-${stackPtg}px`,
-            transition:
+            transition: transition ||
               'stroke-dashoffset 0.3s ease 0s, stroke-dasharray .3s ease 0s, stroke 0.3s linear',
           };
           const color = strokeColorList[index] || strokeColorList[strokeColorList.length - 1];
