@@ -111,7 +111,7 @@ class Circle extends Component {
           fillOpacity="0"
           style={pathStyle}
         />
-        {this.getStokeList()}
+        {this.getStokeList().reverse()}
       </svg>
     );
   }
