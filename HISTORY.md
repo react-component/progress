@@ -2,6 +2,10 @@
 
 ---
 
+## 2.3.1
+- publish TypeScript typings to the npm registry
+- fixed progress order in percent list
+
 ## 2.3.0
 - `percentage` & `strokeColor` can now use array of value
 
