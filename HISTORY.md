@@ -2,9 +2,11 @@
 
 ---
 
-## 2.3.1
-- publish TypeScript typings to the npm registry
+## 2.4.0
+
+- publish TypeScript typings to the npm registry.
 - fixed progress order in percent list
+- Add `transition` prop.
 
 ## 2.3.0
 - `percentage` & `strokeColor` can now use array of value
