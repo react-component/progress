@@ -45,15 +45,12 @@ class Example extends Component {
         </div>
         <h3>Circle Progress {percent}%</h3>
         <div style={circleContainerStyle}>
-          <Circle
-            percent={percent}
-            strokeWidth="6"
-            strokeLinecap="round"
-            strokeColor={color}
-          />
+          <Circle percent={percent} strokeWidth="6" strokeLinecap="round" strokeColor={color} />
         </div>
         <p>
-          <button onClick={this.changeState}>Change State</button>
+          <button type="button" onClick={this.changeState}>
+            Change State
+          </button>
         </p>
       </div>
     );

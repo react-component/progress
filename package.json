@@ -46,23 +46,29 @@
     "pub": "rc-tools run pub --babel-runtime",
     "lint": "rc-tools run lint",
     "lint:fix": "rc-tools run lint --fix",
-    "karma": "rc-test run karma",
-    "saucelabs": "rc-test run saucelabs",
-    "test": "rc-test run test",
-    "chrome-test": "rc-test run chrome-test",
-    "coverage": "rc-test run coverage"
+    "prettier": "rc-tools run prettier",
+    "test": "rc-tools run test",
+    "prepublish": "rc-tools run guard",
+    "coverage": "rc-tools run test --coverage",
+    "pre-commit": "rc-tools run pre-commit",
+    "lint-staged": "lint-staged"
   },
   "devDependencies": {
-    "expect.js": "~0.3.1",
+    "lint-staged": "^8.1.0",
     "pre-commit": "1.x",
-    "rc-test": "^6.0.1",
-    "rc-tools": "7.x",
+    "rc-tools": "9.x",
     "react": "^16.0.0",
     "react-dom": "^16.0.0"
   },
   "pre-commit": [
-    "lint"
+    "lint-staged"
   ],
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "npm run pre-commit",
+      "git add"
+    ]
+  },
   "dependencies": {
     "babel-runtime": "6.x",
     "prop-types": "^15.5.8"

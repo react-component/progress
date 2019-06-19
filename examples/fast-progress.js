@@ -18,12 +18,13 @@ class App extends Component {
   }
 
   increase() {
-    const percent = this.state.percent + 1;
-    if (percent >= 100) {
+    const { percent } = this.state;
+    const newPercent = percent + 1;
+    if (newPercent >= 100) {
       clearTimeout(this.tm);
       return;
     }
-    this.setState({ percent });
+    this.setState({ percent: newPercent });
     this.tm = setTimeout(this.increase, 10);
   }
 
@@ -35,11 +36,14 @@ class App extends Component {
   }
 
   render() {
+    const { percent } = this.state;
     return (
       <div style={{ margin: 10, width: 200 }}>
-        <Circle strokeWidth="6" percent={this.state.percent} />
-        <Line strokeWidth="4" percent={this.state.percent} />
-        <button onClick={this.restart}>Restart</button>
+        <Circle strokeWidth="6" percent={percent} />
+        <Line strokeWidth="4" percent={percent} />
+        <button type="button" onClick={this.restart}>
+          Restart
+        </button>
       </div>
     );
   }

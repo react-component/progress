@@ -36,7 +36,9 @@ class Example extends Component {
     return (
       <div>
         <p>
-          <button onClick={this.changeState}>Change State [{percent}]</button>
+          <button type="button" onClick={this.changeState}>
+            Change State [{percent}]
+          </button>
         </p>
         <div style={circleContainerStyle}>
           <Circle
