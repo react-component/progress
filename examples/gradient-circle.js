@@ -1,5 +1,5 @@
 import 'rc-progress/assets/index.less';
-import React, { Component } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import { Circle } from 'rc-progress';
 
