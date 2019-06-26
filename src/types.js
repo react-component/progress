@@ -18,7 +18,11 @@ export const propTypes = {
   className: PropTypes.string,
   percent: PropTypes.oneOfType([mixedType, PropTypes.arrayOf(mixedType)]),
   prefixCls: PropTypes.string,
-  strokeColor: PropTypes.oneOfType([PropTypes.string, PropTypes.arrayOf(PropTypes.string)]),
+  strokeColor: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.arrayOf(PropTypes.string),
+    PropTypes.object,
+  ]),
   strokeLinecap: PropTypes.oneOf(['butt', 'round', 'square']),
   strokeWidth: mixedType,
   style: PropTypes.object,

@@ -64,6 +64,9 @@ class Circle extends Component {
     const percentList = Array.isArray(percent) ? percent : [percent];
     const strokeColorList = Array.isArray(strokeColor) ? strokeColor : [strokeColor];
 
+    const stroke =
+      Object.prototype.toString.call(strokeColor) === '[object Object]' ? 'url(#gradient)' : '';
+
     let stackPtg = 0;
     return percentList.map((ptg, index) => {
       const color = strokeColorList[index] || strokeColorList[strokeColorList.length - 1];
@@ -83,6 +86,7 @@ class Circle extends Component {
           key={index}
           className={`${prefixCls}-circle-path`}
           d={pathString}
+          stroke={stroke}
           strokeLinecap={strokeLinecap}
           strokeWidth={ptg === 0 ? 0 : strokeWidth}
           fillOpacity="0"
@@ -106,6 +110,7 @@ class Circle extends Component {
       strokeLinecap,
       style,
       className,
+      strokeColor,
       ...restProps
     } = this.props;
     const { pathString, pathStyle } = getPathStyles(
@@ -117,7 +122,7 @@ class Circle extends Component {
       gapPosition,
     );
     delete restProps.percent;
-    delete restProps.strokeColor;
+    const isGradient = Object.prototype.toString.call(strokeColor) === '[object Object]';
     return (
       <svg
         className={`${prefixCls}-circle ${className}`}
@@ -125,6 +130,15 @@ class Circle extends Component {
         style={style}
         {...restProps}
       >
+        {isGradient && (
+          <defs>
+            <linearGradient id="gradient" x1="100%" y1="0%" x2="0%" y2="0%">
+              {Object.keys(strokeColor).map((key, index) => (
+                <stop key={index} offset={key} stopColor={strokeColor[key]} />
+              ))}
+            </linearGradient>
+          </defs>
+        )}
         <path
           className={`${prefixCls}-circle-trail`}
           d={pathString}
