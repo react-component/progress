@@ -25765,6 +25765,7 @@ function (_Component) {
           gapPosition = _this$props.gapPosition;
       var percentList = Array.isArray(percent) ? percent : [percent];
       var strokeColorList = Array.isArray(strokeColor) ? strokeColor : [strokeColor];
+      var stroke = Object.prototype.toString.call(strokeColor) === '[object Object]' ? 'url(#gradient)' : '';
       var stackPtg = 0;
       return percentList.map(function (ptg, index) {
         var color = strokeColorList[index] || strokeColorList[strokeColorList.length - 1];
@@ -25778,6 +25779,7 @@ function (_Component) {
           key: index,
           className: "".concat(prefixCls, "-circle-path"),
           d: pathString,
+          stroke: stroke,
           strokeLinecap: strokeLinecap,
           strokeWidth: ptg === 0 ? 0 : strokeWidth,
           fillOpacity: "0",
@@ -25801,19 +25803,32 @@ function (_Component) {
           strokeLinecap = _this$props2.strokeLinecap,
           style = _this$props2.style,
           className = _this$props2.className,
-          restProps = _objectWithoutProperties(_this$props2, ["prefixCls", "strokeWidth", "trailWidth", "gapDegree", "gapPosition", "trailColor", "strokeLinecap", "style", "className"]);
+          strokeColor = _this$props2.strokeColor,
+          restProps = _objectWithoutProperties(_this$props2, ["prefixCls", "strokeWidth", "trailWidth", "gapDegree", "gapPosition", "trailColor", "strokeLinecap", "style", "className", "strokeColor"]);
 
       var _getPathStyles2 = getPathStyles(0, 100, trailColor, strokeWidth, gapDegree, gapPosition),
           pathString = _getPathStyles2.pathString,
           pathStyle = _getPathStyles2.pathStyle;
 
       delete restProps.percent;
-      delete restProps.strokeColor;
+      var isGradient = Object.prototype.toString.call(strokeColor) === '[object Object]';
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", _extends({
         className: "".concat(prefixCls, "-circle ").concat(className),
         viewBox: "0 0 100 100",
         style: style
-      }, restProps), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
+      }, restProps), isGradient && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("defs", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("linearGradient", {
+        id: "gradient",
+        x1: "100%",
+        y1: "0%",
+        x2: "0%",
+        y2: "0%"
+      }, Object.keys(strokeColor).map(function (key, index) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("stop", {
+          key: index,
+          offset: key,
+          stopColor: strokeColor[key]
+        });
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
         className: "".concat(prefixCls, "-circle-trail"),
         d: pathString,
         stroke: trailColor,
@@ -26113,7 +26128,7 @@ var propTypes = {
   className: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.string,
   percent: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.oneOfType([mixedType, prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.arrayOf(mixedType)]),
   prefixCls: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.string,
-  strokeColor: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.oneOfType([prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.string, prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.arrayOf(prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.string)]),
+  strokeColor: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.oneOfType([prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.string, prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.arrayOf(prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.string), prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.object]),
   strokeLinecap: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.oneOf(['butt', 'round', 'square']),
   strokeWidth: mixedType,
   style: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.object,

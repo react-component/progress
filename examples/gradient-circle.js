@@ -57,7 +57,7 @@
 /******/ 	// undefined = chunk not loaded, null = chunk preloaded/prefetched
 /******/ 	// Promise = chunk loading, 0 = chunk loaded
 /******/ 	var installedChunks = {
-/******/ 		"examples/simple": 0
+/******/ 		"examples/gradient-circle": 0
 /******/ 	};
 /******/
 /******/ 	var deferredModules = [];
@@ -148,17 +148,17 @@
 /******/
 /******/
 /******/ 	// add entry module to deferred list
-/******/ 	deferredModules.push([3,"common"]);
+/******/ 	deferredModules.push([2,"common"]);
 /******/ 	// run deferred modules when ready
 /******/ 	return checkDeferredModules();
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./examples/simple.js":
-/*!****************************!*\
-  !*** ./examples/simple.js ***!
-  \****************************/
+/***/ "./examples/gradient-circle.js":
+/*!*************************************!*\
+  !*** ./examples/gradient-circle.js ***!
+  \*************************************/
 /*! no exports provided */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -171,112 +171,55 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-dom */ "./node_modules/_react-dom@16.8.6@react-dom/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var rc_progress__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rc-progress */ "./index.js");
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (typeof call === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 
 
 
 
-
-var Example =
-/*#__PURE__*/
-function (_Component) {
-  _inherits(Example, _Component);
-
-  function Example() {
-    var _this;
-
-    _classCallCheck(this, Example);
-
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(Example).call(this));
-    _this.state = {
-      percent: 30,
-      color: '#3FC7FA'
-    };
-    _this.changeState = _this.changeState.bind(_assertThisInitialized(_this));
-    return _this;
-  }
-
-  _createClass(Example, [{
-    key: "changeState",
-    value: function changeState() {
-      var colorMap = ['#3FC7FA', '#85D262', '#FE8C6A'];
-      var value = parseInt(Math.random() * 100, 10);
-      this.setState({
-        percent: value,
-        color: colorMap[parseInt(Math.random() * 3, 10)]
-      });
+var Example = function Example() {
+  var circleContainerStyle = {
+    width: '250px',
+    height: '250px',
+    display: 'inline-block'
+  };
+  return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h3", null, "Circle Progress ", 90, "%"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+    style: circleContainerStyle
+  }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(rc_progress__WEBPACK_IMPORTED_MODULE_3__["Circle"], {
+    percent: 90,
+    strokeWidth: "6",
+    strokeLinecap: "round",
+    strokeColor: {
+      '0%': '#108ee9',
+      '100%': '#87d068'
     }
-  }, {
-    key: "render",
-    value: function render() {
-      var _this$state = this.state,
-          percent = _this$state.percent,
-          color = _this$state.color;
-      var containerStyle = {
-        width: '250px'
-      };
-      var circleContainerStyle = {
-        width: '250px',
-        height: '250px',
-        display: 'inline-block'
-      };
-      return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h3", null, "Line Progress ", percent, "%"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        style: containerStyle
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(rc_progress__WEBPACK_IMPORTED_MODULE_3__["Line"], {
-        percent: percent,
-        strokeWidth: "4",
-        strokeColor: color
-      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(rc_progress__WEBPACK_IMPORTED_MODULE_3__["Line"], {
-        percent: [percent / 2, percent / 2],
-        strokeWidth: "4",
-        strokeColor: [color, '#CCC']
-      })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h3", null, "Circle Progress ", percent, "%"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        style: circleContainerStyle
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(rc_progress__WEBPACK_IMPORTED_MODULE_3__["Circle"], {
-        percent: percent,
-        strokeWidth: "6",
-        strokeLinecap: "round",
-        strokeColor: color
-      })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-        type: "button",
-        onClick: this.changeState
-      }, "Change State")));
+  })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h3", null, "Circle Progress ", 100, "%"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+    style: circleContainerStyle
+  }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(rc_progress__WEBPACK_IMPORTED_MODULE_3__["Circle"], {
+    percent: 100,
+    strokeWidth: "6",
+    strokeLinecap: "round",
+    strokeColor: {
+      '100%': '#87d068',
+      '0%': '#108ee9'
     }
-  }]);
-
-  return Example;
-}(react__WEBPACK_IMPORTED_MODULE_1__["Component"]);
+  })));
+};
 
 react_dom__WEBPACK_IMPORTED_MODULE_2___default.a.render(react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(Example, null), document.getElementById('__react-content'));
 
 /***/ }),
 
-/***/ 3:
-/*!**********************************!*\
-  !*** multi ./examples/simple.js ***!
-  \**********************************/
+/***/ 2:
+/*!*******************************************!*\
+  !*** multi ./examples/gradient-circle.js ***!
+  \*******************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! ./examples/simple.js */"./examples/simple.js");
+module.exports = __webpack_require__(/*! ./examples/gradient-circle.js */"./examples/gradient-circle.js");
 
 
 /***/ })
 
 /******/ });
-//# sourceMappingURL=simple.js.map
+//# sourceMappingURL=gradient-circle.js.map

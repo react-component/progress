@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>simple.js - example - rc-progress@2.5.0</title>
+  <title>gradient-circle.js - example - rc-progress@2.5.0</title>
   <meta name="viewport"
         content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
   <meta charset="utf-8"/>
@@ -270,63 +270,45 @@ Monokai Sublime style. Derived from Monokai by noformnocontent http://nn.mit-lic
     <div class="example" id="__react-content"></div>
 
     <div class="highlight"><pre><code language="js"><span class="hljs-keyword">import</span> <span class="hljs-string">'rc-progress/assets/index.css'</span>;
-<span class="hljs-keyword">import</span> React, { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
+<span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
 <span class="hljs-keyword">import</span> ReactDOM <span class="hljs-keyword">from</span> <span class="hljs-string">'react-dom'</span>;
-<span class="hljs-keyword">import</span> { Line, Circle } <span class="hljs-keyword">from</span> <span class="hljs-string">'rc-progress'</span>;
+<span class="hljs-keyword">import</span> { Circle } <span class="hljs-keyword">from</span> <span class="hljs-string">'rc-progress'</span>;
 
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Example</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span> </span>{
-  constructor() {
-    <span class="hljs-keyword">super</span>();
-    <span class="hljs-keyword">this</span>.state = {
-      percent: <span class="hljs-number">30</span>,
-      color: <span class="hljs-string">'#3FC7FA'</span>,
-    };
-    <span class="hljs-keyword">this</span>.changeState = <span class="hljs-keyword">this</span>.changeState.bind(<span class="hljs-keyword">this</span>);
-  }
-
-  changeState() {
-    <span class="hljs-keyword">const</span> colorMap = [<span class="hljs-string">'#3FC7FA'</span>, <span class="hljs-string">'#85D262'</span>, <span class="hljs-string">'#FE8C6A'</span>];
-    <span class="hljs-keyword">const</span> value = <span class="hljs-built_in">parseInt</span>(<span class="hljs-built_in">Math</span>.random() * <span class="hljs-number">100</span>, <span class="hljs-number">10</span>);
-    <span class="hljs-keyword">this</span>.setState({
-      percent: value,
-      color: colorMap[<span class="hljs-built_in">parseInt</span>(<span class="hljs-built_in">Math</span>.random() * <span class="hljs-number">3</span>, <span class="hljs-number">10</span>)],
-    });
-  }
-
-  render() {
-    <span class="hljs-keyword">const</span> { percent, color } = <span class="hljs-keyword">this</span>.state;
-    <span class="hljs-keyword">const</span> containerStyle = {
-      width: <span class="hljs-string">'250px'</span>,
-    };
-    <span class="hljs-keyword">const</span> circleContainerStyle = {
-      width: <span class="hljs-string">'250px'</span>,
-      height: <span class="hljs-string">'250px'</span>,
-      display: <span class="hljs-string">'inline-block'</span>,
-    };
-    <span class="hljs-keyword">return</span> (
-      <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-title">h3</span>&gt;</span>Line Progress {percent}%<span class="hljs-tag">&lt;/<span class="hljs-title">h3</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">{containerStyle}</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-title">Line</span> <span class="hljs-attribute">percent</span>=<span class="hljs-value">{percent}</span> <span class="hljs-attribute">strokeWidth</span>=<span class="hljs-value">"4"</span> <span class="hljs-attribute">strokeColor</span>=<span class="hljs-value">{color}</span> /&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-title">Line</span>
-            <span class="hljs-attribute">percent</span>=<span class="hljs-value">{[percent</span> / <span class="hljs-attribute">2</span>, <span class="hljs-attribute">percent</span> / <span class="hljs-attribute">2</span>]}
-            <span class="hljs-attribute">strokeWidth</span>=<span class="hljs-value">"4"</span>
-            <span class="hljs-attribute">strokeColor</span>=<span class="hljs-value">{[color,</span> '#<span class="hljs-attribute">CCC</span>']}
-          /&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-title">h3</span>&gt;</span>Circle Progress {percent}%<span class="hljs-tag">&lt;/<span class="hljs-title">h3</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">{circleContainerStyle}</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-title">Circle</span> <span class="hljs-attribute">percent</span>=<span class="hljs-value">{percent}</span> <span class="hljs-attribute">strokeWidth</span>=<span class="hljs-value">"6"</span> <span class="hljs-attribute">strokeLinecap</span>=<span class="hljs-value">"round"</span> <span class="hljs-attribute">strokeColor</span>=<span class="hljs-value">{color}</span> /&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"button"</span> <span class="hljs-attribute">onClick</span>=<span class="hljs-value">{this.changeState}</span>&gt;</span>
-            Change State
-          <span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+<span class="hljs-keyword">const</span> Example = () =&gt; {
+  <span class="hljs-keyword">const</span> circleContainerStyle = {
+    width: <span class="hljs-string">'250px'</span>,
+    height: <span class="hljs-string">'250px'</span>,
+    display: <span class="hljs-string">'inline-block'</span>,
+  };
+  <span class="hljs-keyword">return</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">h3</span>&gt;</span>Circle Progress {90}%<span class="hljs-tag">&lt;/<span class="hljs-title">h3</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">{circleContainerStyle}</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">Circle</span>
+          <span class="hljs-attribute">percent</span>=<span class="hljs-value">{90}</span>
+          <span class="hljs-attribute">strokeWidth</span>=<span class="hljs-value">"6"</span>
+          <span class="hljs-attribute">strokeLinecap</span>=<span class="hljs-value">"round"</span>
+          <span class="hljs-attribute">strokeColor</span>=<span class="hljs-value">{{</span>
+            '<span class="hljs-attribute">0</span>%'<span class="hljs-attribute">:</span> '#<span class="hljs-attribute">108ee9</span>',
+            '<span class="hljs-attribute">100</span>%'<span class="hljs-attribute">:</span> '#<span class="hljs-attribute">87d068</span>',
+          }}
+        /&gt;</span>
       <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
-    )</span>;
-  }
-}
+      <span class="hljs-tag">&lt;<span class="hljs-title">h3</span>&gt;</span>Circle Progress {100}%<span class="hljs-tag">&lt;/<span class="hljs-title">h3</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">{circleContainerStyle}</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">Circle</span>
+          <span class="hljs-attribute">percent</span>=<span class="hljs-value">{100}</span>
+          <span class="hljs-attribute">strokeWidth</span>=<span class="hljs-value">"6"</span>
+          <span class="hljs-attribute">strokeLinecap</span>=<span class="hljs-value">"round"</span>
+          <span class="hljs-attribute">strokeColor</span>=<span class="hljs-value">{{</span>
+            '<span class="hljs-attribute">100</span>%'<span class="hljs-attribute">:</span> '#<span class="hljs-attribute">87d068</span>',
+            '<span class="hljs-attribute">0</span>%'<span class="hljs-attribute">:</span> '#<span class="hljs-attribute">108ee9</span>',
+          }}
+        /&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+  )</span>;
+};
 
 ReactDOM.render(<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">Example</span> /&gt;</span>, document.getElementById('__react-content'));
 </span></code></pre></div>
@@ -339,7 +321,7 @@ ReactDOM.render(<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-t
   </a>
   <script>FastClick.attach(document.body);</script>
   <script src="../common.js?nowrap"></script>
-  <script src="simple.js?nowrap"></script>
+  <script src="gradient-circle.js?nowrap"></script>
 </body>
 
 </html>
