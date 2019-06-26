@@ -78,5 +78,20 @@ describe('Progress', () => {
       });
       expect(circle.state.percent).toBe('30');
     });
+
+    it('circle support gradient color', () => {
+      const circle = ReactDOM.render(
+        <Circle
+          percent={90}
+          strokeWidth="6"
+          strokeLinecap="round"
+          strokeColor={{
+            '0%': '#108ee9',
+            '100%': '#87d068',
+          }}
+        />
+      , div);
+      expect(circle.props.percent).toBe(90);
+    })
   });
 });
