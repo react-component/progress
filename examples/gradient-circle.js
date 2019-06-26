@@ -4,19 +4,11 @@ import ReactDOM from 'react-dom';
 import { Circle } from 'rc-progress';
 
 class Example extends Component {
-  constructor() {
-    super();
-    this.state = {};
-  }
-
   render() {
-    const containerStyle = {
-      width: '250px'
-    };
     const circleContainerStyle = {
       width: '250px',
       height: '250px',
-      display: 'inline-block'
+      display: 'inline-block',
     };
     return (
       <div>
@@ -28,7 +20,7 @@ class Example extends Component {
             strokeLinecap="round"
             strokeColor={{
               '0%': '#108ee9',
-              '100%': '#87d068'
+              '100%': '#87d068',
             }}
           />
         </div>
@@ -40,7 +32,7 @@ class Example extends Component {
             strokeLinecap="round"
             strokeColor={{
               '100%': '#87d068',
-              '0%': '#108ee9'
+              '0%': '#108ee9',
             }}
           />
         </div>
