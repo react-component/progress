@@ -5,7 +5,7 @@ declare module 'rc-progress' {
     trailWidth?: number;
     className?: string;
     percent?: number | number[];
-    strokeColor?: string | string[];
+    strokeColor?: string | string[] | object;
     trailColor?: string;
     strokeLinecap?: 'butt' | 'square' | 'round';
     prefixCls?: string;
