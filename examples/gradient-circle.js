@@ -30,8 +30,8 @@ const Example = () => {
           strokeWidth="6"
           strokeLinecap="round"
           strokeColor={{
-            '100%': '#87d068',
-            '0%': '#108ee9',
+            '0%': '#87d068',
+            '100%': '#108ee9',
           }}
         />
       </div>

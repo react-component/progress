@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import enhancer from './enhancer';
 import { propTypes, defaultProps } from './types';
 
+let gradientSeed = 0;
+
 function getPathStyles(offset, percent, strokeColor, strokeWidth, gapDegree = 0, gapPosition) {
   const radius = 50 - strokeWidth / 2;
   let beginPositionX = 0;
@@ -51,6 +53,13 @@ function getPathStyles(offset, percent, strokeColor, strokeWidth, gapDegree = 0,
 class Circle extends Component {
   paths = {};
 
+  gradientId = 0;
+
+  constructor() {
+    super();
+    this.gradientId = gradientSeed++;
+  }
+
   getStokeList() {
     const {
       prefixCls,
@@ -64,8 +73,11 @@ class Circle extends Component {
     const percentList = Array.isArray(percent) ? percent : [percent];
     const strokeColorList = Array.isArray(strokeColor) ? strokeColor : [strokeColor];
 
+    const gradientId = this.gradientId;
     const stroke =
-      Object.prototype.toString.call(strokeColor) === '[object Object]' ? 'url(#gradient)' : '';
+      Object.prototype.toString.call(strokeColor) === '[object Object]'
+        ? `url(#gradient-${gradientId})`
+        : '';
 
     let stackPtg = 0;
     return percentList.map((ptg, index) => {
@@ -132,7 +144,7 @@ class Circle extends Component {
       >
         {isGradient && (
           <defs>
-            <linearGradient id="gradient" x1="100%" y1="0%" x2="0%" y2="0%">
+            <linearGradient id={`gradient-${this.gradientId}`} x1="100%" y1="0%" x2="0%" y2="0%">
               {Object.keys(strokeColor).map((key, index) => (
                 <stop key={index} offset={key} stopColor={strokeColor[key]} />
               ))}
