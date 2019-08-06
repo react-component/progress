@@ -72,11 +72,9 @@ class Circle extends Component {
     } = this.props;
     const percentList = Array.isArray(percent) ? percent : [percent];
     const strokeColorList = Array.isArray(strokeColor) ? strokeColor : [strokeColor];
-
-    const gradientId = this.gradientId;
     const stroke =
       Object.prototype.toString.call(strokeColor) === '[object Object]'
-        ? `url(#gradient-${gradientId})`
+        ? `url(#gradient-${this.gradientId})`
         : '';
 
     let stackPtg = 0;
