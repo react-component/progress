@@ -65,7 +65,8 @@ class Circle extends Component {
 
   constructor() {
     super();
-    this.gradientId = gradientSeed++;
+    this.gradientId = gradientSeed;
+    gradientSeed += 1;
   }
 
   getStokeList() {
