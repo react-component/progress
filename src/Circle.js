@@ -6,6 +6,14 @@ import { propTypes, defaultProps } from './types';
 
 let gradientSeed = 0;
 
+function stripPercentToNumber(percent) {
+  return +percent.replace('%', '');
+}
+
+function toArray(symArray) {
+  return Array.isArray(symArray) ? symArray : [symArray];
+}
+
 function getPathStyles(offset, percent, strokeColor, strokeWidth, gapDegree = 0, gapPosition) {
   const radius = 50 - strokeWidth / 2;
   let beginPositionX = 0;
@@ -70,16 +78,16 @@ class Circle extends Component {
       gapDegree,
       gapPosition,
     } = this.props;
-    const percentList = Array.isArray(percent) ? percent : [percent];
-    const strokeColorList = Array.isArray(strokeColor) ? strokeColor : [strokeColor];
-    const stroke =
-      Object.prototype.toString.call(strokeColor) === '[object Object]'
-        ? `url(#gradient-${this.gradientId})`
-        : '';
+    const percentList = toArray(percent);
+    const strokeColorList = toArray(strokeColor);
 
     let stackPtg = 0;
     return percentList.map((ptg, index) => {
       const color = strokeColorList[index] || strokeColorList[strokeColorList.length - 1];
+      const stroke =
+        Object.prototype.toString.call(color) === '[object Object]'
+          ? `url(#gradient-${this.gradientId})`
+          : '';
       const { pathString, pathStyle } = getPathStyles(
         stackPtg,
         ptg,
@@ -132,7 +140,11 @@ class Circle extends Component {
       gapPosition,
     );
     delete restProps.percent;
-    const isGradient = Object.prototype.toString.call(strokeColor) === '[object Object]';
+    const strokeColorList = toArray(strokeColor);
+    const gradient = strokeColorList.find(
+      color => Object.prototype.toString.call(color) === '[object Object]',
+    );
+
     return (
       <svg
         className={`${prefixCls}-circle ${className}`}
@@ -140,12 +152,14 @@ class Circle extends Component {
         style={style}
         {...restProps}
       >
-        {isGradient && (
+        {gradient && (
           <defs>
             <linearGradient id={`gradient-${this.gradientId}`} x1="100%" y1="0%" x2="0%" y2="0%">
-              {Object.keys(strokeColor).map((key, index) => (
-                <stop key={index} offset={key} stopColor={strokeColor[key]} />
-              ))}
+              {Object.keys(gradient)
+                .sort((a, b) => stripPercentToNumber(a) - stripPercentToNumber(b))
+                .map((key, index) => (
+                  <stop key={index} offset={key} stopColor={gradient[key]} />
+                ))}
             </linearGradient>
           </defs>
         )}

@@ -30,9 +30,24 @@ const Example = () => {
           strokeWidth="6"
           strokeLinecap="round"
           strokeColor={{
-            '0%': '#87d068',
             '100%': '#108ee9',
+            '0%': '#87d068',
           }}
+        />
+      </div>
+      <h3>Circle With Success {20}%</h3>
+      <div style={circleContainerStyle}>
+        <Circle
+          percent={[65, 100]}
+          strokeWidth="6"
+          strokeLinecap="round"
+          strokeColor={[
+            '#87d068',
+            {
+              '100%': '#108ee9',
+              '0%': '#87d068',
+            },
+          ]}
         />
       </div>
     </div>
