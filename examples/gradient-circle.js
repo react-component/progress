@@ -35,7 +35,7 @@ const Example = () => {
           }}
         />
       </div>
-      <h3>Circle With Success {20}%</h3>
+      <h3>Circle With Success Percent {65}%</h3>
       <div style={circleContainerStyle}>
         <Circle
           percent={[65, 100]}
