@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>gradient-circle.js - example - rc-progress@2.5.1</title>
+  <title>gradient-circle.js - example - rc-progress@2.5.2</title>
   <meta name="viewport"
         content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
   <meta charset="utf-8"/>
@@ -263,7 +263,7 @@ Monokai Sublime style. Derived from Monokai by noformnocontent http://nn.mit-lic
 <body>
   <div class="container">
     <div class="header">
-      <h1>rc-progress@2.5.1</h1>
+      <h1>rc-progress@2.5.2</h1>
 
       <p>progress ui component for react</p>
     </div>
@@ -301,9 +301,24 @@ Monokai Sublime style. Derived from Monokai by noformnocontent http://nn.mit-lic
           <span class="hljs-attribute">strokeWidth</span>=<span class="hljs-value">"6"</span>
           <span class="hljs-attribute">strokeLinecap</span>=<span class="hljs-value">"round"</span>
           <span class="hljs-attribute">strokeColor</span>=<span class="hljs-value">{{</span>
-            '<span class="hljs-attribute">100</span>%'<span class="hljs-attribute">:</span> '#<span class="hljs-attribute">87d068</span>',
-            '<span class="hljs-attribute">0</span>%'<span class="hljs-attribute">:</span> '#<span class="hljs-attribute">108ee9</span>',
+            '<span class="hljs-attribute">100</span>%'<span class="hljs-attribute">:</span> '#<span class="hljs-attribute">108ee9</span>',
+            '<span class="hljs-attribute">0</span>%'<span class="hljs-attribute">:</span> '#<span class="hljs-attribute">87d068</span>',
           }}
+        /&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">h3</span>&gt;</span>Circle With Success Percent {65}%<span class="hljs-tag">&lt;/<span class="hljs-title">h3</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">{circleContainerStyle}</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">Circle</span>
+          <span class="hljs-attribute">percent</span>=<span class="hljs-value">{[65,</span> <span class="hljs-attribute">100</span>]}
+          <span class="hljs-attribute">strokeWidth</span>=<span class="hljs-value">"6"</span>
+          <span class="hljs-attribute">strokeLinecap</span>=<span class="hljs-value">"round"</span>
+          <span class="hljs-attribute">strokeColor</span>=<span class="hljs-value">{[</span>
+            '#<span class="hljs-attribute">87d068</span>',
+            {
+              '<span class="hljs-attribute">100</span>%'<span class="hljs-attribute">:</span> '#<span class="hljs-attribute">108ee9</span>',
+              '<span class="hljs-attribute">0</span>%'<span class="hljs-attribute">:</span> '#<span class="hljs-attribute">87d068</span>',
+            },
+          ]}
         /&gt;</span>
       <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
