@@ -87,7 +87,7 @@ class Circle extends Component {
       const color = strokeColorList[index] || strokeColorList[strokeColorList.length - 1];
       const stroke =
         Object.prototype.toString.call(color) === '[object Object]'
-          ? `url(#gradient-${this.gradientId})`
+          ? `url(#${prefixCls}-gradient-${this.gradientId})`
           : '';
       const { pathString, pathStyle } = getPathStyles(
         stackPtg,
@@ -155,7 +155,13 @@ class Circle extends Component {
       >
         {gradient && (
           <defs>
-            <linearGradient id={`gradient-${this.gradientId}`} x1="100%" y1="0%" x2="0%" y2="0%">
+            <linearGradient
+              id={`${prefixCls}-gradient-${this.gradientId}`}
+              x1="100%"
+              y1="0%"
+              x2="0%"
+              y2="0%"
+            >
               {Object.keys(gradient)
                 .sort((a, b) => stripPercentToNumber(a) - stripPercentToNumber(b))
                 .map((key, index) => (
