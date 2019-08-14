@@ -83,25 +83,7 @@ describe('Progress', () => {
       expect(circle.state.percent).toBe('30');
     });
 
-    it('circle support gradient color', () => {
-      ReactDOM.render(
-        <Circle
-          percent={90}
-          strokeWidth="6"
-          strokeLinecap="round"
-          strokeColor={{
-            '0%': '#108ee9',
-            '100%': '#87d068',
-          }}
-        />,
-        div,
-      );
-
-      // Since it's the 7th circle.
-      expect(getGradientIdFromDef(div.querySelector('defs'))).toBe(`rc-progress-gradient-6`);
-    });
-
-    it('should circles have different gradient IDs', () => {
+    it('should gradient works and circles have different gradient IDs', () => {
       ReactDOM.render(
         <>
           <Circle
@@ -129,6 +111,9 @@ describe('Progress', () => {
       const gradientDefs = div.querySelectorAll('defs');
       const idFirst = getGradientIdFromDef(gradientDefs[0]);
       const idSecond = getGradientIdFromDef(gradientDefs[1]);
+      const idRE = /^rc-progress-gradient-\d{1,}$/;
+      expect(idFirst).toMatch(idRE);
+      expect(idSecond).toMatch(idRE);
       expect(idFirst === idSecond).toBeFalsy();
     });
   });
