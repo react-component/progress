@@ -3,6 +3,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Line, Circle } from '../src';
 
+function getGradientIdFromDef(def) {
+  return def.firstElementChild.attributes.getNamedItem('id').value;
+}
+
 describe('Progress', () => {
   let div = null;
   beforeEach(() => {
@@ -79,19 +83,38 @@ describe('Progress', () => {
       expect(circle.state.percent).toBe('30');
     });
 
-    it('circle support gradient color', () => {
-      const circle = ReactDOM.render(
-        <Circle
-          percent={90}
-          strokeWidth="6"
-          strokeLinecap="round"
-          strokeColor={{
-            '0%': '#108ee9',
-            '100%': '#87d068',
-          }}
-        />
-      , div);
-      expect(circle.props.percent).toBe(90);
-    })
+    it('should gradient works and circles have different gradient IDs', () => {
+      ReactDOM.render(
+        <>
+          <Circle
+            percent={90}
+            strokeWidth="6"
+            strokeLinecap="round"
+            strokeColor={{
+              '0%': '#108ee9',
+              '100%': '#87d068',
+            }}
+          />
+          <Circle
+            percent={90}
+            strokeWidth="6"
+            strokeLinecap="round"
+            strokeColor={{
+              '0%': '#108ee9',
+              '100%': '#87d068',
+            }}
+          />
+        </>,
+        div,
+      );
+
+      const gradientDefs = div.querySelectorAll('defs');
+      const idFirst = getGradientIdFromDef(gradientDefs[0]);
+      const idSecond = getGradientIdFromDef(gradientDefs[1]);
+      const idRE = /^rc-progress-gradient-\d{1,}$/;
+      expect(idFirst).toMatch(idRE);
+      expect(idSecond).toMatch(idRE);
+      expect(idFirst === idSecond).toBeFalsy();
+    });
   });
 });
