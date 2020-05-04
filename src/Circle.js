@@ -107,7 +107,8 @@ class Circle extends Component {
           d={pathString}
           stroke={stroke}
           strokeLinecap={strokeLinecap}
-          strokeWidth={ptg === 0 ? 0 : strokeWidth}
+          strokeWidth={strokeWidth}
+          opacity={ptg === 0 ? 0 : 1}
           fillOpacity="0"
           style={pathStyle}
           ref={path => {
