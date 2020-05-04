@@ -5,7 +5,8 @@ Progress Bar.
 [![NPM version][npm-image]][npm-url]
 [![build status][travis-image]][travis-url]
 [![Test coverage][coveralls-image]][coveralls-url]
-[![gemnasium deps][gemnasium-image]][gemnasium-url]
+[![Dependencies][david-image]](david-url)
+[![DevDependencies][david-dev-image]][david-dev-url]
 [![node version][node-image]][node-url]
 [![npm download][download-image]][download-url]
 
@@ -15,8 +16,10 @@ Progress Bar.
 [travis-url]: https://travis-ci.org/react-component/progress
 [coveralls-image]: https://img.shields.io/coveralls/react-component/progress.svg?style=flat-square
 [coveralls-url]: https://coveralls.io/r/react-component/progress?branch=master
-[gemnasium-image]: http://img.shields.io/gemnasium/react-component/progress.svg?style=flat-square
-[gemnasium-url]: https://gemnasium.com/react-component/progress
+[david-url]: https://david-dm.org/react-component/progress
+[david-image]: https://img.shields.io/david/react-component/progress.svg?style=flat-square
+[david-dev-url]: https://david-dm.org/react-component/progress?type=dev
+[david-dev-image]: https://img.shields.io/david/react-component/progress.svg?style=flat-square&type=dev
 [node-image]: https://img.shields.io/badge/node.js-%3E=_0.10-green.svg?style=flat-square
 [node-url]: http://nodejs.org/download/
 [download-image]: https://img.shields.io/npm/dm/rc-progress.svg?style=flat-square
