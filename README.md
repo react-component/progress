@@ -8,6 +8,7 @@ Progress Bar.
 [![Dependencies][david-image]](david-url)
 [![DevDependencies][david-dev-image]][david-dev-url]
 [![npm download][download-image]][download-url]
+[![bundle size][bundlephobia-image]][bundlephobia-url]
 
 [npm-image]: http://img.shields.io/npm/v/rc-progress.svg?style=flat-square
 [npm-url]: http://npmjs.org/package/rc-progress
@@ -21,6 +22,8 @@ Progress Bar.
 [david-dev-image]: https://img.shields.io/david/react-component/progress.svg?style=flat-square&type=dev
 [download-image]: https://img.shields.io/npm/dm/rc-progress.svg?style=flat-square
 [download-url]: https://npmjs.org/package/rc-progress
+[bundlephobia-url]: https://bundlephobia.com/result?p=rc-progress
+[bundlephobia-image]: https://badgen.net/bundlephobia/minzip/rc-progress
 
 ## Example
 
