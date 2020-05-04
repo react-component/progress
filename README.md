@@ -17,9 +17,9 @@ Progress Bar.
 [coveralls-image]: https://img.shields.io/coveralls/react-component/progress.svg?style=flat-square
 [coveralls-url]: https://coveralls.io/r/react-component/progress?branch=master
 [david-url]: https://david-dm.org/react-component/progress
-[david-image]: https://img.shields.io/david/react-component/progress.svg?style=flat-square
+[david-image]: https://david-dm.org/react-component/progress/status.svg?style=flat-square
 [david-dev-url]: https://david-dm.org/react-component/progress?type=dev
-[david-dev-image]: https://img.shields.io/david/react-component/progress.svg?style=flat-square&type=dev
+[david-dev-image]: https://david-dm.org/react-component/progress/dev-status.svg?style=flat-square
 [download-image]: https://img.shields.io/npm/dm/rc-progress.svg?style=flat-square
 [download-url]: https://npmjs.org/package/rc-progress
 [bundlephobia-url]: https://bundlephobia.com/result?p=rc-progress
