@@ -1,6 +1,6 @@
 {
   "name": "rc-progress",
-  "version": "2.5.2",
+  "version": "2.5.3",
   "description": "progress ui component for react",
   "keywords": [
     "react",
@@ -65,8 +65,7 @@
   ],
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
-      "npm run pre-commit",
-      "git add"
+      "npm run pre-commit"
     ]
   },
   "dependencies": {
