@@ -1,8 +1,7 @@
 /* eslint react/prop-types: 0 */
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import enhancer from './enhancer';
-import { propTypes, defaultProps } from './types';
+import React, { useMemo } from 'react';
+import classNames from 'classnames';
+import { useTransitionDuration, defaultProps } from './common';
 
 let gradientSeed = 0;
 
@@ -58,142 +57,105 @@ function getPathStyles(offset, percent, strokeColor, strokeWidth, gapDegree = 0,
   };
 }
 
-class Circle extends Component {
-  paths = {};
-
-  gradientId = 0;
-
-  constructor() {
-    super();
-    this.gradientId = gradientSeed;
+const Circle = ({
+  prefixCls,
+  strokeWidth,
+  trailWidth,
+  gapDegree,
+  gapPosition,
+  trailColor,
+  strokeLinecap,
+  style,
+  className,
+  strokeColor,
+  percent,
+  ...restProps
+}) => {
+  const gradientId = useMemo(() => {
     gradientSeed += 1;
-  }
+    return gradientSeed;
+  }, []);
+  const { pathString, pathStyle } = getPathStyles(
+    0,
+    100,
+    trailColor,
+    strokeWidth,
+    gapDegree,
+    gapPosition,
+  );
+  const percentList = toArray(percent);
+  const strokeColorList = toArray(strokeColor);
+  const gradient = strokeColorList.find(
+    color => Object.prototype.toString.call(color) === '[object Object]',
+  );
 
-  getStokeList() {
-    const {
-      prefixCls,
-      percent,
-      strokeColor,
-      strokeWidth,
-      strokeLinecap,
-      gapDegree,
-      gapPosition,
-    } = this.props;
-    const percentList = toArray(percent);
-    const strokeColorList = toArray(strokeColor);
+  const [paths] = useTransitionDuration(percentList);
 
+  const getStokeList = () => {
     let stackPtg = 0;
     return percentList.map((ptg, index) => {
       const color = strokeColorList[index] || strokeColorList[strokeColorList.length - 1];
       const stroke =
         Object.prototype.toString.call(color) === '[object Object]'
-          ? `url(#${prefixCls}-gradient-${this.gradientId})`
+          ? `url(#${prefixCls}-gradient-${gradientId})`
           : '';
-      const { pathString, pathStyle } = getPathStyles(
-        stackPtg,
-        ptg,
-        color,
-        strokeWidth,
-        gapDegree,
-        gapPosition,
-      );
-
+      const pathStyles = getPathStyles(stackPtg, ptg, color, strokeWidth, gapDegree, gapPosition);
       stackPtg += ptg;
-
       return (
         <path
           key={index}
           className={`${prefixCls}-circle-path`}
-          d={pathString}
+          d={pathStyles.pathString}
           stroke={stroke}
           strokeLinecap={strokeLinecap}
           strokeWidth={strokeWidth}
           opacity={ptg === 0 ? 0 : 1}
           fillOpacity="0"
-          style={pathStyle}
-          ref={path => {
-            this.paths[index] = path;
-          }}
+          style={pathStyles.pathStyle}
+          ref={paths[index]}
         />
       );
     });
-  }
+  };
 
-  render() {
-    const {
-      prefixCls,
-      strokeWidth,
-      trailWidth,
-      gapDegree,
-      gapPosition,
-      trailColor,
-      strokeLinecap,
-      style,
-      className,
-      strokeColor,
-      ...restProps
-    } = this.props;
-    const { pathString, pathStyle } = getPathStyles(
-      0,
-      100,
-      trailColor,
-      strokeWidth,
-      gapDegree,
-      gapPosition,
-    );
-    delete restProps.percent;
-    const strokeColorList = toArray(strokeColor);
-    const gradient = strokeColorList.find(
-      color => Object.prototype.toString.call(color) === '[object Object]',
-    );
-
-    return (
-      <svg
-        className={`${prefixCls}-circle ${className}`}
-        viewBox="0 0 100 100"
-        style={style}
-        {...restProps}
-      >
-        {gradient && (
-          <defs>
-            <linearGradient
-              id={`${prefixCls}-gradient-${this.gradientId}`}
-              x1="100%"
-              y1="0%"
-              x2="0%"
-              y2="0%"
-            >
-              {Object.keys(gradient)
-                .sort((a, b) => stripPercentToNumber(a) - stripPercentToNumber(b))
-                .map((key, index) => (
-                  <stop key={index} offset={key} stopColor={gradient[key]} />
-                ))}
-            </linearGradient>
-          </defs>
-        )}
-        <path
-          className={`${prefixCls}-circle-trail`}
-          d={pathString}
-          stroke={trailColor}
-          strokeLinecap={strokeLinecap}
-          strokeWidth={trailWidth || strokeWidth}
-          fillOpacity="0"
-          style={pathStyle}
-        />
-        {this.getStokeList().reverse()}
-      </svg>
-    );
-  }
-}
-
-Circle.propTypes = {
-  ...propTypes,
-  gapPosition: PropTypes.oneOf(['top', 'bottom', 'left', 'right']),
+  return (
+    <svg
+      className={classNames(`${prefixCls}-circle`, className)}
+      viewBox="0 0 100 100"
+      style={style}
+      {...restProps}
+    >
+      {gradient && (
+        <defs>
+          <linearGradient
+            id={`${prefixCls}-gradient-${gradientId}`}
+            x1="100%"
+            y1="0%"
+            x2="0%"
+            y2="0%"
+          >
+            {Object.keys(gradient)
+              .sort((a, b) => stripPercentToNumber(a) - stripPercentToNumber(b))
+              .map((key, index) => (
+                <stop key={index} offset={key} stopColor={gradient[key]} />
+              ))}
+          </linearGradient>
+        </defs>
+      )}
+      <path
+        className={`${prefixCls}-circle-trail`}
+        d={pathString}
+        stroke={trailColor}
+        strokeLinecap={strokeLinecap}
+        strokeWidth={trailWidth || strokeWidth}
+        fillOpacity="0"
+        style={pathStyle}
+      />
+      {getStokeList().reverse()}
+    </svg>
+  );
 };
 
-Circle.defaultProps = {
-  ...defaultProps,
-  gapPosition: 'top',
-};
+Circle.defaultProps = defaultProps;
 
-export default enhancer(Circle);
+export default Circle;

@@ -2,6 +2,10 @@
 
 ---
 
+## 2.6.0
+
+- Refactor to hooks.
+
 ## 2.5.0
 
 - Progress.Circle supports gradient color now. #73

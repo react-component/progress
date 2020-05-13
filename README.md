@@ -12,8 +12,10 @@ Progress Bar.
 
 [npm-image]: http://img.shields.io/npm/v/rc-progress.svg?style=flat-square
 [npm-url]: http://npmjs.org/package/rc-progress
-[travis-image]: https://img.shields.io/travis/react-component/progress.svg?style=flat-square
+[travis-image]: https://img.shields.io/travis/react-component/progress/master?style=flat-square
 [travis-url]: https://travis-ci.org/react-component/progress
+[circleci-image]: https://img.shields.io/circleci/react-component/progress/master?style=flat-square
+[circleci-url]: https://circleci.com/gh/react-component/progress
 [coveralls-image]: https://img.shields.io/coveralls/react-component/progress.svg?style=flat-square
 [coveralls-url]: https://coveralls.io/r/react-component/progress?branch=master
 [david-url]: https://david-dm.org/react-component/progress
@@ -43,14 +45,22 @@ http://react-component.github.io/progress/
 
 ## Usage
 
-```jsx
+```js
 import { Line, Circle } from 'rc-progress';
 
-ReactDOM.render(<div>
-  <Line percent="10" strokeWidth="4" strokeColor="#D3D3D3" />
-  <Circle percent="10" strokeWidth="4" strokeColor="#D3D3D3" />
-</div>, container);
+export default () => (
+  <>
+     <Line percent="10" strokeWidth="4" strokeColor="#D3D3D3" />
+     <Circle percent="10" strokeWidth="4" strokeColor="#D3D3D3" /> 
+  </>
+);
 ```
+
+## Compatibility
+
+| [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png" alt="IE / Edge" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br>IE / Edge | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png" alt="Firefox" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br>Firefox | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png" alt="Chrome" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br>Chrome | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_48x48.png" alt="Safari" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br>Safari | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/electron/electron_48x48.png" alt="Electron" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br>Electron |
+| --- | --- | --- | --- | --- |
+| IE11, Edge | last 2 versions | last 2 versions | last 2 versions | last 2 versions |
 
 ## API
 
