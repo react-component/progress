@@ -20,50 +20,27 @@ describe('Progress', () => {
   });
 
   describe('Line', () => {
-    it('works', () => {
-      const line = ReactDOM.render(<Line percent="30" strokeWidth="1" />, div);
-      expect(line.props.percent).toBe('30');
+    it('change with animation', () => {
+      class Demo extends React.Component {
+        state = {
+          percent: '0',
+        };
+
+        render() {
+          const { percent } = this.state;
+          return <Line percent={percent} strokeWidth="1" />;
+        }
+      }
+      const line = ReactDOM.render(<Demo />, div);
+      expect(line.state.percent).toBe('0');
+      line.setState({
+        percent: '30',
+      });
+      expect(line.state.percent).toBe('30');
     });
   });
 
   describe('Circle', () => {
-    it('works', () => {
-      const circle = ReactDOM.render(<Circle percent="30" strokeWidth="1" />, div);
-      expect(circle.props.percent).toBe('30');
-    });
-
-    it('gap degree bottom', () => {
-      const circle = ReactDOM.render(
-        <Circle percent="30" strokeWidth="1" gapDegree={70} gapPosition="bottom" />,
-        div,
-      );
-      expect(circle.props.percent).toBe('30');
-    });
-
-    it('gap degree top', () => {
-      const circle = ReactDOM.render(
-        <Circle percent="30" strokeWidth="1" gapDegree={70} gapPosition="top" />,
-        div,
-      );
-      expect(circle.props.percent).toBe('30');
-    });
-
-    it('gap degree left', () => {
-      const circle = ReactDOM.render(
-        <Circle percent="30" strokeWidth="1" gapDegree={70} gapPosition="left" />,
-        div,
-      );
-      expect(circle.props.percent).toBe('30');
-    });
-
-    it('gap degree right', () => {
-      const circle = ReactDOM.render(
-        <Circle percent="30" strokeWidth="1" gapDegree={70} gapPosition="right" />,
-        div,
-      );
-      expect(circle.props.percent).toBe('30');
-    });
-
     it('change with animation', () => {
       class Demo extends React.Component {
         state = {

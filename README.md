@@ -5,34 +5,27 @@ Progress Bar.
 [![NPM version][npm-image]][npm-url]
 [![build status][travis-image]][travis-url]
 [![Test coverage][coveralls-image]][coveralls-url]
-[![gemnasium deps][gemnasium-image]][gemnasium-url]
-[![node version][node-image]][node-url]
+[![Dependencies][david-image]][david-url]
+[![DevDependencies][david-dev-image]][david-dev-url]
 [![npm download][download-image]][download-url]
+[![bundle size][bundlephobia-image]][bundlephobia-url]
 
 [npm-image]: http://img.shields.io/npm/v/rc-progress.svg?style=flat-square
 [npm-url]: http://npmjs.org/package/rc-progress
-[travis-image]: https://img.shields.io/travis/react-component/progress.svg?style=flat-square
+[travis-image]: https://img.shields.io/travis/react-component/progress/master?style=flat-square
 [travis-url]: https://travis-ci.org/react-component/progress
+[circleci-image]: https://img.shields.io/circleci/react-component/progress/master?style=flat-square
+[circleci-url]: https://circleci.com/gh/react-component/progress
 [coveralls-image]: https://img.shields.io/coveralls/react-component/progress.svg?style=flat-square
 [coveralls-url]: https://coveralls.io/r/react-component/progress?branch=master
-[gemnasium-image]: http://img.shields.io/gemnasium/react-component/progress.svg?style=flat-square
-[gemnasium-url]: https://gemnasium.com/react-component/progress
-[node-image]: https://img.shields.io/badge/node.js-%3E=_0.10-green.svg?style=flat-square
-[node-url]: http://nodejs.org/download/
+[david-url]: https://david-dm.org/react-component/progress
+[david-image]: https://david-dm.org/react-component/progress/status.svg?style=flat-square
+[david-dev-url]: https://david-dm.org/react-component/progress?type=dev
+[david-dev-image]: https://david-dm.org/react-component/progress/dev-status.svg?style=flat-square
 [download-image]: https://img.shields.io/npm/dm/rc-progress.svg?style=flat-square
 [download-url]: https://npmjs.org/package/rc-progress
-
-## Example
-
-http://react-component.github.io/progress/
-
-## Screenshots
-
-<img src="https://t.alipayobjects.com/images/T12p8gXjpgXXXXXXXX.gif" />
-
-## Browsers
-
-* support IE9+, Chrome, Firefox, Safari
+[bundlephobia-url]: https://bundlephobia.com/result?p=rc-progress
+[bundlephobia-image]: https://badgen.net/bundlephobia/minzip/rc-progress
 
 ## Install
 
@@ -40,14 +33,22 @@ http://react-component.github.io/progress/
 
 ## Usage
 
-```jsx
+```js
 import { Line, Circle } from 'rc-progress';
 
-ReactDOM.render(<div>
-  <Line percent="10" strokeWidth="4" strokeColor="#D3D3D3" />
-  <Circle percent="10" strokeWidth="4" strokeColor="#D3D3D3" />
-</div>, container);
+export default () => (
+  <>
+     <Line percent="10" strokeWidth="4" strokeColor="#D3D3D3" />
+     <Circle percent="10" strokeWidth="4" strokeColor="#D3D3D3" /> 
+  </>
+);
 ```
+
+## Compatibility
+
+| [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png" alt="IE / Edge" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br>IE / Edge | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png" alt="Firefox" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br>Firefox | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png" alt="Chrome" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br>Chrome | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_48x48.png" alt="Safari" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br>Safari | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/electron/electron_48x48.png" alt="Electron" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br>Electron |
+| --- | --- | --- | --- | --- |
+| IE11, Edge | last 2 versions | last 2 versions | last 2 versions | last 2 versions |
 
 ## API
 
