@@ -2,7 +2,7 @@
 
 ---
 
-## 2.6.0
+## 3.0.0
 
 - Refactor to hooks.
 
