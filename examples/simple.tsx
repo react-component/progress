@@ -1,7 +1,5 @@
-import 'rc-progress/assets/index.less';
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-import { Line, Circle } from 'rc-progress';
+import { Line, Circle } from '..';
 
 class Example extends Component {
   constructor() {
@@ -57,4 +55,4 @@ class Example extends Component {
   }
 }
 
-ReactDOM.render(<Example />, document.getElementById('__react-content'));
+export default Example;

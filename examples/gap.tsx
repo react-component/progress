@@ -1,12 +1,12 @@
-import 'rc-progress/assets/index.less';
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-import { Circle } from 'rc-progress';
+import { Circle } from '..';
 
 const colorMap = ['#3FC7FA', '#85D262', '#FE8C6A'];
+
 function getColor(index) {
   return colorMap[(index + colorMap.length) % colorMap.length];
 }
+
 class Example extends Component {
   constructor() {
     super();
@@ -87,4 +87,4 @@ class Example extends Component {
   }
 }
 
-ReactDOM.render(<Example />, document.getElementById('__react-content'));
+export default Example;

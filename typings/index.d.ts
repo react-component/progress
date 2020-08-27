@@ -1,4 +1,6 @@
 /* tslint:disable */
+/* eslint-disable react/prefer-stateless-function */
+// eslint-disable-next-line max-classes-per-file
 declare module 'rc-progress' {
   export interface RCProgressProps {
     strokeWidth?: number;
@@ -13,6 +15,7 @@ declare module 'rc-progress' {
     gapDegree?: number;
     gapPosition?: 'top' | 'right' | 'bottom' | 'left';
   }
+
   export class Line extends React.Component<RCProgressProps, {}> {}
   export class Circle extends React.Component<RCProgressProps, {}> {}
 }

@@ -1,7 +1,5 @@
-import 'rc-progress/assets/index.less';
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { Circle } from 'rc-progress';
+import { Circle } from '..';
 
 const Example = () => {
   const circleContainerStyle = {
@@ -9,6 +7,7 @@ const Example = () => {
     height: '250px',
     display: 'inline-block',
   };
+
   return (
     <div>
       <h3>Circle Progress {90}%</h3>
@@ -54,4 +53,4 @@ const Example = () => {
   );
 };
 
-ReactDOM.render(<Example />, document.getElementById('__react-content'));
+export default Example;

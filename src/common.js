@@ -13,6 +13,7 @@ export const defaultProps = {
 };
 
 export const useTransitionDuration = percentList => {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const paths = percentList.map(() => useRef());
   const prevTimeStamp = useRef();
   useEffect(() => {

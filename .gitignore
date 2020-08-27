@@ -28,3 +28,5 @@ lib
 es
 coverage/
 yarn.lock
+.storybook
+.doc

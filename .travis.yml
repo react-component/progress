@@ -23,3 +23,5 @@ env:
   matrix:
   - TEST_TYPE=lint
   - TEST_TYPE=test
+  - TEST_TYPE=coverage
+  - TEST_TYPE=compile
