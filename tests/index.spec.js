@@ -4,10 +4,6 @@ import React from 'react';
 import { mount } from 'enzyme';
 import { Line, Circle } from '../src';
 
-function getGradientIdFromDef(def) {
-  return def.firstElementChild.attributes.getNamedItem('id').value;
-}
-
 describe('Progress', () => {
   describe('Line', () => {
     it('change with animation', () => {
@@ -50,7 +46,7 @@ describe('Progress', () => {
     });
 
     it('should gradient works and circles have different gradient IDs', () => {
-      mount(
+      const c = mount(
         <>
           <Circle
             percent={90}
@@ -73,10 +69,9 @@ describe('Progress', () => {
         </>,
       );
 
-      const gradientDefs = document.querySelectorAll('defs');
-      console.log(gradientDefs);
-      const idFirst = getGradientIdFromDef(gradientDefs[0]);
-      const idSecond = getGradientIdFromDef(gradientDefs[1]);
+      const gradientDefs = c.find('defs');
+      const idFirst = gradientDefs.at(0).props().children.props.id;
+      const idSecond = gradientDefs.at(1).props().children.props.id;
       const idRE = /^rc-progress-gradient-\d{1,}$/;
       expect(idFirst).toMatch(idRE);
       expect(idSecond).toMatch(idRE);
