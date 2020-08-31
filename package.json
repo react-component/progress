@@ -62,6 +62,6 @@
     "rc-tools": "9.x",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
-    "typescript": "^3.7.2"
+    "typescript": "^3.9.2"
   }
 }
