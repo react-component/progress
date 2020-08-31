@@ -56,7 +56,7 @@
     "enzyme-adapter-react-16": "^1.0.1",
     "enzyme-to-json": "^3.1.2",
     "eslint": "^7.1.0",
-    "father": "^2.29.6",
+    "father": "^2.22.0",
     "np": "^6.5.0",
     "rc-tools": "9.x",
     "react": "^16.9.0",
