@@ -4,6 +4,7 @@ module.exports = {
   ...base,
   rules: {
     ...base.rules,
+    "arrow-parens": 0,
     "react/no-array-index-key": 0,
     "react/sort-comp": 0,
     "@typescript-eslint/no-explicit-any": 0,
@@ -15,6 +16,7 @@ module.exports = {
     "jsx-a11y/label-has-for": 0,
     "jsx-a11y/label-has-associated-control": 0,
     "import/no-extraneous-dependencies": 0,
-    "no-underscore-dangle": 0,
+    "jsx-a11y/no-noninteractive-tabindex": 0,
+    "jsx-a11y/no-autofocus": 0,
   },
 };
