@@ -55,12 +55,12 @@
     "enzyme": "^3.1.1",
     "enzyme-adapter-react-16": "^1.0.1",
     "enzyme-to-json": "^3.1.2",
-    "eslint": "^7.1.0",
-    "father": "^2.22.0",
+    "eslint": "^7.6.0",
+    "father": "^2.29.6",
     "np": "^6.5.0",
     "rc-tools": "9.x",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
-    "typescript": "^3.9.2"
+    "typescript": "^3.9.7"
   }
 }
