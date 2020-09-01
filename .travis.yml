@@ -5,11 +5,9 @@ sudo: false
 notifications:
   email:
   - yiminghe@gmail.com
-  - afc163@gmail.com
-  - yesmeck@gmail.com
 
 node_js:
-- 10
+- 12
 
 script:
 - |
@@ -19,7 +17,10 @@ script:
     else
       npm run $TEST_TYPE
     fi
+
 env:
   matrix:
   - TEST_TYPE=lint
   - TEST_TYPE=test
+  - TEST_TYPE=coverage
+  - TEST_TYPE=compile

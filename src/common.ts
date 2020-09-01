@@ -1,6 +1,7 @@
 import { useRef, useEffect } from 'react';
+import { ProgressProps } from './interface';
 
-export const defaultProps = {
+export const defaultProps: Partial<ProgressProps> = {
   className: '',
   percent: 0,
   prefixCls: 'rc-progress',
@@ -12,9 +13,10 @@ export const defaultProps = {
   trailWidth: 1,
 };
 
-export const useTransitionDuration = percentList => {
+export const useTransitionDuration = (percentList: number[]) => {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const paths = percentList.map(() => useRef());
-  const prevTimeStamp = useRef();
+  const prevTimeStamp = useRef(null);
   useEffect(() => {
     const now = Date.now();
     let updated = false;

@@ -1,24 +1,10 @@
 /* eslint-disable react/no-render-return-value */
+// eslint-disable-next-line max-classes-per-file
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { mount } from 'enzyme';
 import { Line, Circle } from '../src';
 
-function getGradientIdFromDef(def) {
-  return def.firstElementChild.attributes.getNamedItem('id').value;
-}
-
 describe('Progress', () => {
-  let div = null;
-  beforeEach(() => {
-    div = document.createElement('div');
-    document.body.appendChild(div);
-  });
-
-  afterEach(() => {
-    ReactDOM.unmountComponentAtNode(div);
-    document.body.removeChild(div);
-  });
-
   describe('Line', () => {
     it('change with animation', () => {
       class Demo extends React.Component {
@@ -31,12 +17,12 @@ describe('Progress', () => {
           return <Line percent={percent} strokeWidth="1" />;
         }
       }
-      const line = ReactDOM.render(<Demo />, div);
-      expect(line.state.percent).toBe('0');
-      line.setState({
-        percent: '30',
-      });
-      expect(line.state.percent).toBe('30');
+
+      const line = mount(<Demo />);
+      expect(line.state().percent).toBe('0');
+      line.setState({ percent: '30' });
+      expect(line.state().percent).toBe('30');
+      line.unmount();
     });
   });
 
@@ -52,16 +38,15 @@ describe('Progress', () => {
           return <Circle percent={percent} strokeWidth="1" />;
         }
       }
-      const circle = ReactDOM.render(<Demo />, div);
-      expect(circle.state.percent).toBe('0');
-      circle.setState({
-        percent: '30',
-      });
-      expect(circle.state.percent).toBe('30');
+      const circle = mount(<Demo />);
+      expect(circle.state().percent).toBe('0');
+      circle.setState({ percent: '30' });
+      expect(circle.state().percent).toBe('30');
+      circle.unmount();
     });
 
     it('should gradient works and circles have different gradient IDs', () => {
-      ReactDOM.render(
+      const c = mount(
         <>
           <Circle
             percent={90}
@@ -82,16 +67,53 @@ describe('Progress', () => {
             }}
           />
         </>,
-        div,
       );
 
-      const gradientDefs = div.querySelectorAll('defs');
-      const idFirst = getGradientIdFromDef(gradientDefs[0]);
-      const idSecond = getGradientIdFromDef(gradientDefs[1]);
+      const gradientDefs = c.find('defs');
+      const idFirst = gradientDefs.at(0).props().children.props.id;
+      const idSecond = gradientDefs.at(1).props().children.props.id;
       const idRE = /^rc-progress-gradient-\d{1,}$/;
       expect(idFirst).toMatch(idRE);
       expect(idSecond).toMatch(idRE);
       expect(idFirst === idSecond).toBeFalsy();
+    });
+
+    it('should show right gapPosition', () => {
+      const wrapper = mount(
+        <>
+          <Circle
+            percent={30}
+            gapDegree={70}
+            gapPosition="top"
+            strokeWidth="6"
+            strokeLinecap="square"
+          />
+          <br />
+          <Circle
+            percent={30}
+            gapDegree={70}
+            gapPosition="bottom"
+            strokeWidth="6"
+            strokeLinecap="square"
+          />
+          <Circle
+            percent={30}
+            gapDegree={70}
+            gapPosition="left"
+            strokeWidth="6"
+            strokeLinecap="square"
+          />
+          <Circle
+            percent={30}
+            gapDegree={70}
+            gapPosition="right"
+            strokeWidth="6"
+            strokeLinecap="square"
+          />
+        </>,
+      );
+
+      expect(wrapper).toMatchSnapshot();
     });
   });
 });

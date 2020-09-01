@@ -1,17 +1,17 @@
-import 'rc-progress/assets/index.less';
-import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-import { Line, Circle } from 'rc-progress';
+import * as React from 'react';
+import { Line, Circle, ProgressProps } from '../src';
 
-class App extends Component {
-  constructor() {
-    super();
+class App extends React.Component<ProgressProps, any> {
+  constructor(props) {
+    super(props);
     this.state = {
       percent: 0,
     };
     this.increase = this.increase.bind(this);
     this.restart = this.restart.bind(this);
   }
+
+  private tm: number;
 
   componentDidMount() {
     this.increase();
@@ -39,8 +39,8 @@ class App extends Component {
     const { percent } = this.state;
     return (
       <div style={{ margin: 10, width: 200 }}>
-        <Circle strokeWidth="6" percent={percent} />
-        <Line strokeWidth="4" percent={percent} />
+        <Circle strokeWidth={6} percent={percent} />
+        <Line strokeWidth={4} percent={percent} />
         <button type="button" onClick={this.restart}>
           Restart
         </button>
@@ -49,4 +49,4 @@ class App extends Component {
   }
 }
 
-ReactDOM.render(<App />, document.getElementById('__react-content'));
+export default App;

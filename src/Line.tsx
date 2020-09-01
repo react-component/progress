@@ -1,9 +1,9 @@
-/* eslint react/prop-types: 0 */
-import React from 'react';
+import * as React from 'react';
 import classNames from 'classnames';
 import { useTransitionDuration, defaultProps } from './common';
+import { ProgressProps } from './interface';
 
-const Line = ({
+const Line: React.FC<ProgressProps> = ({
   className,
   percent,
   prefixCls,
@@ -16,6 +16,7 @@ const Line = ({
   transition,
   ...restProps
 }) => {
+  // eslint-disable-next-line no-param-reassign
   delete restProps.gapPosition;
   const percentList = Array.isArray(percent) ? percent : [percent];
   const strokeColorList = Array.isArray(strokeColor) ? strokeColor : [strokeColor];
@@ -60,7 +61,7 @@ const Line = ({
             className={`${prefixCls}-line-path`}
             d={pathString}
             strokeLinecap={strokeLinecap}
-            stroke={color}
+            stroke={color as string}
             strokeWidth={strokeWidth}
             fillOpacity="0"
             ref={paths[index]}
@@ -73,5 +74,7 @@ const Line = ({
 };
 
 Line.defaultProps = defaultProps;
+
+Line.displayName = 'Line';
 
 export default Line;

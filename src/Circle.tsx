@@ -1,19 +1,26 @@
-/* eslint react/prop-types: 0 */
-import React, { useMemo } from 'react';
+import * as React from 'react';
 import classNames from 'classnames';
 import { useTransitionDuration, defaultProps } from './common';
+import { ProgressProps, GapPositionType } from './interface';
 
 let gradientSeed = 0;
 
-function stripPercentToNumber(percent) {
+function stripPercentToNumber(percent: string) {
   return +percent.replace('%', '');
 }
 
-function toArray(symArray) {
+function toArray(symArray: any) {
   return Array.isArray(symArray) ? symArray : [symArray];
 }
 
-function getPathStyles(offset, percent, strokeColor, strokeWidth, gapDegree = 0, gapPosition) {
+function getPathStyles(
+  offset: number,
+  percent: number,
+  strokeColor: string,
+  strokeWidth: number,
+  gapDegree = 0,
+  gapPosition: GapPositionType,
+) {
   const radius = 50 - strokeWidth / 2;
   let beginPositionX = 0;
   let beginPositionY = -radius;
@@ -57,7 +64,7 @@ function getPathStyles(offset, percent, strokeColor, strokeWidth, gapDegree = 0,
   };
 }
 
-const Circle = ({
+const Circle: React.FC<ProgressProps> = ({
   prefixCls,
   strokeWidth,
   trailWidth,
@@ -71,7 +78,7 @@ const Circle = ({
   percent,
   ...restProps
 }) => {
-  const gradientId = useMemo(() => {
+  const gradientId = React.useMemo(() => {
     gradientSeed += 1;
     return gradientSeed;
   }, []);
@@ -157,5 +164,7 @@ const Circle = ({
 };
 
 Circle.defaultProps = defaultProps;
+
+Circle.displayName = 'Circle';
 
 export default Circle;

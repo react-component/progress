@@ -1,11 +1,9 @@
-import 'rc-progress/assets/index.less';
-import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-import { Line, Circle } from 'rc-progress';
+import * as React from 'react';
+import { Line, Circle, ProgressProps } from '../src';
 
-class Example extends Component {
-  constructor() {
-    super();
+class Example extends React.Component<ProgressProps, any> {
+  constructor(props) {
+    super(props);
     this.state = {
       percent: 30,
       color: '#3FC7FA',
@@ -15,10 +13,10 @@ class Example extends Component {
 
   changeState() {
     const colorMap = ['#3FC7FA', '#85D262', '#FE8C6A'];
-    const value = parseInt(Math.random() * 100, 10);
+    const value = parseInt((Math.random() * 100).toString(), 10);
     this.setState({
       percent: value,
-      color: colorMap[parseInt(Math.random() * 3, 10)],
+      color: colorMap[parseInt((Math.random() * 3).toString(), 10)],
     });
   }
 
@@ -36,16 +34,16 @@ class Example extends Component {
       <div>
         <h3>Line Progress {percent}%</h3>
         <div style={containerStyle}>
-          <Line percent={percent} strokeWidth="4" strokeColor={color} />
+          <Line percent={percent} strokeWidth={4} strokeColor={color} />
           <Line
             percent={[percent / 2, percent / 2]}
-            strokeWidth="4"
+            strokeWidth={4}
             strokeColor={[color, '#CCC']}
           />
         </div>
         <h3>Circle Progress {percent}%</h3>
         <div style={circleContainerStyle}>
-          <Circle percent={percent} strokeWidth="6" strokeLinecap="round" strokeColor={color} />
+          <Circle percent={percent} strokeWidth={6} strokeLinecap="round" strokeColor={color} />
         </div>
         <p>
           <button type="button" onClick={this.changeState}>
@@ -57,4 +55,4 @@ class Example extends Component {
   }
 }
 
-ReactDOM.render(<Example />, document.getElementById('__react-content'));
+export default Example;
