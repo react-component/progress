@@ -77,5 +77,43 @@ describe('Progress', () => {
       expect(idSecond).toMatch(idRE);
       expect(idFirst === idSecond).toBeFalsy();
     });
+
+    it('should show right gapPosition', () => {
+      const wrapper = mount(
+        <>
+          <Circle
+            percent={30}
+            gapDegree={70}
+            gapPosition="top"
+            strokeWidth="6"
+            strokeLinecap="square"
+          />
+          <br />
+          <Circle
+            percent={30}
+            gapDegree={70}
+            gapPosition="bottom"
+            strokeWidth="6"
+            strokeLinecap="square"
+          />
+          <Circle
+            percent={30}
+            gapDegree={70}
+            gapPosition="left"
+            strokeWidth="6"
+            strokeLinecap="square"
+          />
+          <Circle
+            percent={30}
+            gapDegree={70}
+            gapPosition="right"
+            strokeWidth="6"
+            strokeLinecap="square"
+          />
+        </>,
+      );
+
+      expect(wrapper).toMatchSnapshot();
+    });
   });
 });

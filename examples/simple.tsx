@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Line, Circle } from '..';
+import { Line, Circle } from '../src';
 
 class Example extends Component {
   constructor() {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Circle } from '..';
+import { Circle } from '../src';
 
 const Example = () => {
   const circleContainerStyle = {

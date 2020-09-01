@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Circle } from '..';
+import { Circle } from '../src';
 
 const colorMap = ['#3FC7FA', '#85D262', '#FE8C6A'];
 
