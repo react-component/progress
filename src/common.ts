@@ -1,12 +1,12 @@
 import { useRef, useEffect } from 'react';
-import { strokeLinecapType } from './interface';
+import { StrokeLinecapType } from './interface';
 
 export const defaultProps = {
   className: '',
   percent: 0,
   prefixCls: 'rc-progress',
   strokeColor: '#2db7f5',
-  strokeLinecap: 'round' as strokeLinecapType,
+  strokeLinecap: 'round' as StrokeLinecapType,
   strokeWidth: 1,
   style: {},
   trailColor: '#D9D9D9',

@@ -1,8 +1,8 @@
 import Line from './Line';
 import Circle from './Circle';
-import { progressProps } from './interface';
+import { ProgressProps } from './interface';
 
-export { Line, Circle, progressProps };
+export { Line, Circle, ProgressProps };
 
 export default {
   Line,

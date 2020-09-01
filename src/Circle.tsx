@@ -2,7 +2,7 @@
 import React, { useMemo } from 'react';
 import classNames from 'classnames';
 import { useTransitionDuration, defaultProps } from './common';
-import { progressProps, gapPositionType } from './interface';
+import { ProgressProps, GapPositionType } from './interface';
 
 let gradientSeed = 0;
 
@@ -20,7 +20,7 @@ function getPathStyles(
   strokeColor: string,
   strokeWidth: number,
   gapDegree = 0,
-  gapPosition: gapPositionType,
+  gapPosition: GapPositionType,
 ) {
   const radius = 50 - strokeWidth / 2;
   let beginPositionX = 0;
@@ -65,7 +65,7 @@ function getPathStyles(
   };
 }
 
-const Circle: React.FC<progressProps> = ({
+const Circle: React.FC<ProgressProps> = ({
   prefixCls,
   strokeWidth,
   trailWidth,

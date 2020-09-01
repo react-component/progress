@@ -1,22 +1,22 @@
 import * as React from 'react';
 
-export interface progressProps {
+export interface ProgressProps {
   strokeWidth?: number;
   trailWidth?: number;
   className?: string;
   percent?: number | number[];
-  strokeColor?: strokeColorType;
+  strokeColor?: StrokeColorType;
   trailColor?: string;
-  strokeLinecap?: strokeLinecapType;
+  strokeLinecap?: StrokeLinecapType;
   prefixCls?: string;
   style?: React.CSSProperties;
   gapDegree?: number;
-  gapPosition?: gapPositionType;
+  gapPosition?: GapPositionType;
   transition?: string;
 }
 
-export type strokeColorType = string | string[] | object;
+export type StrokeColorType = string | string[] | object;
 
-export type gapPositionType = 'top' | 'right' | 'bottom' | 'left';
+export type GapPositionType = 'top' | 'right' | 'bottom' | 'left';
 
-export type strokeLinecapType = 'round' | 'butt' | 'square';
+export type StrokeLinecapType = 'round' | 'butt' | 'square';
