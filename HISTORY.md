@@ -2,6 +2,12 @@
 
 ---
 
+## 3.1.0
+
+`2020-09-01`
+
+- chore: use father. [#85](https://github.com/react-component/progress/pull/85)
+
 ## 3.0.0
 
 - Refactor to hooks.
