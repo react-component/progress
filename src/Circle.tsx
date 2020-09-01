@@ -2,18 +2,26 @@
 import React, { useMemo } from 'react';
 import classNames from 'classnames';
 import { useTransitionDuration, defaultProps } from './common';
+import { progressProps, gapPositionType } from './interface';
 
 let gradientSeed = 0;
 
-function stripPercentToNumber(percent) {
+function stripPercentToNumber(percent: string) {
   return +percent.replace('%', '');
 }
 
-function toArray(symArray) {
+function toArray(symArray: any) {
   return Array.isArray(symArray) ? symArray : [symArray];
 }
 
-function getPathStyles(offset, percent, strokeColor, strokeWidth, gapDegree = 0, gapPosition) {
+function getPathStyles(
+  offset: number,
+  percent: number,
+  strokeColor: string,
+  strokeWidth: number,
+  gapDegree = 0,
+  gapPosition: gapPositionType,
+) {
   const radius = 50 - strokeWidth / 2;
   let beginPositionX = 0;
   let beginPositionY = -radius;
@@ -57,7 +65,7 @@ function getPathStyles(offset, percent, strokeColor, strokeWidth, gapDegree = 0,
   };
 }
 
-const Circle = ({
+const Circle: React.FC<progressProps> = ({
   prefixCls,
   strokeWidth,
   trailWidth,

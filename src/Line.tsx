@@ -2,8 +2,9 @@
 import React from 'react';
 import classNames from 'classnames';
 import { useTransitionDuration, defaultProps } from './common';
+import { progressProps } from './interface';
 
-const Line = ({
+const Line: React.FC<progressProps> = ({
   className,
   percent,
   prefixCls,
@@ -61,7 +62,7 @@ const Line = ({
             className={`${prefixCls}-line-path`}
             d={pathString}
             strokeLinecap={strokeLinecap}
-            stroke={color}
+            stroke={color as string}
             strokeWidth={strokeWidth}
             fillOpacity="0"
             ref={paths[index]}
