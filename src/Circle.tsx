@@ -1,5 +1,4 @@
-/* eslint react/prop-types: 0 */
-import React, { useMemo } from 'react';
+import * as React from 'react';
 import classNames from 'classnames';
 import { useTransitionDuration, defaultProps } from './common';
 import { ProgressProps, GapPositionType } from './interface';
@@ -79,7 +78,7 @@ const Circle: React.FC<ProgressProps> = ({
   percent,
   ...restProps
 }) => {
-  const gradientId = useMemo(() => {
+  const gradientId = React.useMemo(() => {
     gradientSeed += 1;
     return gradientSeed;
   }, []);
@@ -165,5 +164,7 @@ const Circle: React.FC<ProgressProps> = ({
 };
 
 Circle.defaultProps = defaultProps;
+
+Circle.displayName = 'Circle';
 
 export default Circle;

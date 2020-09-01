@@ -1,5 +1,4 @@
-/* eslint react/prop-types: 0 */
-import React from 'react';
+import * as React from 'react';
 import classNames from 'classnames';
 import { useTransitionDuration, defaultProps } from './common';
 import { ProgressProps } from './interface';
@@ -75,5 +74,7 @@ const Line: React.FC<ProgressProps> = ({
 };
 
 Line.defaultProps = defaultProps;
+
+Line.displayName = 'Line';
 
 export default Line;

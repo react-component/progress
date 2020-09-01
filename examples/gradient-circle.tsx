@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { Circle } from '../src';
 
 const Example = () => {
@@ -14,7 +14,7 @@ const Example = () => {
       <div style={circleContainerStyle}>
         <Circle
           percent={90}
-          strokeWidth="6"
+          strokeWidth={6}
           strokeLinecap="round"
           strokeColor={{
             '0%': '#108ee9',
@@ -26,7 +26,7 @@ const Example = () => {
       <div style={circleContainerStyle}>
         <Circle
           percent={100}
-          strokeWidth="6"
+          strokeWidth={6}
           strokeLinecap="round"
           strokeColor={{
             '100%': '#108ee9',
@@ -38,7 +38,7 @@ const Example = () => {
       <div style={circleContainerStyle}>
         <Circle
           percent={[65, 100]}
-          strokeWidth="6"
+          strokeWidth={6}
           strokeLinecap="round"
           strokeColor={[
             '#87d068',
