@@ -46,8 +46,20 @@ const Line: React.FC<ProgressProps> = ({
         fillOpacity="0"
       />
       {percentList.map((ptg, index) => {
+        let dashPercent = 1;
+        switch (strokeLinecap) {
+          case 'round':
+            dashPercent = 1 - strokeWidth / 100;
+            break;
+          case 'square':
+            dashPercent = 1 - strokeWidth / 2 / 100;
+            break;
+          default:
+            dashPercent = 1;
+            break;
+        }
         const pathStyle = {
-          strokeDasharray: `${ptg}px, 100px`,
+          strokeDasharray: `${ptg * dashPercent}px, 100px`,
           strokeDashoffset: `-${stackPtg}px`,
           transition:
             transition ||
