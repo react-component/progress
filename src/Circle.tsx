@@ -1,7 +1,7 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import { useTransitionDuration, defaultProps } from './common';
-import { ProgressProps, GapPositionType } from './interface';
+import type { ProgressProps, GapPositionType } from './interface';
 
 let gradientSeed = 0;
 
