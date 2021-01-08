@@ -3,7 +3,7 @@
 Progress Bar.
 
 [![NPM version][npm-image]][npm-url]
-[![build status][travis-image]][travis-url]
+[![build status][github-actions-image]][github-actions-url]
 [![Test coverage][coveralls-image]][coveralls-url]
 [![Dependencies][david-image]](david-url)
 [![DevDependencies][david-dev-image]][david-dev-url]
@@ -12,8 +12,8 @@ Progress Bar.
 
 [npm-image]: http://img.shields.io/npm/v/rc-progress.svg?style=flat-square
 [npm-url]: http://npmjs.org/package/rc-progress
-[travis-image]: https://img.shields.io/travis/react-component/progress/master?style=flat-square
-[travis-url]: https://travis-ci.org/react-component/progress
+[github-actions-image]: https://github.com/react-component/progress/workflows/CI/badge.svg
+[github-actions-url]: https://github.com/react-component/progress/actions
 [circleci-image]: https://img.shields.io/circleci/react-component/progress/master?style=flat-square
 [circleci-url]: https://circleci.com/gh/react-component/progress
 [coveralls-image]: https://img.shields.io/coveralls/react-component/progress.svg?style=flat-square
