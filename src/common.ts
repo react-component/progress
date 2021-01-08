@@ -1,5 +1,5 @@
 import { useRef, useEffect } from 'react';
-import type { ProgressProps } from './interface';
+import { ProgressProps } from './interface';
 
 export const defaultProps: Partial<ProgressProps> = {
   className: '',
