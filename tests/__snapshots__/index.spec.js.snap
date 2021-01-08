@@ -60,7 +60,6 @@ Array [
       />
     </svg>
   </Circle>,
-  <br />,
   <Circle
     className=""
     gapDegree={70}
@@ -223,6 +222,122 @@ Array [
         opacity={1}
         stroke=""
         strokeLinecap="square"
+        strokeWidth="6"
+        style={
+          Object {
+            "stroke": "#2db7f5",
+            "strokeDasharray": "67.59291283123217px 295.3097094374406px",
+            "strokeDashoffset": "-35px",
+            "transition": "stroke-dashoffset .3s ease 0s, stroke-dasharray .3s ease 0s, stroke .3s, stroke-width .06s ease .3s",
+          }
+        }
+      />
+    </svg>
+  </Circle>,
+  <Circle
+    className=""
+    gapDegree={70}
+    gapPosition="top"
+    percent={30}
+    prefixCls="rc-progress"
+    strokeColor="#2db7f5"
+    strokeLinecap="round"
+    strokeWidth="6"
+    style={Object {}}
+    trailColor="#D9D9D9"
+    trailWidth={1}
+  >
+    <svg
+      className="rc-progress-circle"
+      style={Object {}}
+      viewBox="0 0 100 100"
+    >
+      <path
+        className="rc-progress-circle-trail"
+        d="M 50,50 m 0,-47
+   a 47,47 0 1 1 0,94
+   a 47,47 0 1 1 0,-94"
+        fillOpacity="0"
+        stroke="#D9D9D9"
+        strokeLinecap="round"
+        strokeWidth={1}
+        style={
+          Object {
+            "stroke": "#D9D9D9",
+            "strokeDasharray": "225.30970943744057px 295.3097094374406px",
+            "strokeDashoffset": "-35px",
+            "transition": "stroke-dashoffset .3s ease 0s, stroke-dasharray .3s ease 0s, stroke .3s, stroke-width .06s ease .3s",
+          }
+        }
+      />
+      <path
+        className="rc-progress-circle-path"
+        d="M 50,50 m 0,-47
+   a 47,47 0 1 1 0,94
+   a 47,47 0 1 1 0,-94"
+        fillOpacity="0"
+        key="0"
+        opacity={1}
+        stroke=""
+        strokeLinecap="round"
+        strokeWidth="6"
+        style={
+          Object {
+            "stroke": "#2db7f5",
+            "strokeDasharray": "67.59291283123217px 295.3097094374406px",
+            "strokeDashoffset": "-35px",
+            "transition": "stroke-dashoffset .3s ease 0s, stroke-dasharray .3s ease 0s, stroke .3s, stroke-width .06s ease .3s",
+          }
+        }
+      />
+    </svg>
+  </Circle>,
+  <Circle
+    className=""
+    gapDegree={70}
+    gapPosition="top"
+    percent={30}
+    prefixCls="rc-progress"
+    strokeColor="#2db7f5"
+    strokeLinecap="round"
+    strokeWidth="6"
+    style={Object {}}
+    trailColor="#D9D9D9"
+    trailWidth={1}
+  >
+    <svg
+      className="rc-progress-circle"
+      style={Object {}}
+      viewBox="0 0 100 100"
+    >
+      <path
+        className="rc-progress-circle-trail"
+        d="M 50,50 m 0,-47
+   a 47,47 0 1 1 0,94
+   a 47,47 0 1 1 0,-94"
+        fillOpacity="0"
+        stroke="#D9D9D9"
+        strokeLinecap="round"
+        strokeWidth={1}
+        style={
+          Object {
+            "stroke": "#D9D9D9",
+            "strokeDasharray": "225.30970943744057px 295.3097094374406px",
+            "strokeDashoffset": "-35px",
+            "transition": "stroke-dashoffset .3s ease 0s, stroke-dasharray .3s ease 0s, stroke .3s, stroke-width .06s ease .3s",
+          }
+        }
+      />
+      <path
+        className="rc-progress-circle-path"
+        d="M 50,50 m 0,-47
+   a 47,47 0 1 1 0,94
+   a 47,47 0 1 1 0,-94"
+        fillOpacity="0"
+        key="0"
+        opacity={1}
+        stroke=""
+        strokeLinecap="round"
         strokeWidth="6"
         style={
           Object {
