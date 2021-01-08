@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Line, Circle, ProgressProps } from '../src';
+import { Line, Circle, ProgressProps } from 'rc-progress';
 
 class Example extends React.Component<ProgressProps, any> {
   constructor(props) {
@@ -9,6 +9,8 @@ class Example extends React.Component<ProgressProps, any> {
       color: '#3FC7FA',
     };
     this.changeState = this.changeState.bind(this);
+    this.changeIncrease = this.changeIncrease.bind(this);
+    this.changeReduce = this.changeReduce.bind(this);
   }
 
   changeState() {
@@ -18,7 +20,23 @@ class Example extends React.Component<ProgressProps, any> {
       percent: value,
       color: colorMap[parseInt((Math.random() * 3).toString(), 10)],
     });
-  }
+  };
+
+  changeIncrease() {
+    let percent = this.state.percent + 10;
+    if (percent > 100) {
+      percent = 100;
+    }
+    this.setState({ percent });
+  };
+
+  changeReduce() {
+    let percent = this.state.percent - 10;
+    if (percent < 0) {
+      percent = 0;
+    }
+    this.setState({ percent });
+  };
 
   render() {
     const { percent, color } = this.state;
@@ -48,6 +66,12 @@ class Example extends React.Component<ProgressProps, any> {
         <p>
           <button type="button" onClick={this.changeState}>
             Change State
+          </button>
+          <button type="button" onClick={this.changeIncrease}>
+            Increase
+          </button>
+          <button type="button" onClick={this.changeReduce}>
+            Reduce
           </button>
         </p>
       </div>

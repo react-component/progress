@@ -31,3 +31,9 @@ yarn.lock
 package-lock.json
 .storybook
 .doc
+
+# umi
+.umi
+.umi-production
+.umi-test
+.env.local

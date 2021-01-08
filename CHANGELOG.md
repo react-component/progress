@@ -1,6 +1,16 @@
-# History
+# Changelog
 
----
+## 3.1.2
+
+`2020.12.29`
+
+- fix: line progress percentage. [#94](https://github.com/react-component/progress/pull/94)
+
+## 3.1.1
+
+`2020.10.21`
+
+- chore: support react 17. [#87](https://github.com/react-component/progress/pull/87)
 
 ## 3.1.0
 
