@@ -1,5 +1,13 @@
 # Changelog
 
+## 3.1.3
+
+`2021.01.08`
+
+- fix: add opacity transition. [#96](https://github.com/react-component/progress/pull/96)
+- chore: use github actions. [#97](https://github.com/react-component/progress/pull/97)
+- chore: use dumi. [#98](https://github.com/react-component/progress/pull/98)
+
 ## 3.1.2
 
 `2020.12.29`
