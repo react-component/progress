@@ -26,6 +26,19 @@ describe('Progress', () => {
     });
   });
 
+  describe('Diff Line', () => {
+    const wrapper = mount(
+      <>
+        <Line percent={20} strokeLinecap="butt" />
+        <br/>
+        <Line percent={20} strokeLinecap="round" />
+        <br/>
+        <Line percent={20} strokeLinecap="square" />
+      </>
+    );
+    expect(wrapper).toMatchSnapshot();
+  })
+
   describe('Circle', () => {
     it('change with animation', () => {
       class Demo extends React.Component {
