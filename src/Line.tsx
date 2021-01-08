@@ -1,7 +1,7 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import { useTransitionDuration, defaultProps } from './common';
-import type { ProgressProps } from './interface';
+import { ProgressProps } from './interface';
 
 const Line: React.FC<ProgressProps> = ({
   className,
