@@ -10,7 +10,8 @@
     "esModuleInterop": true,
     "paths": {
       "@/*": ["src/*"],
-      "@@/*": ["src/.umi/*"]
+      "@@/*": ["src/.umi/*"],
+      "rc-progress": ["src/index.tsx"]
     }
   }
 }

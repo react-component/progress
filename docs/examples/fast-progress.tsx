@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Line, Circle, ProgressProps } from '../src';
+import { Line, Circle, ProgressProps } from 'rc-progress';
 
 class App extends React.Component<ProgressProps, any> {
   constructor(props) {

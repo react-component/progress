@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Circle } from '../src';
+import { Circle } from 'rc-progress';
 
 const Example = () => {
   const circleContainerStyle = {

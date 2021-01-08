@@ -24,15 +24,17 @@
     "es"
   ],
   "scripts": {
-    "start": "cross-env NODE_ENV=development father doc dev --storybook",
-    "build": "father doc build --storybook",
+    "start": "dumi dev",
+    "docs:build": "dumi build",
+    "docs:deploy": "gh-pages -d docs-dist",
     "compile": "father build",
     "gh-pages": "npm run build && father doc deploy",
     "prepublishOnly": "npm run compile && np --yolo --no-publish",
     "lint": "eslint src/ --ext .ts,.tsx,.jsx,.js",
     "prettier": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\"",
     "test": "father test",
-    "coverage": "father test --coverage"
+    "coverage": "father test --coverage",
+    "now-build": "npm run docs:build"
   },
   "peerDependencies": {
     "react": ">=16.9.0",
@@ -49,11 +51,13 @@
     "@types/react-dom": "^16.9.0",
     "@umijs/fabric": "^2.0.0",
     "cross-env": "^7.0.0",
+    "dumi": "^1.1.0",
     "enzyme": "^3.1.1",
     "enzyme-adapter-react-16": "^1.0.1",
     "enzyme-to-json": "^3.1.2",
     "eslint": "^7.6.0",
     "father": "^2.29.6",
+    "glob": "^7.1.6",
     "np": "^6.5.0",
     "prettier": "^2.1.1",
     "react": "^16.9.0",
