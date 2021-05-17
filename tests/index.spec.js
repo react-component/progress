@@ -30,14 +30,14 @@ describe('Progress', () => {
     const wrapper = mount(
       <>
         <Line percent={20} strokeLinecap="butt" />
-        <br/>
+        <br />
         <Line percent={20} strokeLinecap="round" />
-        <br/>
+        <br />
         <Line percent={20} strokeLinecap="square" />
-      </>
+      </>,
     );
     expect(wrapper).toMatchSnapshot();
-  })
+  });
 
   describe('Circle', () => {
     it('change with animation', () => {
@@ -129,16 +129,31 @@ describe('Progress', () => {
             strokeWidth="6"
             strokeLinecap="round"
           />
-          <Circle
-            percent={30}
-            gapDegree={70}
-            gapPosition="top"
-            strokeWidth="6"
-          />
+          <Circle percent={30} gapDegree={70} gapPosition="top" strokeWidth="6" />
         </>,
       );
 
       expect(wrapper).toMatchSnapshot();
+    });
+
+    // https://github.com/ant-design/ant-design/issues/30552
+    it('should change strokeColor between gradient and color string correctly', () => {
+      const gradientColor = {
+        '0%': '#108ee9',
+        '100%': '#87d068',
+      };
+      const wrapper = mount(<Circle strokeColor={gradientColor} />);
+      expect(wrapper.find('.rc-progress-circle-path').getDOMNode().style.cssText).not.toContain(
+        'stroke:',
+      );
+      wrapper.setProps({ strokeColor: '#eeeeee' });
+      expect(wrapper.find('.rc-progress-circle-path').getDOMNode().style.cssText).toContain(
+        'stroke: #eeeeee',
+      );
+      wrapper.setProps({ strokeColor: gradientColor });
+      expect(wrapper.find('.rc-progress-circle-path').getDOMNode().style.cssText).not.toContain(
+        'stroke:',
+      );
     });
   });
 });

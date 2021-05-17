@@ -1,7 +1,7 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import { useTransitionDuration, defaultProps } from './common';
-import { ProgressProps, GapPositionType } from './interface';
+import type { ProgressProps, GapPositionType } from './interface';
 
 let gradientSeed = 0;
 
@@ -51,7 +51,7 @@ function getPathStyles(
   const len = Math.PI * 2 * radius;
 
   const pathStyle = {
-    stroke: strokeColor,
+    stroke: typeof strokeColor === 'string' ? strokeColor : undefined,
     strokeDasharray: `${(percent / 100) * (len - gapDegree)}px ${len}px`,
     strokeDashoffset: `-${gapDegree / 2 + (offset / 100) * (len - gapDegree)}px`,
     transition:
@@ -93,7 +93,7 @@ const Circle: React.FC<ProgressProps> = ({
   const percentList = toArray(percent);
   const strokeColorList = toArray(strokeColor);
   const gradient = strokeColorList.find(
-    color => Object.prototype.toString.call(color) === '[object Object]',
+    (color) => Object.prototype.toString.call(color) === '[object Object]',
   );
 
   const [paths] = useTransitionDuration(percentList);
