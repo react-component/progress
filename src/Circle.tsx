@@ -126,9 +126,8 @@ const Circle: React.FC<ProgressProps> = ({
           />
         );
       });
-    } 
-      return [];
-    
+    }
+    return [];
   };
 
   const getStokeList = () => {

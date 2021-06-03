@@ -73,6 +73,7 @@ class Example extends React.Component<ProgressProps, any> {
             strokeWidth={6}
             strokeLinecap="square"
             strokeColor={color}
+            dot={{ size: 'p' }}
           />
         </div>
         <div style={circleContainerStyle}>
@@ -83,6 +84,7 @@ class Example extends React.Component<ProgressProps, any> {
             strokeWidth={6}
             strokeLinecap="square"
             strokeColor={color}
+            dot={{ size: [] }}
           />
         </div>
       </div>
