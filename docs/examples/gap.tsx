@@ -30,6 +30,7 @@ class Example extends React.Component<ProgressProps, any> {
     const circleContainerStyle = {
       width: '200px',
       height: '200px',
+      marginBottom: '60px'
     };
     const { percent, colorIndex } = this.state;
     const color = getColor(colorIndex);
@@ -48,6 +49,7 @@ class Example extends React.Component<ProgressProps, any> {
             strokeWidth={6}
             strokeLinecap="square"
             strokeColor={color}
+            dot={{ size: 10 }}
           />
         </div>
         <div style={circleContainerStyle}>
@@ -59,6 +61,7 @@ class Example extends React.Component<ProgressProps, any> {
             trailWidth={6}
             strokeLinecap="round"
             strokeColor={[color, getColor(colorIndex + 1), getColor(colorIndex + 2)]}
+            dot={true}
           />
         </div>
 

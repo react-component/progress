@@ -1,4 +1,4 @@
-import * as React from 'react';
+import type * as React from 'react';
 
 export interface ProgressProps {
   strokeWidth?: number;
@@ -13,6 +13,7 @@ export interface ProgressProps {
   gapDegree?: number;
   gapPosition?: GapPositionType;
   transition?: string;
+  dot?: dotType;
 }
 
 export type StrokeColorType = string | string[] | object;
@@ -20,3 +21,5 @@ export type StrokeColorType = string | string[] | object;
 export type GapPositionType = 'top' | 'right' | 'bottom' | 'left';
 
 export type StrokeLinecapType = 'round' | 'butt' | 'square';
+
+export type dotType = boolean | object;

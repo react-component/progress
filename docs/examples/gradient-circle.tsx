@@ -20,6 +20,7 @@ const Example = () => {
             '0%': '#108ee9',
             '100%': '#87d068',
           }}
+          dot={true}
         />
       </div>
       <h3>Circle Progress {100}%</h3>
@@ -47,6 +48,7 @@ const Example = () => {
               '0%': '#87d068',
             },
           ]}
+          dot={{}}
         />
       </div>
     </div>
