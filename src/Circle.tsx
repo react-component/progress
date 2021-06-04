@@ -115,13 +115,18 @@ const Circle: React.FC<ProgressProps> = ({
 
         path.setAttribute('d', pathDom.props.d);
         const dotPoint = path.getPointAtLength(strokeLength);
+
         return (
           <circle
             key={index + 10}
             className={`${prefixCls}-circle-dot`}
             cx={dotPoint.x}
             cy={dotPoint.y}
-            r={typeof dot === 'object' ? dot.size : strokeWidth}
+            r={
+              typeof dot === 'object' && dot.size && typeof dot.size === 'number'
+                ? dot.size
+                : strokeWidth
+            }
             fill={pathDom.props.stroke ? pathDom.props.stroke : pathDom.props.style.stroke}
           />
         );

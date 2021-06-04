@@ -10,7 +10,7 @@ const Example = () => {
 
   return (
     <div>
-      <h3>Circle Progress {90}%</h3>
+      <h3>Circle Progress {90}% (within dot)</h3>
       <div style={circleContainerStyle}>
         <Circle
           percent={90}
@@ -20,7 +20,7 @@ const Example = () => {
             '0%': '#108ee9',
             '100%': '#87d068',
           }}
-          dot={{ size: '10' }}
+          dot={true}
         />
       </div>
       <h3>Circle Progress {100}%</h3>
@@ -33,7 +33,6 @@ const Example = () => {
             '100%': '#108ee9',
             '0%': '#87d068',
           }}
-          dot={{}}
         />
       </div>
       <h3>Circle With Success Percent {65}%</h3>

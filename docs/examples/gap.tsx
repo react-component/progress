@@ -41,6 +41,7 @@ class Example extends React.Component<ProgressProps, any> {
             Change State [{percent}]
           </button>
         </p>
+        <h3>within dot</h3>
         <div style={circleContainerStyle}>
           <Circle
             percent={percent}
@@ -65,6 +66,7 @@ class Example extends React.Component<ProgressProps, any> {
           />
         </div>
 
+        <h3>without dot</h3>
         <div style={circleContainerStyle}>
           <Circle
             percent={percent}
@@ -73,7 +75,6 @@ class Example extends React.Component<ProgressProps, any> {
             strokeWidth={6}
             strokeLinecap="square"
             strokeColor={color}
-            dot={{ size: 'p' }}
           />
         </div>
         <div style={circleContainerStyle}>
@@ -84,7 +85,6 @@ class Example extends React.Component<ProgressProps, any> {
             strokeWidth={6}
             strokeLinecap="square"
             strokeColor={color}
-            dot={{ size: [] }}
           />
         </div>
       </div>
