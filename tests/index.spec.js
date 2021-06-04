@@ -156,4 +156,30 @@ describe('Progress', () => {
       );
     });
   });
+
+  describe('dot', () => {
+    it('the size of dot must be a number', () => {
+      const wrapper = mount(
+        <Circle
+          percent={70}
+          gapDegree={70}
+          gapPosition="top"
+          strokeWidth={6}
+          strokeLinecap="square"
+          strokeColor="#3FC7FA"
+          dot={{ size: '10' }}
+        />,
+      );
+      expect(wrapper.find('.rc-progress-circle-dot').getDOMNode().r).toBe('6');
+
+      wrapper.setProps({ dot: { size: 10 } });
+      expect(wrapper.find('.rc-progress-circle-dot').getDOMNode().r).toBe('10');
+
+      wrapper.setProps({ dot: true });
+      expect(wrapper.find('.rc-progress-circle-dot').getDOMNode().r).toBe('6');
+
+      wrapper.setProps({ dot: [] });
+      expect(wrapper.find('.rc-progress-circle-dot').getDOMNode().r).toBe('6');
+    });
+  });
 });

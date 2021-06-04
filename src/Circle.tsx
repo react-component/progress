@@ -5,6 +5,10 @@ import type { ProgressProps, GapPositionType } from './interface';
 
 let gradientSeed = 0;
 
+function pxToNumber(px: string) {
+  return parseInt(px.slice(0, px.indexOf('p')), 10);
+}
+
 function stripPercentToNumber(percent: string) {
   return +percent.replace('%', '');
 }
@@ -76,6 +80,7 @@ const Circle: React.FC<ProgressProps> = ({
   className,
   strokeColor,
   percent,
+  dot,
   ...restProps
 }) => {
   const gradientId = React.useMemo(() => {
@@ -98,31 +103,66 @@ const Circle: React.FC<ProgressProps> = ({
 
   const [paths] = useTransitionDuration(percentList);
 
+  const getDotList = (pathDoms) => {
+    const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    if (dot) {
+      return pathDoms.map((pathDom, index) => {
+        const strokeDasharrayTemp = pathDom.props.style.strokeDasharray;
+        const strokeLength =
+          pxToNumber(strokeDasharrayTemp.slice(0, strokeDasharrayTemp.indexOf(' '))) +
+          Math.abs(pxToNumber(pathDom.props.style.strokeDashoffset)) +
+          strokeWidth / 2;
+
+        path.setAttribute('d', pathDom.props.d);
+        const dotPoint = path.getPointAtLength(strokeLength);
+
+        return (
+          <circle
+            key={index + 10}
+            className={`${prefixCls}-circle-dot`}
+            cx={dotPoint.x}
+            cy={dotPoint.y}
+            r={
+              typeof dot === 'object' && dot.size && typeof dot.size === 'number'
+                ? dot.size
+                : strokeWidth
+            }
+            fill={pathDom.props.stroke ? pathDom.props.stroke : pathDom.props.style.stroke}
+          />
+        );
+      });
+    }
+    return [];
+  };
+
   const getStokeList = () => {
     let stackPtg = 0;
-    return percentList.map((ptg, index) => {
-      const color = strokeColorList[index] || strokeColorList[strokeColorList.length - 1];
-      const stroke =
-        Object.prototype.toString.call(color) === '[object Object]'
-          ? `url(#${prefixCls}-gradient-${gradientId})`
-          : '';
-      const pathStyles = getPathStyles(stackPtg, ptg, color, strokeWidth, gapDegree, gapPosition);
-      stackPtg += ptg;
-      return (
-        <path
-          key={index}
-          className={`${prefixCls}-circle-path`}
-          d={pathStyles.pathString}
-          stroke={stroke}
-          strokeLinecap={strokeLinecap}
-          strokeWidth={strokeWidth}
-          opacity={ptg === 0 ? 0 : 1}
-          fillOpacity="0"
-          style={pathStyles.pathStyle}
-          ref={paths[index]}
-        />
-      );
-    });
+    const pathDoms = percentList
+      .map((ptg, index) => {
+        const color = strokeColorList[index] || strokeColorList[strokeColorList.length - 1];
+        const stroke =
+          Object.prototype.toString.call(color) === '[object Object]'
+            ? `url(#${prefixCls}-gradient-${gradientId})`
+            : '';
+        const pathStyles = getPathStyles(stackPtg, ptg, color, strokeWidth, gapDegree, gapPosition);
+        stackPtg += ptg;
+        return (
+          <path
+            key={index}
+            className={`${prefixCls}-circle-path`}
+            d={pathStyles.pathString}
+            stroke={stroke}
+            strokeLinecap={strokeLinecap}
+            strokeWidth={strokeWidth}
+            opacity={ptg === 0 ? 0 : 1}
+            fillOpacity="0"
+            style={pathStyles.pathStyle}
+            ref={paths[index]}
+          />
+        );
+      })
+      .reverse();
+    return pathDoms.concat(getDotList(pathDoms));
   };
 
   return (
@@ -158,7 +198,7 @@ const Circle: React.FC<ProgressProps> = ({
         fillOpacity="0"
         style={pathStyle}
       />
-      {getStokeList().reverse()}
+      {getStokeList()}
     </svg>
   );
 };

@@ -136,6 +136,12 @@ export default () => (
       <td>top</td>
       <td>the gap position, value: top, bottom, left, right. </td>
     </tr>
+    <tr>
+      <td>dot</td>
+      <td>Boolean | Object</td>
+      <td>false</td>
+      <td>within dot or not, value: true, false, { size: Number }, if the size is not a number, it will be the strokeWidth as default</td>
+    </tr>
   </tbody>
 </table>
 
