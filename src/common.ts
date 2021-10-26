@@ -1,5 +1,5 @@
 import { useRef, useEffect } from 'react';
-import { ProgressProps } from './interface';
+import type { ProgressProps } from './interface';
 
 export const defaultProps: Partial<ProgressProps> = {
   className: '',
@@ -13,19 +13,19 @@ export const defaultProps: Partial<ProgressProps> = {
   trailWidth: 1,
 };
 
-export const useTransitionDuration = (percentList: number[]) => {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const paths = percentList.map(() => useRef());
+export const useTransitionDuration = (): SVGPathElement[] => {
+  const pathsRef = useRef<SVGPathElement[]>([]);
   const prevTimeStamp = useRef(null);
+
   useEffect(() => {
     const now = Date.now();
     let updated = false;
 
-    Object.keys(paths).forEach(key => {
-      const path = paths[key].current;
+    pathsRef.current.forEach((path) => {
       if (!path) {
         return;
       }
+
       updated = true;
       const pathStyle = path.style;
       pathStyle.transitionDuration = '.3s, .3s, .3s, .06s';
@@ -40,5 +40,5 @@ export const useTransitionDuration = (percentList: number[]) => {
     }
   });
 
-  return [paths];
+  return pathsRef.current;
 };

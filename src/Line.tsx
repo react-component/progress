@@ -1,7 +1,7 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import { useTransitionDuration, defaultProps } from './common';
-import { ProgressProps } from './interface';
+import type { ProgressProps } from './interface';
 
 const Line: React.FC<ProgressProps> = ({
   className,
@@ -21,7 +21,7 @@ const Line: React.FC<ProgressProps> = ({
   const percentList = Array.isArray(percent) ? percent : [percent];
   const strokeColorList = Array.isArray(strokeColor) ? strokeColor : [strokeColor];
 
-  const [paths] = useTransitionDuration(percentList);
+  const paths = useTransitionDuration();
 
   const center = strokeWidth / 2;
   const right = 100 - strokeWidth / 2;
@@ -76,7 +76,14 @@ const Line: React.FC<ProgressProps> = ({
             stroke={color as string}
             strokeWidth={strokeWidth}
             fillOpacity="0"
-            ref={paths[index]}
+            ref={(elem) => {
+              // https://reactjs.org/docs/refs-and-the-dom.html#callback-refs
+              // React will call the ref callback with the DOM element when the component mounts,
+              // and call it with `null` when it unmounts.
+              // Refs are guaranteed to be up-to-date before componentDidMount or componentDidUpdate fires.
+
+              paths[index] = elem;
+            }}
             style={pathStyle}
           />
         );

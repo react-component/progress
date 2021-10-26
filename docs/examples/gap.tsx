@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Circle, ProgressProps } from 'rc-progress';
 
-const colorMap = ['#3FC7FA', '#85D262', '#FE8C6A'];
+const colorMap = ['#3FC7FA', '#85D262', '#FE8C6A', '#FF5959', '#BC3FFA'];
 
 function getColor(index) {
   return colorMap[(index + colorMap.length) % colorMap.length];
@@ -13,8 +13,10 @@ class Example extends React.Component<ProgressProps, any> {
     this.state = {
       percent: 30,
       colorIndex: 0,
+      subPathsCount: 3,
     };
     this.changeState = this.changeState.bind(this);
+    this.changeCount = this.changeCount.bind(this);
   }
 
   changeState() {
@@ -26,18 +28,37 @@ class Example extends React.Component<ProgressProps, any> {
     });
   }
 
+  changeCount() {
+    this.setState({
+      ...this.state,
+      subPathsCount: (this.state.subPathsCount % 6) + 1,
+    });
+  }
+
   render() {
     const circleContainerStyle = {
       width: '200px',
       height: '200px',
     };
-    const { percent, colorIndex } = this.state;
+    const { percent, colorIndex, subPathsCount } = this.state;
     const color = getColor(colorIndex);
+
+    const multiPercentage = new Array(subPathsCount).fill(
+      percent / subPathsCount,
+      0,
+      subPathsCount,
+    );
+    const multiPercentageStrokeColors = multiPercentage.map((v, index) => getColor(index));
+
     return (
       <div>
         <p>
           <button type="button" onClick={this.changeState}>
             Change State [{percent}]
+          </button>
+
+          <button type="button" onClick={this.changeCount}>
+            Change Count [{subPathsCount}]
           </button>
         </p>
         <div style={circleContainerStyle}>
@@ -52,13 +73,13 @@ class Example extends React.Component<ProgressProps, any> {
         </div>
         <div style={circleContainerStyle}>
           <Circle
-            percent={[percent / 3, percent / 3, percent / 3]}
+            percent={multiPercentage}
             gapDegree={70}
             gapPosition="bottom"
             strokeWidth={6}
             trailWidth={6}
             strokeLinecap="round"
-            strokeColor={[color, getColor(colorIndex + 1), getColor(colorIndex + 2)]}
+            strokeColor={multiPercentageStrokeColors}
           />
         </div>
 

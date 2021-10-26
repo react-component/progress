@@ -156,4 +156,34 @@ describe('Progress', () => {
       );
     });
   });
+
+  it('should support percentage array changes', () => {
+    class Demo extends React.Component {
+      state = {
+        subPathsCount: 2,
+      };
+
+      render() {
+        const { subPathsCount } = this.state;
+        const percent = 80;
+        const multiPercentage = new Array(subPathsCount).fill(
+          percent / subPathsCount,
+          0,
+          subPathsCount,
+        );
+
+        return (
+          <>
+            <Circle percent={multiPercentage} strokeWidth="1" />
+            <Line percent={multiPercentage} strokeWidth="1" />
+          </>
+        );
+      }
+    }
+    const circle = mount(<Demo />);
+    expect(circle.find(Circle).props().percent).toEqual([40, 40]);
+    circle.setState({ subPathsCount: 4 });
+    expect(circle.find(Circle).props().percent).toEqual([20, 20, 20, 20]);
+    circle.unmount();
+  });
 });
