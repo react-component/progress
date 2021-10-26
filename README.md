@@ -120,7 +120,7 @@ export default () => (
     </tr>
     <tr>
       <td>percent</td>
-      <td>Number</td>
+      <td>Number | Number[]</td>
       <td>0</td>
       <td>the percent of the progress</td>
     </tr>
