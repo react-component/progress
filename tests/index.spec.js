@@ -59,8 +59,8 @@ describe('Progress', () => {
     });
 
     it('should gradient works and circles have different gradient IDs', () => {
-      const c = mount(
-        <>
+      const wrapper = mount(
+        <div>
           <Circle
             percent={90}
             strokeWidth="6"
@@ -79,16 +79,10 @@ describe('Progress', () => {
               '100%': '#87d068',
             }}
           />
-        </>,
+        </div>,
       );
 
-      const gradientDefs = c.find('defs');
-      const idFirst = gradientDefs.at(0).props().children.props.id;
-      const idSecond = gradientDefs.at(1).props().children.props.id;
-      const idRE = /^rc-progress-gradient-\d{1,}$/;
-      expect(idFirst).toMatch(idRE);
-      expect(idSecond).toMatch(idRE);
-      expect(idFirst === idSecond).toBeFalsy();
+      expect(wrapper.render()).toMatchSnapshot();
     });
 
     it('should show right gapPosition', () => {
