@@ -14,7 +14,9 @@ export interface ProgressProps {
   transition?: string;
 }
 
-export type StrokeColorType = string | string[] | Record<string, string>;
+export type BaseStrokeColorType = string | Record<string, string>;
+
+export type StrokeColorType = BaseStrokeColorType | BaseStrokeColorType[];
 
 export type GapPositionType = 'top' | 'right' | 'bottom' | 'left';
 
