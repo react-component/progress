@@ -2,21 +2,21 @@ import * as React from 'react';
 import classNames from 'classnames';
 import { useTransitionDuration, defaultProps } from './common';
 import type { ProgressProps, GapPositionType } from './interface';
-
-let gradientSeed = 0;
+import useId from './hooks/useId';
 
 function stripPercentToNumber(percent: string) {
   return +percent.replace('%', '');
 }
 
-function toArray(symArray: any) {
-  return Array.isArray(symArray) ? symArray : [symArray];
+function toArray<T>(value: T | T[]): T[] {
+  const mergedValue = value ?? [];
+  return Array.isArray(mergedValue) ? mergedValue : [mergedValue];
 }
 
 function getPathStyles(
   offset: number,
   percent: number,
-  strokeColor: string,
+  strokeColor: string | Record<string, string>,
   strokeWidth: number,
   gapDegree = 0,
   gapPosition: GapPositionType,
@@ -65,6 +65,7 @@ function getPathStyles(
 }
 
 const Circle: React.FC<ProgressProps> = ({
+  id,
   prefixCls,
   strokeWidth,
   trailWidth,
@@ -78,10 +79,10 @@ const Circle: React.FC<ProgressProps> = ({
   percent,
   ...restProps
 }) => {
-  const gradientId = React.useMemo(() => {
-    gradientSeed += 1;
-    return gradientSeed;
-  }, []);
+  const mergedId = useId(id);
+
+  const gradientId = `${mergedId}-gradient`;
+
   const { pathString, pathStyle } = getPathStyles(
     0,
     100,
@@ -92,9 +93,7 @@ const Circle: React.FC<ProgressProps> = ({
   );
   const percentList = toArray(percent);
   const strokeColorList = toArray(strokeColor);
-  const gradient = strokeColorList.find(
-    (color) => Object.prototype.toString.call(color) === '[object Object]',
-  );
+  const gradient = strokeColorList.find((color) => color && typeof color === 'object');
 
   const [paths] = useTransitionDuration(percentList);
 
@@ -102,10 +101,7 @@ const Circle: React.FC<ProgressProps> = ({
     let stackPtg = 0;
     return percentList.map((ptg, index) => {
       const color = strokeColorList[index] || strokeColorList[strokeColorList.length - 1];
-      const stroke =
-        Object.prototype.toString.call(color) === '[object Object]'
-          ? `url(#${prefixCls}-gradient-${gradientId})`
-          : '';
+      const stroke = color && typeof color === 'object' ? `url(#${gradientId})` : '';
       const pathStyles = getPathStyles(stackPtg, ptg, color, strokeWidth, gapDegree, gapPosition);
       stackPtg += ptg;
       return (
@@ -130,17 +126,12 @@ const Circle: React.FC<ProgressProps> = ({
       className={classNames(`${prefixCls}-circle`, className)}
       viewBox="0 0 100 100"
       style={style}
+      id={id}
       {...restProps}
     >
       {gradient && (
         <defs>
-          <linearGradient
-            id={`${prefixCls}-gradient-${gradientId}`}
-            x1="100%"
-            y1="0%"
-            x2="0%"
-            y2="0%"
-          >
+          <linearGradient id={gradientId} x1="100%" y1="0%" x2="0%" y2="0%">
             {Object.keys(gradient)
               .sort((a, b) => stripPercentToNumber(a) - stripPercentToNumber(b))
               .map((key, index) => (
