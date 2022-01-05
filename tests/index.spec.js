@@ -149,5 +149,20 @@ describe('Progress', () => {
         'stroke:',
       );
     });
+
+    it('should support ts onClick', () => {
+      const onClick = jest.fn();
+      const wrapper = mount(
+        <>
+          <Circle onClick={onClick} className="circle-target" />
+          <Line onClick={onClick} className="line-target" />
+        </>,
+      );
+
+      wrapper.find('.circle-target').at(0).simulate('click');
+      expect(onClick).toHaveBeenCalledTimes(1);
+      wrapper.find('.line-target').at(0).simulate('click');
+      expect(onClick).toHaveBeenCalledTimes(2);
+    });
   });
 });
