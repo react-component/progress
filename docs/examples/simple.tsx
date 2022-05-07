@@ -63,6 +63,9 @@ class Example extends React.Component<ProgressProps, any> {
         <div style={circleContainerStyle}>
           <Circle percent={percent} strokeWidth={6} strokeLinecap="round" strokeColor={color} />
         </div>
+        <div style={circleContainerStyle}>
+          <Circle percent={percent} strokeWidth={6} strokeLinecap="square" strokeColor={color} />
+        </div>
         <p>
           <button type="button" onClick={this.changeState}>
             Change State
