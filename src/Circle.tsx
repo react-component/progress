@@ -13,6 +13,8 @@ function toArray<T>(value: T | T[]): T[] {
   return Array.isArray(mergedValue) ? mergedValue : [mergedValue];
 }
 
+const VIEW_BOX_SIZE = 100;
+
 const getCircleStyle = (
   radius: number,
   offset: number,
@@ -62,7 +64,7 @@ const Circle: React.FC<ProgressProps> = ({
 }) => {
   const mergedId = useId(id);
   const gradientId = `${mergedId}-gradient`;
-  const radius = 50 - strokeWidth / 2;
+  const radius = VIEW_BOX_SIZE / 2 - strokeWidth / 2;
 
   const circleStyle = getCircleStyle(radius, 0, 100, trailColor, gapDegree, gapPosition);
   const percentList = toArray(percent);
@@ -91,8 +93,8 @@ const Circle: React.FC<ProgressProps> = ({
             key={index}
             className={`${prefixCls}-circle-path`}
             r={radius}
-            cx={50}
-            cy={50}
+            cx={VIEW_BOX_SIZE / 2}
+            cy={VIEW_BOX_SIZE / 2}
             stroke={stroke}
             strokeLinecap={strokeLinecap}
             strokeWidth={strokeWidth}
@@ -108,7 +110,7 @@ const Circle: React.FC<ProgressProps> = ({
   return (
     <svg
       className={classNames(`${prefixCls}-circle`, className)}
-      viewBox="0 0 100 100"
+      viewBox={`0 0 ${VIEW_BOX_SIZE} ${VIEW_BOX_SIZE}`}
       style={style}
       id={id}
       {...restProps}
@@ -127,8 +129,8 @@ const Circle: React.FC<ProgressProps> = ({
       <circle
         className={`${prefixCls}-circle-trail`}
         r={radius}
-        cx={50}
-        cy={50}
+        cx={VIEW_BOX_SIZE / 2}
+        cy={VIEW_BOX_SIZE / 2}
         stroke={trailColor}
         strokeLinecap={strokeLinecap}
         strokeWidth={trailWidth || strokeWidth}
