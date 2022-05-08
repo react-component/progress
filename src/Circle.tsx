@@ -55,7 +55,7 @@ const getCircleStyle = (
     stroke: typeof strokeColor === 'string' ? strokeColor : undefined,
     strokeDasharray: `${perimeterWithoutGap}px ${perimeter}`,
     strokeDashoffset,
-    transform: percent === 100 ? undefined : `rotate(${rotateDeg + offsetDeg + positionDeg}deg)`,
+    transform: `rotate(${rotateDeg + offsetDeg + positionDeg}deg)`,
     transformOrigin: '50% 50%',
     transition:
       'stroke-dashoffset .3s ease 0s, stroke-dasharray .3s ease 0s, stroke .3s, stroke-width .06s ease .3s, opacity .3s ease 0s',
