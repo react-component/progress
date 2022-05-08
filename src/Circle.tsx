@@ -22,6 +22,8 @@ const getCircleStyle = (
   strokeColor: string | Record<string, string>,
   gapDegree = 0,
   gapPosition: GapPositionType,
+  strokeLinecap: ProgressProps['strokeLinecap'],
+  strokeWidth,
 ) => {
   const rotateDeg = gapDegree > 0 ? 90 + gapDegree / 2 : -90;
   const perimeter = Math.PI * 2 * radius;
@@ -35,10 +37,21 @@ const getCircleStyle = (
     right: -90,
   }[gapPosition];
 
+  let strokeDashoffset = ((100 - percent) / 100) * perimeterWithoutGap;
+  // Fix percent accuracy when strokeLinecap is round
+  // https://github.com/ant-design/ant-design/issues/35009
+  if (strokeLinecap === 'round' && percent !== 100) {
+    strokeDashoffset += strokeWidth / 2;
+    // when percent is small enough (<= 1%), keep smallest value to avoid it's disapperance
+    if (strokeDashoffset >= perimeterWithoutGap) {
+      strokeDashoffset = perimeterWithoutGap - 0.01;
+    }
+  }
+
   return {
     stroke: typeof strokeColor === 'string' ? strokeColor : undefined,
     strokeDasharray: `${perimeterWithoutGap}px ${perimeter}`,
-    strokeDashoffset: `${((100 - percent) / 100) * perimeterWithoutGap}px`,
+    strokeDashoffset,
     transform: `rotate(${rotateDeg + offsetDeg + positionDeg}deg)`,
     transformOrigin: '50% 50%',
     transition:
@@ -66,7 +79,16 @@ const Circle: React.FC<ProgressProps> = ({
   const gradientId = `${mergedId}-gradient`;
   const radius = VIEW_BOX_SIZE / 2 - strokeWidth / 2;
 
-  const circleStyle = getCircleStyle(radius, 0, 100, trailColor, gapDegree, gapPosition);
+  const circleStyle = getCircleStyle(
+    radius,
+    0,
+    100,
+    trailColor,
+    gapDegree,
+    gapPosition,
+    strokeLinecap,
+    strokeWidth,
+  );
   const percentList = toArray(percent);
   const strokeColorList = toArray(strokeColor);
   const gradient = strokeColorList.find((color) => color && typeof color === 'object');
@@ -86,6 +108,8 @@ const Circle: React.FC<ProgressProps> = ({
           color,
           gapDegree,
           gapPosition,
+          strokeLinecap,
+          strokeWidth,
         );
         stackPtg += ptg;
         return (
@@ -96,7 +120,7 @@ const Circle: React.FC<ProgressProps> = ({
             cx={VIEW_BOX_SIZE / 2}
             cy={VIEW_BOX_SIZE / 2}
             stroke={stroke}
-            strokeLinecap={strokeLinecap === 'round' ? strokeLinecap : undefined}
+            strokeLinecap={strokeLinecap}
             strokeWidth={strokeWidth}
             opacity={ptg === 0 ? 0 : 1}
             style={circleStyleForStack}
@@ -132,7 +156,7 @@ const Circle: React.FC<ProgressProps> = ({
         cx={VIEW_BOX_SIZE / 2}
         cy={VIEW_BOX_SIZE / 2}
         stroke={trailColor}
-        strokeLinecap={strokeLinecap === 'round' ? strokeLinecap : undefined}
+        strokeLinecap={strokeLinecap}
         strokeWidth={trailWidth || strokeWidth}
         style={circleStyle}
       />
