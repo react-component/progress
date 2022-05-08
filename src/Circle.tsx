@@ -1,7 +1,7 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import { useTransitionDuration, defaultProps } from './common';
-import type { ProgressProps, GapPositionType } from './interface';
+import type { ProgressProps } from './interface';
 import useId from './hooks/useId';
 
 function stripPercentToNumber(percent: string) {
@@ -21,7 +21,7 @@ const getCircleStyle = (
   percent: number,
   strokeColor: string | Record<string, string>,
   gapDegree = 0,
-  gapPosition: GapPositionType,
+  gapPosition: ProgressProps['gapPosition'],
   strokeLinecap: ProgressProps['strokeLinecap'],
   strokeWidth,
 ) => {
