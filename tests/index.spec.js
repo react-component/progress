@@ -153,10 +153,10 @@ describe('Progress', () => {
     it('should support ts onClick', () => {
       const onClick = jest.fn();
       const wrapper = mount(
-        <>
+        <div>
           <Circle onClick={onClick} className="circle-target" />
           <Line onClick={onClick} className="line-target" />
-        </>,
+        </div>,
       );
 
       wrapper.find('.circle-target').at(0).simulate('click');
