@@ -22,12 +22,14 @@ const getCircleStyle = (
   gapDegree = 0,
   gapPosition: GapPositionType,
 ) => {
+  const rotateDeg = gapDegree > 0 ? 90 + gapDegree / 2 : -90;
   const perimeter = Math.PI * 2 * radius;
+  const perimeterWithoutGap = perimeter * ((360 - gapDegree) / 360);
   return {
     stroke: typeof strokeColor === 'string' ? strokeColor : undefined,
-    strokeDasharray: `${perimeter}px`,
-    strokeDashoffset: `${((100 - percent) / 100) * perimeter}px`,
-    transform: 'rotate(-90deg)',
+    strokeDasharray: `${perimeterWithoutGap}px`,
+    strokeDashoffset: `${((100 - percent) / 100) * perimeterWithoutGap}px`,
+    transform: `rotate(${rotateDeg}deg)`,
     transformOrigin: '50% 50%',
     transition:
       'stroke-dashoffset .3s ease 0s, stroke-dasharray .3s ease 0s, stroke .3s, stroke-width .06s ease .3s, opacity .3s ease 0s',
@@ -74,7 +76,7 @@ const Circle: React.FC<ProgressProps> = ({
     return percentList
       .map((ptg, index) => {
         const color = strokeColorList[index] || strokeColorList[strokeColorList.length - 1];
-        const stroke = color && typeof color === 'object' ? `url(#${gradientId})` : '';
+        const stroke = color && typeof color === 'object' ? `url(#${gradientId})` : undefined;
         const circleStyleForStack = getCircleStyle(
           radius,
           stackPtg,
