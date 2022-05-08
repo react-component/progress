@@ -13,56 +13,27 @@ function toArray<T>(value: T | T[]): T[] {
   return Array.isArray(mergedValue) ? mergedValue : [mergedValue];
 }
 
-function getPathStyles(
+const getCircleStyle = (
+  radius: number,
   offset: number,
   percent: number,
   strokeColor: string | Record<string, string>,
   strokeWidth: number,
   gapDegree = 0,
   gapPosition: GapPositionType,
-) {
-  const radius = 50 - strokeWidth / 2;
-  let beginPositionX = 0;
-  let beginPositionY = -radius;
-  let endPositionX = 0;
-  let endPositionY = -2 * radius;
-  switch (gapPosition) {
-    case 'left':
-      beginPositionX = -radius;
-      beginPositionY = 0;
-      endPositionX = 2 * radius;
-      endPositionY = 0;
-      break;
-    case 'right':
-      beginPositionX = radius;
-      beginPositionY = 0;
-      endPositionX = -2 * radius;
-      endPositionY = 0;
-      break;
-    case 'bottom':
-      beginPositionY = radius;
-      endPositionY = 2 * radius;
-      break;
-    default:
-  }
-  const pathString = `M 50,50 m ${beginPositionX},${beginPositionY}
-   a ${radius},${radius} 0 1 1 ${endPositionX},${-endPositionY}
-   a ${radius},${radius} 0 1 1 ${-endPositionX},${endPositionY}`;
-  const len = Math.PI * 2 * radius;
-
-  const pathStyle = {
-    stroke: typeof strokeColor === 'string' ? strokeColor : undefined,
-    strokeDasharray: `${(percent / 100) * (len - gapDegree)}px ${len}px`,
-    strokeDashoffset: `-${gapDegree / 2 + (offset / 100) * (len - gapDegree)}px`,
-    transition:
-      'stroke-dashoffset .3s ease 0s, stroke-dasharray .3s ease 0s, stroke .3s, stroke-width .06s ease .3s, opacity .3s ease 0s', // eslint-disable-line
-  };
-
+) => {
+  const perimeter = Math.PI * 2 * radius;
   return {
-    pathString,
-    pathStyle,
+    stroke: typeof strokeColor === 'string' ? strokeColor : undefined,
+    strokeDasharray: `${perimeter}px`,
+    strokeDashoffset: `${((100 - percent) / 100) * perimeter}px`,
+    transform: 'rotate(-90deg)',
+    transformOrigin: '50% 50%',
+    transition:
+      'stroke-dashoffset .3s ease 0s, stroke-dasharray .3s ease 0s, stroke .3s, stroke-width .06s ease .3s, opacity .3s ease 0s',
+    fillOpacity: 0,
   };
-}
+};
 
 const Circle: React.FC<ProgressProps> = ({
   id,
@@ -80,10 +51,11 @@ const Circle: React.FC<ProgressProps> = ({
   ...restProps
 }) => {
   const mergedId = useId(id);
-
   const gradientId = `${mergedId}-gradient`;
+  const radius = 50 - strokeWidth / 2;
 
-  const { pathString, pathStyle } = getPathStyles(
+  const circleStyle = getCircleStyle(
+    radius,
     0,
     100,
     trailColor,
@@ -99,26 +71,37 @@ const Circle: React.FC<ProgressProps> = ({
 
   const getStokeList = () => {
     let stackPtg = 0;
-    return percentList.map((ptg, index) => {
-      const color = strokeColorList[index] || strokeColorList[strokeColorList.length - 1];
-      const stroke = color && typeof color === 'object' ? `url(#${gradientId})` : '';
-      const pathStyles = getPathStyles(stackPtg, ptg, color, strokeWidth, gapDegree, gapPosition);
-      stackPtg += ptg;
-      return (
-        <path
-          key={index}
-          className={`${prefixCls}-circle-path`}
-          d={pathStyles.pathString}
-          stroke={stroke}
-          strokeLinecap={strokeLinecap}
-          strokeWidth={strokeWidth}
-          opacity={ptg === 0 ? 0 : 1}
-          fillOpacity="0"
-          style={pathStyles.pathStyle}
-          ref={paths[index]}
-        />
-      );
-    });
+    return percentList
+      .map((ptg, index) => {
+        const color = strokeColorList[index] || strokeColorList[strokeColorList.length - 1];
+        const stroke = color && typeof color === 'object' ? `url(#${gradientId})` : '';
+        const circleStyleForStack = getCircleStyle(
+          radius,
+          stackPtg,
+          ptg,
+          color,
+          strokeWidth,
+          gapDegree,
+          gapPosition,
+        );
+        stackPtg += ptg;
+        return (
+          <circle
+            key={index}
+            className={`${prefixCls}-circle-path`}
+            r={radius}
+            cx={50}
+            cy={50}
+            stroke={stroke}
+            strokeLinecap={strokeLinecap}
+            strokeWidth={strokeWidth}
+            opacity={ptg === 0 ? 0 : 1}
+            style={circleStyleForStack}
+            ref={paths[index]}
+          />
+        );
+      })
+      .reverse();
   };
 
   return (
@@ -140,16 +123,17 @@ const Circle: React.FC<ProgressProps> = ({
           </linearGradient>
         </defs>
       )}
-      <path
+      <circle
         className={`${prefixCls}-circle-trail`}
-        d={pathString}
+        r={radius}
+        cx={50}
+        cy={50}
         stroke={trailColor}
         strokeLinecap={strokeLinecap}
         strokeWidth={trailWidth || strokeWidth}
-        fillOpacity="0"
-        style={pathStyle}
+        style={circleStyle}
       />
-      {getStokeList().reverse()}
+      {getStokeList()}
     </svg>
   );
 };
