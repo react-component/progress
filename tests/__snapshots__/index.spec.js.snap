@@ -114,7 +114,7 @@ exports[`Progress Circle should gradient works and circles have different gradie
       stroke="#D9D9D9"
       stroke-linecap="round"
       stroke-width="1"
-      style="stroke: #D9D9D9; stroke-dasharray: 295.3097094374406px 295.3097094374406; stroke-dashoffset: 0; transform: rotate(-90deg); transform-origin: 50% 50%; transition: stroke-dashoffset .3s ease 0s, stroke-dasharray .3s ease 0s, stroke .3s, stroke-width .06s ease .3s, opacity .3s ease 0s; fill-opacity: 0;"
+      style="stroke: #D9D9D9; stroke-dasharray: 295.3097094374406px 295.3097094374406; stroke-dashoffset: 0; transform-origin: 50% 50%; transition: stroke-dashoffset .3s ease 0s, stroke-dasharray .3s ease 0s, stroke .3s, stroke-width .06s ease .3s, opacity .3s ease 0s; fill-opacity: 0;"
     />
     <circle
       class="rc-progress-circle-path"
@@ -158,7 +158,7 @@ exports[`Progress Circle should gradient works and circles have different gradie
       stroke="#D9D9D9"
       stroke-linecap="round"
       stroke-width="1"
-      style="stroke: #D9D9D9; stroke-dasharray: 295.3097094374406px 295.3097094374406; stroke-dashoffset: 0; transform: rotate(-90deg); transform-origin: 50% 50%; transition: stroke-dashoffset .3s ease 0s, stroke-dasharray .3s ease 0s, stroke .3s, stroke-width .06s ease .3s, opacity .3s ease 0s; fill-opacity: 0;"
+      style="stroke: #D9D9D9; stroke-dasharray: 295.3097094374406px 295.3097094374406; stroke-dashoffset: 0; transform-origin: 50% 50%; transition: stroke-dashoffset .3s ease 0s, stroke-dasharray .3s ease 0s, stroke .3s, stroke-width .06s ease .3s, opacity .3s ease 0s; fill-opacity: 0;"
     />
     <circle
       class="rc-progress-circle-path"
@@ -189,7 +189,7 @@ exports[`Progress Circle should show right gapPosition 1`] = `
       stroke="#D9D9D9"
       stroke-linecap="square"
       stroke-width="1"
-      style="stroke: #D9D9D9; stroke-dasharray: 237.88837704682715px 295.3097094374406; stroke-dashoffset: 0; transform: rotate(305deg); transform-origin: 50% 50%; transition: stroke-dashoffset .3s ease 0s, stroke-dasharray .3s ease 0s, stroke .3s, stroke-width .06s ease .3s, opacity .3s ease 0s; fill-opacity: 0;"
+      style="stroke: #D9D9D9; stroke-dasharray: 237.88837704682715px 295.3097094374406; stroke-dashoffset: 0; transform-origin: 50% 50%; transition: stroke-dashoffset .3s ease 0s, stroke-dasharray .3s ease 0s, stroke .3s, stroke-width .06s ease .3s, opacity .3s ease 0s; fill-opacity: 0;"
     />
     <circle
       class="rc-progress-circle-path"
@@ -214,7 +214,7 @@ exports[`Progress Circle should show right gapPosition 1`] = `
       stroke="#D9D9D9"
       stroke-linecap="square"
       stroke-width="1"
-      style="stroke: #D9D9D9; stroke-dasharray: 237.88837704682715px 295.3097094374406; stroke-dashoffset: 0; transform: rotate(125deg); transform-origin: 50% 50%; transition: stroke-dashoffset .3s ease 0s, stroke-dasharray .3s ease 0s, stroke .3s, stroke-width .06s ease .3s, opacity .3s ease 0s; fill-opacity: 0;"
+      style="stroke: #D9D9D9; stroke-dasharray: 237.88837704682715px 295.3097094374406; stroke-dashoffset: 0; transform-origin: 50% 50%; transition: stroke-dashoffset .3s ease 0s, stroke-dasharray .3s ease 0s, stroke .3s, stroke-width .06s ease .3s, opacity .3s ease 0s; fill-opacity: 0;"
     />
     <circle
       class="rc-progress-circle-path"
@@ -239,7 +239,7 @@ exports[`Progress Circle should show right gapPosition 1`] = `
       stroke="#D9D9D9"
       stroke-linecap="square"
       stroke-width="1"
-      style="stroke: #D9D9D9; stroke-dasharray: 237.88837704682715px 295.3097094374406; stroke-dashoffset: 0; transform: rotate(215deg); transform-origin: 50% 50%; transition: stroke-dashoffset .3s ease 0s, stroke-dasharray .3s ease 0s, stroke .3s, stroke-width .06s ease .3s, opacity .3s ease 0s; fill-opacity: 0;"
+      style="stroke: #D9D9D9; stroke-dasharray: 237.88837704682715px 295.3097094374406; stroke-dashoffset: 0; transform-origin: 50% 50%; transition: stroke-dashoffset .3s ease 0s, stroke-dasharray .3s ease 0s, stroke .3s, stroke-width .06s ease .3s, opacity .3s ease 0s; fill-opacity: 0;"
     />
     <circle
       class="rc-progress-circle-path"
@@ -264,7 +264,7 @@ exports[`Progress Circle should show right gapPosition 1`] = `
       stroke="#D9D9D9"
       stroke-linecap="square"
       stroke-width="1"
-      style="stroke: #D9D9D9; stroke-dasharray: 237.88837704682715px 295.3097094374406; stroke-dashoffset: 0; transform: rotate(35deg); transform-origin: 50% 50%; transition: stroke-dashoffset .3s ease 0s, stroke-dasharray .3s ease 0s, stroke .3s, stroke-width .06s ease .3s, opacity .3s ease 0s; fill-opacity: 0;"
+      style="stroke: #D9D9D9; stroke-dasharray: 237.88837704682715px 295.3097094374406; stroke-dashoffset: 0; transform-origin: 50% 50%; transition: stroke-dashoffset .3s ease 0s, stroke-dasharray .3s ease 0s, stroke .3s, stroke-width .06s ease .3s, opacity .3s ease 0s; fill-opacity: 0;"
     />
     <circle
       class="rc-progress-circle-path"
@@ -289,7 +289,7 @@ exports[`Progress Circle should show right gapPosition 1`] = `
       stroke="#D9D9D9"
       stroke-linecap="round"
       stroke-width="1"
-      style="stroke: #D9D9D9; stroke-dasharray: 237.88837704682715px 295.3097094374406; stroke-dashoffset: 0; transform: rotate(305deg); transform-origin: 50% 50%; transition: stroke-dashoffset .3s ease 0s, stroke-dasharray .3s ease 0s, stroke .3s, stroke-width .06s ease .3s, opacity .3s ease 0s; fill-opacity: 0;"
+      style="stroke: #D9D9D9; stroke-dasharray: 237.88837704682715px 295.3097094374406; stroke-dashoffset: 0; transform-origin: 50% 50%; transition: stroke-dashoffset .3s ease 0s, stroke-dasharray .3s ease 0s, stroke .3s, stroke-width .06s ease .3s, opacity .3s ease 0s; fill-opacity: 0;"
     />
     <circle
       class="rc-progress-circle-path"
@@ -314,7 +314,7 @@ exports[`Progress Circle should show right gapPosition 1`] = `
       stroke="#D9D9D9"
       stroke-linecap="round"
       stroke-width="1"
-      style="stroke: #D9D9D9; stroke-dasharray: 237.88837704682715px 295.3097094374406; stroke-dashoffset: 0; transform: rotate(305deg); transform-origin: 50% 50%; transition: stroke-dashoffset .3s ease 0s, stroke-dasharray .3s ease 0s, stroke .3s, stroke-width .06s ease .3s, opacity .3s ease 0s; fill-opacity: 0;"
+      style="stroke: #D9D9D9; stroke-dasharray: 237.88837704682715px 295.3097094374406; stroke-dashoffset: 0; transform-origin: 50% 50%; transition: stroke-dashoffset .3s ease 0s, stroke-dasharray .3s ease 0s, stroke .3s, stroke-width .06s ease .3s, opacity .3s ease 0s; fill-opacity: 0;"
     />
     <circle
       class="rc-progress-circle-path"

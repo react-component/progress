@@ -5,7 +5,7 @@ class Example extends React.Component<ProgressProps, any> {
   constructor(props) {
     super(props);
     this.state = {
-      percent: 96,
+      percent: 9,
       color: '#3FC7FA',
     };
     this.changeState = this.changeState.bind(this);

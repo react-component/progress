@@ -30,12 +30,15 @@ const getCircleStyle = (
   const perimeterWithoutGap = perimeter * ((360 - gapDegree) / 360);
   const offsetDeg = (offset / 100) * 360 * ((360 - gapDegree) / 360);
 
-  const positionDeg = {
-    bottom: 0,
-    top: 180,
-    left: 90,
-    right: -90,
-  }[gapPosition];
+  const positionDeg =
+    gapDegree === 0
+      ? 0
+      : {
+          bottom: 0,
+          top: 180,
+          left: 90,
+          right: -90,
+        }[gapPosition];
 
   let strokeDashoffset = ((100 - percent) / 100) * perimeterWithoutGap;
   // Fix percent accuracy when strokeLinecap is round
@@ -52,7 +55,7 @@ const getCircleStyle = (
     stroke: typeof strokeColor === 'string' ? strokeColor : undefined,
     strokeDasharray: `${perimeterWithoutGap}px ${perimeter}`,
     strokeDashoffset,
-    transform: `rotate(${rotateDeg + offsetDeg + positionDeg}deg)`,
+    transform: percent === 100 ? undefined : `rotate(${rotateDeg + offsetDeg + positionDeg}deg)`,
     transformOrigin: '50% 50%',
     transition:
       'stroke-dashoffset .3s ease 0s, stroke-dasharray .3s ease 0s, stroke .3s, stroke-width .06s ease .3s, opacity .3s ease 0s',
