@@ -1,5 +1,5 @@
 import { useRef, useEffect } from 'react';
-import { ProgressProps } from './interface';
+import type { ProgressProps } from './interface';
 
 export const defaultProps: Partial<ProgressProps> = {
   className: '',
@@ -11,6 +11,7 @@ export const defaultProps: Partial<ProgressProps> = {
   style: {},
   trailColor: '#D9D9D9',
   trailWidth: 1,
+  gapPosition: 'bottom',
 };
 
 export const useTransitionDuration = (percentList: number[]) => {
@@ -21,7 +22,7 @@ export const useTransitionDuration = (percentList: number[]) => {
     const now = Date.now();
     let updated = false;
 
-    Object.keys(paths).forEach(key => {
+    Object.keys(paths).forEach((key) => {
       const path = paths[key].current;
       if (!path) {
         return;
