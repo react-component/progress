@@ -96,7 +96,7 @@ const Circle: React.FC<ProgressProps> = ({
             cx={VIEW_BOX_SIZE / 2}
             cy={VIEW_BOX_SIZE / 2}
             stroke={stroke}
-            strokeLinecap={strokeLinecap}
+            strokeLinecap={strokeLinecap === 'round' ? strokeLinecap : undefined}
             strokeWidth={strokeWidth}
             opacity={ptg === 0 ? 0 : 1}
             style={circleStyleForStack}
@@ -132,7 +132,7 @@ const Circle: React.FC<ProgressProps> = ({
         cx={VIEW_BOX_SIZE / 2}
         cy={VIEW_BOX_SIZE / 2}
         stroke={trailColor}
-        strokeLinecap={strokeLinecap}
+        strokeLinecap={strokeLinecap === 'round' ? strokeLinecap : undefined}
         strokeWidth={trailWidth || strokeWidth}
         style={circleStyle}
       />
