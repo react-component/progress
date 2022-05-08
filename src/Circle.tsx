@@ -18,18 +18,26 @@ const getCircleStyle = (
   offset: number,
   percent: number,
   strokeColor: string | Record<string, string>,
-  strokeWidth: number,
   gapDegree = 0,
   gapPosition: GapPositionType,
 ) => {
   const rotateDeg = gapDegree > 0 ? 90 + gapDegree / 2 : -90;
   const perimeter = Math.PI * 2 * radius;
   const perimeterWithoutGap = perimeter * ((360 - gapDegree) / 360);
+  const offsetDeg = (offset / 100) * 360 * ((360 - gapDegree) / 360);
+
+  const positionDeg = {
+    bottom: 0,
+    top: 180,
+    left: 90,
+    right: -90,
+  }[gapPosition];
+
   return {
     stroke: typeof strokeColor === 'string' ? strokeColor : undefined,
-    strokeDasharray: `${perimeterWithoutGap}px`,
+    strokeDasharray: `${perimeterWithoutGap}px ${perimeter}`,
     strokeDashoffset: `${((100 - percent) / 100) * perimeterWithoutGap}px`,
-    transform: `rotate(${rotateDeg}deg)`,
+    transform: `rotate(${rotateDeg + offsetDeg + positionDeg}deg)`,
     transformOrigin: '50% 50%',
     transition:
       'stroke-dashoffset .3s ease 0s, stroke-dasharray .3s ease 0s, stroke .3s, stroke-width .06s ease .3s, opacity .3s ease 0s',
@@ -56,15 +64,7 @@ const Circle: React.FC<ProgressProps> = ({
   const gradientId = `${mergedId}-gradient`;
   const radius = 50 - strokeWidth / 2;
 
-  const circleStyle = getCircleStyle(
-    radius,
-    0,
-    100,
-    trailColor,
-    strokeWidth,
-    gapDegree,
-    gapPosition,
-  );
+  const circleStyle = getCircleStyle(radius, 0, 100, trailColor, gapDegree, gapPosition);
   const percentList = toArray(percent);
   const strokeColorList = toArray(strokeColor);
   const gradient = strokeColorList.find((color) => color && typeof color === 'object');
@@ -82,7 +82,6 @@ const Circle: React.FC<ProgressProps> = ({
           stackPtg,
           ptg,
           color,
-          strokeWidth,
           gapDegree,
           gapPosition,
         );
