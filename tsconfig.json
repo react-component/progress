@@ -11,7 +11,7 @@
     "paths": {
       "@/*": ["src/*"],
       "@@/*": ["src/.umi/*"],
-      "rc-progress": ["src/index.tsx"]
+      "rc-progress": ["src/index.ts"]
     }
   }
 }

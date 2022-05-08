@@ -28,15 +28,15 @@ describe('Progress', () => {
 
   describe('Diff Line', () => {
     const wrapper = mount(
-      <>
+      <div>
         <Line percent={20} strokeLinecap="butt" />
         <br />
         <Line percent={20} strokeLinecap="round" />
         <br />
         <Line percent={20} strokeLinecap="square" />
-      </>,
+      </div>,
     );
-    expect(wrapper).toMatchSnapshot();
+    expect(wrapper.render()).toMatchSnapshot();
   });
 
   describe('Circle', () => {
@@ -63,7 +63,7 @@ describe('Progress', () => {
         <div>
           <Circle
             percent={90}
-            strokeWidth="6"
+            strokeWidth={6}
             strokeLinecap="round"
             strokeColor={{
               '0%': '#108ee9',
@@ -72,7 +72,7 @@ describe('Progress', () => {
           />
           <Circle
             percent={90}
-            strokeWidth="6"
+            strokeWidth={6}
             strokeLinecap="round"
             strokeColor={{
               '0%': '#108ee9',
@@ -87,47 +87,47 @@ describe('Progress', () => {
 
     it('should show right gapPosition', () => {
       const wrapper = mount(
-        <>
+        <div>
           <Circle
             percent={30}
             gapDegree={70}
             gapPosition="top"
-            strokeWidth="6"
+            strokeWidth={6}
             strokeLinecap="square"
           />
           <Circle
             percent={30}
             gapDegree={70}
             gapPosition="bottom"
-            strokeWidth="6"
+            strokeWidth={6}
             strokeLinecap="square"
           />
           <Circle
             percent={30}
             gapDegree={70}
             gapPosition="left"
-            strokeWidth="6"
+            strokeWidth={6}
             strokeLinecap="square"
           />
           <Circle
             percent={30}
             gapDegree={70}
             gapPosition="right"
-            strokeWidth="6"
+            strokeWidth={6}
             strokeLinecap="square"
           />
           <Circle
             percent={30}
             gapDegree={70}
             gapPosition="top"
-            strokeWidth="6"
+            strokeWidth={6}
             strokeLinecap="round"
           />
-          <Circle percent={30} gapDegree={70} gapPosition="top" strokeWidth="6" />
-        </>,
+          <Circle percent={30} gapDegree={70} gapPosition="top" strokeWidth={6} />
+        </div>,
       );
 
-      expect(wrapper).toMatchSnapshot();
+      expect(wrapper.render()).toMatchSnapshot();
     });
 
     // https://github.com/ant-design/ant-design/issues/30552
@@ -153,10 +153,10 @@ describe('Progress', () => {
     it('should support ts onClick', () => {
       const onClick = jest.fn();
       const wrapper = mount(
-        <>
+        <div>
           <Circle onClick={onClick} className="circle-target" />
           <Line onClick={onClick} className="line-target" />
-        </>,
+        </div>,
       );
 
       wrapper.find('.circle-target').at(0).simulate('click');

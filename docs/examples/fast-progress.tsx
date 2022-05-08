@@ -11,7 +11,7 @@ class App extends React.Component<ProgressProps, any> {
     this.restart = this.restart.bind(this);
   }
 
-  private tm: number;
+  private tm: NodeJS.Timeout;
 
   componentDidMount() {
     this.increase();
