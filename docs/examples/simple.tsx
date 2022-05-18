@@ -5,7 +5,7 @@ class Example extends React.Component<ProgressProps, any> {
   constructor(props) {
     super(props);
     this.state = {
-      percent: 30,
+      percent: 9,
       color: '#3FC7FA',
     };
     this.changeState = this.changeState.bind(this);
@@ -23,19 +23,25 @@ class Example extends React.Component<ProgressProps, any> {
   };
 
   changeIncrease() {
-    let percent = this.state.percent + 10;
-    if (percent > 100) {
-      percent = 100;
-    }
-    this.setState({ percent });
+    this.setState(({ percent }) => {
+      if (percent > 100) {
+        percent = 100;
+      }
+      return {
+        percent: percent + 1,
+      };
+    });
   };
 
   changeReduce() {
-    let percent = this.state.percent - 10;
-    if (percent < 0) {
-      percent = 0;
-    }
-    this.setState({ percent });
+    this.setState(({ percent }) => {
+      if (percent < 0) {
+        percent = 0;
+      }
+      return {
+        percent: percent - 1,
+      };
+    });
   };
 
   render() {
@@ -62,6 +68,12 @@ class Example extends React.Component<ProgressProps, any> {
         <h3>Circle Progress {percent}%</h3>
         <div style={circleContainerStyle}>
           <Circle percent={percent} strokeWidth={6} strokeLinecap="round" strokeColor={color} />
+        </div>
+        <div style={circleContainerStyle}>
+          <Circle percent={percent} strokeWidth={6} strokeLinecap="butt" strokeColor={color} />
+        </div>
+        <div style={circleContainerStyle}>
+          <Circle percent={percent} strokeWidth={6} strokeLinecap="square" strokeColor={color} />
         </div>
         <p>
           <button type="button" onClick={this.changeState}>

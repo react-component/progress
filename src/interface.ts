@@ -1,6 +1,5 @@
-import * as React from 'react';
-
 export interface ProgressProps {
+  id?: string;
   strokeWidth?: number;
   trailWidth?: number;
   className?: string;
@@ -13,9 +12,12 @@ export interface ProgressProps {
   gapDegree?: number;
   gapPosition?: GapPositionType;
   transition?: string;
+  onClick?: React.MouseEventHandler;
 }
 
-export type StrokeColorType = string | string[] | object;
+export type BaseStrokeColorType = string | Record<string, string>;
+
+export type StrokeColorType = BaseStrokeColorType | BaseStrokeColorType[];
 
 export type GapPositionType = 'top' | 'right' | 'bottom' | 'left';
 

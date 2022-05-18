@@ -11,6 +11,7 @@ export const defaultProps: Partial<ProgressProps> = {
   style: {},
   trailColor: '#D9D9D9',
   trailWidth: 1,
+  gapPosition: 'bottom',
 };
 
 export const useTransitionDuration = (): SVGPathElement[] => {

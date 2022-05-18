@@ -28,15 +28,15 @@ describe('Progress', () => {
 
   describe('Diff Line', () => {
     const wrapper = mount(
-      <>
+      <div>
         <Line percent={20} strokeLinecap="butt" />
         <br />
         <Line percent={20} strokeLinecap="round" />
         <br />
         <Line percent={20} strokeLinecap="square" />
-      </>,
+      </div>,
     );
-    expect(wrapper).toMatchSnapshot();
+    expect(wrapper.render()).toMatchSnapshot();
   });
 
   describe('Circle', () => {
@@ -59,11 +59,11 @@ describe('Progress', () => {
     });
 
     it('should gradient works and circles have different gradient IDs', () => {
-      const c = mount(
-        <>
+      const wrapper = mount(
+        <div>
           <Circle
             percent={90}
-            strokeWidth="6"
+            strokeWidth={6}
             strokeLinecap="round"
             strokeColor={{
               '0%': '#108ee9',
@@ -72,68 +72,62 @@ describe('Progress', () => {
           />
           <Circle
             percent={90}
-            strokeWidth="6"
+            strokeWidth={6}
             strokeLinecap="round"
             strokeColor={{
               '0%': '#108ee9',
               '100%': '#87d068',
             }}
           />
-        </>,
+        </div>,
       );
 
-      const gradientDefs = c.find('defs');
-      const idFirst = gradientDefs.at(0).props().children.props.id;
-      const idSecond = gradientDefs.at(1).props().children.props.id;
-      const idRE = /^rc-progress-gradient-\d{1,}$/;
-      expect(idFirst).toMatch(idRE);
-      expect(idSecond).toMatch(idRE);
-      expect(idFirst === idSecond).toBeFalsy();
+      expect(wrapper.render()).toMatchSnapshot();
     });
 
     it('should show right gapPosition', () => {
       const wrapper = mount(
-        <>
+        <div>
           <Circle
             percent={30}
             gapDegree={70}
             gapPosition="top"
-            strokeWidth="6"
+            strokeWidth={6}
             strokeLinecap="square"
           />
           <Circle
             percent={30}
             gapDegree={70}
             gapPosition="bottom"
-            strokeWidth="6"
+            strokeWidth={6}
             strokeLinecap="square"
           />
           <Circle
             percent={30}
             gapDegree={70}
             gapPosition="left"
-            strokeWidth="6"
+            strokeWidth={6}
             strokeLinecap="square"
           />
           <Circle
             percent={30}
             gapDegree={70}
             gapPosition="right"
-            strokeWidth="6"
+            strokeWidth={6}
             strokeLinecap="square"
           />
           <Circle
             percent={30}
             gapDegree={70}
             gapPosition="top"
-            strokeWidth="6"
+            strokeWidth={6}
             strokeLinecap="round"
           />
-          <Circle percent={30} gapDegree={70} gapPosition="top" strokeWidth="6" />
-        </>,
+          <Circle percent={30} gapDegree={70} gapPosition="top" strokeWidth={6} />
+        </div>,
       );
 
-      expect(wrapper).toMatchSnapshot();
+      expect(wrapper.render()).toMatchSnapshot();
     });
 
     // https://github.com/ant-design/ant-design/issues/30552
@@ -154,6 +148,21 @@ describe('Progress', () => {
       expect(wrapper.find('.rc-progress-circle-path').getDOMNode().style.cssText).not.toContain(
         'stroke:',
       );
+    });
+
+    it('should support ts onClick', () => {
+      const onClick = jest.fn();
+      const wrapper = mount(
+        <div>
+          <Circle onClick={onClick} className="circle-target" />
+          <Line onClick={onClick} className="line-target" />
+        </div>,
+      );
+
+      wrapper.find('.circle-target').at(0).simulate('click');
+      expect(onClick).toHaveBeenCalledTimes(1);
+      wrapper.find('.line-target').at(0).simulate('click');
+      expect(onClick).toHaveBeenCalledTimes(2);
     });
   });
 
