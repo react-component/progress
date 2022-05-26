@@ -96,7 +96,7 @@ const Circle: React.FC<ProgressProps> = ({
   const strokeColorList = toArray(strokeColor);
   const gradient = strokeColorList.find((color) => color && typeof color === 'object');
 
-  const [paths] = useTransitionDuration(percentList);
+  const paths = useTransitionDuration();
 
   const getStokeList = () => {
     let stackPtg = 0;
@@ -127,7 +127,14 @@ const Circle: React.FC<ProgressProps> = ({
             strokeWidth={strokeWidth}
             opacity={ptg === 0 ? 0 : 1}
             style={circleStyleForStack}
-            ref={paths[index]}
+            ref={(elem) => {
+              // https://reactjs.org/docs/refs-and-the-dom.html#callback-refs
+              // React will call the ref callback with the DOM element when the component mounts,
+              // and call it with `null` when it unmounts.
+              // Refs are guaranteed to be up-to-date before componentDidMount or componentDidUpdate fires.
+  
+              paths[index] = elem;
+            }}
           />
         );
       })
