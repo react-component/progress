@@ -21,7 +21,7 @@ const getCircleStyle = (
   offset: number,
   percent: number,
   rotateDeg: number,
-  gapDegree = 0,
+  gapDegree,
   gapPosition: ProgressProps['gapPosition'] | undefined,
   strokeColor: string | Record<string, string>,
   strokeLinecap: ProgressProps['strokeLinecap'],
