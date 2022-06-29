@@ -13,6 +13,7 @@ export interface ProgressProps {
   gapPosition?: GapPositionType;
   transition?: string;
   onClick?: React.MouseEventHandler;
+  steps?: number | { count: number; space: number };
 }
 
 export type BaseStrokeColorType = string | Record<string, string>;
