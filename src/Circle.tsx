@@ -202,6 +202,7 @@ const Circle: React.FC<ProgressProps> = ({
       viewBox={`0 0 ${VIEW_BOX_SIZE} ${VIEW_BOX_SIZE}`}
       style={style}
       id={id}
+      role="presentation"
       {...restProps}
     >
       {gradient && (
