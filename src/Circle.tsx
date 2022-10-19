@@ -1,8 +1,9 @@
 import * as React from 'react';
 import classNames from 'classnames';
-import { defaultProps, useTransitionDuration } from './common';
+import { defaultProps, isMac, isSafari, useTransitionDuration } from './common';
 import type { ProgressProps } from './interface';
 import useId from './hooks/useId';
+import { useEffect, useRef, useState } from 'react';
 
 function stripPercentToNumber(percent: string) {
   return +percent.replace('%', '');
@@ -14,8 +15,10 @@ function toArray<T>(value: T | T[]): T[] {
 }
 
 const VIEW_BOX_SIZE = 100;
+const DEFAULT_TRANSFORM_ORIGIN = '50% 50%';
 
 const getCircleStyle = (
+  transformOrigin: string = DEFAULT_TRANSFORM_ORIGIN,
   perimeter: number,
   perimeterWithoutGap: number,
   offset: number,
@@ -55,7 +58,7 @@ const getCircleStyle = (
     strokeDasharray: `${perimeterWithoutGap}px ${perimeter}`,
     strokeDashoffset: strokeDashoffset + stepSpace,
     transform: `rotate(${rotateDeg + offsetDeg + positionDeg}deg)`,
-    transformOrigin: '50% 50%',
+    transformOrigin,
     transition:
       'stroke-dashoffset .3s ease 0s, stroke-dasharray .3s ease 0s, stroke .3s, stroke-width .06s ease .3s, opacity .3s ease 0s',
     fillOpacity: 0,
@@ -87,7 +90,30 @@ const Circle: React.FC<ProgressProps> = ({
   const { count: stepCount, space: stepSpace } =
     typeof steps === 'object' ? steps : { count: steps, space: 2 };
 
+  const [transformOrigin, setTransformOrigin] = useState<string>(DEFAULT_TRANSFORM_ORIGIN);
+  const svgElement = useRef<SVGSVGElement>(null);
+
+  const calculateTransformOrigin = () => {
+    const isOSXSafari = isMac() && isSafari();
+    if (isOSXSafari) {
+      const svgScale = svgElement.current?.currentScale || 1;
+      const defaultRatio = 50;
+      const originValue = svgScale * defaultRatio;
+      const origin = `${originValue}% ${originValue}%`;
+      setTransformOrigin(origin);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('resize', calculateTransformOrigin);
+
+    return () => {
+      window.removeEventListener('resize', calculateTransformOrigin);
+    };
+  }, []);
+
   const circleStyle = getCircleStyle(
+    transformOrigin,
     perimeter,
     perimeterWithoutGap,
     0,
@@ -112,6 +138,7 @@ const Circle: React.FC<ProgressProps> = ({
         const color = strokeColorList[index] || strokeColorList[strokeColorList.length - 1];
         const stroke = color && typeof color === 'object' ? `url(#${gradientId})` : undefined;
         const circleStyleForStack = getCircleStyle(
+          transformOrigin,
           perimeter,
           perimeterWithoutGap,
           stackPtg,
@@ -160,6 +187,7 @@ const Circle: React.FC<ProgressProps> = ({
       const color = index <= current - 1 ? strokeColorList[0] : trailColor;
       const stroke = color && typeof color === 'object' ? `url(#${gradientId})` : undefined;
       const circleStyleForStack = getCircleStyle(
+        transformOrigin,
         perimeter,
         perimeterWithoutGap,
         stackPtg,
@@ -195,7 +223,6 @@ const Circle: React.FC<ProgressProps> = ({
       );
     });
   };
-
   return (
     <svg
       className={classNames(`${prefixCls}-circle`, className)}
@@ -203,6 +230,7 @@ const Circle: React.FC<ProgressProps> = ({
       style={style}
       id={id}
       {...restProps}
+      ref={svgElement}
     >
       {gradient && (
         <defs>

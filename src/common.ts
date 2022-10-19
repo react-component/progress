@@ -43,3 +43,8 @@ export const useTransitionDuration = (): SVGPathElement[] => {
 
   return pathsRef.current;
 };
+
+export const isSafari = () =>
+  typeof navigator !== 'undefined' && navigator.vendor.includes('Apple');
+
+export const isMac = () => typeof navigator !== 'undefined' && navigator.platform === 'MacIntel';
