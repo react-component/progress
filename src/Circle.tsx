@@ -55,7 +55,7 @@ const getCircleStyle = (
     strokeDasharray: `${perimeterWithoutGap}px ${perimeter}`,
     strokeDashoffset: strokeDashoffset + stepSpace,
     transform: `rotate(${rotateDeg + offsetDeg + positionDeg}deg)`,
-    transformOrigin: '50% 50%',
+    transformOrigin: '0 0',
     transition:
       'stroke-dashoffset .3s ease 0s, stroke-dasharray .3s ease 0s, stroke .3s, stroke-width .06s ease .3s, opacity .3s ease 0s',
     fillOpacity: 0,
@@ -129,8 +129,8 @@ const Circle: React.FC<ProgressProps> = ({
             key={index}
             className={`${prefixCls}-circle-path`}
             r={radius}
-            cx={VIEW_BOX_SIZE / 2}
-            cy={VIEW_BOX_SIZE / 2}
+            cx={0}
+            cy={0}
             stroke={stroke}
             strokeLinecap={strokeLinecap}
             strokeWidth={strokeWidth}
@@ -181,8 +181,8 @@ const Circle: React.FC<ProgressProps> = ({
           key={index}
           className={`${prefixCls}-circle-path`}
           r={radius}
-          cx={VIEW_BOX_SIZE / 2}
-          cy={VIEW_BOX_SIZE / 2}
+          cx={0}
+          cy={0}
           stroke={stroke}
           // strokeLinecap={strokeLinecap}
           strokeWidth={strokeWidth}
@@ -199,7 +199,7 @@ const Circle: React.FC<ProgressProps> = ({
   return (
     <svg
       className={classNames(`${prefixCls}-circle`, className)}
-      viewBox={`0 0 ${VIEW_BOX_SIZE} ${VIEW_BOX_SIZE}`}
+      viewBox={`${-VIEW_BOX_SIZE / 2} ${-VIEW_BOX_SIZE / 2} ${VIEW_BOX_SIZE} ${VIEW_BOX_SIZE}`}
       style={style}
       id={id}
       role="presentation"
@@ -220,8 +220,8 @@ const Circle: React.FC<ProgressProps> = ({
         <circle
           className={`${prefixCls}-circle-trail`}
           r={radius}
-          cx={VIEW_BOX_SIZE / 2}
-          cy={VIEW_BOX_SIZE / 2}
+          cx={0}
+          cy={0}
           stroke={trailColor}
           strokeLinecap={strokeLinecap}
           strokeWidth={trailWidth || strokeWidth}
