@@ -67,6 +67,7 @@ const Line: React.FC<ProgressProps> = ({
         };
         const color = strokeColorList[index] || strokeColorList[strokeColorList.length - 1];
         stackPtg += ptg;
+        console.log({ptg});
         return (
           <path
             key={index}
@@ -76,6 +77,7 @@ const Line: React.FC<ProgressProps> = ({
             stroke={color as string}
             strokeWidth={strokeWidth}
             fillOpacity="0"
+            opacity={ptg === 0 ? 0 : 1}
             ref={(elem) => {
               // https://reactjs.org/docs/refs-and-the-dom.html#callback-refs
               // React will call the ref callback with the DOM element when the component mounts,
