@@ -67,7 +67,6 @@ const Line: React.FC<ProgressProps> = ({
         };
         const color = strokeColorList[index] || strokeColorList[strokeColorList.length - 1];
         stackPtg += ptg;
-        console.log({ptg});
         return (
           <path
             key={index}
