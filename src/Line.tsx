@@ -15,16 +15,12 @@ const Line: React.FC<ProgressProps> = ({
   trailColor,
   trailWidth,
   transition,
+  loading,
   ...restProps
 }) => {
   // eslint-disable-next-line no-param-reassign
   delete restProps.gapPosition;
-  const {
-    indeterminateStylePops,
-    indeterminateStyleTag,
-    percent: _percent,
-  } = getIndeterminateLine({ percent, strokeLinecap, strokeWidth });
-  const percentList = toArray(_percent);
+  const percentList = toArray(percent);
   const strokeColorList = Array.isArray(strokeColor) ? strokeColor : [strokeColor];
 
   const paths = useTransitionDuration();
@@ -35,6 +31,13 @@ const Line: React.FC<ProgressProps> = ({
          L ${strokeLinecap === 'round' ? right : 100},${center}`;
   const viewBoxString = `0 0 100 ${strokeWidth}`;
   let stackPtg = 0;
+  const { indeterminateStylePops, indeterminateStyleTag } = getIndeterminateLine({
+    loading,
+    percent: percentList[0],
+    strokeLinecap,
+    strokeWidth,
+  });
+
   return (
     <svg
       className={classNames(`${prefixCls}-line`, className)}

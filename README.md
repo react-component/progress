@@ -121,8 +121,8 @@ export default () => (
     <tr>
       <td>percent</td>
       <td>Number | Number[]</td>
-      <td>null</td>
-      <td>the percent of the progress, if it is not defined the indeterminate mode will be enabled</td>
+      <td>0</td>
+      <td>the percent of the progress</td>
     </tr>
     <tr>
       <td>gapDegree</td>
@@ -135,6 +135,12 @@ export default () => (
       <td>String</td>
       <td>top</td>
       <td>the gap position, value: top, bottom, left, right. </td>
+    </tr>
+    <tr>
+      <td>loading</td>
+      <td>Boolean</td>
+      <td>false</td>
+      <td>If it is true the indeterminate progress will be enabled.</td>
     </tr>
   </tbody>
 </table>

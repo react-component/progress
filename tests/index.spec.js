@@ -245,24 +245,26 @@ describe('Progress', () => {
   });
 
   it('should support indeterminate mode', () => {
-    const Indeterminate = () => {
+    const Loading = () => {
       return (
         <>
-          <Circle />
-          <Line />
+          <Circle loading />
+          <Line loading />
         </>
       );
     };
 
-    const wrapper = mount(<Indeterminate />);
-    expect(wrapper.find(Circle).find('style')).toBeDefined();
-    expect(
-      wrapper.find(Circle).find('.rc-progress-circle-path').at(0).getDOMNode().style.animation,
-    ).toContain('circle-indeterminate-animate');
-    expect(wrapper.find(Line).find('style')).toBeDefined();
-    expect(
-      wrapper.find(Line).find('.rc-progress-line-path').at(0).getDOMNode().style.animation,
-    ).toContain('line-indeterminate-animate');
+    const wrapper = mount(<Loading />);
+    const circle = wrapper.find(Circle);
+    const line = wrapper.find(Line);
+    expect(circle.find('style')).toBeDefined();
+    expect(circle.find('.rc-progress-circle-path').at(0).getDOMNode().style.animation).toContain(
+      'circle-indeterminate-animate',
+    );
+    expect(line.find('style')).toBeDefined();
+    expect(line.find('.rc-progress-line-path').at(0).getDOMNode().style.animation).toContain(
+      'line-indeterminate-animate',
+    );
     wrapper.unmount();
   });
 });

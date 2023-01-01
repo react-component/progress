@@ -72,6 +72,7 @@ const Circle: React.FC<ProgressProps> = ({
   className,
   strokeColor,
   percent,
+  loading,
   ...restProps
 }) => {
   const mergedId = useId(id);
@@ -82,11 +83,6 @@ const Circle: React.FC<ProgressProps> = ({
   const perimeterWithoutGap = perimeter * ((360 - gapDegree) / 360);
   const { count: stepCount, space: stepSpace } =
     typeof steps === 'object' ? steps : { count: steps, space: 2 };
-  const {
-    indeterminateStylePops,
-    indeterminateStyleTag,
-    percent: _percent,
-  } = getIndeterminateCircle({ percent });
 
   const circleStyle = getCircleStyle(
     perimeter,
@@ -100,9 +96,10 @@ const Circle: React.FC<ProgressProps> = ({
     strokeLinecap,
     strokeWidth,
   );
-  const percentList = toArray(_percent);
+  const percentList = toArray(percent);
   const strokeColorList = toArray(strokeColor);
   const gradient = strokeColorList.find((color) => color && typeof color === 'object');
+  const { indeterminateStylePops, indeterminateStyleTag } = getIndeterminateCircle({ loading });
 
   const paths = useTransitionDuration();
 

@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { Line, Circle } from 'rc-progress';
 
-const Indeterminate = () => {
+const Loading = () => {
   return (
     <div style={{ margin: 10, width: 200 }}>
-      <Circle />
-      <Line />
+      <Circle loading percent={10} />
+      <Line loading percent={50} />
     </div>
   );
 };
 
-export default Indeterminate;
+export default Loading;

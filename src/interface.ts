@@ -14,6 +14,7 @@ export interface ProgressProps {
   transition?: string;
   onClick?: React.MouseEventHandler;
   steps?: number | { count: number; space: number };
+  loading?: boolean;
 }
 
 export type BaseStrokeColorType = string | Record<string, string>;

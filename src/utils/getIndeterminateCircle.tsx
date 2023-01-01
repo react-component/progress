@@ -1,21 +1,18 @@
 interface IndeterminateOption {
-  percent: number | number[];
+  loading: boolean;
 }
 
 export default (options: IndeterminateOption) => {
-  if (options.percent !== null) {
+  if (!options.loading) {
     return {
-      ...options,
       indeterminateStylePops: {},
       indeterminateStyleTag: null,
     };
   }
 
   const animationName = 'circle-indeterminate-animate';
-  const percent = 40;
 
   return {
-    percent,
     indeterminateStylePops: {
       transform: 'rotate(0deg)',
       animation: `${animationName} 1s linear infinite`,

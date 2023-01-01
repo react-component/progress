@@ -3,7 +3,7 @@ import type { ProgressProps } from './interface';
 
 export const defaultProps: Partial<ProgressProps> = {
   className: '',
-  percent: null,
+  percent: 0,
   prefixCls: 'rc-progress',
   strokeColor: '#2db7f5',
   strokeLinecap: 'round',
@@ -12,6 +12,7 @@ export const defaultProps: Partial<ProgressProps> = {
   trailColor: '#D9D9D9',
   trailWidth: 1,
   gapPosition: 'bottom',
+  loading: false,
 };
 
 export const useTransitionDuration = (): SVGPathElement[] => {

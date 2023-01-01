@@ -1,24 +1,22 @@
 interface IndeterminateOption {
-  percent: number | number[];
+  loading: boolean;
+  percent: number;
   strokeLinecap: string;
   strokeWidth: number;
 }
 
 export default (options: IndeterminateOption) => {
-  if (options.percent !== null) {
+  const { percent, strokeLinecap, strokeWidth, loading } = options;
+  if (!loading) {
     return {
-      percent: options.percent,
       indeterminateStylePops: {},
       indeterminateStyleTag: null,
     };
   }
   const animationName = 'line-indeterminate-animate';
-  const percent = 40;
-  const strokeDashOffset =
-    100 - (percent + (options.strokeLinecap === 'round' ? options.strokeWidth : 0));
+  const strokeDashOffset = 100 - (percent + (strokeLinecap === 'round' ? strokeWidth : 0));
 
   return {
-    percent,
     indeterminateStylePops: {
       strokeDasharray: `${percent} 100`,
       animation: `${animationName} .6s linear alternate infinite`,
