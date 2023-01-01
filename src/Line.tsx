@@ -1,7 +1,8 @@
 import * as React from 'react';
 import classNames from 'classnames';
-import { useTransitionDuration, defaultProps } from './common';
+import { useTransitionDuration, defaultProps, toArray } from './common';
 import type { ProgressProps } from './interface';
+import getIndeterminateLine from './utils/getIndeterminateLine';
 
 const Line: React.FC<ProgressProps> = ({
   className,
@@ -18,7 +19,12 @@ const Line: React.FC<ProgressProps> = ({
 }) => {
   // eslint-disable-next-line no-param-reassign
   delete restProps.gapPosition;
-  const percentList = Array.isArray(percent) ? percent : [percent];
+  const {
+    indeterminateStylePops,
+    indeterminateStyleTag,
+    percent: _percent,
+  } = getIndeterminateLine({ percent, strokeLinecap, strokeWidth });
+  const percentList = toArray(_percent);
   const strokeColorList = Array.isArray(strokeColor) ? strokeColor : [strokeColor];
 
   const paths = useTransitionDuration();
@@ -64,6 +70,7 @@ const Line: React.FC<ProgressProps> = ({
           transition:
             transition ||
             'stroke-dashoffset 0.3s ease 0s, stroke-dasharray .3s ease 0s, stroke 0.3s linear',
+          ...indeterminateStylePops,
         };
         const color = strokeColorList[index] || strokeColorList[strokeColorList.length - 1];
         stackPtg += ptg;
@@ -88,6 +95,7 @@ const Line: React.FC<ProgressProps> = ({
           />
         );
       })}
+      {indeterminateStyleTag}
     </svg>
   );
 };

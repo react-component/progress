@@ -1,16 +1,12 @@
 import * as React from 'react';
 import classNames from 'classnames';
-import { defaultProps, useTransitionDuration } from './common';
+import { defaultProps, useTransitionDuration, toArray } from './common';
 import type { ProgressProps } from './interface';
 import useId from './hooks/useId';
+import getIndeterminateCircle from './utils/getIndeterminateCircle';
 
 function stripPercentToNumber(percent: string) {
   return +percent.replace('%', '');
-}
-
-function toArray<T>(value: T | T[]): T[] {
-  const mergedValue = value ?? [];
-  return Array.isArray(mergedValue) ? mergedValue : [mergedValue];
 }
 
 const VIEW_BOX_SIZE = 100;
@@ -86,6 +82,11 @@ const Circle: React.FC<ProgressProps> = ({
   const perimeterWithoutGap = perimeter * ((360 - gapDegree) / 360);
   const { count: stepCount, space: stepSpace } =
     typeof steps === 'object' ? steps : { count: steps, space: 2 };
+  const {
+    indeterminateStylePops,
+    indeterminateStyleTag,
+    percent: _percent,
+  } = getIndeterminateCircle({ percent });
 
   const circleStyle = getCircleStyle(
     perimeter,
@@ -99,7 +100,7 @@ const Circle: React.FC<ProgressProps> = ({
     strokeLinecap,
     strokeWidth,
   );
-  const percentList = toArray(percent);
+  const percentList = toArray(_percent);
   const strokeColorList = toArray(strokeColor);
   const gradient = strokeColorList.find((color) => color && typeof color === 'object');
 
@@ -135,7 +136,7 @@ const Circle: React.FC<ProgressProps> = ({
             strokeLinecap={strokeLinecap}
             strokeWidth={strokeWidth}
             opacity={ptg === 0 ? 0 : 1}
-            style={circleStyleForStack}
+            style={{ ...circleStyleForStack, ...indeterminateStylePops }}
             ref={(elem) => {
               // https://reactjs.org/docs/refs-and-the-dom.html#callback-refs
               // React will call the ref callback with the DOM element when the component mounts,
@@ -229,6 +230,7 @@ const Circle: React.FC<ProgressProps> = ({
         />
       )}
       {stepCount ? getStepStokeList() : getStokeList()}
+      {indeterminateStyleTag}
     </svg>
   );
 };

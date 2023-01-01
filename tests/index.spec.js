@@ -243,4 +243,26 @@ describe('Progress', () => {
     expect(circle.find(Circle).props().percent).toEqual([20, 20, 20, 20]);
     circle.unmount();
   });
+
+  it('should support indeterminate mode', () => {
+    const Indeterminate = () => {
+      return (
+        <>
+          <Circle />
+          <Line />
+        </>
+      );
+    };
+
+    const wrapper = mount(<Indeterminate />);
+    expect(wrapper.find(Circle).find('style')).toBeDefined();
+    expect(
+      wrapper.find(Circle).find('.rc-progress-circle-path').at(0).getDOMNode().style.animation,
+    ).toContain('circle-indeterminate-animate');
+    expect(wrapper.find(Line).find('style')).toBeDefined();
+    expect(
+      wrapper.find(Line).find('.rc-progress-line-path').at(0).getDOMNode().style.animation,
+    ).toContain('line-indeterminate-animate');
+    wrapper.unmount();
+  });
 });

@@ -3,7 +3,7 @@ import type { ProgressProps } from './interface';
 
 export const defaultProps: Partial<ProgressProps> = {
   className: '',
-  percent: 0,
+  percent: null,
   prefixCls: 'rc-progress',
   strokeColor: '#2db7f5',
   strokeLinecap: 'round',
@@ -42,4 +42,9 @@ export const useTransitionDuration = (): SVGPathElement[] => {
   });
 
   return pathsRef.current;
+};
+
+export const toArray = <T>(value: T | T[]): T[] => {
+  const mergedValue = value ?? [];
+  return Array.isArray(mergedValue) ? mergedValue : [mergedValue];
 };
