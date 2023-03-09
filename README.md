@@ -86,7 +86,7 @@ export default () => (
       <td>trailWidth</td>
       <td>Number</td>
       <td>1</td>
-      <td>Width of the trail stroke. Unit is percentage of SVG canvas size. Trail is always centered relative to actual progress path. If trailWidth are not defined, it same as strokeWidth.</td>
+      <td>Width of the trail stroke. Unit is percentage of SVG canvas size. Trail is always centered relative to actual progress path. If trailWidth is not defined, it is the same as strokeWidth.</td>
     </tr>
     <tr>
       <td>trailColor</td>
@@ -95,11 +95,11 @@ export default () => (
       <td>Color for lighter trail stroke underneath the actual progress path.</td>
     </tr>
     <tr>
-		  <td>strokeLinecap</td>
-		  <td>String</td>
-		  <td>'round'</td>
-		  <td>The shape to be used at the end of the progress bar, can be `butt`, `square` or `round`.</td>
-		</tr>
+      <td>strokeLinecap</td>
+      <td>String</td>
+      <td>'round'</td>
+      <td>The shape to be used at the end of the progress bar: can be `butt`, `square` or `round`.</td>
+    </tr>
     <tr>
       <td>prefixCls</td>
       <td>String</td>
@@ -134,7 +134,7 @@ export default () => (
       <td>gapPosition</td>
       <td>String</td>
       <td>top</td>
-      <td>the gap position, value: top, bottom, left, right. </td>
+      <td>the gap position: can be `top`, `bottom`, `left`, or `right`. </td>
     </tr>
   </tbody>
 </table>
