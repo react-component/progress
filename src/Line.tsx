@@ -3,19 +3,24 @@ import classNames from 'classnames';
 import { useTransitionDuration, defaultProps } from './common';
 import type { ProgressProps } from './interface';
 
-const Line: React.FC<ProgressProps> = ({
-  className,
-  percent,
-  prefixCls,
-  strokeColor,
-  strokeLinecap,
-  strokeWidth,
-  style,
-  trailColor,
-  trailWidth,
-  transition,
-  ...restProps
-}) => {
+const Line: React.FC<ProgressProps> = (props) => {
+  const {
+    className,
+    percent,
+    prefixCls,
+    strokeColor,
+    strokeLinecap,
+    strokeWidth,
+    style,
+    trailColor,
+    trailWidth,
+    transition,
+    ...restProps
+  } = {
+    ...defaultProps,
+    ...props,
+  };
+
   // eslint-disable-next-line no-param-reassign
   delete restProps.gapPosition;
   const percentList = Array.isArray(percent) ? percent : [percent];
@@ -92,8 +97,8 @@ const Line: React.FC<ProgressProps> = ({
   );
 };
 
-Line.defaultProps = defaultProps;
-
-Line.displayName = 'Line';
+if (process.env.NODE_ENV !== 'production') {
+  Line.displayName = 'Line';
+}
 
 export default Line;
