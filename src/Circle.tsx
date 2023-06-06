@@ -62,22 +62,27 @@ const getCircleStyle = (
   };
 };
 
-const Circle: React.FC<ProgressProps> = ({
-  id,
-  prefixCls,
-  steps,
-  strokeWidth,
-  trailWidth,
-  gapDegree = 0,
-  gapPosition,
-  trailColor,
-  strokeLinecap,
-  style,
-  className,
-  strokeColor,
-  percent,
-  ...restProps
-}) => {
+const Circle: React.FC<ProgressProps> = (props) => {
+  const {
+    id,
+    prefixCls,
+    steps,
+    strokeWidth,
+    trailWidth,
+    gapDegree = 0,
+    gapPosition,
+    trailColor,
+    strokeLinecap,
+    style,
+    className,
+    strokeColor,
+    percent,
+    ...restProps
+  } = {
+    ...defaultProps,
+    ...props,
+  };
+
   const mergedId = useId(id);
   const gradientId = `${mergedId}-gradient`;
   const radius = VIEW_BOX_SIZE / 2 - strokeWidth / 2;
@@ -233,8 +238,8 @@ const Circle: React.FC<ProgressProps> = ({
   );
 };
 
-Circle.defaultProps = defaultProps;
-
-Circle.displayName = 'Circle';
+if (process.env.NODE_ENV !== 'production') {
+  Circle.displayName = 'Circle';
+}
 
 export default Circle;
