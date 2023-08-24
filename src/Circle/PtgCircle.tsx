@@ -90,7 +90,9 @@ const PtgCircle = React.forwardRef<SVGCircleElement, ColorGradientProps>((props,
   const linearColors = getPtgColors(color, 1);
 
   const conicColorBg = `conic-gradient(from ${fromDeg}, ${conicColors.join(', ')})`;
-  const linearColorBg = `linear-gradient(to right, ${linearColors.join(', ')})`;
+  const linearColorBg = `linear-gradient(to ${gapDegree ? 'bottom' : 'top'}, ${linearColors.join(
+    ', ',
+  )})`;
 
   return (
     <>
