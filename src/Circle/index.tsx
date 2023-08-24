@@ -5,11 +5,7 @@ import type { ProgressProps } from '../interface';
 import useId from '../hooks/useId';
 import ColorGradient from './ColorGradient';
 import PtgCircle from './PtgCircle';
-import { VIEW_BOX_SIZE, getCircleStyle } from './util';
-
-function stripPercentToNumber(percent: string) {
-  return +percent.replace('%', '');
-}
+import { VIEW_BOX_SIZE, getCircleStyle, isConicColor } from './util';
 
 function toArray<T>(value: T | T[]): T[] {
   const mergedValue = value ?? [];
@@ -48,6 +44,15 @@ const Circle: React.FC<ProgressProps> = (props) => {
   const { count: stepCount, space: stepSpace } =
     typeof steps === 'object' ? steps : { count: steps, space: 2 };
 
+  const percentList = toArray(percent);
+  const strokeColorList = toArray(strokeColor);
+  const gradient = strokeColorList.find((color) => color && typeof color === 'object') as Record<
+    string,
+    string
+  >;
+  const isConicGradient = isConicColor(gradient);
+  const mergedStrokeLinecap = isConicGradient ? 'butt' : strokeLinecap;
+
   const circleStyle = getCircleStyle(
     perimeter,
     perimeterWithoutGap,
@@ -57,15 +62,9 @@ const Circle: React.FC<ProgressProps> = (props) => {
     gapDegree,
     gapPosition,
     trailColor,
-    strokeLinecap,
+    mergedStrokeLinecap,
     strokeWidth,
   );
-  const percentList = toArray(percent);
-  const strokeColorList = toArray(strokeColor);
-  const gradient = strokeColorList.find((color) => color && typeof color === 'object') as Record<
-    string,
-    string
-  >;
 
   const paths = useTransitionDuration();
 
@@ -83,7 +82,7 @@ const Circle: React.FC<ProgressProps> = (props) => {
           gapDegree,
           gapPosition,
           color,
-          strokeLinecap,
+          mergedStrokeLinecap,
           strokeWidth,
         );
         stackPtg += ptg;
@@ -97,8 +96,9 @@ const Circle: React.FC<ProgressProps> = (props) => {
             prefixCls={prefixCls}
             gradientId={gradientId}
             style={circleStyleForStack}
-            strokeLinecap={strokeLinecap}
+            strokeLinecap={mergedStrokeLinecap}
             strokeWidth={strokeWidth}
+            conic={isConicGradient}
             ref={(elem) => {
               // https://reactjs.org/docs/refs-and-the-dom.html#callback-refs
               // React will call the ref callback with the DOM element when the component mounts,
@@ -148,7 +148,6 @@ const Circle: React.FC<ProgressProps> = (props) => {
           cx={halfSize}
           cy={halfSize}
           stroke={stroke}
-          // strokeLinecap={strokeLinecap}
           strokeWidth={strokeWidth}
           opacity={1}
           style={circleStyleForStack}
@@ -170,7 +169,9 @@ const Circle: React.FC<ProgressProps> = (props) => {
       {...restProps}
     >
       {/* Line Gradient */}
-      <ColorGradient gradientId={gradientId} gradient={gradient} />
+      {gradient && !isConicGradient && (
+        <ColorGradient gradientId={gradientId} gradient={gradient} />
+      )}
       {!stepCount && (
         <circle
           className={`${prefixCls}-circle-trail`}
@@ -178,7 +179,7 @@ const Circle: React.FC<ProgressProps> = (props) => {
           cx={halfSize}
           cy={halfSize}
           stroke={trailColor}
-          strokeLinecap={strokeLinecap}
+          strokeLinecap={mergedStrokeLinecap}
           strokeWidth={trailWidth || strokeWidth}
           style={circleStyle}
         />

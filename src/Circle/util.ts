@@ -2,6 +2,10 @@ import type { ProgressProps } from '..';
 
 export const VIEW_BOX_SIZE = 100;
 
+export function isConicColor(gradient: Record<string, string>) {
+  return gradient && Object.keys(gradient).some((key) => key.endsWith('deg'));
+}
+
 export const getCircleStyle = (
   perimeter: number,
   perimeterWithoutGap: number,

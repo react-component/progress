@@ -12,10 +12,6 @@ export interface ColorGradientProps {
 export default function ColorGradient(props: ColorGradientProps) {
   const { gradientId, gradient } = props;
 
-  if (gradient && Object.keys(gradient).some((key) => key.endsWith('deg'))) {
-    return null;
-  }
-
   return (
     <defs>
       <linearGradient id={gradientId} x1="100%" y1="0%" x2="0%" y2="0%">

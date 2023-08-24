@@ -11,6 +11,7 @@ export interface ColorGradientProps {
   strokeWidth: ProgressProps['strokeWidth'];
   size: number;
   color: string | Record<string, string>;
+  conic: boolean;
 }
 
 const PtgCircle = React.forwardRef<SVGCircleElement, ColorGradientProps>((props, ref) => {
@@ -24,18 +25,18 @@ const PtgCircle = React.forwardRef<SVGCircleElement, ColorGradientProps>((props,
     strokeLinecap,
     strokeWidth,
     size,
+    conic,
   } = props;
 
   const isGradient = color && typeof color === 'object';
-  const isConicGradient = isGradient && Object.keys(color).some((key) => key.endsWith('deg'));
 
   const stroke = React.useMemo(() => {
-    if (isConicGradient) {
+    if (conic) {
       return '#FFF';
     }
 
     return isGradient ? `url(#${gradientId})` : undefined;
-  }, [gradientId, isGradient, isConicGradient]);
+  }, [gradientId, isGradient, conic]);
 
   // ========================== Circle ==========================
   const halfSize = size / 2;
@@ -56,13 +57,9 @@ const PtgCircle = React.forwardRef<SVGCircleElement, ColorGradientProps>((props,
   );
 
   // ========================== Render ==========================
-  if (!isConicGradient) {
+  if (!conic) {
     return circleNode;
   }
-
-  // background: conic-gradient(
-  //   red 6deg, orange 6deg 18deg, yellow 18deg 45deg,
-  //   green 45deg 110deg, blue 110deg 200deg, purple 200deg);
 
   const conicColors = Object.keys(color).map((key) => `${color[key]} ${key}`);
   const conicColorBg = `conic-gradient(${conicColors.join(', ')})`;
