@@ -1,9 +1,10 @@
+import type { StrokeColorObject, StrokeColorType } from '../interface';
 import type { ProgressProps } from '..';
 
 export const VIEW_BOX_SIZE = 100;
 
-export function isConicColor(gradient: Record<string, string>) {
-  return gradient && Object.keys(gradient).some((key) => key.endsWith('deg'));
+export function isConicColor(gradient: StrokeColorObject) {
+  return gradient && gradient.conic;
 }
 
 export const getCircleStyle = (
@@ -14,7 +15,7 @@ export const getCircleStyle = (
   rotateDeg: number,
   gapDegree,
   gapPosition: ProgressProps['gapPosition'] | undefined,
-  strokeColor: string | Record<string, string>,
+  strokeColor: StrokeColorType,
   strokeLinecap: ProgressProps['strokeLinecap'],
   strokeWidth,
   stepSpace = 0,

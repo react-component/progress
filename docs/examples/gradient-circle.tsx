@@ -54,14 +54,13 @@ const Example = () => {
       <h3>Circle colors</h3>
       <div style={circleContainerStyle}>
         <Circle
-          percent={90}
+          percent={100}
           strokeWidth={6}
-          strokeLinecap="butt"
           strokeColor={{
-            '50deg': '#ff0000',
-            '100deg': '#ffaa00',
-            '150deg': '#ffff00',
-            '360deg': '#00ff00',
+            conic: true,
+            '0%': 'green',
+            '99%': 'red',
+            '100%': 'blue',
           }}
         />
       </div>

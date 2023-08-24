@@ -99,6 +99,7 @@ const Circle: React.FC<ProgressProps> = (props) => {
             strokeLinecap={mergedStrokeLinecap}
             strokeWidth={strokeWidth}
             conic={isConicGradient}
+            gapDegree={gapDegree}
             ref={(elem) => {
               // https://reactjs.org/docs/refs-and-the-dom.html#callback-refs
               // React will call the ref callback with the DOM element when the component mounts,

@@ -1,5 +1,6 @@
 import * as React from 'react';
 import type { ProgressProps } from '..';
+import type { StrokeColorType } from '../interface';
 
 export interface ColorGradientProps {
   prefixCls: string;
@@ -10,8 +11,9 @@ export interface ColorGradientProps {
   strokeLinecap: ProgressProps['strokeLinecap'];
   strokeWidth: ProgressProps['strokeWidth'];
   size: number;
-  color: string | Record<string, string>;
+  color: StrokeColorType;
   conic: boolean;
+  gapDegree: number;
 }
 
 const PtgCircle = React.forwardRef<SVGCircleElement, ColorGradientProps>((props, ref) => {
@@ -26,6 +28,7 @@ const PtgCircle = React.forwardRef<SVGCircleElement, ColorGradientProps>((props,
     strokeWidth,
     size,
     conic,
+    gapDegree,
   } = props;
 
   const isGradient = color && typeof color === 'object';
@@ -61,8 +64,18 @@ const PtgCircle = React.forwardRef<SVGCircleElement, ColorGradientProps>((props,
     return circleNode;
   }
 
-  const conicColors = Object.keys(color).map((key) => `${color[key]} ${key}`);
-  const conicColorBg = `conic-gradient(${conicColors.join(', ')})`;
+  const conicColorKeys = Object.keys(color).filter((key) => key !== 'conic');
+
+  const fromDeg = gapDegree ? `${180 + gapDegree / 2}deg` : '0deg';
+
+  const conicColors = conicColorKeys.map((key) => {
+    const parsedKey = parseFloat(key);
+    const ptgKey = `${gapDegree ? Math.floor((parsedKey * (360 - gapDegree)) / 360) : parsedKey}%`;
+
+    return `${color[key]} ${ptgKey}`;
+  });
+
+  const conicColorBg = `conic-gradient(from ${fromDeg}, ${conicColors.join(', ')})`;
 
   return (
     <>
@@ -80,3 +93,12 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 export default PtgCircle;
+
+/*
+0% -> 50%
+25% -> 75%
+50% -> 100%, 0%
+75% -> 25%
+
+
+*/
