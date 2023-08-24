@@ -38,7 +38,7 @@ const Example = () => {
       <h3>Circle colors</h3>
       <div style={circleContainerStyle}>
         <Circle
-          percent={100}
+          percent={90}
           strokeWidth={6}
           strokeColor={{
             '0%': 'green',
