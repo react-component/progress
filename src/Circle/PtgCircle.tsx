@@ -1,6 +1,32 @@
 import * as React from 'react';
 import type { ProgressProps } from '..';
-import type { StrokeColorType } from '../interface';
+import type { StrokeColorObject } from '../interface';
+
+interface BlockProps {
+  bg: string;
+  children?: React.ReactNode;
+}
+
+const Block = ({ bg, children }: BlockProps) => (
+  <div
+    style={{
+      width: '100%',
+      height: '100%',
+      background: bg,
+    }}
+  >
+    {children}
+  </div>
+);
+
+function getPtgColors(color: Record<string, string>, scale: number) {
+  return Object.keys(color).map((key) => {
+    const parsedKey = parseFloat(key);
+    const ptgKey = `${Math.floor(parsedKey * scale)}%`;
+
+    return `${color[key]} ${ptgKey}`;
+  });
+}
 
 export interface ColorGradientProps {
   prefixCls: string;
@@ -11,8 +37,7 @@ export interface ColorGradientProps {
   strokeLinecap: ProgressProps['strokeLinecap'];
   strokeWidth: ProgressProps['strokeWidth'];
   size: number;
-  color: StrokeColorType;
-  conic: boolean;
+  color: string | StrokeColorObject;
   gapDegree: number;
 }
 
@@ -27,19 +52,12 @@ const PtgCircle = React.forwardRef<SVGCircleElement, ColorGradientProps>((props,
     strokeLinecap,
     strokeWidth,
     size,
-    conic,
     gapDegree,
   } = props;
 
   const isGradient = color && typeof color === 'object';
 
-  const stroke = React.useMemo(() => {
-    if (conic) {
-      return '#FFF';
-    }
-
-    return isGradient ? `url(#${gradientId})` : undefined;
-  }, [gradientId, isGradient, conic]);
+  const stroke = isGradient ? `#FFF` : undefined;
 
   // ========================== Circle ==========================
   const halfSize = size / 2;
@@ -60,36 +78,28 @@ const PtgCircle = React.forwardRef<SVGCircleElement, ColorGradientProps>((props,
   );
 
   // ========================== Render ==========================
-  if (!conic) {
+  if (!isGradient) {
     return circleNode;
   }
 
   const maskId = `${gradientId}-conic`;
-  const conicColorKeys = Object.keys(color).filter((key) => key !== 'conic');
 
   const fromDeg = gapDegree ? `${180 + gapDegree / 2}deg` : '0deg';
 
-  const conicColors = conicColorKeys.map((key) => {
-    const parsedKey = parseFloat(key);
-    const ptgKey = `${gapDegree ? Math.floor((parsedKey * (360 - gapDegree)) / 360) : parsedKey}%`;
-
-    return `${color[key]} ${ptgKey}`;
-  });
+  const conicColors = getPtgColors(color, (360 - gapDegree) / 360);
+  const linearColors = getPtgColors(color, 1);
 
   const conicColorBg = `conic-gradient(from ${fromDeg}, ${conicColors.join(', ')})`;
+  const linearColorBg = `linear-gradient(to right, ${linearColors.join(', ')})`;
 
   return (
     <>
       <mask id={maskId}>{circleNode}</mask>
 
       <foreignObject x={0} y={0} width={size} height={size} mask={`url(#${maskId})`}>
-        <div
-          style={{
-            width: '100%',
-            height: '100%',
-            background: conicColorBg,
-          }}
-        />
+        <Block bg={linearColorBg}>
+          <Block bg={conicColorBg} />
+        </Block>
       </foreignObject>
     </>
   );

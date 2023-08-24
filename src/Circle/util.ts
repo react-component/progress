@@ -1,11 +1,7 @@
-import type { StrokeColorObject, StrokeColorType } from '../interface';
+import type { StrokeColorType } from '../interface';
 import type { ProgressProps } from '..';
 
 export const VIEW_BOX_SIZE = 100;
-
-export function isConicColor(gradient: StrokeColorObject) {
-  return gradient && gradient.conic;
-}
 
 export const getCircleStyle = (
   perimeter: number,

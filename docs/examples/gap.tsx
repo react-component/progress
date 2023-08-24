@@ -110,18 +110,6 @@ class Example extends React.Component<ProgressProps, any> {
             strokeWidth={6}
             strokeColor={{
               '0%': 'red',
-              '100%': 'blue',
-            }}
-          />
-        </div>
-        <div style={circleContainerStyle}>
-          <Circle
-            percent={percent}
-            gapDegree={70}
-            strokeWidth={6}
-            strokeColor={{
-              conic: true,
-              '0%': 'red',
               '99%': 'blue',
               '100%': 'green',
             }}

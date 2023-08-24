@@ -16,9 +16,7 @@ export interface ProgressProps {
   steps?: number | { count: number; space: number };
 }
 
-export type StrokeColorObject = Partial<Record<`${number}%` | 'from' | 'to', string>> & {
-  conic?: boolean;
-};
+export type StrokeColorObject = Record<string, string>;
 
 export type BaseStrokeColorType = string | StrokeColorObject;
 
