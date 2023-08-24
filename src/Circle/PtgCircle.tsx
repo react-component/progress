@@ -64,6 +64,7 @@ const PtgCircle = React.forwardRef<SVGCircleElement, ColorGradientProps>((props,
     return circleNode;
   }
 
+  const maskId = `${gradientId}-conic`;
   const conicColorKeys = Object.keys(color).filter((key) => key !== 'conic');
 
   const fromDeg = gapDegree ? `${180 + gapDegree / 2}deg` : '0deg';
@@ -79,10 +80,16 @@ const PtgCircle = React.forwardRef<SVGCircleElement, ColorGradientProps>((props,
 
   return (
     <>
-      <mask id="mask">{circleNode}</mask>
+      <mask id={maskId}>{circleNode}</mask>
 
-      <foreignObject x={0} y={0} width={size} height={size} mask="url(#mask)">
-        <div style={{ width: '100%', height: '100%', background: conicColorBg }} />
+      <foreignObject x={0} y={0} width={size} height={size} mask={`url(#${maskId})`}>
+        <div
+          style={{
+            width: '100%',
+            height: '100%',
+            background: conicColorBg,
+          }}
+        />
       </foreignObject>
     </>
   );
@@ -93,12 +100,3 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 export default PtgCircle;
-
-/*
-0% -> 50%
-25% -> 75%
-50% -> 100%, 0%
-75% -> 25%
-
-
-*/
