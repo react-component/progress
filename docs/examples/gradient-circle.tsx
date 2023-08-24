@@ -49,6 +49,20 @@ const Example = () => {
           ]}
         />
       </div>
+      <h3>Circle colors</h3>
+      <div style={circleContainerStyle}>
+        <Circle
+          percent={100}
+          strokeWidth={6}
+          strokeLinecap="round"
+          strokeColor={{
+            '50deg': '#ff0000',
+            '100deg': '#ffaa00',
+            '150deg': '#ffff00',
+            '360deg': '#00ff00',
+          }}
+        />
+      </div>
     </div>
   );
 };

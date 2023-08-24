@@ -1,8 +1,8 @@
 import * as React from 'react';
 import classNames from 'classnames';
-import { defaultProps, useTransitionDuration } from './common';
-import type { ProgressProps } from './interface';
-import useId from './hooks/useId';
+import { defaultProps, useTransitionDuration } from '../common';
+import type { ProgressProps } from '../interface';
+import useId from '../hooks/useId';
 
 function stripPercentToNumber(percent: string) {
   return +percent.replace('%', '');
