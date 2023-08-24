@@ -34,6 +34,7 @@ const Example = () => {
           }}
         />
       </div>
+
       <h3>Circle With Success Percent {65}%</h3>
       <div style={circleContainerStyle}>
         <Circle
@@ -47,6 +48,20 @@ const Example = () => {
               '0%': '#87d068',
             },
           ]}
+        />
+      </div>
+
+      <h3>Circle colors</h3>
+      <div style={circleContainerStyle}>
+        <Circle
+          percent={100}
+          strokeWidth={6}
+          strokeColor={{
+            conic: true,
+            '0%': 'green',
+            '99%': 'red',
+            '100%': 'blue',
+          }}
         />
       </div>
     </div>
