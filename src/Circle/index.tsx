@@ -3,9 +3,8 @@ import classNames from 'classnames';
 import { defaultProps, useTransitionDuration } from '../common';
 import type { ProgressProps } from '../interface';
 import useId from '../hooks/useId';
-import ColorGradient from './ColorGradient';
 import PtgCircle from './PtgCircle';
-import { VIEW_BOX_SIZE, getCircleStyle, isConicColor } from './util';
+import { VIEW_BOX_SIZE, getCircleStyle } from './util';
 
 function toArray<T>(value: T | T[]): T[] {
   const mergedValue = value ?? [];
@@ -50,7 +49,7 @@ const Circle: React.FC<ProgressProps> = (props) => {
     string,
     string
   >;
-  const isConicGradient = isConicColor(gradient);
+  const isConicGradient = gradient && typeof gradient === 'object';
   const mergedStrokeLinecap = isConicGradient ? 'butt' : strokeLinecap;
 
   const circleStyle = getCircleStyle(
@@ -98,7 +97,6 @@ const Circle: React.FC<ProgressProps> = (props) => {
             style={circleStyleForStack}
             strokeLinecap={mergedStrokeLinecap}
             strokeWidth={strokeWidth}
-            conic={isConicGradient}
             gapDegree={gapDegree}
             ref={(elem) => {
               // https://reactjs.org/docs/refs-and-the-dom.html#callback-refs
@@ -169,10 +167,6 @@ const Circle: React.FC<ProgressProps> = (props) => {
       role="presentation"
       {...restProps}
     >
-      {/* Line Gradient */}
-      {gradient && !isConicGradient && (
-        <ColorGradient gradientId={gradientId} gradient={gradient} />
-      )}
       {!stepCount && (
         <circle
           className={`${prefixCls}-circle-trail`}
