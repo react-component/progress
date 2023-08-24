@@ -3,6 +3,9 @@ import classNames from 'classnames';
 import { defaultProps, useTransitionDuration } from '../common';
 import type { ProgressProps } from '../interface';
 import useId from '../hooks/useId';
+import ColorGradient from './ColorGradient';
+import PtgCircle from './PtgCircle';
+import { VIEW_BOX_SIZE, getCircleStyle } from './util';
 
 function stripPercentToNumber(percent: string) {
   return +percent.replace('%', '');
@@ -12,55 +15,6 @@ function toArray<T>(value: T | T[]): T[] {
   const mergedValue = value ?? [];
   return Array.isArray(mergedValue) ? mergedValue : [mergedValue];
 }
-
-const VIEW_BOX_SIZE = 100;
-
-const getCircleStyle = (
-  perimeter: number,
-  perimeterWithoutGap: number,
-  offset: number,
-  percent: number,
-  rotateDeg: number,
-  gapDegree,
-  gapPosition: ProgressProps['gapPosition'] | undefined,
-  strokeColor: string | Record<string, string>,
-  strokeLinecap: ProgressProps['strokeLinecap'],
-  strokeWidth,
-  stepSpace = 0,
-) => {
-  const offsetDeg = (offset / 100) * 360 * ((360 - gapDegree) / 360);
-  const positionDeg =
-    gapDegree === 0
-      ? 0
-      : {
-          bottom: 0,
-          top: 180,
-          left: 90,
-          right: -90,
-        }[gapPosition];
-
-  let strokeDashoffset = ((100 - percent) / 100) * perimeterWithoutGap;
-  // Fix percent accuracy when strokeLinecap is round
-  // https://github.com/ant-design/ant-design/issues/35009
-  if (strokeLinecap === 'round' && percent !== 100) {
-    strokeDashoffset += strokeWidth / 2;
-    // when percent is small enough (<= 1%), keep smallest value to avoid it's disappearance
-    if (strokeDashoffset >= perimeterWithoutGap) {
-      strokeDashoffset = perimeterWithoutGap - 0.01;
-    }
-  }
-
-  return {
-    stroke: typeof strokeColor === 'string' ? strokeColor : undefined,
-    strokeDasharray: `${perimeterWithoutGap}px ${perimeter}`,
-    strokeDashoffset: strokeDashoffset + stepSpace,
-    transform: `rotate(${rotateDeg + offsetDeg + positionDeg}deg)`,
-    transformOrigin: '0 0',
-    transition:
-      'stroke-dashoffset .3s ease 0s, stroke-dasharray .3s ease 0s, stroke .3s, stroke-width .06s ease .3s, opacity .3s ease 0s',
-    fillOpacity: 0,
-  };
-};
 
 const Circle: React.FC<ProgressProps> = (props) => {
   const {
@@ -83,9 +37,11 @@ const Circle: React.FC<ProgressProps> = (props) => {
     ...props,
   };
 
+  const halfSize = VIEW_BOX_SIZE / 2;
+
   const mergedId = useId(id);
   const gradientId = `${mergedId}-gradient`;
-  const radius = VIEW_BOX_SIZE / 2 - strokeWidth / 2;
+  const radius = halfSize - strokeWidth / 2;
   const perimeter = Math.PI * 2 * radius;
   const rotateDeg = gapDegree > 0 ? 90 + gapDegree / 2 : -90;
   const perimeterWithoutGap = perimeter * ((360 - gapDegree) / 360);
@@ -106,7 +62,10 @@ const Circle: React.FC<ProgressProps> = (props) => {
   );
   const percentList = toArray(percent);
   const strokeColorList = toArray(strokeColor);
-  const gradient = strokeColorList.find((color) => color && typeof color === 'object');
+  const gradient = strokeColorList.find((color) => color && typeof color === 'object') as Record<
+    string,
+    string
+  >;
 
   const paths = useTransitionDuration();
 
@@ -115,7 +74,6 @@ const Circle: React.FC<ProgressProps> = (props) => {
     return percentList
       .map((ptg, index) => {
         const color = strokeColorList[index] || strokeColorList[strokeColorList.length - 1];
-        const stroke = color && typeof color === 'object' ? `url(#${gradientId})` : undefined;
         const circleStyleForStack = getCircleStyle(
           perimeter,
           perimeterWithoutGap,
@@ -129,18 +87,18 @@ const Circle: React.FC<ProgressProps> = (props) => {
           strokeWidth,
         );
         stackPtg += ptg;
+
         return (
-          <circle
+          <PtgCircle
             key={index}
-            className={`${prefixCls}-circle-path`}
-            r={radius}
-            cx={0}
-            cy={0}
-            stroke={stroke}
+            color={color}
+            ptg={ptg}
+            radius={radius}
+            prefixCls={prefixCls}
+            gradientId={gradientId}
+            style={circleStyleForStack}
             strokeLinecap={strokeLinecap}
             strokeWidth={strokeWidth}
-            opacity={ptg === 0 ? 0 : 1}
-            style={circleStyleForStack}
             ref={(elem) => {
               // https://reactjs.org/docs/refs-and-the-dom.html#callback-refs
               // React will call the ref callback with the DOM element when the component mounts,
@@ -149,6 +107,7 @@ const Circle: React.FC<ProgressProps> = (props) => {
 
               paths[index] = elem;
             }}
+            size={VIEW_BOX_SIZE}
           />
         );
       })
@@ -186,8 +145,8 @@ const Circle: React.FC<ProgressProps> = (props) => {
           key={index}
           className={`${prefixCls}-circle-path`}
           r={radius}
-          cx={0}
-          cy={0}
+          cx={halfSize}
+          cy={halfSize}
           stroke={stroke}
           // strokeLinecap={strokeLinecap}
           strokeWidth={strokeWidth}
@@ -204,29 +163,20 @@ const Circle: React.FC<ProgressProps> = (props) => {
   return (
     <svg
       className={classNames(`${prefixCls}-circle`, className)}
-      viewBox={`${-VIEW_BOX_SIZE / 2} ${-VIEW_BOX_SIZE / 2} ${VIEW_BOX_SIZE} ${VIEW_BOX_SIZE}`}
+      viewBox={`0 0 ${VIEW_BOX_SIZE} ${VIEW_BOX_SIZE}`}
       style={style}
       id={id}
       role="presentation"
       {...restProps}
     >
-      {gradient && (
-        <defs>
-          <linearGradient id={gradientId} x1="100%" y1="0%" x2="0%" y2="0%">
-            {Object.keys(gradient)
-              .sort((a, b) => stripPercentToNumber(a) - stripPercentToNumber(b))
-              .map((key, index) => (
-                <stop key={index} offset={key} stopColor={gradient[key]} />
-              ))}
-          </linearGradient>
-        </defs>
-      )}
+      {/* Line Gradient */}
+      <ColorGradient gradientId={gradientId} gradient={gradient} />
       {!stepCount && (
         <circle
           className={`${prefixCls}-circle-trail`}
           r={radius}
-          cx={0}
-          cy={0}
+          cx={halfSize}
+          cy={halfSize}
           stroke={trailColor}
           strokeLinecap={strokeLinecap}
           strokeWidth={trailWidth || strokeWidth}

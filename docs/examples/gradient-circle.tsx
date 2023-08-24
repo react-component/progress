@@ -10,7 +10,7 @@ const Example = () => {
 
   return (
     <div>
-      <h3>Circle Progress {90}%</h3>
+      {/* <h3>Circle Progress {90}%</h3>
       <div style={circleContainerStyle}>
         <Circle
           percent={90}
@@ -33,8 +33,9 @@ const Example = () => {
             '0%': '#87d068',
           }}
         />
-      </div>
-      <h3>Circle With Success Percent {65}%</h3>
+      </div>*/}
+
+      {/* <h3>Circle With Success Percent {65}%</h3>
       <div style={circleContainerStyle}>
         <Circle
           percent={[65, 100]}
@@ -48,11 +49,12 @@ const Example = () => {
             },
           ]}
         />
-      </div>
+      </div> */}
+
       <h3>Circle colors</h3>
       <div style={circleContainerStyle}>
         <Circle
-          percent={100}
+          percent={90}
           strokeWidth={6}
           strokeLinecap="round"
           strokeColor={{
