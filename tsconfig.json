@@ -1,10 +1,9 @@
-
 {
   "compilerOptions": {
     "target": "esnext",
     "moduleResolution": "node",
     "baseUrl": "./",
-    "jsx": "preserve",
+    "jsx": "react",
     "declaration": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
