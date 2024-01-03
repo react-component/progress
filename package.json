@@ -26,10 +26,11 @@
   "scripts": {
     "start": "dumi dev",
     "docs:build": "dumi build",
-    "docs:deploy": "gh-pages -d docs-dist",
+    "docs:deploy": "gh-pages -d dist",
+    "deploy": "npm run docs:build && npm run docs:deploy",
     "compile": "father build",
     "prepare": "dumi setup",
-    "gh-pages": "npm run build && father doc deploy",
+    "gh-pages": "npm run now-build && father doc deploy",
     "prepublishOnly": "npm run compile && np --yolo --no-publish",
     "lint": "eslint src/ --ext .ts,.tsx,.jsx,.js",
     "prettier": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\"",
