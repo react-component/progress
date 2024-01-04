@@ -17,7 +17,9 @@ export interface ProgressProps {
   loading?: boolean;
 }
 
-export type BaseStrokeColorType = string | Record<string, string>;
+export type StrokeColorObject = Record<string, string>;
+
+export type BaseStrokeColorType = string | StrokeColorObject;
 
 export type StrokeColorType = BaseStrokeColorType | BaseStrokeColorType[];
 

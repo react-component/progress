@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Circle, ProgressProps } from 'rc-progress';
+import { Circle, type ProgressProps } from 'rc-progress';
 
 const colorMap = ['#3FC7FA', '#85D262', '#FE8C6A', '#FF5959', '#BC3FFA'];
 
@@ -11,7 +11,7 @@ class Example extends React.Component<ProgressProps, any> {
   constructor(props) {
     super(props);
     this.state = {
-      percent: 30,
+      percent: 100,
       colorIndex: 0,
       subPathsCount: 3,
     };
@@ -101,6 +101,18 @@ class Example extends React.Component<ProgressProps, any> {
             strokeWidth={6}
             strokeLinecap="square"
             strokeColor={color}
+          />
+        </div>
+        <div style={circleContainerStyle}>
+          <Circle
+            percent={percent}
+            gapDegree={70}
+            strokeWidth={6}
+            strokeColor={{
+              '0%': 'red',
+              '99%': 'blue',
+              '100%': 'green',
+            }}
           />
         </div>
       </div>
