@@ -7,19 +7,19 @@ interface IndeterminateOption {
 export default (options: IndeterminateOption) => {
   if (!options.loading) {
     return {
-      indeterminateStylePops: {},
-      indeterminateStyleTag: null,
+      indeterminateStyleProps: {},
+      indeterminateStyleAnimation: null,
     };
   }
 
   const animationName = 'circle-indeterminate-animate';
 
   return {
-    indeterminateStylePops: {
+    indeterminateStyleProps: {
       transform: 'rotate(0deg)',
       animation: `${animationName} 1s linear infinite`,
     },
-    indeterminateStyleTag: (
+    indeterminateStyleAnimation: (
       <style>
         {`@keyframes ${animationName} {
             0 % { transform: rotate(0deg);}

@@ -11,20 +11,20 @@ export default (options: IndeterminateOption) => {
   const { percent, strokeLinecap, strokeWidth, loading } = options;
   if (!loading) {
     return {
-      indeterminateStylePops: {},
-      indeterminateStyleTag: null,
+      indeterminateStyleProps: {},
+      indeterminateStyleAnimation: null,
     };
   }
   const animationName = 'line-indeterminate-animate';
   const strokeDashOffset = 100 - (percent + (strokeLinecap === 'round' ? strokeWidth : 0));
 
   return {
-    indeterminateStylePops: {
+    indeterminateStyleProps: {
       strokeDasharray: `${percent} 100`,
       animation: `${animationName} .6s linear alternate infinite`,
       strokeDashoffset: 0,
     },
-    indeterminateStyleTag: (
+    indeterminateStyleAnimation: (
       <style>
         {`@keyframes ${animationName} {
             0% { stroke-dashoffset: 0; }

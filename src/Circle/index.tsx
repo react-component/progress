@@ -53,7 +53,9 @@ const Circle: React.FC<ProgressProps> = (props) => {
   >;
   const isConicGradient = gradient && typeof gradient === 'object';
   const mergedStrokeLinecap = isConicGradient ? 'butt' : strokeLinecap;
-  const { indeterminateStylePops, indeterminateStyleTag } = getIndeterminateCircle({ loading });
+  const { indeterminateStyleProps, indeterminateStyleAnimation } = getIndeterminateCircle({
+    loading,
+  });
 
   const circleStyle = getCircleStyle(
     perimeter,
@@ -97,7 +99,7 @@ const Circle: React.FC<ProgressProps> = (props) => {
             radius={radius}
             prefixCls={prefixCls}
             gradientId={gradientId}
-            style={{ ...circleStyleForStack, ...indeterminateStylePops }}
+            style={{ ...circleStyleForStack, ...indeterminateStyleProps }}
             strokeLinecap={mergedStrokeLinecap}
             strokeWidth={strokeWidth}
             gapDegree={gapDegree}
@@ -183,7 +185,7 @@ const Circle: React.FC<ProgressProps> = (props) => {
         />
       )}
       {stepCount ? getStepStokeList() : getStokeList()}
-      {indeterminateStyleTag}
+      {indeterminateStyleAnimation}
     </svg>
   );
 };

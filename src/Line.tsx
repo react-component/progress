@@ -1,6 +1,6 @@
 import * as React from 'react';
 import classNames from 'classnames';
-import { useTransitionDuration, defaultProps, toArray } from './common';
+import { useTransitionDuration, defaultProps } from './common';
 import type { ProgressProps } from './interface';
 import getIndeterminateLine from './utils/getIndeterminateLine';
 
@@ -36,7 +36,7 @@ const Line: React.FC<ProgressProps> = (props) => {
          L ${strokeLinecap === 'round' ? right : 100},${center}`;
   const viewBoxString = `0 0 100 ${strokeWidth}`;
   let stackPtg = 0;
-  const { indeterminateStylePops, indeterminateStyleTag } = getIndeterminateLine({
+  const { indeterminateStyleProps, indeterminateStyleAnimation } = getIndeterminateLine({
     loading,
     percent: percentList[0],
     strokeLinecap,
@@ -78,7 +78,7 @@ const Line: React.FC<ProgressProps> = (props) => {
           transition:
             transition ||
             'stroke-dashoffset 0.3s ease 0s, stroke-dasharray .3s ease 0s, stroke 0.3s linear',
-          ...indeterminateStylePops,
+          ...indeterminateStyleProps,
         };
         const color = strokeColorList[index] || strokeColorList[strokeColorList.length - 1];
         stackPtg += ptg;
@@ -103,7 +103,7 @@ const Line: React.FC<ProgressProps> = (props) => {
           />
         );
       })}
-      {indeterminateStyleTag}
+      {indeterminateStyleAnimation}
     </svg>
   );
 };
