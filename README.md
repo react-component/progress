@@ -136,6 +136,12 @@ export default () => (
       <td>top</td>
       <td>the gap position: can be `top`, `bottom`, `left`, or `right`. </td>
     </tr>
+    <tr>
+      <td>loading</td>
+      <td>Boolean</td>
+      <td>false</td>
+      <td>If it is true the indeterminate progress will be enabled.</td>
+    </tr>
   </tbody>
 </table>
 
