@@ -42,8 +42,3 @@ export const useTransitionDuration = (): SVGPathElement[] => {
 
   return pathsRef.current;
 };
-
-export const toArray = <T>(value: T | T[]): T[] => {
-  const mergedValue = value ?? [];
-  return Array.isArray(mergedValue) ? mergedValue : [mergedValue];
-};

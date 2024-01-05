@@ -3,9 +3,11 @@ import classNames from 'classnames';
 import { useTransitionDuration, defaultProps } from './common';
 import type { ProgressProps } from './interface';
 import getIndeterminateLine from './utils/getIndeterminateLine';
+import useId from './hooks/useId';
 
 const Line: React.FC<ProgressProps> = (props) => {
   const {
+    id,
     className,
     percent,
     prefixCls,
@@ -23,6 +25,8 @@ const Line: React.FC<ProgressProps> = (props) => {
     ...props,
   };
 
+  const mergedId = useId(id);
+
   // eslint-disable-next-line no-param-reassign
   delete restProps.gapPosition;
   const percentList = Array.isArray(percent) ? percent : [percent];
@@ -37,6 +41,7 @@ const Line: React.FC<ProgressProps> = (props) => {
   const viewBoxString = `0 0 100 ${strokeWidth}`;
   let stackPtg = 0;
   const { indeterminateStyleProps, indeterminateStyleAnimation } = getIndeterminateLine({
+    id: mergedId,
     loading,
     percent: percentList[0],
     strokeLinecap,

@@ -259,11 +259,11 @@ describe('Progress', () => {
     const line = wrapper.find(Line);
     expect(circle.find('style')).toBeDefined();
     expect(circle.find('.rc-progress-circle-path').at(0).getDOMNode().style.animation).toContain(
-      'circle-indeterminate-animate',
+      'indeterminate-animate',
     );
     expect(line.find('style')).toBeDefined();
     expect(line.find('.rc-progress-line-path').at(0).getDOMNode().style.animation).toContain(
-      'line-indeterminate-animate',
+      'indeterminate-animate',
     );
     wrapper.unmount();
   });

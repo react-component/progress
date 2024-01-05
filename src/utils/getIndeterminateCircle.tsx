@@ -1,18 +1,19 @@
 import React from 'react';
 
 interface IndeterminateOption {
+  id: string;
   loading: boolean;
 }
 
-export default (options: IndeterminateOption) => {
-  if (!options.loading) {
+export default ({ id, loading }: IndeterminateOption) => {
+  if (!loading) {
     return {
       indeterminateStyleProps: {},
       indeterminateStyleAnimation: null,
     };
   }
 
-  const animationName = 'circle-indeterminate-animate';
+  const animationName = `${id}-indeterminate-animate`;
 
   return {
     indeterminateStyleProps: {

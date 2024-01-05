@@ -1,6 +1,7 @@
 import React from 'react';
 
 interface IndeterminateOption {
+  id: string;
   loading: boolean;
   percent: number;
   strokeLinecap: string;
@@ -8,14 +9,14 @@ interface IndeterminateOption {
 }
 
 export default (options: IndeterminateOption) => {
-  const { percent, strokeLinecap, strokeWidth, loading } = options;
+  const { id, percent, strokeLinecap, strokeWidth, loading } = options;
   if (!loading) {
     return {
       indeterminateStyleProps: {},
       indeterminateStyleAnimation: null,
     };
   }
-  const animationName = 'line-indeterminate-animate';
+  const animationName = `${id}-indeterminate-animate`;
   const strokeDashOffset = 100 - (percent + (strokeLinecap === 'round' ? strokeWidth : 0));
 
   return {

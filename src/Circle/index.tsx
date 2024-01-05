@@ -54,6 +54,7 @@ const Circle: React.FC<ProgressProps> = (props) => {
   const isConicGradient = gradient && typeof gradient === 'object';
   const mergedStrokeLinecap = isConicGradient ? 'butt' : strokeLinecap;
   const { indeterminateStyleProps, indeterminateStyleAnimation } = getIndeterminateCircle({
+    id: mergedId,
     loading,
   });
 
