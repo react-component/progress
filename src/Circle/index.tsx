@@ -40,8 +40,8 @@ const Circle: React.FC<ProgressProps> = (props) => {
   const perimeter = Math.PI * 2 * radius;
   const rotateDeg = gapDegree > 0 ? 90 + gapDegree / 2 : -90;
   const perimeterWithoutGap = perimeter * ((360 - gapDegree) / 360);
-  const { count: stepCount, space: stepSpace } =
-    typeof steps === 'object' ? steps : { count: steps, space: 2 };
+  const { count: stepCount, gap: stepGap } =
+    typeof steps === 'object' ? steps : { count: steps, gap: 2 };
 
   const percentList = toArray(percent);
   const strokeColorList = toArray(strokeColor);
@@ -70,7 +70,7 @@ const Circle: React.FC<ProgressProps> = (props) => {
   const getStokeList = () => {
     let stackPtg = 0;
     return percentList
-      .map((ptg, index) => {
+      .map<React.ReactNode>((ptg, index) => {
         const color = strokeColorList[index] || strokeColorList[strokeColorList.length - 1];
         const circleStyleForStack = getCircleStyle(
           perimeter,
@@ -119,7 +119,7 @@ const Circle: React.FC<ProgressProps> = (props) => {
     const stepPtg = 100 / stepCount;
 
     let stackPtg = 0;
-    return new Array(stepCount).fill(null).map((_, index) => {
+    return new Array(stepCount).fill(null).map<React.ReactNode>((_, index) => {
       const color = index <= current - 1 ? strokeColorList[0] : trailColor;
       const stroke = color && typeof color === 'object' ? `url(#${gradientId})` : undefined;
       const circleStyleForStack = getCircleStyle(
@@ -133,10 +133,10 @@ const Circle: React.FC<ProgressProps> = (props) => {
         color,
         'butt',
         strokeWidth,
-        stepSpace,
+        stepGap,
       );
       stackPtg +=
-        ((perimeterWithoutGap - circleStyleForStack.strokeDashoffset + stepSpace) * 100) /
+        ((perimeterWithoutGap - (circleStyleForStack.strokeDashoffset as number) + stepGap) * 100) /
         perimeterWithoutGap;
 
       return (
