@@ -1,8 +1,9 @@
-import * as React from 'react';
-import { Line, Circle, ProgressProps } from 'rc-progress';
+import React from 'react';
+import { Line, Circle } from 'rc-progress';
+import type { ProgressProps } from 'rc-progress';
 
 class App extends React.Component<ProgressProps, any> {
-  constructor(props) {
+  constructor(props: ProgressProps) {
     super(props);
     this.state = {
       percent: 0,

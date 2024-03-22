@@ -1,5 +1,6 @@
 import type { StrokeColorType } from '../interface';
 import type { ProgressProps } from '..';
+import type React from 'react';
 
 export const VIEW_BOX_SIZE = 100;
 
@@ -9,13 +10,13 @@ export const getCircleStyle = (
   offset: number,
   percent: number,
   rotateDeg: number,
-  gapDegree,
+  gapDegree: number,
   gapPosition: ProgressProps['gapPosition'] | undefined,
   strokeColor: StrokeColorType,
   strokeLinecap: ProgressProps['strokeLinecap'],
-  strokeWidth,
+  strokeWidth: number,
   stepSpace = 0,
-) => {
+): React.CSSProperties => {
   const offsetDeg = (offset / 100) * 360 * ((360 - gapDegree) / 360);
   const positionDeg =
     gapDegree === 0

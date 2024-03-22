@@ -63,7 +63,7 @@ const Line: React.FC<ProgressProps> = (props) => {
             dashPercent = 1;
             break;
         }
-        const pathStyle = {
+        const pathStyle: React.CSSProperties = {
           strokeDasharray: `${ptg * dashPercent}px, 100px`,
           strokeDashoffset: `-${stackPtg}px`,
           transition:
