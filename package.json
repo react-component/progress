@@ -64,7 +64,7 @@
     "enzyme-to-json": "^3.1.2",
     "eslint": "^8.57.0",
     "eslint-plugin-jest": "^27.6.0",
-    "eslint-plugin-unicorn": "^50.0.1",
+    "eslint-plugin-unicorn": "^54.0.0",
     "father": "^4.0.0",
     "glob": "^8.0.1",
     "np": "^10.0.1",
