@@ -16,7 +16,7 @@ export interface ProgressProps {
   steps?: number | { count: number; gap: number };
 }
 
-export type StrokeColorObject = Record<string, string>;
+export type StrokeColorObject = Record<string, string | boolean>;
 
 export type BaseStrokeColorType = string | StrokeColorObject;
 
