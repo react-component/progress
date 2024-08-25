@@ -11,7 +11,7 @@ const Block: React.FC<BlockProps> = ({ bg, children }) => (
   <div style={{ width: '100%', height: '100%', background: bg }}>{children}</div>
 );
 
-function getPtgColors(color: Record<string, string>, scale: number) {
+function getPtgColors(color: Record<string, string | boolean>, scale: number) {
   return Object.keys(color).map((key) => {
     const parsedKey = parseFloat(key);
     const ptgKey = `${Math.floor(parsedKey * scale)}%`;
