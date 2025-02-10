@@ -7,19 +7,11 @@ interface BlockProps {
   children?: React.ReactNode;
 }
 
-const Block = ({ bg, children }: BlockProps) => (
-  <div
-    style={{
-      width: '100%',
-      height: '100%',
-      background: bg,
-    }}
-  >
-    {children}
-  </div>
+const Block: React.FC<BlockProps> = ({ bg, children }) => (
+  <div style={{ width: '100%', height: '100%', background: bg }}>{children}</div>
 );
 
-function getPtgColors(color: Record<string, string>, scale: number) {
+function getPtgColors(color: Record<string, string | boolean>, scale: number) {
   return Object.keys(color).map((key) => {
     const parsedKey = parseFloat(key);
     const ptgKey = `${Math.floor(parsedKey * scale)}%`;
@@ -97,7 +89,6 @@ const PtgCircle = React.forwardRef<SVGCircleElement, ColorGradientProps>((props,
   return (
     <>
       <mask id={maskId}>{circleNode}</mask>
-
       <foreignObject x={0} y={0} width={size} height={size} mask={`url(#${maskId})`}>
         <Block bg={linearColorBg}>
           <Block bg={conicColorBg} />

@@ -1,8 +1,9 @@
-import * as React from 'react';
-import { Line, Circle, ProgressProps } from 'rc-progress';
+import React from 'react';
+import { Line, Circle } from 'rc-progress';
+import type { ProgressProps } from 'rc-progress';
 
 class Example extends React.Component<ProgressProps, any> {
-  constructor(props) {
+  constructor(props: ProgressProps) {
     super(props);
     this.state = {
       percent: 9,
@@ -20,29 +21,33 @@ class Example extends React.Component<ProgressProps, any> {
       percent: value,
       color: colorMap[parseInt((Math.random() * 3).toString(), 10)],
     });
-  };
+  }
 
   changeIncrease() {
     this.setState(({ percent }) => {
       if (percent > 100) {
-        percent = 100;
+        return {
+          percent: 100,
+        };
       }
       return {
         percent: percent + 1,
       };
     });
-  };
+  }
 
   changeReduce() {
     this.setState(({ percent }) => {
       if (percent < 0) {
-        percent = 0;
+        return {
+          percent: 0,
+        };
       }
       return {
         percent: percent - 1,
       };
     });
-  };
+  }
 
   render() {
     const { percent, color } = this.state;

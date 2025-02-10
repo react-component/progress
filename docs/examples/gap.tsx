@@ -1,14 +1,20 @@
-import * as React from 'react';
-import { Circle, type ProgressProps } from 'rc-progress';
+import React from 'react';
+import { Circle } from 'rc-progress';
+import type { ProgressProps } from 'rc-progress';
 
 const colorMap = ['#3FC7FA', '#85D262', '#FE8C6A', '#FF5959', '#BC3FFA'];
 
-function getColor(index) {
+const circleContainerStyle: React.CSSProperties = {
+  width: 200,
+  height: 200,
+};
+
+function getColor(index: number) {
   return colorMap[(index + colorMap.length) % colorMap.length];
 }
 
 class Example extends React.Component<ProgressProps, any> {
-  constructor(props) {
+  constructor(props: ProgressProps) {
     super(props);
     this.state = {
       percent: 100,
@@ -36,10 +42,6 @@ class Example extends React.Component<ProgressProps, any> {
   }
 
   render() {
-    const circleContainerStyle = {
-      width: '200px',
-      height: '200px',
-    };
     const { percent, colorIndex, subPathsCount } = this.state;
     const color = getColor(colorIndex);
 
@@ -48,7 +50,7 @@ class Example extends React.Component<ProgressProps, any> {
       0,
       subPathsCount,
     );
-    const multiPercentageStrokeColors = multiPercentage.map((v, index) => getColor(index));
+    const multiPercentageStrokeColors = multiPercentage.map((_, i) => getColor(i));
 
     return (
       <div>
