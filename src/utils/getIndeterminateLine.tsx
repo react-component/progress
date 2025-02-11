@@ -1,10 +1,11 @@
+import type { StrokeLinecapType } from '@/interface';
 import React from 'react';
 
 interface IndeterminateOption {
   id: string;
   loading: boolean;
   percent: number;
-  strokeLinecap: string;
+  strokeLinecap: StrokeLinecapType;
   strokeWidth: number;
 }
 
