@@ -23,8 +23,8 @@ export default ({ id, loading }: IndeterminateOption) => {
     indeterminateStyleAnimation: (
       <style>
         {`@keyframes ${animationName} {
-            0% { transform: rotate(0deg);}
-            100% {transform: rotate(360deg);}
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
           }`}
       </style>
     ),

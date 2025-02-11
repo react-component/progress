@@ -1,6 +1,6 @@
 import React from 'react';
 import { Circle, Line } from '../src';
-import { render, waitFor } from '@testing-library/react';
+import { render } from '@testing-library/react';
 
 describe('(Circle | Line).indeterminate', () => {
   describe('Line', () => {
