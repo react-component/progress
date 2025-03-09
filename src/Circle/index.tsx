@@ -5,6 +5,7 @@ import type { ProgressProps } from '../interface';
 import useId from '../hooks/useId';
 import PtgCircle from './PtgCircle';
 import { VIEW_BOX_SIZE, getCircleStyle } from './util';
+import getIndeterminateCircle from '../utils/getIndeterminateCircle';
 
 function toArray<T>(value: T | T[]): T[] {
   const mergedValue = value ?? [];
@@ -26,6 +27,7 @@ const Circle: React.FC<ProgressProps> = (props) => {
     className,
     strokeColor,
     percent,
+    loading,
     ...restProps
   } = {
     ...defaultProps,
@@ -51,6 +53,10 @@ const Circle: React.FC<ProgressProps> = (props) => {
   >;
   const isConicGradient = gradient && typeof gradient === 'object';
   const mergedStrokeLinecap = isConicGradient ? 'butt' : strokeLinecap;
+  const { indeterminateStyleProps, indeterminateStyleAnimation } = getIndeterminateCircle({
+    id: mergedId,
+    loading,
+  });
 
   const circleStyle = getCircleStyle(
     perimeter,
@@ -94,7 +100,7 @@ const Circle: React.FC<ProgressProps> = (props) => {
             radius={radius}
             prefixCls={prefixCls}
             gradientId={gradientId}
-            style={circleStyleForStack}
+            style={{ ...circleStyleForStack, ...indeterminateStyleProps }}
             strokeLinecap={mergedStrokeLinecap}
             strokeWidth={strokeWidth}
             gapDegree={gapDegree}
@@ -180,6 +186,7 @@ const Circle: React.FC<ProgressProps> = (props) => {
         />
       )}
       {stepCount ? getStepStokeList() : getStokeList()}
+      {indeterminateStyleAnimation}
     </svg>
   );
 };

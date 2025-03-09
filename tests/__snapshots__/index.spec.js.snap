@@ -24,7 +24,7 @@ exports[` 1`] = `
       stroke="#2db7f5"
       stroke-linecap="butt"
       stroke-width="1"
-      style="stroke-dasharray: 20px, 100px; stroke-dashoffset: -0px; transition: stroke-dashoffset 0.3s ease 0s, stroke-dasharray .3s ease 0s, stroke 0.3s linear; transition-duration: .3s, .3s, .3s, .06s;"
+      style="stroke-dasharray: 20px, 100px; stroke-dashoffset: -0px; transition: stroke-dashoffset 0.3s ease 0s, stroke-dasharray .3s ease 0s, stroke 0.3s linear; transition-duration: 0s, 0s;"
     />
   </svg>
   <br />
@@ -50,7 +50,7 @@ exports[` 1`] = `
       stroke="#2db7f5"
       stroke-linecap="round"
       stroke-width="1"
-      style="stroke-dasharray: 19.8px, 100px; stroke-dashoffset: -0px; transition: stroke-dashoffset 0.3s ease 0s, stroke-dasharray .3s ease 0s, stroke 0.3s linear; transition-duration: .3s, .3s, .3s, .06s;"
+      style="stroke-dasharray: 19.8px, 100px; stroke-dashoffset: -0px; transition: stroke-dashoffset 0.3s ease 0s, stroke-dasharray .3s ease 0s, stroke 0.3s linear; transition-duration: 0s, 0s;"
     />
   </svg>
   <br />
@@ -76,7 +76,7 @@ exports[` 1`] = `
       stroke="#2db7f5"
       stroke-linecap="square"
       stroke-width="1"
-      style="stroke-dasharray: 19.9px, 100px; stroke-dashoffset: -0px; transition: stroke-dashoffset 0.3s ease 0s, stroke-dasharray .3s ease 0s, stroke 0.3s linear; transition-duration: .3s, .3s, .3s, .06s;"
+      style="stroke-dasharray: 19.9px, 100px; stroke-dashoffset: -0px; transition: stroke-dashoffset 0.3s ease 0s, stroke-dasharray .3s ease 0s, stroke 0.3s linear; transition-duration: 0s, 0s;"
     />
   </svg>
 </div>
