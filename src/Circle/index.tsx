@@ -1,8 +1,8 @@
 import * as React from 'react';
-import classNames from 'classnames';
+import cls from 'classnames';
 import { defaultProps, useTransitionDuration } from '../common';
 import type { ProgressProps } from '../interface';
-import useId from '../hooks/useId';
+import useId from '@rc-component/util/lib/hooks/useId';
 import PtgCircle from './PtgCircle';
 import { VIEW_BOX_SIZE, getCircleStyle } from './util';
 import getIndeterminateCircle from '../utils/getIndeterminateCircle';
@@ -16,6 +16,8 @@ const Circle: React.FC<ProgressProps> = (props) => {
   const {
     id,
     prefixCls,
+    classNames = {},
+    styles = {},
     steps,
     strokeWidth,
     trailWidth,
@@ -100,7 +102,8 @@ const Circle: React.FC<ProgressProps> = (props) => {
             radius={radius}
             prefixCls={prefixCls}
             gradientId={gradientId}
-            style={{ ...circleStyleForStack, ...indeterminateStyleProps }}
+            className={classNames.track}
+            style={{ ...circleStyleForStack, ...indeterminateStyleProps, ...styles.track }}
             strokeLinecap={mergedStrokeLinecap}
             strokeWidth={strokeWidth}
             gapDegree={gapDegree}
@@ -148,14 +151,14 @@ const Circle: React.FC<ProgressProps> = (props) => {
       return (
         <circle
           key={index}
-          className={`${prefixCls}-circle-path`}
+          className={cls(`${prefixCls}-circle-path`, classNames.track)}
           r={radius}
           cx={halfSize}
           cy={halfSize}
           stroke={stroke}
           strokeWidth={strokeWidth}
           opacity={1}
-          style={circleStyleForStack}
+          style={{ ...circleStyleForStack, ...styles.track }}
           ref={(elem) => {
             paths[index] = elem;
           }}
@@ -166,23 +169,29 @@ const Circle: React.FC<ProgressProps> = (props) => {
 
   return (
     <svg
-      className={classNames(`${prefixCls}-circle`, className)}
+      className={cls(`${prefixCls}-circle`, classNames.root, className)}
       viewBox={`0 0 ${VIEW_BOX_SIZE} ${VIEW_BOX_SIZE}`}
-      style={style}
+      style={{
+        ...styles.root,
+        ...style,
+      }}
       id={id}
       role="presentation"
       {...restProps}
     >
       {!stepCount && (
         <circle
-          className={`${prefixCls}-circle-trail`}
+          className={cls(`${prefixCls}-circle-trail`, classNames.rail)}
           r={radius}
           cx={halfSize}
           cy={halfSize}
           stroke={trailColor}
           strokeLinecap={mergedStrokeLinecap}
           strokeWidth={trailWidth || strokeWidth}
-          style={circleStyle}
+          style={{
+            ...circleStyle,
+            ...styles.rail,
+          }}
         />
       )}
       {stepCount ? getStepStokeList() : getStokeList()}

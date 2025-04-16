@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Circle } from 'rc-progress';
+import { Circle } from '@rc-component/progress';
 
 const Example: React.FC = () => {
   const [percent, setPercent] = useState<number>(30);

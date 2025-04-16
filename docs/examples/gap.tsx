@@ -1,6 +1,6 @@
 import React from 'react';
-import { Circle } from 'rc-progress';
-import type { ProgressProps } from 'rc-progress';
+import { Circle } from '@rc-component/progress';
+import type { ProgressProps } from '@rc-component/progress';
 
 const colorMap = ['#3FC7FA', '#85D262', '#FE8C6A', '#FF5959', '#BC3FFA'];
 
