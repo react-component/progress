@@ -1,6 +1,7 @@
 import * as React from 'react';
 import type { ProgressProps } from '..';
 import type { StrokeColorObject } from '../interface';
+import classNames from 'classnames';
 
 interface BlockProps {
   bg: string;
@@ -22,6 +23,7 @@ function getPtgColors(color: Record<string, string | boolean>, scale: number) {
 
 export interface ColorGradientProps {
   prefixCls: string;
+  className?: string;
   gradientId: string;
   style: React.CSSProperties;
   ptg: number;
@@ -39,6 +41,7 @@ const PtgCircle = React.forwardRef<SVGCircleElement, ColorGradientProps>((props,
     color,
     gradientId,
     radius,
+    className,
     style: circleStyleForStack,
     ptg,
     strokeLinecap,
@@ -56,7 +59,7 @@ const PtgCircle = React.forwardRef<SVGCircleElement, ColorGradientProps>((props,
 
   const circleNode = (
     <circle
-      className={`${prefixCls}-circle-path`}
+      className={classNames(`${prefixCls}-circle-path`, className)}
       r={radius}
       cx={halfSize}
       cy={halfSize}

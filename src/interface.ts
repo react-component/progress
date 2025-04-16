@@ -1,8 +1,12 @@
+export type SemanticName = 'root' | 'rail' | 'track';
+
 export interface ProgressProps {
   id?: string;
   strokeWidth?: number;
   trailWidth?: number;
   className?: string;
+  classNames?: Partial<Record<SemanticName, string>>;
+  styles?: Partial<Record<SemanticName, React.CSSProperties>>;
   percent?: number | number[];
   strokeColor?: StrokeColorType;
   trailColor?: string;
