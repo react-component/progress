@@ -1,66 +1,66 @@
-/* eslint-disable react/no-render-return-value */
-// eslint-disable-next-line max-classes-per-file
 import React from 'react';
-import { mount } from 'enzyme';
+import { render, act, fireEvent } from '@testing-library/react';
 import { Circle, Line } from '../src';
 
 describe('Progress', () => {
   describe('Line', () => {
     it('change with animation', () => {
-      class Demo extends React.Component {
-        state = {
-          percent: '0',
-        };
-
-        render() {
-          const { percent } = this.state;
-          return <Line percent={percent} strokeWidth="1" />;
-        }
+      function Demo() {
+        const [percent, setPercent] = React.useState('0');
+        return (
+          <>
+            <Line percent={percent} strokeWidth="1" />
+            <button onClick={() => setPercent('30')}>change</button>
+          </>
+        );
       }
-
-      const line = mount(<Demo />);
-      expect(line.state().percent).toBe('0');
-      line.setState({ percent: '30' });
-      expect(line.state().percent).toBe('30');
-      line.unmount();
+      const { container, getByText, unmount } = render(<Demo />);
+      expect(container.firstChild).toMatchSnapshot();
+      act(() => {
+        getByText('change').click();
+      });
+      expect(container.firstChild).toMatchSnapshot();
+      unmount();
     });
   });
 
   describe('Diff Line', () => {
-    const wrapper = mount(
-      <div>
-        <Line percent={20} strokeLinecap="butt" />
-        <br />
-        <Line percent={20} strokeLinecap="round" />
-        <br />
-        <Line percent={20} strokeLinecap="square" />
-      </div>,
-    );
-    expect(wrapper.render()).toMatchSnapshot();
+    it('should match snapshot', () => {
+      const { container } = render(
+        <div>
+          <Line percent={20} strokeLinecap="butt" />
+          <br />
+          <Line percent={20} strokeLinecap="round" />
+          <br />
+          <Line percent={20} strokeLinecap="square" />
+        </div>,
+      );
+      expect(container.firstChild).toMatchSnapshot();
+    });
   });
 
   describe('Circle', () => {
     it('change with animation', () => {
-      class Demo extends React.Component {
-        state = {
-          percent: '0',
-        };
-
-        render() {
-          const { percent } = this.state;
-          return <Circle percent={percent} strokeWidth="1" />;
-        }
+      function Demo() {
+        const [percent, setPercent] = React.useState('0');
+        return (
+          <>
+            <Circle percent={percent} strokeWidth="1" />
+            <button onClick={() => setPercent('30')}>change</button>
+          </>
+        );
       }
-
-      const circle = mount(<Demo />);
-      expect(circle.state().percent).toBe('0');
-      circle.setState({ percent: '30' });
-      expect(circle.state().percent).toBe('30');
-      circle.unmount();
+      const { container, getByText, unmount } = render(<Demo />);
+      expect(container.firstChild).toMatchSnapshot();
+      act(() => {
+        getByText('change').click();
+      });
+      expect(container.firstChild).toMatchSnapshot();
+      unmount();
     });
 
     it('should gradient works and circles have different gradient IDs', () => {
-      const wrapper = mount(
+      const { container } = render(
         <div>
           <Circle
             percent={90}
@@ -82,12 +82,11 @@ describe('Progress', () => {
           />
         </div>,
       );
-
-      expect(wrapper.render()).toMatchSnapshot();
+      expect(container.firstChild).toMatchSnapshot();
     });
 
     it('should show right gapPosition', () => {
-      const wrapper = mount(
+      const { container } = render(
         <div>
           <Circle
             percent={30}
@@ -127,8 +126,7 @@ describe('Progress', () => {
           <Circle percent={30} gapDegree={70} gapPosition="top" strokeWidth={6} />
         </div>,
       );
-
-      expect(wrapper.render()).toMatchSnapshot();
+      expect(container.firstChild).toMatchSnapshot();
     });
 
     // https://github.com/ant-design/ant-design/issues/30552
@@ -137,39 +135,46 @@ describe('Progress', () => {
         '0%': '#108ee9',
         '100%': '#87d068',
       };
-      const wrapper = mount(<Circle strokeColor={gradientColor} />);
-      expect(wrapper.find('.rc-progress-circle-path').getDOMNode().style.cssText).not.toContain(
+      const { container, rerender } = render(<Circle strokeColor={gradientColor} />);
+      expect(container.querySelector('.rc-progress-circle-path').style.cssText).not.toContain(
         'stroke:',
       );
-      wrapper.setProps({ strokeColor: '#eeeeee' });
-      expect(wrapper.find('.rc-progress-circle-path').getDOMNode().style.cssText).toContain(
+      act(() => {
+        rerender(<Circle strokeColor="#eeeeee" />);
+      });
+      expect(container.querySelector('.rc-progress-circle-path').style.cssText).toContain(
         'stroke: #eeeeee',
       );
-      wrapper.setProps({ strokeColor: gradientColor });
-      expect(wrapper.find('.rc-progress-circle-path').getDOMNode().style.cssText).not.toContain(
+      act(() => {
+        rerender(<Circle strokeColor={gradientColor} />);
+      });
+      expect(container.querySelector('.rc-progress-circle-path').style.cssText).not.toContain(
         'stroke:',
       );
     });
 
     it('should support ts onClick', () => {
       const onClick = jest.fn();
-      const wrapper = mount(
+      const { container } = render(
         <div>
           <Circle onClick={onClick} className="circle-target" />
           <Line onClick={onClick} className="line-target" />
         </div>,
       );
-
-      wrapper.find('.circle-target').at(0).simulate('click');
+      act(() => {
+        fireEvent.click(container.querySelector('.circle-target'));
+      });
       expect(onClick).toHaveBeenCalledTimes(1);
-      wrapper.find('.line-target').at(0).simulate('click');
+      act(() => {
+        fireEvent.click(container.querySelector('.line-target'));
+      });
       expect(onClick).toHaveBeenCalledTimes(2);
     });
 
     it('should steps works with no error', () => {
       const steps = 4;
       const percent = 35;
-      const wrapper = mount(
+      const { container, rerender } = render(
         <Circle
           steps={steps}
           percent={percent}
@@ -178,25 +183,33 @@ describe('Progress', () => {
           strokeWidth={20}
         />,
       );
-
-      expect(wrapper.find('.rc-progress-circle-path')).toHaveLength(steps);
-      expect(wrapper.find('.rc-progress-circle-path').at(0).getDOMNode().style.cssText).toContain(
+      expect(container.querySelectorAll('.rc-progress-circle-path')).toHaveLength(steps);
+      expect(container.querySelectorAll('.rc-progress-circle-path')[0].style.cssText).toContain(
         'stroke: red;',
       );
-      expect(wrapper.find('.rc-progress-circle-path').at(1).getDOMNode().style.cssText).toContain(
+      expect(container.querySelectorAll('.rc-progress-circle-path')[1].style.cssText).toContain(
         'stroke: grey;',
       );
-
-      wrapper.setProps({
-        strokeColor: {
-          '0%': '#108ee9',
-          '100%': '#87d068',
-        },
+      act(() => {
+        rerender(
+          <Circle
+            steps={steps}
+            percent={percent}
+            strokeColor={{
+              '0%': '#108ee9',
+              '100%': '#87d068',
+            }}
+            trailColor="grey"
+            strokeWidth={20}
+          />,
+        );
       });
-      expect(wrapper.find('.rc-progress-circle-path').at(0).props().stroke).toContain('url(');
+      expect(
+        container.querySelectorAll('.rc-progress-circle-path')[0].getAttribute('stroke'),
+      ).toContain('url(');
     });
     it('should steps works with gap', () => {
-      const wrapper = mount(
+      const { container } = render(
         <Circle
           steps={{ space: 2, count: 5 }}
           gapDegree={60}
@@ -206,41 +219,36 @@ describe('Progress', () => {
           strokeWidth={20}
         />,
       );
-      expect(wrapper.find('.rc-progress-circle-path')).toHaveLength(5);
-      expect(wrapper.find('.rc-progress-circle-path').at(0).getDOMNode().style.cssText).toContain(
+      expect(container.querySelectorAll('.rc-progress-circle-path')).toHaveLength(5);
+      expect(container.querySelectorAll('.rc-progress-circle-path')[0].style.cssText).toContain(
         'transform: rotate(120deg);',
       );
     });
   });
 
   it('should support percentage array changes', () => {
-    class Demo extends React.Component {
-      state = {
-        subPathsCount: 2,
-      };
-
-      render() {
-        const { subPathsCount } = this.state;
-        const percent = 80;
-        const multiPercentage = new Array(subPathsCount).fill(
-          percent / subPathsCount,
-          0,
-          subPathsCount,
-        );
-
-        return (
-          <>
-            <Circle percent={multiPercentage} strokeWidth="1" />
-            <Line percent={multiPercentage} strokeWidth="1" />
-          </>
-        );
-      }
+    function Demo() {
+      const [subPathsCount, setSubPathsCount] = React.useState(2);
+      const percent = 80;
+      const multiPercentage = new Array(subPathsCount).fill(
+        percent / subPathsCount,
+        0,
+        subPathsCount,
+      );
+      return (
+        <>
+          <Circle percent={multiPercentage} strokeWidth="1" data-testid="circle" />
+          <Line percent={multiPercentage} strokeWidth="1" />
+          <button onClick={() => setSubPathsCount(4)}>change</button>
+        </>
+      );
     }
-
-    const circle = mount(<Demo />);
-    expect(circle.find(Circle).props().percent).toEqual([40, 40]);
-    circle.setState({ subPathsCount: 4 });
-    expect(circle.find(Circle).props().percent).toEqual([20, 20, 20, 20]);
-    circle.unmount();
+    const { getByText, container, unmount } = render(<Demo />);
+    expect(container.firstChild).toMatchSnapshot();
+    act(() => {
+      getByText('change').click();
+    });
+    expect(container.firstChild).toMatchSnapshot();
+    unmount();
   });
 });
