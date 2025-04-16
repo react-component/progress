@@ -102,6 +102,7 @@ const Circle: React.FC<ProgressProps> = (props) => {
             radius={radius}
             prefixCls={prefixCls}
             gradientId={gradientId}
+            className={classNames.track}
             style={{ ...circleStyleForStack, ...indeterminateStyleProps, ...styles.track }}
             strokeLinecap={mergedStrokeLinecap}
             strokeWidth={strokeWidth}
@@ -150,7 +151,7 @@ const Circle: React.FC<ProgressProps> = (props) => {
       return (
         <circle
           key={index}
-          className={cls(`${prefixCls}-circle-path`, className)}
+          className={cls(`${prefixCls}-circle-path`, classNames.track)}
           r={radius}
           cx={halfSize}
           cy={halfSize}
