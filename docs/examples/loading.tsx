@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Line, Circle } from 'rc-progress';
+import { Line, Circle } from '@rc-component/progress';
 
 const Loading = () => {
   return (

@@ -1,11 +1,11 @@
-# rc-progress
+# @rc-component/progress
 
 Progress Bar.
 
 [![NPM version][npm-image]][npm-url] [![dumi](https://img.shields.io/badge/docs%20by-dumi-blue?style=flat-square)](https://github.com/umijs/dumi) [![build status][github-actions-image]][github-actions-url] [![Test coverage][coveralls-image]][coveralls-url] [![npm download][download-image]][download-url] [![bundle size][bundlephobia-image]][bundlephobia-url]
 
-[npm-image]: http://img.shields.io/npm/v/rc-progress.svg?style=flat-square
-[npm-url]: http://npmjs.org/package/rc-progress
+[npm-image]: http://img.shields.io/npm/v/@rc-component/progress.svg?style=flat-square
+[npm-url]: http://npmjs.org/package/@rc-component/progress
 [github-actions-image]: https://github.com/react-component/progress/workflows/CI/badge.svg
 [github-actions-url]: https://github.com/react-component/progress/actions
 [circleci-image]: https://img.shields.io/circleci/react-component/progress/master?style=flat-square
@@ -16,10 +16,10 @@ Progress Bar.
 [david-image]: https://david-dm.org/react-component/progress/status.svg?style=flat-square
 [david-dev-url]: https://david-dm.org/react-component/progress?type=dev
 [david-dev-image]: https://david-dm.org/react-component/progress/dev-status.svg?style=flat-square
-[download-image]: https://img.shields.io/npm/dm/rc-progress.svg?style=flat-square
-[download-url]: https://npmjs.org/package/rc-progress
-[bundlephobia-url]: https://bundlephobia.com/result?p=rc-progress
-[bundlephobia-image]: https://badgen.net/bundlephobia/minzip/rc-progress
+[download-image]: https://img.shields.io/npm/dm/@rc-component/progress.svg?style=flat-square
+[download-url]: https://npmjs.org/package/@rc-component/progress
+[bundlephobia-url]: https://bundlephobia.com/result?p=@rc-component/progress
+[bundlephobia-image]: https://badgen.net/bundlephobia/minzip/@rc-component/progress
 
 ## Example
 
@@ -35,12 +35,12 @@ https://progress.react-component.vercel.app/
 
 ## Install
 
-[![rc-progress](https://nodei.co/npm/rc-progress.png)](https://npmjs.org/package/rc-progress)
+[![@rc-component/progress](https://nodei.co/npm/@rc-component/progress.png)](https://npmjs.org/package/@rc-component/progress)
 
 ## Usage
 
 ```js
-import { Line, Circle } from 'rc-progress';
+import { Line, Circle } from '@rc-component/progress';
 
 export default () => (
   <>
@@ -148,7 +148,7 @@ export default () => (
 ## Installation
 
 ```
-npm install --save rc-progress
+npm install --save @rc-component/progress
 ```
 
 ## Development
@@ -160,4 +160,4 @@ npm start
 
 ## License
 
-rc-progress is released under the MIT license.
+@rc-component/progress is released under the MIT license.

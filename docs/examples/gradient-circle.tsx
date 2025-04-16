@@ -1,5 +1,5 @@
 import React from 'react';
-import { Circle } from 'rc-progress';
+import { Circle } from '@rc-component/progress';
 
 const circleContainerStyle: React.CSSProperties = {
   width: 250,

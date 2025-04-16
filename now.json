@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "name": "rc-progress",
+  "name": "@rc-component/progress",
   "builds": [
     {
       "src": "package.json",

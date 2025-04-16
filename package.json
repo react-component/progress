@@ -1,6 +1,6 @@
 {
-  "name": "rc-progress",
-  "version": "4.0.0",
+  "name": "@rc-component/progress",
+  "version": "1.0.0",
   "description": "progress ui component for react",
   "keywords": [
     "react",
