@@ -83,10 +83,10 @@ export default () => (
       <td>Stroke color.</td>
     </tr>
     <tr>
-      <td>rrailWidth</td>
+      <td>railWidth</td>
       <td>Number</td>
       <td>1</td>
-      <td>Width of the rrail stroke. Unit is percentage of SVG canvas size. Rail is always centered relative to actual progress path. If railWidth is not defined, it is the same as strokeWidth.</td>
+      <td>Width of the rail stroke. Unit is percentage of SVG canvas size. Rail is always centered relative to actual progress path. If railWidth is not defined, it is the same as strokeWidth.</td>
     </tr>
     <tr>
       <td>railColor</td>
