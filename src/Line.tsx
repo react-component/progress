@@ -15,8 +15,8 @@ const Line: React.FC<ProgressProps> = (props) => {
     strokeLinecap,
     strokeWidth,
     style,
-    trailColor,
-    trailWidth,
+    railColor,
+    railWidth,
     transition,
     loading,
     ...restProps
@@ -57,11 +57,11 @@ const Line: React.FC<ProgressProps> = (props) => {
       {...restProps}
     >
       <path
-        className={`${prefixCls}-line-trail`}
+        className={`${prefixCls}-line-rail`}
         d={pathString}
         strokeLinecap={strokeLinecap}
-        stroke={trailColor}
-        strokeWidth={trailWidth || strokeWidth}
+        stroke={railColor}
+        strokeWidth={railWidth || strokeWidth}
         fillOpacity="0"
       />
       {percentList.map((ptg, index) => {

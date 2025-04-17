@@ -7,8 +7,8 @@ export const defaultProps: Partial<ProgressProps> = {
   strokeColor: '#2db7f5',
   strokeLinecap: 'round',
   strokeWidth: 1,
-  trailColor: '#D9D9D9',
-  trailWidth: 1,
+  railColor: '#D9D9D9',
+  railWidth: 1,
   gapPosition: 'bottom',
   loading: false,
 };

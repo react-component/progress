@@ -179,7 +179,7 @@ describe('Progress', () => {
           steps={steps}
           percent={percent}
           strokeColor="red"
-          trailColor="grey"
+          railColor="grey"
           strokeWidth={20}
         />,
       );
@@ -199,7 +199,7 @@ describe('Progress', () => {
               '0%': '#108ee9',
               '100%': '#87d068',
             }}
-            trailColor="grey"
+            railColor="grey"
             strokeWidth={20}
           />,
         );
@@ -215,7 +215,7 @@ describe('Progress', () => {
           gapDegree={60}
           percent={50}
           strokeColor="red"
-          trailColor="grey"
+          railColor="grey"
           strokeWidth={20}
         />,
       );
