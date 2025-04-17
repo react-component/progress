@@ -83,16 +83,16 @@ export default () => (
       <td>Stroke color.</td>
     </tr>
     <tr>
-      <td>trailWidth</td>
+      <td>rrailWidth</td>
       <td>Number</td>
       <td>1</td>
-      <td>Width of the trail stroke. Unit is percentage of SVG canvas size. Trail is always centered relative to actual progress path. If trailWidth is not defined, it is the same as strokeWidth.</td>
+      <td>Width of the rrail stroke. Unit is percentage of SVG canvas size. Rail is always centered relative to actual progress path. If railWidth is not defined, it is the same as strokeWidth.</td>
     </tr>
     <tr>
-      <td>trailColor</td>
+      <td>railColor</td>
       <td>String</td>
       <td>#D9D9D9</td>
-      <td>Color for lighter trail stroke underneath the actual progress path.</td>
+      <td>Color for lighter rail stroke underneath the actual progress path.</td>
     </tr>
     <tr>
       <td>strokeLinecap</td>
