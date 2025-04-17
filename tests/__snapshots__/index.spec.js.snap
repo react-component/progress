@@ -7,7 +7,7 @@ exports[`Progress Circle change with animation 1`] = `
   viewBox="0 0 100 100"
 >
   <circle
-    class="rc-progress-circle-trail"
+    class="rc-progress-circle-rail"
     cx="50"
     cy="50"
     r="49.5"
@@ -36,7 +36,7 @@ exports[`Progress Circle change with animation 2`] = `
   viewBox="0 0 100 100"
 >
   <circle
-    class="rc-progress-circle-trail"
+    class="rc-progress-circle-rail"
     cx="50"
     cy="50"
     r="49.5"
@@ -66,7 +66,7 @@ exports[`Progress Circle should gradient works and circles have different gradie
     viewBox="0 0 100 100"
   >
     <circle
-      class="rc-progress-circle-trail"
+      class="rc-progress-circle-rail"
       cx="50"
       cy="50"
       r="47"
@@ -112,7 +112,7 @@ exports[`Progress Circle should gradient works and circles have different gradie
     viewBox="0 0 100 100"
   >
     <circle
-      class="rc-progress-circle-trail"
+      class="rc-progress-circle-rail"
       cx="50"
       cy="50"
       r="47"
@@ -163,7 +163,7 @@ exports[`Progress Circle should show right gapPosition 1`] = `
     viewBox="0 0 100 100"
   >
     <circle
-      class="rc-progress-circle-trail"
+      class="rc-progress-circle-rail"
       cx="50"
       cy="50"
       r="47"
@@ -189,7 +189,7 @@ exports[`Progress Circle should show right gapPosition 1`] = `
     viewBox="0 0 100 100"
   >
     <circle
-      class="rc-progress-circle-trail"
+      class="rc-progress-circle-rail"
       cx="50"
       cy="50"
       r="47"
@@ -215,7 +215,7 @@ exports[`Progress Circle should show right gapPosition 1`] = `
     viewBox="0 0 100 100"
   >
     <circle
-      class="rc-progress-circle-trail"
+      class="rc-progress-circle-rail"
       cx="50"
       cy="50"
       r="47"
@@ -241,7 +241,7 @@ exports[`Progress Circle should show right gapPosition 1`] = `
     viewBox="0 0 100 100"
   >
     <circle
-      class="rc-progress-circle-trail"
+      class="rc-progress-circle-rail"
       cx="50"
       cy="50"
       r="47"
@@ -267,7 +267,7 @@ exports[`Progress Circle should show right gapPosition 1`] = `
     viewBox="0 0 100 100"
   >
     <circle
-      class="rc-progress-circle-trail"
+      class="rc-progress-circle-rail"
       cx="50"
       cy="50"
       r="47"
@@ -293,7 +293,7 @@ exports[`Progress Circle should show right gapPosition 1`] = `
     viewBox="0 0 100 100"
   >
     <circle
-      class="rc-progress-circle-trail"
+      class="rc-progress-circle-rail"
       cx="50"
       cy="50"
       r="47"
@@ -324,7 +324,7 @@ exports[`Progress Diff Line should match snapshot 1`] = `
     viewBox="0 0 100 1"
   >
     <path
-      class="rc-progress-line-trail"
+      class="rc-progress-line-rail"
       d="M 0,0.5
          L 100,0.5"
       fill-opacity="0"
@@ -350,7 +350,7 @@ exports[`Progress Diff Line should match snapshot 1`] = `
     viewBox="0 0 100 1"
   >
     <path
-      class="rc-progress-line-trail"
+      class="rc-progress-line-rail"
       d="M 0.5,0.5
          L 99.5,0.5"
       fill-opacity="0"
@@ -376,7 +376,7 @@ exports[`Progress Diff Line should match snapshot 1`] = `
     viewBox="0 0 100 1"
   >
     <path
-      class="rc-progress-line-trail"
+      class="rc-progress-line-rail"
       d="M 0,0.5
          L 100,0.5"
       fill-opacity="0"
@@ -405,7 +405,7 @@ exports[`Progress Line change with animation 1`] = `
   viewBox="0 0 100 1"
 >
   <path
-    class="rc-progress-line-trail"
+    class="rc-progress-line-rail"
     d="M 0.5,0.5
          L 99.5,0.5"
     fill-opacity="0"
@@ -433,7 +433,7 @@ exports[`Progress Line change with animation 2`] = `
   viewBox="0 0 100 1"
 >
   <path
-    class="rc-progress-line-trail"
+    class="rc-progress-line-rail"
     d="M 0.5,0.5
          L 99.5,0.5"
     fill-opacity="0"
@@ -462,7 +462,7 @@ exports[`Progress should support percentage array changes 1`] = `
   viewBox="0 0 100 100"
 >
   <circle
-    class="rc-progress-circle-trail"
+    class="rc-progress-circle-rail"
     cx="50"
     cy="50"
     r="49.5"
@@ -502,7 +502,7 @@ exports[`Progress should support percentage array changes 2`] = `
   viewBox="0 0 100 100"
 >
   <circle
-    class="rc-progress-circle-trail"
+    class="rc-progress-circle-rail"
     cx="50"
     cy="50"
     r="49.5"

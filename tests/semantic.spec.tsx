@@ -26,7 +26,7 @@ describe('Semantic', () => {
         );
 
         expect(container.querySelector('.rc-progress-circle')).toHaveClass(classNames.root);
-        expect(container.querySelector('.rc-progress-circle-trail')).toHaveClass(classNames.rail);
+        expect(container.querySelector('.rc-progress-circle-rail')).toHaveClass(classNames.rail);
         expect(container.querySelector('.rc-progress-circle-path')).toHaveClass(classNames.track);
 
         expect(container.querySelector('.my-root')).toHaveStyle(styles.root);

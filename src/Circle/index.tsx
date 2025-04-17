@@ -20,10 +20,10 @@ const Circle: React.FC<ProgressProps> = (props) => {
     styles = {},
     steps,
     strokeWidth,
-    trailWidth,
+    railWidth,
     gapDegree = 0,
     gapPosition,
-    trailColor,
+    railColor,
     strokeLinecap,
     style,
     className,
@@ -68,7 +68,7 @@ const Circle: React.FC<ProgressProps> = (props) => {
     rotateDeg,
     gapDegree,
     gapPosition,
-    trailColor,
+    railColor,
     mergedStrokeLinecap,
     strokeWidth,
   );
@@ -129,7 +129,7 @@ const Circle: React.FC<ProgressProps> = (props) => {
 
     let stackPtg = 0;
     return new Array(stepCount).fill(null).map<React.ReactNode>((_, index) => {
-      const color = index <= current - 1 ? strokeColorList[0] : trailColor;
+      const color = index <= current - 1 ? strokeColorList[0] : railColor;
       const stroke = color && typeof color === 'object' ? `url(#${gradientId})` : undefined;
       const circleStyleForStack = getCircleStyle(
         perimeter,
@@ -181,13 +181,13 @@ const Circle: React.FC<ProgressProps> = (props) => {
     >
       {!stepCount && (
         <circle
-          className={cls(`${prefixCls}-circle-trail`, classNames.rail)}
+          className={cls(`${prefixCls}-circle-rail`, classNames.rail)}
           r={radius}
           cx={halfSize}
           cy={halfSize}
-          stroke={trailColor}
+          stroke={railColor}
           strokeLinecap={mergedStrokeLinecap}
-          strokeWidth={trailWidth || strokeWidth}
+          strokeWidth={railWidth || strokeWidth}
           style={{
             ...circleStyle,
             ...styles.rail,

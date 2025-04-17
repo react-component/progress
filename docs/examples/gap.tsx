@@ -79,7 +79,7 @@ class Example extends React.Component<ProgressProps, any> {
             gapDegree={70}
             gapPosition="bottom"
             strokeWidth={6}
-            trailWidth={6}
+            railWidth={6}
             strokeLinecap="round"
             strokeColor={multiPercentageStrokeColors}
           />
