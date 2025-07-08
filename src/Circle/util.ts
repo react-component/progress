@@ -11,14 +11,14 @@ export const getCircleStyle = (
   percent: number,
   rotateDeg: number,
   gapDegree: number,
-  gapPosition: ProgressProps['gapPosition'] | undefined,
+  gapPlacement: ProgressProps['gapPlacement'] | undefined,
   strokeColor: StrokeColorType,
   strokeLinecap: ProgressProps['strokeLinecap'],
   strokeWidth: number,
   stepSpace = 0,
 ): React.CSSProperties => {
   const offsetDeg = (offset / 100) * 360 * ((360 - gapDegree) / 360);
-  const positionDeg =
+  const placementDeg =
     gapDegree === 0
       ? 0
       : {
@@ -26,7 +26,7 @@ export const getCircleStyle = (
           top: 180,
           left: 90,
           right: -90,
-        }[gapPosition];
+        }[gapPlacement];
 
   let strokeDashoffset = ((100 - percent) / 100) * perimeterWithoutGap;
   // Fix percent accuracy when strokeLinecap is round
@@ -45,7 +45,7 @@ export const getCircleStyle = (
     stroke: typeof strokeColor === 'string' ? strokeColor : undefined,
     strokeDasharray: `${perimeterWithoutGap}px ${perimeter}`,
     strokeDashoffset: strokeDashoffset + stepSpace,
-    transform: `rotate(${rotateDeg + offsetDeg + positionDeg}deg)`,
+    transform: `rotate(${rotateDeg + offsetDeg + placementDeg}deg)`,
     transformOrigin: `${halfSize}px ${halfSize}px`,
     transition:
       'stroke-dashoffset .3s ease 0s, stroke-dasharray .3s ease 0s, stroke .3s, stroke-width .06s ease .3s, opacity .3s ease 0s',

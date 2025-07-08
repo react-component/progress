@@ -27,8 +27,6 @@ const Line: React.FC<ProgressProps> = (props) => {
 
   const mergedId = useId(id);
 
-  // eslint-disable-next-line no-param-reassign
-  delete restProps.gapPosition;
   const percentList = Array.isArray(percent) ? percent : [percent];
   const strokeColorList = Array.isArray(strokeColor) ? strokeColor : [strokeColor];
 

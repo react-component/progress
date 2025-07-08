@@ -14,6 +14,8 @@ export interface ProgressProps {
   prefixCls?: string;
   style?: React.CSSProperties;
   gapDegree?: number;
+  gapPlacement?: GapPositionType;
+  /** @deprecated Please use `gapPlacement` instead */
   gapPosition?: GapPositionType;
   transition?: string;
   onClick?: React.MouseEventHandler;

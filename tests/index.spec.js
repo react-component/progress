@@ -224,6 +224,41 @@ describe('Progress', () => {
         'transform: rotate(120deg);',
       );
     });
+
+    const mockCircleProps = {
+      percent: 30,
+      strokeWidth: 6,
+      trailWidth: 6,
+      gapDegree: 0,
+    };
+
+    describe('gapPlacement and gapPosition behavior', () => {
+      it.each([
+        [{}, 'bottom'],
+        [{ gapPlacement: 'top' }, 'top'],
+        [{ gapPlacement: 'left' }, 'left'],
+        [{ gapPosition: 'bottom' }, 'bottom'],
+        [{ gapPosition: 'right' }, 'right'],
+        [{ gapPosition: 'top', gapPlacement: 'bottom' }, 'bottom'],
+      ])('should use %s when props are %j', async (props, expectedPlacement) => {
+        const getCircleStyleMock = jest.spyOn(require('../src/Circle/util'), 'getCircleStyle');
+        render(<Circle {...mockCircleProps} {...props} />);
+        expect(getCircleStyleMock).toHaveBeenCalledWith(
+          expect.anything(),
+          expect.anything(),
+          expect.anything(),
+          expect.anything(),
+          expect.anything(),
+          expect.anything(),
+          expectedPlacement,
+          expect.anything(),
+          expect.anything(),
+          expect.anything(),
+        );
+
+        getCircleStyleMock.mockRestore();
+      });
+    });
   });
 
   it('should support percentage array changes', () => {

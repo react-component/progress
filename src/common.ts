@@ -9,7 +9,6 @@ export const defaultProps: Partial<ProgressProps> = {
   strokeWidth: 1,
   railColor: '#D9D9D9',
   railWidth: 1,
-  gapPosition: 'bottom',
   loading: false,
 };
 

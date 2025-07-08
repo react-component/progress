@@ -131,10 +131,10 @@ export default () => (
       <td>the gap degree of half circle, 0 - 360</td>
     </tr>
     <tr>
-      <td>gapPosition</td>
+      <td>gapPlacement</td>
       <td>String</td>
       <td>top</td>
-      <td>the gap position: can be `top`, `bottom`, `left`, or `right`. </td>
+      <td>the gap placement: can be `top`, `bottom`, `left`, or `right`. </td>
     </tr>
     <tr>
       <td>loading</td>

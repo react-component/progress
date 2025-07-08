@@ -22,6 +22,7 @@ const Circle: React.FC<ProgressProps> = (props) => {
     strokeWidth,
     railWidth,
     gapDegree = 0,
+    gapPlacement,
     gapPosition,
     railColor,
     strokeLinecap,
@@ -60,6 +61,7 @@ const Circle: React.FC<ProgressProps> = (props) => {
     loading,
   });
 
+  const mergedPlacement = gapPlacement ?? gapPosition ?? 'bottom';
   const circleStyle = getCircleStyle(
     perimeter,
     perimeterWithoutGap,
@@ -67,7 +69,7 @@ const Circle: React.FC<ProgressProps> = (props) => {
     100,
     rotateDeg,
     gapDegree,
-    gapPosition,
+    mergedPlacement,
     railColor,
     mergedStrokeLinecap,
     strokeWidth,
@@ -87,7 +89,7 @@ const Circle: React.FC<ProgressProps> = (props) => {
           ptg,
           rotateDeg,
           gapDegree,
-          gapPosition,
+          mergedPlacement,
           color,
           mergedStrokeLinecap,
           strokeWidth,
@@ -138,7 +140,7 @@ const Circle: React.FC<ProgressProps> = (props) => {
         stepPtg,
         rotateDeg,
         gapDegree,
-        gapPosition,
+        mergedPlacement,
         color,
         'butt',
         strokeWidth,

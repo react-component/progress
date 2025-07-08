@@ -67,7 +67,7 @@ class Example extends React.Component<ProgressProps, any> {
           <Circle
             percent={percent}
             gapDegree={70}
-            gapPosition="top"
+            gapPlacement="top"
             strokeWidth={6}
             strokeLinecap="square"
             strokeColor={color}
@@ -77,7 +77,7 @@ class Example extends React.Component<ProgressProps, any> {
           <Circle
             percent={multiPercentage}
             gapDegree={70}
-            gapPosition="bottom"
+            gapPlacement="bottom"
             strokeWidth={6}
             railWidth={6}
             strokeLinecap="round"
@@ -89,7 +89,7 @@ class Example extends React.Component<ProgressProps, any> {
           <Circle
             percent={percent}
             gapDegree={70}
-            gapPosition="left"
+            gapPlacement="left"
             strokeWidth={6}
             strokeLinecap="square"
             strokeColor={color}
@@ -99,7 +99,7 @@ class Example extends React.Component<ProgressProps, any> {
           <Circle
             percent={percent}
             gapDegree={70}
-            gapPosition="right"
+            gapPlacement="right"
             strokeWidth={6}
             strokeLinecap="square"
             strokeColor={color}
