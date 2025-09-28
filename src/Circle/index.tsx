@@ -1,5 +1,5 @@
 import * as React from 'react';
-import cls from 'classnames';
+import { clsx } from 'clsx';
 import { defaultProps, useTransitionDuration } from '../common';
 import type { ProgressProps } from '../interface';
 import useId from '@rc-component/util/lib/hooks/useId';
@@ -151,7 +151,7 @@ const Circle: React.FC<ProgressProps> = (props) => {
       return (
         <circle
           key={index}
-          className={cls(`${prefixCls}-circle-path`, classNames.track)}
+          className={clsx(`${prefixCls}-circle-path`, classNames.track)}
           r={radius}
           cx={halfSize}
           cy={halfSize}
@@ -169,7 +169,7 @@ const Circle: React.FC<ProgressProps> = (props) => {
 
   return (
     <svg
-      className={cls(`${prefixCls}-circle`, classNames.root, className)}
+      className={clsx(`${prefixCls}-circle`, classNames.root, className)}
       viewBox={`0 0 ${VIEW_BOX_SIZE} ${VIEW_BOX_SIZE}`}
       style={{
         ...styles.root,
@@ -181,17 +181,14 @@ const Circle: React.FC<ProgressProps> = (props) => {
     >
       {!stepCount && (
         <circle
-          className={cls(`${prefixCls}-circle-rail`, classNames.rail)}
+          className={clsx(`${prefixCls}-circle-rail`, classNames.rail)}
           r={radius}
           cx={halfSize}
           cy={halfSize}
           stroke={railColor}
           strokeLinecap={mergedStrokeLinecap}
           strokeWidth={railWidth || strokeWidth}
-          style={{
-            ...circleStyle,
-            ...styles.rail,
-          }}
+          style={{ ...circleStyle, ...styles.rail }}
         />
       )}
       {stepCount ? getStepStokeList() : getStokeList()}

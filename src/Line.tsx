@@ -1,5 +1,5 @@
 import * as React from 'react';
-import classNames from 'classnames';
+import { clsx } from 'clsx';
 import { useTransitionDuration, defaultProps } from './common';
 import type { ProgressProps } from './interface';
 import getIndeterminateLine from './utils/getIndeterminateLine';
@@ -50,7 +50,7 @@ const Line: React.FC<ProgressProps> = (props) => {
 
   return (
     <svg
-      className={classNames(`${prefixCls}-line`, className)}
+      className={clsx(`${prefixCls}-line`, className)}
       viewBox={viewBoxString}
       preserveAspectRatio="none"
       style={style}

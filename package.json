@@ -39,21 +39,17 @@
     "coverage": "father test --coverage",
     "now-build": "npm run docs:build"
   },
-  "peerDependencies": {
-    "react": ">=16.9.0",
-    "react-dom": ">=16.9.0"
-  },
   "dependencies": {
     "@rc-component/util": "^1.2.1",
-    "classnames": "^2.2.6"
+    "clsx": "^2.1.1"
   },
   "devDependencies": {
     "@rc-component/father-plugin": "^2.0.4",
     "@rc-component/np": "^1.0.4",
     "@testing-library/react": "^13.0.0",
-    "@types/classnames": "^2.2.9",
     "@types/jest": "^29.4.0",
     "@types/keyv": "3.1.4",
+    "@types/node": "^24.5.2",
     "@types/react": "^18.0.9",
     "@types/react-dom": "^18.0.3",
     "@umijs/fabric": "^3.0.0",
@@ -69,5 +65,9 @@
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "typescript": "^5.0.0"
+  },
+  "peerDependencies": {
+    "react": ">=16.9.0",
+    "react-dom": ">=16.9.0"
   }
 }
