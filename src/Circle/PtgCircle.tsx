@@ -1,14 +1,13 @@
 import * as React from 'react';
 import type { ProgressProps } from '..';
 import type { StrokeColorObject } from '../interface';
-import classNames from 'classnames';
+import { clsx } from 'clsx';
 
 interface BlockProps {
   bg: string;
-  children?: React.ReactNode;
 }
 
-const Block: React.FC<BlockProps> = ({ bg, children }) => (
+const Block: React.FC<React.PropsWithChildren<BlockProps>> = ({ bg, children }) => (
   <div style={{ width: '100%', height: '100%', background: bg }}>{children}</div>
 );
 
@@ -59,7 +58,7 @@ const PtgCircle = React.forwardRef<SVGCircleElement, ColorGradientProps>((props,
 
   const circleNode = (
     <circle
-      className={classNames(`${prefixCls}-circle-path`, className)}
+      className={clsx(`${prefixCls}-circle-path`, className)}
       r={radius}
       cx={halfSize}
       cy={halfSize}
