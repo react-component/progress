@@ -52,7 +52,7 @@
     "@types/node": "^24.5.2",
     "@types/react": "^18.0.9",
     "@types/react-dom": "^18.0.3",
-    "@umijs/fabric": "^3.0.0",
+    "@umijs/fabric": "^4.0.1",
     "cross-env": "^7.0.0",
     "dumi": "^2.0.0",
     "eslint": "^8.57.0",
