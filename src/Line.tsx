@@ -96,6 +96,7 @@ const Line: React.FC<ProgressProps> = (props) => {
             stroke={color as string}
             strokeWidth={strokeWidth}
             fillOpacity="0"
+            opacity={ptg === 0 ? 0 : 1}
             ref={(elem) => {
               // https://reactjs.org/docs/refs-and-the-dom.html#callback-refs
               // React will call the ref callback with the DOM element when the component mounts,
