@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { clsx } from 'clsx';
+import { useId } from '@rc-component/util';
 import { useTransitionDuration, defaultProps } from './common';
 import type { ProgressProps } from './interface';
 import getIndeterminateLine from './utils/getIndeterminateLine';
-import useId from '@rc-component/util/lib/hooks/useId';
 
 const Line: React.FC<ProgressProps> = (props) => {
   const {

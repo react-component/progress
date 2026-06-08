@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { clsx } from 'clsx';
+import { useId } from '@rc-component/util';
 import { defaultProps, useTransitionDuration } from '../common';
 import type { ProgressProps } from '../interface';
-import useId from '@rc-component/util/lib/hooks/useId';
 import PtgCircle from './PtgCircle';
 import { VIEW_BOX_SIZE, getCircleStyle } from './util';
 import getIndeterminateCircle from '../utils/getIndeterminateCircle';
