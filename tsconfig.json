@@ -12,5 +12,7 @@
       "@@/*": [".dumi/tmp/*"],
       "@rc-component/progress": ["src/index.ts"]
     }
-  }
+  },
+  "include": [".dumirc.ts", "src", "docs", "tests"],
+  "exclude": ["node_modules", "lib", "es", "dist", "docs-dist", ".dumi"]
 }

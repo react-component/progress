@@ -1,163 +1,124 @@
-# @rc-component/progress
+<div align="center">
+  <h1>@rc-component/progress</h1>
+  <p>📊 Lightweight React line and circle progress indicators with SVG rendering.</p>
 
-Progress Bar.
+  <p>
+    <a href="https://ant.design">
+      <img width="32" height="32" src="https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg" alt="Ant Design" />
+    </a>
+  </p>
+  <p>
+    Part of the <a href="https://ant.design">Ant Design</a> ecosystem
+  </p>
 
-[![NPM version][npm-image]][npm-url] [![dumi](https://img.shields.io/badge/docs%20by-dumi-blue?style=flat-square)](https://github.com/umijs/dumi) [![build status][github-actions-image]][github-actions-url] [![Test coverage][coveralls-image]][coveralls-url] [![npm download][download-image]][download-url] [![bundle size][bundlephobia-image]][bundlephobia-url]
+  <p>
+    <a href="https://www.npmjs.com/package/@rc-component/progress"><img src="https://img.shields.io/npm/v/@rc-component/progress.svg?style=flat-square" alt="npm version" /></a>
+    <a href="https://npmjs.org/package/@rc-component/progress"><img src="https://img.shields.io/npm/dm/@rc-component/progress.svg?style=flat-square" alt="npm downloads" /></a>
+    <a href="https://github.com/react-component/progress/actions"><img src="https://github.com/react-component/progress/actions/workflows/react-component-ci.yml/badge.svg" alt="CI" /></a>
+    <a href="https://codecov.io/gh/react-component/progress"><img src="https://img.shields.io/codecov/c/github/react-component/progress/master.svg?style=flat-square" alt="Codecov" /></a>
+    <a href="https://bundlephobia.com/package/@rc-component/progress"><img src="https://badgen.net/bundlephobia/minzip/@rc-component/progress" alt="Bundle size" /></a>
+    <a href="https://github.com/umijs/dumi"><img src="https://img.shields.io/badge/docs%20by-dumi-blue?style=flat-square" alt="dumi" /></a>
+  </p>
+</div>
 
-[npm-image]: http://img.shields.io/npm/v/@rc-component/progress.svg?style=flat-square
-[npm-url]: http://npmjs.org/package/@rc-component/progress
-[github-actions-image]: https://github.com/react-component/progress/workflows/CI/badge.svg
-[github-actions-url]: https://github.com/react-component/progress/actions
-[circleci-image]: https://img.shields.io/circleci/react-component/progress/master?style=flat-square
-[circleci-url]: https://circleci.com/gh/react-component/progress
-[coveralls-image]: https://img.shields.io/coveralls/react-component/progress.svg?style=flat-square
-[coveralls-url]: https://coveralls.io/r/react-component/progress?branch=master
-[david-url]: https://david-dm.org/react-component/progress
-[david-image]: https://david-dm.org/react-component/progress/status.svg?style=flat-square
-[david-dev-url]: https://david-dm.org/react-component/progress?type=dev
-[david-dev-image]: https://david-dm.org/react-component/progress/dev-status.svg?style=flat-square
-[download-image]: https://img.shields.io/npm/dm/@rc-component/progress.svg?style=flat-square
-[download-url]: https://npmjs.org/package/@rc-component/progress
-[bundlephobia-url]: https://bundlephobia.com/result?p=@rc-component/progress
-[bundlephobia-image]: https://badgen.net/bundlephobia/minzip/@rc-component/progress
+## Highlights
 
-## Example
-
-https://progress.react-component.vercel.app/
-
-## Screenshots
-
-<img src="https://t.alipayobjects.com/images/T12p8gXjpgXXXXXXXX.gif" />
-
-## Browsers
-
-* support IE9+, Chrome, Firefox, Safari
+- `Line` and `Circle` progress components rendered with SVG.
+- Single value, segmented value, gradient color, and indeterminate loading states.
+- Semantic `classNames` and `styles` slots for root, rail, and track customization.
+- TypeScript definitions for the shared progress props.
 
 ## Install
 
-[![@rc-component/progress](https://nodei.co/npm/@rc-component/progress.png)](https://npmjs.org/package/@rc-component/progress)
+```bash
+npm install @rc-component/progress
+```
 
 ## Usage
 
-```js
-import { Line, Circle } from '@rc-component/progress';
+```tsx | pure
+import { Circle, Line } from '@rc-component/progress';
+import React from 'react';
 
 export default () => (
   <>
-     <Line percent={10} strokeWidth={4} strokeColor="#D3D3D3" />
-     <Circle percent={10} strokeWidth={4} strokeColor="#D3D3D3" /> 
+    <Line percent={42} strokeWidth={4} strokeColor="#1677ff" />
+    <Circle percent={75} strokeWidth={6} strokeColor="#52c41a" />
   </>
 );
 ```
 
-## Compatibility
+```tsx | pure
+import { Circle } from '@rc-component/progress';
+import React from 'react';
 
-| [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png" alt="IE / Edge" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br>IE / Edge | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png" alt="Firefox" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br>Firefox | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png" alt="Chrome" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br>Chrome | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_48x48.png" alt="Safari" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br>Safari | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/electron/electron_48x48.png" alt="Electron" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br>Electron |
-| --- | --- | --- | --- | --- |
-| IE11, Edge | last 2 versions | last 2 versions | last 2 versions | last 2 versions |
-
-## API
-
-### props
-
-<table class="table table-bordered table-striped">
-  <thead>
-  <tr>
-    <th style="width: 100px;">name</th>
-    <th style="width: 50px;">type</th>
-    <th style="width: 50px;">default</th>
-    <th>description</th>
-  </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>strokeWidth</td>
-      <td>Number</td>
-      <td>1</td>
-      <td>Width of the stroke. Unit is percentage of SVG canvas size.</td>
-    </tr>
-    <tr>
-      <td>strokeColor</td>
-      <td>String</td>
-      <td>#2db7f5</td>
-      <td>Stroke color.</td>
-    </tr>
-    <tr>
-      <td>railWidth</td>
-      <td>Number</td>
-      <td>1</td>
-      <td>Width of the rail stroke. Unit is percentage of SVG canvas size. Rail is always centered relative to actual progress path. If railWidth is not defined, it is the same as strokeWidth.</td>
-    </tr>
-    <tr>
-      <td>railColor</td>
-      <td>String</td>
-      <td>#D9D9D9</td>
-      <td>Color for lighter rail stroke underneath the actual progress path.</td>
-    </tr>
-    <tr>
-      <td>strokeLinecap</td>
-      <td>String</td>
-      <td>'round'</td>
-      <td>The shape to be used at the end of the progress bar: can be `butt`, `square` or `round`.</td>
-    </tr>
-    <tr>
-      <td>prefixCls</td>
-      <td>String</td>
-      <td>rc-progress</td>
-      <td>prefix className for component</td>
-    </tr>
-    <tr>
-      <td>className</td>
-      <td>String</td>
-      <td></td>
-      <td>customized className</td>
-    </tr>
-    <tr>
-      <td>style</td>
-      <td>Object</td>
-      <td></td>
-      <td>style object will be added to svg element</td>
-    </tr>
-    <tr>
-      <td>percent</td>
-      <td>Number | Number[]</td>
-      <td>0</td>
-      <td>the percent of the progress</td>
-    </tr>
-    <tr>
-      <td>gapDegree</td>
-      <td>Number</td>
-      <td>0</td>
-      <td>the gap degree of half circle, 0 - 360</td>
-    </tr>
-    <tr>
-      <td>gapPosition</td>
-      <td>String</td>
-      <td>top</td>
-      <td>the gap position: can be `top`, `bottom`, `left`, or `right`. </td>
-    </tr>
-    <tr>
-      <td>loading</td>
-      <td>Boolean</td>
-      <td>false</td>
-      <td>If it is true the indeterminate progress will be enabled.</td>
-    </tr>
-  </tbody>
-</table>
-
-## Installation
-
-```
-npm install --save @rc-component/progress
+export default () => (
+  <Circle
+    percent={[30, 20, 10]}
+    strokeWidth={6}
+    strokeColor={['#1677ff', '#52c41a', '#faad14']}
+    railWidth={6}
+  />
+);
 ```
 
-## Development
+## Examples
 
-```
+Run the examples locally:
+
+```bash
 npm install
 npm start
 ```
 
+Online preview: https://progress.react-component.vercel.app/
+
+## API
+
+`Line` and `Circle` share the same base props.
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| `className` | string | - | Additional class name for the root node. |
+| `classNames` | Partial<Record<'root' \| 'rail' \| 'track', string>> | - | Semantic class names for internal slots. |
+| `gapDegree` | number | - | Gap degree for circle progress. |
+| `gapPosition` | `'top'` \| `'right'` \| `'bottom'` \| `'left'` | `'top'` | Gap position for circle progress. |
+| `id` | string | - | Root element id. |
+| `loading` | boolean | false | Render an indeterminate loading animation. |
+| `onClick` | React.MouseEventHandler | - | Click handler for the root SVG. |
+| `percent` | number \| number[] | 0 | Progress percent. Arrays render multiple tracks. |
+| `prefixCls` | string | `'rc-progress'` | Prefix class name. |
+| `railColor` | string | `'#D9D9D9'` | Rail color. |
+| `railWidth` | number | `strokeWidth` | Rail stroke width. |
+| `steps` | number \| { count: number; gap: number } | - | Render progress as discrete steps. |
+| `strokeColor` | string \| Record<string, string \| boolean> \| Array<string \| Record<string, string \| boolean>> | `'#2db7f5'` | Track color, gradient object, or per-track colors. |
+| `strokeLinecap` | `'round'` \| `'butt'` \| `'square'` | `'round'` | Stroke line cap. |
+| `strokeWidth` | number | 1 | Track stroke width. |
+| `style` | React.CSSProperties | - | Root style. |
+| `styles` | Partial<Record<'root' \| 'rail' \| 'track', React.CSSProperties>> | - | Semantic styles for internal slots. |
+| `transition` | string | - | CSS transition for track updates. |
+
+## Development
+
+```bash
+npm install
+npm start
+npm test
+npm run tsc
+npm run compile
+npm run build
+```
+
+## Release
+
+Package artifacts are built with Father:
+
+```bash
+npm run compile
+```
+
+Publishing is handled by `rc-np` through the `prepublishOnly` script.
+
 ## License
 
-@rc-component/progress is released under the MIT license.
+`@rc-component/progress` is released under the MIT license.

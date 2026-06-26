@@ -22,6 +22,7 @@ Thumbs.db
 node_modules
 .cache
 dist
+docs-dist
 assets/**/*.css
 build
 lib
@@ -38,5 +39,6 @@ pnpm-lock.yaml
 .dumi/tmp-test
 .dumi/tmp-production
 .env.local
+.vercel
 
 bun.lockb

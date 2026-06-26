@@ -25,19 +25,19 @@
   ],
   "scripts": {
     "start": "dumi dev",
+    "build": "npm run docs:build",
     "docs:build": "dumi build",
-    "docs:deploy": "gh-pages -d dist",
-    "deploy": "npm run docs:build && npm run docs:deploy",
+    "docs:deploy": "gh-pages -d docs-dist",
+    "deploy": "npm run gh-pages",
     "compile": "father build",
     "prepare": "dumi setup",
-    "gh-pages": "npm run now-build && father doc deploy",
+    "gh-pages": "GH_PAGES=1 npm run docs:build && npm run docs:deploy",
     "prepublishOnly": "npm run compile && rc-np",
     "lint": "eslint src/ --ext .ts,.tsx,.jsx,.js",
-    "prettier": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\"",
+    "prettier": "prettier --write --ignore-unknown .",
     "test": "rc-test",
     "tsc": "tsc --noEmit",
-    "coverage": "father test --coverage",
-    "now-build": "npm run docs:build"
+    "coverage": "father test --coverage"
   },
   "dependencies": {
     "@rc-component/util": "^1.11.1",
@@ -58,6 +58,7 @@
     "eslint-plugin-jest": "^27.6.0",
     "eslint-plugin-unicorn": "^50.0.1",
     "father": "^4.0.0",
+    "gh-pages": "^6.1.0",
     "glob": "^8.0.1",
     "prettier": "^3.1.1",
     "rc-test": "^7.0.15",
