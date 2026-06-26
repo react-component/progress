@@ -10,7 +10,6 @@ export default defineConfig({
     name: '@rc-component/progress',
     logo: 'https://avatars0.githubusercontent.com/u/9441414?s=200&v=4',
   },
-  outputPath: 'docs-dist',
   base: basePath,
   publicPath,
   exportStatic: {},

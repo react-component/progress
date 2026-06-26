@@ -28,7 +28,7 @@ jobs:
         with:
           surge_token: ${{ env.SURGE_TOKEN }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          dist: docs-dist
+          dist: dist
           failOnError: true
           setCommitStatus: true
           build: |

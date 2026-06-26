@@ -27,7 +27,7 @@
     "start": "dumi dev",
     "build": "npm run docs:build",
     "docs:build": "dumi build",
-    "docs:deploy": "gh-pages -d docs-dist",
+    "docs:deploy": "gh-pages -d dist",
     "deploy": "npm run gh-pages",
     "compile": "father build",
     "prepare": "dumi setup",
