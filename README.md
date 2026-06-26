@@ -111,14 +111,12 @@ npm run build
 
 ## Release
 
-Package artifacts are built with Father:
-
 ```bash
-npm run compile
+npm run prepublishOnly
 ```
 
-Publishing is handled by `rc-np` through the `prepublishOnly` script.
+The release flow is handled by `@rc-component/np` through the `rc-np` command after the package build.
 
 ## License
 
-`@rc-component/progress` is released under the MIT license.
+@rc-component/progress is released under the [MIT](./LICENSE.md) license.
