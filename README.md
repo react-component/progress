@@ -82,14 +82,14 @@ Online preview: https://progress.react-component.vercel.app/
 | `className` | string | - | Additional class name for the root node. |
 | `classNames` | Partial<Record<'root' \| 'rail' \| 'track', string>> | - | Semantic class names for internal slots. |
 | `gapDegree` | number | - | Gap degree for circle progress. |
-| `gapPosition` | `'top'` \| `'right'` \| `'bottom'` \| `'left'` | `'top'` | Gap position for circle progress. |
+| `gapPosition` | `'top'` \| `'right'` \| `'bottom'` \| `'left'` | `'bottom'` | Gap position for circle progress. |
 | `id` | string | - | Root element id. |
 | `loading` | boolean | false | Render an indeterminate loading animation. |
 | `onClick` | React.MouseEventHandler | - | Click handler for the root SVG. |
 | `percent` | number \| number[] | 0 | Progress percent. Arrays render multiple tracks. |
 | `prefixCls` | string | `'rc-progress'` | Prefix class name. |
 | `railColor` | string | `'#D9D9D9'` | Rail color. |
-| `railWidth` | number | `strokeWidth` | Rail stroke width. |
+| `railWidth` | number | 1 | Rail stroke width. |
 | `steps` | number \| { count: number; gap: number } | - | Render progress as discrete steps. |
 | `strokeColor` | string \| Record<string, string \| boolean> \| Array<string \| Record<string, string \| boolean>> | `'#2db7f5'` | Track color, gradient object, or per-track colors. |
 | `strokeLinecap` | `'round'` \| `'butt'` \| `'square'` | `'round'` | Stroke line cap. |
