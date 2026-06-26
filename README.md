@@ -21,6 +21,15 @@
   </p>
 </div>
 
+<p align="center">
+  <sub>
+    <a href="https://ant.design">
+      <img alt="Ant Design" src="https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg" height="16">
+    </a>
+    Part of the Ant Design ecosystem.
+  </sub>
+</p>
+
 ## Highlights
 
 - `Line` and `Circle` progress components rendered with SVG.
