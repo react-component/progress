@@ -1,7 +1,6 @@
 <div align="center">
   <h1>@rc-component/progress</h1>
-  <p><sub>Ant Design 生态的一部分。</sub></p>
-  <img alt="Ant Design" height="32" src="https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg" />
+  <p><sub><img alt="Ant Design" height="14" src="https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg" style="vertical-align: -0.125em;" /> Ant Design 生态的一部分。</sub></p>
   <p>📊 React 进度条组件，支持线型、圆形和自定义进度展示。</p>
 
   <p>
@@ -19,10 +18,10 @@
 
 ## 特性
 
-- `Line` and `Circle` progress components rendered with SVG.
-- Single value, segmented value, gradient color, and indeterminate loading states.
-- Semantic `classNames` and `styles` slots for root, rail, and track customization.
-- TypeScript definitions for the shared progress props.
+- `Line` 和 `Circle` 使用 SVG 渲染的进度组件。
+- 单值、分段值、渐变颜色和不确定的加载状态。
+- 用于根、导轨和轨道定制的语义 `classNames` 和 `styles` 插槽。
+- 为共享进度属性提供 TypeScript 类型定义。
 
 ## 安装
 
@@ -63,32 +62,32 @@ npm install
 npm start
 ```
 
-Online preview: https://progress.react-component.vercel.app/
+在线预览：https://progress.react-component.vercel.app/
 
 ## API
 
-`Line` and `Circle` share the same base props.
+`Line` 和 `Circle` 共享相同的基础属性。
 
 | 名称 | 类型 | 默认值 | 说明 |
 | --- | --- | --- | --- |
-| `className` | string | - | Additional class name for the root node. |
-| `classNames` | Partial<Record<'root' \| 'rail' \| 'track', string>> | - | Semantic class names for internal slots. |
-| `gapDegree` | number | - | Gap degree for circle progress. |
-| `gapPosition` | `'top'` \| `'right'` \| `'bottom'` \| `'left'` | `'bottom'` | Gap position for circle progress. |
-| `id` | string | - | Root element id. |
-| `loading` | boolean | false | Render an indeterminate loading animation. |
-| `onClick` | React.MouseEventHandler | - | Click handler for the root SVG. |
-| `percent` | number \| number[] | 0 | Progress percent. Arrays render multiple tracks. |
-| `prefixCls` | string | `'rc-progress'` | Prefix class name. |
+| `className` | string | - | 根节点的附加className称。 |
+| `classNames` | 部分<记录<'根'\| '铁路' | '轨道'，字符串>> | - | 内部插槽的语义化 className。 |
+| `gapDegree` | number | - | 循环进度的差距度。 |
+| `gapPosition` | `'top'` \| `'right'` \| `'bottom'` \| `'left'` | `'bottom'` | 循环进度的间隙位置。 |
+| `id` | string | - | 根元素 ID。 |
+| `loading` | boolean | false | 渲染不确定的加载动画。 |
+| `onClick` | React.MouseEventHandler | - | 单击根 SVG 的处理程序。 |
+| `percent` | number \| number[] | 0 | 进度百分比。数组会渲染多条轨道。 |
+| `prefixCls` | string | `'rc-progress'` | 前缀className。 |
 | `railColor` | string | `'#D9D9D9'` | Rail color. |
-| `railWidth` | number | 1 | Rail stroke width. |
-| `steps` | number \| { count: number; gap: number } | - | Render progress as discrete steps. |
-| `strokeColor` | string \| Record<string, string \| boolean> \| Array<string \| Record<string, string \| boolean>> | `'#2db7f5'` | Track color, gradient object, or per-track colors. |
+| `railWidth` | number | 1 | 导轨行程宽度。 |
+| `steps` | 数字\| { 计数：数量；间隙：数量 } | - | 以离散步骤渲染进度。 |
+| `strokeColor` | 字符串\|记录<字符串，字符串\|布尔值> \|数组<字符串\|记录<字符串，字符串\|布尔值>> | `'#2db7f5'` | 轨道颜色、渐变对象或每条轨道的颜色。 |
 | `strokeLinecap` | `'round'` \| `'butt'` \| `'square'` | `'round'` | Stroke line cap. |
-| `strokeWidth` | number | 1 | Track stroke width. |
-| `style` | React.CSSProperties | - | Root style. |
-| `styles` | Partial<Record<'root' \| 'rail' \| 'track', React.CSSProperties>> | - | Semantic styles for internal slots. |
-| `transition` | string | - | CSS transition for track updates. |
+| `strokeWidth` | number | 1 | 轨道描边宽度。 |
+| `style` | React.CSSProperties | - | 根样式。 |
+| `styles` | 部分<记录<'根'\| '铁路' | 'track'，React.CSSProperties>> | - | 内部插槽的语义化样式。 |
+| `transition` | string | - | 用于跟踪更新的 CSS 过渡。 |
 
 ## 本地开发
 
@@ -107,8 +106,8 @@ npm run build
 npm run prepublishOnly
 ```
 
-The release flow is handled by `@rc-component/np` through the `rc-np` command after the package build.
+包构建完成后，发布流程由 `@rc-component/np` 通过 `rc-np` 命令处理。
 
 ## 许可证
 
-@rc-component/progress is released under the [MIT](./LICENSE.md) license.
+@rc-component/progress 基于 [MIT](./LICENSE.md) 许可证发布。
