@@ -1,7 +1,7 @@
 <div align="center">
   <h1>@rc-component/progress</h1>
-  <p><sub>Part of the Ant Design ecosystem.</sub></p>
-  <p>📊 Lightweight React line and circle progress indicators with SVG rendering.</p>
+  <p><sub>Ant Design 生态的一部分。</sub></p>
+  <p>📊 React 进度条组件，支持线型、圆形和自定义进度展示。</p>
 
   <p>
     <a href="https://www.npmjs.com/package/@rc-component/progress"><img src="https://img.shields.io/npm/v/@rc-component/progress.svg?style=flat-square" alt="npm version" /></a>
@@ -13,23 +13,23 @@
   </p>
 </div>
 
-<p align="center">English | <a href="./README.zh-CN.md">简体中文</a></p>
+<p align="center"><a href="./README.md">English</a> | 简体中文</p>
 
 
-## Highlights
+## 特性
 
 - `Line` and `Circle` progress components rendered with SVG.
 - Single value, segmented value, gradient color, and indeterminate loading states.
 - Semantic `classNames` and `styles` slots for root, rail, and track customization.
 - TypeScript definitions for the shared progress props.
 
-## Install
+## 安装
 
 ```bash
 npm install @rc-component/progress
 ```
 
-## Usage
+## 使用
 
 ```tsx | pure
 import { Circle, Line } from '@rc-component/progress';
@@ -53,9 +53,9 @@ export default () => (
 );
 ```
 
-## Examples
+## 示例
 
-Run the examples locally:
+本地运行示例：
 
 ```bash
 npm install
@@ -68,7 +68,7 @@ Online preview: https://progress.react-component.vercel.app/
 
 `Line` and `Circle` share the same base props.
 
-| Name | Type | Default | Description |
+| 名称 | 类型 | 默认值 | 说明 |
 | --- | --- | --- | --- |
 | `className` | string | - | Additional class name for the root node. |
 | `classNames` | Partial<Record<'root' \| 'rail' \| 'track', string>> | - | Semantic class names for internal slots. |
@@ -89,7 +89,7 @@ Online preview: https://progress.react-component.vercel.app/
 | `styles` | Partial<Record<'root' \| 'rail' \| 'track', React.CSSProperties>> | - | Semantic styles for internal slots. |
 | `transition` | string | - | CSS transition for track updates. |
 
-## Development
+## 本地开发
 
 ```bash
 npm install
@@ -100,7 +100,7 @@ npm run compile
 npm run build
 ```
 
-## Release
+## 发布
 
 ```bash
 npm run prepublishOnly
@@ -108,6 +108,6 @@ npm run prepublishOnly
 
 The release flow is handled by `@rc-component/np` through the `rc-np` command after the package build.
 
-## License
+## 许可证
 
 @rc-component/progress is released under the [MIT](./LICENSE.md) license.
