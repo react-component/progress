@@ -2,9 +2,6 @@
   <h1>@rc-component/progress</h1>
   <p><sub>Part of the Ant Design ecosystem.</sub></p>
   <p>📊 Lightweight React line and circle progress indicators with SVG rendering.</p>
-  <p>
-    Part of the <a href="https://ant.design">Ant Design</a> ecosystem
-  </p>
 
   <p>
     <a href="https://www.npmjs.com/package/@rc-component/progress"><img src="https://img.shields.io/npm/v/@rc-component/progress.svg?style=flat-square" alt="npm version" /></a>
