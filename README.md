@@ -1,12 +1,7 @@
 <div align="center">
   <h1>@rc-component/progress</h1>
+  <p><sub>Part of the Ant Design ecosystem.</sub></p>
   <p>📊 Lightweight React line and circle progress indicators with SVG rendering.</p>
-
-  <p>
-    <a href="https://ant.design">
-      <img width="32" height="32" src="https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg" alt="Ant Design" />
-    </a>
-  </p>
   <p>
     Part of the <a href="https://ant.design">Ant Design</a> ecosystem
   </p>
@@ -21,14 +16,6 @@
   </p>
 </div>
 
-<p align="center">
-  <sub>
-    <a href="https://ant.design">
-      <img alt="Ant Design" src="https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg" height="16">
-    </a>
-    Part of the Ant Design ecosystem.
-  </sub>
-</p>
 
 ## Highlights
 
@@ -47,8 +34,6 @@ npm install @rc-component/progress
 
 ```tsx | pure
 import { Circle, Line } from '@rc-component/progress';
-import React from 'react';
-
 export default () => (
   <>
     <Line percent={42} strokeWidth={4} strokeColor="#1677ff" />
@@ -59,8 +44,6 @@ export default () => (
 
 ```tsx | pure
 import { Circle } from '@rc-component/progress';
-import React from 'react';
-
 export default () => (
   <Circle
     percent={[30, 20, 10]}
