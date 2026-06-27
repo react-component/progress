@@ -70,23 +70,23 @@ npm start
 
 | 名称 | 类型 | 默认值 | 说明 |
 | --- | --- | --- | --- |
-| `className` | string | - | 根节点的附加className称。 |
-| `classNames` | 部分<记录<'根'\| '铁路' | '轨道'，字符串>> | - | 内部插槽的语义化 className。 |
+| `className` | string | - | 根节点的附加 className。 |
+| `classNames` | `Partial<Record<'root' \| 'rail' \| 'track', string>>` | - | 内部插槽的语义化 className。 |
 | `gapDegree` | number | - | 循环进度的差距度。 |
 | `gapPosition` | `'top'` \| `'right'` \| `'bottom'` \| `'left'` | `'bottom'` | 循环进度的间隙位置。 |
 | `id` | string | - | 根元素 ID。 |
 | `loading` | boolean | false | 渲染不确定的加载动画。 |
 | `onClick` | React.MouseEventHandler | - | 单击根 SVG 的处理程序。 |
 | `percent` | number \| number[] | 0 | 进度百分比。数组会渲染多条轨道。 |
-| `prefixCls` | string | `'rc-progress'` | 前缀className。 |
-| `railColor` | string | `'#D9D9D9'` | Rail color. |
+| `prefixCls` | string | `'rc-progress'` | 前缀 className。 |
+| `railColor` | string | `'#D9D9D9'` | 导轨颜色。 |
 | `railWidth` | number | 1 | 导轨行程宽度。 |
-| `steps` | 数字\| { 计数：数量；间隙：数量 } | - | 以离散步骤渲染进度。 |
-| `strokeColor` | 字符串\|记录<字符串，字符串\|布尔值> \|数组<字符串\|记录<字符串，字符串\|布尔值>> | `'#2db7f5'` | 轨道颜色、渐变对象或每条轨道的颜色。 |
-| `strokeLinecap` | `'round'` \| `'butt'` \| `'square'` | `'round'` | Stroke line cap. |
+| `steps` | number \| { count: number; gap: number } | - | 以离散步骤渲染进度。 |
+| `strokeColor` | string \| Record<string, string \| boolean> \| Array<string \| Record<string, string \| boolean>> | `'#2db7f5'` | 轨道颜色、渐变对象或每条轨道的颜色。 |
+| `strokeLinecap` | `'round'` \| `'butt'` \| `'square'` | `'round'` | 描边端点样式。 |
 | `strokeWidth` | number | 1 | 轨道描边宽度。 |
 | `style` | React.CSSProperties | - | 根样式。 |
-| `styles` | 部分<记录<'根'\| '铁路' | 'track'，React.CSSProperties>> | - | 内部插槽的语义化样式。 |
+| `styles` | `Partial<Record<'root' \| 'rail' \| 'track', React.CSSProperties>>` | - | 内部插槽的语义化样式。 |
 | `transition` | string | - | 用于跟踪更新的 CSS 过渡。 |
 
 ## 本地开发
