@@ -1,6 +1,7 @@
 <div align="center">
   <h1>@rc-component/progress</h1>
   <p><sub>Ant Design 生态的一部分。</sub></p>
+  <img alt="Ant Design" height="32" src="https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg" />
   <p>📊 React 进度条组件，支持线型、圆形和自定义进度展示。</p>
 
   <p>

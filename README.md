@@ -1,6 +1,7 @@
 <div align="center">
   <h1>@rc-component/progress</h1>
   <p><sub>Part of the Ant Design ecosystem.</sub></p>
+  <img alt="Ant Design" height="32" src="https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg" />
   <p>📊 Lightweight React line and circle progress indicators with SVG rendering.</p>
 
   <p>
