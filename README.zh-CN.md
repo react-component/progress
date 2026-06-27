@@ -55,14 +55,14 @@ export default () => (
 
 ## 示例
 
-本地运行示例：
+运行本地 dumi 站点：
 
 ```bash
 npm install
 npm start
 ```
 
-在线预览：https://progress.react-component.vercel.app/
+然后打开 `http://localhost:8000`。
 
 ## API
 
