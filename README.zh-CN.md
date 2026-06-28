@@ -71,7 +71,7 @@ npm start
 | 名称 | 类型 | 默认值 | 说明 |
 | --- | --- | --- | --- |
 | `className` | string | - | 根节点的附加 className。 |
-| `classNames` | `Partial<Record<'root' \| 'rail' \| 'track', string>>` | - | 内部插槽的语义化 className。 |
+| `classNames` | Partial<Record<'root' \| 'rail' \| 'track', string>> | - | 内部插槽的语义化 className。 |
 | `gapDegree` | number | - | 循环进度的差距度。 |
 | `gapPosition` | `'top'` \| `'right'` \| `'bottom'` \| `'left'` | `'bottom'` | 循环进度的间隙位置。 |
 | `id` | string | - | 根元素 ID。 |
@@ -86,7 +86,7 @@ npm start
 | `strokeLinecap` | `'round'` \| `'butt'` \| `'square'` | `'round'` | 描边端点样式。 |
 | `strokeWidth` | number | 1 | 轨道描边宽度。 |
 | `style` | React.CSSProperties | - | 根样式。 |
-| `styles` | `Partial<Record<'root' \| 'rail' \| 'track', React.CSSProperties>>` | - | 内部插槽的语义化样式。 |
+| `styles` | Partial<Record<'root' \| 'rail' \| 'track', React.CSSProperties>> | - | 内部插槽的语义化样式。 |
 | `transition` | string | - | 用于跟踪更新的 CSS 过渡。 |
 
 ## 本地开发
