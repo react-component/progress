@@ -15,7 +15,6 @@
 
 <p align="center"><a href="./README.md">English</a> | 简体中文</p>
 
-
 ## 特性
 
 - `Line` 和 `Circle` 使用 SVG 渲染的进度组件。
@@ -72,7 +71,7 @@ npm start
 | --- | --- | --- | --- |
 | `className` | string | - | 根节点的附加 className。 |
 | `classNames` | Partial<Record<'root' \| 'rail' \| 'track', string>> | - | 内部插槽的语义化 className。 |
-| `gapDegree` | number | - | 循环进度的差距度。 |
+| `gapDegree` | number | - | 环形进度缺口角度。 |
 | `gapPosition` | `'top'` \| `'right'` \| `'bottom'` \| `'left'` | `'bottom'` | 循环进度的间隙位置。 |
 | `id` | string | - | 根元素 ID。 |
 | `loading` | boolean | false | 渲染不确定的加载动画。 |
