@@ -3,18 +3,17 @@ updates:
   - package-ecosystem: npm
     directory: '/'
     schedule:
-      interval: daily
+      interval: weekly
+      day: monday
       time: '21:00'
+      timezone: Asia/Shanghai
     open-pull-requests-limit: 10
-    ignore:
-      - dependency-name: '@types/react-dom'
-        versions:
-          - 17.0.0
-          - 17.0.1
-          - 17.0.2
-      - dependency-name: '@types/react'
-        versions:
-          - 17.0.0
-          - 17.0.1
-          - 17.0.2
-          - 17.0.3
+
+  - package-ecosystem: github-actions
+    directory: '/'
+    schedule:
+      interval: weekly
+      day: monday
+      time: '21:00'
+      timezone: Asia/Shanghai
+    open-pull-requests-limit: 10
