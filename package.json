@@ -57,7 +57,7 @@
     "dumi": "^2.4.35",
     "eslint": "^8.57.1",
     "eslint-plugin-jest": "^27.9.0",
-    "eslint-plugin-unicorn": "^56.0.1",
+    "eslint-plugin-unicorn": "^69.0.0",
     "father": "^4.6.23",
     "gh-pages": "^6.3.0",
     "glob": "^13.0.6",
