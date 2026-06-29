@@ -8,9 +8,31 @@
     "skipLibCheck": true,
     "esModuleInterop": true,
     "paths": {
-      "@/*": ["src/*"],
-      "@@/*": [".dumi/tmp/*"],
-      "@rc-component/progress": ["src/index.ts"]
-    }
-  }
+      "@/*": [
+        "src/*"
+      ],
+      "@@/*": [
+        ".dumi/tmp/*"
+      ],
+      "@rc-component/progress": [
+        "src/index.ts"
+      ]
+    },
+    "ignoreDeprecations": "5.0"
+  },
+  "include": [
+    ".fatherrc.ts",
+    ".dumirc.ts",
+    "src",
+    "docs",
+    "tests"
+  ],
+  "exclude": [
+    "node_modules",
+    "lib",
+    "es",
+    "dist",
+    "docs-dist",
+    ".dumi"
+  ]
 }
