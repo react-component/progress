@@ -7,15 +7,9 @@
     "skipLibCheck": true,
     "esModuleInterop": true,
     "paths": {
-      "@/*": [
-        "./src/*"
-      ],
-      "@@/*": [
-        "./.dumi/tmp/*"
-      ],
-      "@rc-component/progress": [
-        "./src/index.ts"
-      ]
+      "@/*": ["./src/*"],
+      "@@/*": ["./.dumi/tmp/*"],
+      "@rc-component/progress": ["./src/index.ts"]
     },
     "noImplicitAny": false,
     "strictNullChecks": false,
@@ -26,21 +20,6 @@
     "strictBindCallApply": false,
     "module": "ESNext"
   },
-  "include": [
-    "react-compat.d.ts",
-    "global.d.ts",
-    ".fatherrc.ts",
-    ".dumirc.ts",
-    "src",
-    "docs",
-    "tests"
-  ],
-  "exclude": [
-    "node_modules",
-    "lib",
-    "es",
-    "dist",
-    "docs-dist",
-    ".dumi"
-  ]
+  "include": ["global.d.ts", ".fatherrc.ts", ".dumirc.ts", "src", "docs", "tests"],
+  "exclude": ["node_modules", "lib", "es", "dist", "docs-dist", ".dumi"]
 }
