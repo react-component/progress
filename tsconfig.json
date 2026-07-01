@@ -11,13 +11,7 @@
       "@@/*": ["./.dumi/tmp/*"],
       "@rc-component/progress": ["./src/index.ts"]
     },
-    "noImplicitAny": false,
-    "strictNullChecks": false,
-    "strictPropertyInitialization": false,
-    "strictFunctionTypes": false,
     "strict": false,
-    "noImplicitThis": false,
-    "strictBindCallApply": false,
     "module": "ESNext"
   },
   "include": ["global.d.ts", ".fatherrc.ts", ".dumirc.ts", "src", "docs", "tests"],
