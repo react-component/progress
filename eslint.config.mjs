@@ -15,14 +15,23 @@ const compat = new FlatCompat({
   allConfig: js.configs.all,
 });
 
+const legacyConfig = require('./.eslintrc.js');
 const recommendedTsRulesConfig = tsEslintPlugin.configs.recommended;
 const recommendedTsRulesObject = Array.isArray(recommendedTsRulesConfig)
-  ? recommendedTsRulesConfig.reduce(
-      (rules, config) => ({ ...rules, ...(config.rules || {}) }),
-      {},
-    )
+  ? recommendedTsRulesConfig.reduce((rules, config) => ({ ...rules, ...(config.rules || {}) }), {})
   : recommendedTsRulesConfig?.rules || {};
 const recommendedTsRules = new Set(Object.keys(recommendedTsRulesObject));
+
+function hasCurrentTsRule(ruleName) {
+  const tsRuleName = ruleName.replace('@typescript-eslint/', '');
+  return Boolean(tsEslintPlugin.rules[tsRuleName]);
+}
+const localTsRules = new Set(
+  Object.keys(legacyConfig.rules || {}).filter(
+    (ruleName) => ruleName.startsWith('@typescript-eslint/') && hasCurrentTsRule(ruleName),
+  ),
+);
+
 const noopRule = {
   meta: { type: 'problem', docs: {}, schema: [] },
   create: () => ({}),
@@ -42,7 +51,7 @@ function normalizeConfig(config) {
         if (!ruleName.startsWith('@typescript-eslint/')) {
           return true;
         }
-        return recommendedTsRules.has(ruleName);
+        return recommendedTsRules.has(ruleName) || localTsRules.has(ruleName);
       }),
     );
   }
@@ -77,7 +86,7 @@ export default [
       },
     },
   },
-  ...compat.config(require('./.eslintrc.js')).map(normalizeConfig),
+  ...compat.config(legacyConfig).map(normalizeConfig),
   {
     rules: {
       '@typescript-eslint/no-empty-object-type': 'off',
