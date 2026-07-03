@@ -1,38 +1,19 @@
 {
   "compilerOptions": {
     "target": "esnext",
-    "moduleResolution": "node",
-    "baseUrl": "./",
+    "moduleResolution": "bundler",
     "jsx": "react",
     "declaration": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
     "paths": {
-      "@/*": [
-        "src/*"
-      ],
-      "@@/*": [
-        ".dumi/tmp/*"
-      ],
-      "@rc-component/progress": [
-        "src/index.ts"
-      ]
+      "@/*": ["./src/*"],
+      "@@/*": ["./.dumi/tmp/*"],
+      "@rc-component/progress": ["./src/index.ts"]
     },
-    "ignoreDeprecations": "5.0"
+    "strict": false,
+    "module": "ESNext"
   },
-  "include": [
-    ".fatherrc.ts",
-    ".dumirc.ts",
-    "src",
-    "docs",
-    "tests"
-  ],
-  "exclude": [
-    "node_modules",
-    "lib",
-    "es",
-    "dist",
-    "docs-dist",
-    ".dumi"
-  ]
+  "include": ["global.d.ts", ".fatherrc.ts", ".dumirc.ts", "src", "docs", "tests"],
+  "exclude": ["node_modules", "lib", "es", "dist", "docs-dist", ".dumi"]
 }
