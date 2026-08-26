@@ -30,6 +30,7 @@ describe('Semantic', () => {
   it('supports explicit progress semantics for lines', () => {
     const { container } = render(
       <Line
+        id="download-progress"
         percent={25}
         role="progressbar"
         aria-label="Download progress"
@@ -40,6 +41,7 @@ describe('Semantic', () => {
     );
 
     const line = container.querySelector('svg');
+    expect(line).toHaveAttribute('id', 'download-progress');
     expect(line).toHaveAttribute('role', 'progressbar');
     expect(line).toHaveAccessibleName('Download progress');
     expect(line).toHaveAttribute('aria-valuemin', '0');

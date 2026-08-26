@@ -50,6 +50,7 @@ const Line: React.FC<ProgressProps> = (props) => {
 
   return (
     <svg
+      id={id}
       className={clsx(`${prefixCls}-line`, className)}
       viewBox={viewBoxString}
       preserveAspectRatio="none"
