@@ -54,6 +54,7 @@ const Line: React.FC<ProgressProps> = (props) => {
       viewBox={viewBoxString}
       preserveAspectRatio="none"
       style={style}
+      role="presentation"
       {...restProps}
     >
       <path

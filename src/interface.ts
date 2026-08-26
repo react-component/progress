@@ -1,6 +1,6 @@
 export type SemanticName = 'root' | 'rail' | 'track';
 
-export interface ProgressProps {
+export interface ProgressProps extends React.SVGAttributes<SVGSVGElement> {
   id?: string;
   strokeWidth?: number;
   railWidth?: number;

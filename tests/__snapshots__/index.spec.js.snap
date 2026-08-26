@@ -321,6 +321,7 @@ exports[`Progress Diff Line should match snapshot 1`] = `
   <svg
     class="rc-progress-line"
     preserveAspectRatio="none"
+    role="presentation"
     viewBox="0 0 100 1"
   >
     <path
@@ -347,6 +348,7 @@ exports[`Progress Diff Line should match snapshot 1`] = `
   <svg
     class="rc-progress-line"
     preserveAspectRatio="none"
+    role="presentation"
     viewBox="0 0 100 1"
   >
     <path
@@ -373,6 +375,7 @@ exports[`Progress Diff Line should match snapshot 1`] = `
   <svg
     class="rc-progress-line"
     preserveAspectRatio="none"
+    role="presentation"
     viewBox="0 0 100 1"
   >
     <path
@@ -402,6 +405,7 @@ exports[`Progress Line change with animation 1`] = `
 <svg
   class="rc-progress-line"
   preserveAspectRatio="none"
+  role="presentation"
   viewBox="0 0 100 1"
 >
   <path
@@ -430,6 +434,7 @@ exports[`Progress Line change with animation 2`] = `
 <svg
   class="rc-progress-line"
   preserveAspectRatio="none"
+  role="presentation"
   viewBox="0 0 100 1"
 >
   <path

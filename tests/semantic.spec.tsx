@@ -1,8 +1,32 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import { Circle, type ProgressProps } from '../src';
+import { Circle, Line, type ProgressProps } from '../src';
 
 describe('Semantic', () => {
+  it('hides decorative SVGs and supports explicit progress semantics', () => {
+    const { container } = render(
+      <>
+        <Line percent={25} />
+        <Circle
+          percent={50}
+          role="progressbar"
+          aria-label="Upload progress"
+          aria-valuemin={0}
+          aria-valuemax={100}
+          aria-valuenow={50}
+        />
+      </>,
+    );
+
+    const [line, circle] = container.querySelectorAll('svg');
+    expect(line).toHaveAttribute('role', 'presentation');
+    expect(circle).toHaveAttribute('role', 'progressbar');
+    expect(circle).toHaveAccessibleName('Upload progress');
+    expect(circle).toHaveAttribute('aria-valuemin', '0');
+    expect(circle).toHaveAttribute('aria-valuemax', '100');
+    expect(circle).toHaveAttribute('aria-valuenow', '50');
+  });
+
   describe('Circle', () => {
     function test(
       name: string,
