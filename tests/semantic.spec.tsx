@@ -27,6 +27,26 @@ describe('Semantic', () => {
     expect(circle).toHaveAttribute('aria-valuenow', '50');
   });
 
+  it('supports explicit progress semantics for lines', () => {
+    const { container } = render(
+      <Line
+        percent={25}
+        role="progressbar"
+        aria-label="Download progress"
+        aria-valuemin={0}
+        aria-valuemax={100}
+        aria-valuenow={25}
+      />,
+    );
+
+    const line = container.querySelector('svg');
+    expect(line).toHaveAttribute('role', 'progressbar');
+    expect(line).toHaveAccessibleName('Download progress');
+    expect(line).toHaveAttribute('aria-valuemin', '0');
+    expect(line).toHaveAttribute('aria-valuemax', '100');
+    expect(line).toHaveAttribute('aria-valuenow', '25');
+  });
+
   describe('Circle', () => {
     function test(
       name: string,
