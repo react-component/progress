@@ -1,7 +1,11 @@
 export type SemanticName = 'root' | 'rail' | 'track';
 
-export interface ProgressProps {
+export interface ProgressProps extends Omit<
+  React.SVGAttributes<SVGSVGElement>,
+  'strokeWidth' | 'strokeLinecap'
+> {
   id?: string;
+  /** Component geometry width, rather than the root SVG stroke-width attribute. */
   strokeWidth?: number;
   railWidth?: number;
   className?: string;
@@ -10,6 +14,7 @@ export interface ProgressProps {
   percent?: number | number[];
   strokeColor?: StrokeColorType;
   railColor?: string;
+  /** Component path line cap, rather than the root SVG stroke-linecap attribute. */
   strokeLinecap?: StrokeLinecapType;
   prefixCls?: string;
   style?: React.CSSProperties;

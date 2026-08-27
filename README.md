@@ -52,6 +52,19 @@ export default () => (
 );
 ```
 
+The SVG is decorative by default. When using it as the progress indicator itself, provide progress semantics and an accessible name with standard SVG/ARIA props:
+
+```tsx | pure
+<Line
+  percent={42}
+  role="progressbar"
+  aria-label="Upload progress"
+  aria-valuemin={0}
+  aria-valuemax={100}
+  aria-valuenow={42}
+/>
+```
+
 ## Examples
 
 Run the local dumi site:
@@ -87,6 +100,8 @@ Then open `http://localhost:8000`.
 | `style` | React.CSSProperties | - | Root style. |
 | `styles` | Partial<Record<'root' \| 'rail' \| 'track', React.CSSProperties>> | - | Semantic styles for internal slots. |
 | `transition` | string | - | CSS transition for track updates. |
+
+Standard SVG attributes, including `role` and `aria-*`, are forwarded to the root SVG.
 
 ## Development
 

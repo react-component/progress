@@ -52,6 +52,19 @@ export default () => (
 );
 ```
 
+SVG 默认作为装饰元素。当 SVG 本身作为进度指示器时，可通过标准 SVG／ARIA 属性提供进度语义和无障碍名称：
+
+```tsx | pure
+<Line
+  percent={42}
+  role="progressbar"
+  aria-label="上传进度"
+  aria-valuemin={0}
+  aria-valuemax={100}
+  aria-valuenow={42}
+/>
+```
+
 ## 示例
 
 运行本地 dumi 站点：
@@ -87,6 +100,8 @@ npm start
 | `style` | React.CSSProperties | - | 根样式。 |
 | `styles` | Partial<Record<'root' \| 'rail' \| 'track', React.CSSProperties>> | - | 内部插槽的语义化样式。 |
 | `transition` | string | - | 用于跟踪更新的 CSS 过渡。 |
+
+标准 SVG 属性（包括 `role` 和 `aria-*`）会透传到根 SVG。
 
 ## 本地开发
 

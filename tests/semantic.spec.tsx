@@ -1,8 +1,54 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import { Circle, type ProgressProps } from '../src';
+import { Circle, Line, type ProgressProps } from '../src';
 
 describe('Semantic', () => {
+  it('hides decorative SVGs and supports explicit progress semantics', () => {
+    const { container } = render(
+      <>
+        <Line percent={25} />
+        <Circle
+          percent={50}
+          role="progressbar"
+          aria-label="Upload progress"
+          aria-valuemin={0}
+          aria-valuemax={100}
+          aria-valuenow={50}
+        />
+      </>,
+    );
+
+    const [line, circle] = container.querySelectorAll('svg');
+    expect(line).toHaveAttribute('role', 'presentation');
+    expect(circle).toHaveAttribute('role', 'progressbar');
+    expect(circle).toHaveAccessibleName('Upload progress');
+    expect(circle).toHaveAttribute('aria-valuemin', '0');
+    expect(circle).toHaveAttribute('aria-valuemax', '100');
+    expect(circle).toHaveAttribute('aria-valuenow', '50');
+  });
+
+  it('supports explicit progress semantics for lines', () => {
+    const { container } = render(
+      <Line
+        id="download-progress"
+        percent={25}
+        role="progressbar"
+        aria-label="Download progress"
+        aria-valuemin={0}
+        aria-valuemax={100}
+        aria-valuenow={25}
+      />,
+    );
+
+    const line = container.querySelector('svg');
+    expect(line).toHaveAttribute('id', 'download-progress');
+    expect(line).toHaveAttribute('role', 'progressbar');
+    expect(line).toHaveAccessibleName('Download progress');
+    expect(line).toHaveAttribute('aria-valuemin', '0');
+    expect(line).toHaveAttribute('aria-valuemax', '100');
+    expect(line).toHaveAttribute('aria-valuenow', '25');
+  });
+
   describe('Circle', () => {
     function test(
       name: string,
