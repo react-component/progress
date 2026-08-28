@@ -39,6 +39,21 @@ describe('Progress', () => {
     });
   });
 
+  it('should support zero rail width', () => {
+    const { container } = render(
+      <div>
+        <Line percent={20} railWidth={0} />
+        <Circle percent={20} railWidth={0} />
+      </div>,
+    );
+
+    expect(container.querySelector('.rc-progress-line-rail')).toHaveAttribute('stroke-width', '0');
+    expect(container.querySelector('.rc-progress-circle-rail')).toHaveAttribute(
+      'stroke-width',
+      '0',
+    );
+  });
+
   describe('Circle', () => {
     it('change with animation', () => {
       function Demo() {
