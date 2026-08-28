@@ -187,7 +187,7 @@ const Circle: React.FC<ProgressProps> = (props) => {
           cy={halfSize}
           stroke={railColor}
           strokeLinecap={mergedStrokeLinecap}
-          strokeWidth={railWidth || strokeWidth}
+          strokeWidth={railWidth ?? strokeWidth}
           style={{ ...circleStyle, ...styles.rail }}
         />
       )}

@@ -63,7 +63,7 @@ const Line: React.FC<ProgressProps> = (props) => {
         d={pathString}
         strokeLinecap={strokeLinecap}
         stroke={railColor}
-        strokeWidth={railWidth || strokeWidth}
+        strokeWidth={railWidth ?? strokeWidth}
         fillOpacity="0"
       />
       {percentList.map((ptg, index) => {
