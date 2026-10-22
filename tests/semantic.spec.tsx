@@ -98,4 +98,29 @@ describe('Semantic', () => {
       },
     );
   });
+
+  describe('Line', () => {
+    it('supports semantic classNames and styles', () => {
+      const classNames: ProgressProps['classNames'] = {
+        root: 'my-root',
+        rail: 'my-rail',
+        track: 'my-track',
+      };
+      const styles = {
+        root: { background: 'red' },
+        rail: { background: 'blue' },
+        track: { background: 'green' },
+      };
+
+      const { container } = render(<Line percent={50} classNames={classNames} styles={styles} />);
+
+      expect(container.querySelector('.rc-progress-line')).toHaveClass(classNames.root);
+      expect(container.querySelector('.rc-progress-line-rail')).toHaveClass(classNames.rail);
+      expect(container.querySelector('.rc-progress-line-path')).toHaveClass(classNames.track);
+
+      expect(container.querySelector('.my-root')).toHaveStyle(styles.root);
+      expect(container.querySelector('.my-rail')).toHaveStyle(styles.rail);
+      expect(container.querySelector('.my-track')).toHaveStyle(styles.track);
+    });
+  });
 });

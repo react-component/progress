@@ -19,6 +19,8 @@ const Line: React.FC<ProgressProps> = (props) => {
     railWidth,
     transition,
     loading,
+    classNames = {},
+    styles = {},
     ...restProps
   } = {
     ...defaultProps,
@@ -51,20 +53,24 @@ const Line: React.FC<ProgressProps> = (props) => {
   return (
     <svg
       id={id}
-      className={clsx(`${prefixCls}-line`, className)}
+      className={clsx(`${prefixCls}-line`, classNames.root, className)}
       viewBox={viewBoxString}
       preserveAspectRatio="none"
-      style={style}
+      style={{
+        ...styles.root,
+        ...style,
+      }}
       role="presentation"
       {...restProps}
     >
       <path
-        className={`${prefixCls}-line-rail`}
+        className={clsx(`${prefixCls}-line-rail`, classNames.rail)}
         d={pathString}
         strokeLinecap={strokeLinecap}
         stroke={railColor}
         strokeWidth={railWidth ?? strokeWidth}
         fillOpacity="0"
+        style={styles.rail}
       />
       {percentList.map((ptg, index) => {
         const dashPercent =
@@ -86,7 +92,7 @@ const Line: React.FC<ProgressProps> = (props) => {
         return (
           <path
             key={index}
-            className={`${prefixCls}-line-path`}
+            className={clsx(`${prefixCls}-line-path`, classNames.track)}
             d={pathString}
             strokeLinecap={strokeLinecap}
             stroke={color as string}
@@ -100,7 +106,7 @@ const Line: React.FC<ProgressProps> = (props) => {
 
               paths[index] = elem;
             }}
-            style={pathStyle}
+            style={{ ...pathStyle, ...styles.track }}
           />
         );
       })}
